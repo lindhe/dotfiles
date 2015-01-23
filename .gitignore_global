@@ -1,0 +1,9 @@
+# Hidden files #
+################
+.hidden
+.hidden.*
+
+# Temporary files #
+###################
+.*~
+.*.swp
