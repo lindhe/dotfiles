@@ -1,0 +1,16 @@
+[user]
+	name = Andreas Lindhé
+	email = Lindhe94@gmail.com
+[alias]
+	st = status
+	lg = log --oneline
+	co = checkout
+	bra = branch
+[branch]
+	autosetuprebase = always
+[push]
+	default = simple
+[credential]
+	helper = cache
+[core]
+	excludesfile = ~/.gitignore_global
