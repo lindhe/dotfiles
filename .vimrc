@@ -15,7 +15,7 @@ Plugin 'gmarik/Vundle.vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/rainbow_parentheses.vim'
-"Plugin 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
@@ -53,6 +53,8 @@ if has('mouse')
   set mouse=a
 endif
 
+let mapleader = ","
+
 """" Cosmetics
 colorscheme monokai
 syntax on
@@ -85,6 +87,7 @@ nnoremap <Enter> i<Enter>
 noremap <C-t> :tabedit<Space>
 "nnoremap <Space> i<Space>
 "noremap <C-Left> <Esc>b
+nnoremap <C-F> ggVG=
 
 " Press f5 to insert timestamp YYYY-MM-DD_HH:MM:SS
 nnoremap <F5> "=strftime("%F_%T")<CR>P
@@ -96,6 +99,8 @@ cnoremap so<space>& so<space>%
 cnoremap Q q
 cnoremap qq q!
 cmap te<Space> tabedit<Space>
+cnoremap R<Space> .-1read<space>
+
 " gq} for formatting current paragraph
 map Q gq    
 map <C-space> <Esc>
@@ -150,13 +155,10 @@ let g:rbpt_colorpairs = [
 " auto-pairs å fix https://github.com/jiangmiao/auto-pairs/issues/88 and 93:
 let g:AutoPairsShortcutFastWrap=''
 
-"autocmd FileType text setlocal textwidth=78
-
 """" Don't know what this does:
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
-
 
 """" TODO """""
 
@@ -165,4 +167,6 @@ inoremap <C-U> <C-G>u<C-U>
 
 " RainbowParenthesis toggle
 "nnoremap <C-S-r> :RainbowParenthesesToggle<CR>
+
+"autocmd FileType text setlocal textwidth=78
 
