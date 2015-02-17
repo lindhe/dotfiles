@@ -50,13 +50,14 @@ let g:tex_flavor = "latex"
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-  set mouse=a
+    set mouse=a
 endif
 
 let mapleader = ","
 
 """" Cosmetics
-colorscheme monokai
+"colorscheme monokai
+colorscheme jellybeans
 syntax on
 set number
 set ruler
@@ -80,7 +81,6 @@ set expandtab
 inoremap nore noremap
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-s> :w<CR>
-noremap <C-d> yyp
 inoremap <C-x> <Esc>:q<CR>
 nnoremap <C-x> :q<CR>
 nnoremap <Enter> i<Enter>
@@ -88,6 +88,7 @@ noremap <C-t> :tabedit<Space>
 "nnoremap <Space> i<Space>
 "noremap <C-Left> <Esc>b
 nnoremap <C-F> ggVG=
+nnoremap dapp %d%
 
 " Press f5 to insert timestamp YYYY-MM-DD_HH:MM:SS
 nnoremap <F5> "=strftime("%F_%T")<CR>P
@@ -103,17 +104,18 @@ cnoremap R<Space> .-1read<space>
 
 " gq} for formatting current paragraph
 map Q gq    
-map <C-space> <Esc>
 
 "nnoremap <C-S-o> :NERDTree<CR>
 
+" To move between panes without pain
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 """" Macros
-nnoremap <Space> @q
+nnoremap <Leader><Space> @q
+let @q = ',ccj'
 
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -124,9 +126,9 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 " Also don't do it when the mark is in the first line, that is the default
 " position when opening a file.
 autocmd BufReadPost *
-\ if line("'\"") > 1 && line("'\"") <= line("$") |
-\   exe "normal! g`\"" |
-\ endif
+            \ if line("'\"") > 1 && line("'\"") <= line("$") |
+            \   exe "normal! g`\"" |
+            \ endif
 
 
 """" Plugin helpers
@@ -134,23 +136,23 @@ autocmd BufReadPost *
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \]
+            \ ['brown',       'RoyalBlue3'],
+            \ ['Darkblue',    'SeaGreen3'],
+            \ ['darkgray',    'DarkOrchid3'],
+            \ ['darkgreen',   'firebrick3'],
+            \ ['darkcyan',    'RoyalBlue3'],
+            \ ['darkred',     'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['brown',       'firebrick3'],
+            \ ['gray',        'RoyalBlue3'],
+            \ ['black',       'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['Darkblue',    'firebrick3'],
+            \ ['darkgreen',   'RoyalBlue3'],
+            \ ['darkcyan',    'SeaGreen3'],
+            \ ['darkred',     'DarkOrchid3'],
+            \ ['red',         'firebrick3'],
+            \]
 
 " auto-pairs å fix https://github.com/jiangmiao/auto-pairs/issues/88 and 93:
 let g:AutoPairsShortcutFastWrap=''
@@ -170,3 +172,6 @@ inoremap <C-U> <C-G>u<C-U>
 
 "autocmd FileType text setlocal textwidth=78
 
+"toggle autoclose on/off
+
+" better esc

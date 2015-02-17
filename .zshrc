@@ -70,6 +70,7 @@ alias tree="tree -C"
 alias se="sudoedit"
 alias so="source"
 alias qq="exit"
+alias cdh="cd ~/"
 
 # Git
 alias gpr="git pull --rebase"
