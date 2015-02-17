@@ -69,8 +69,7 @@ alias mkdir="mkdir -p"
 alias tree="tree -C"
 alias se="sudoedit"
 alias so="source"
-
-alias lab="cd ~/git/cth/dat037/Lab3"
+alias qq="exit"
 
 # Git
 alias gpr="git pull --rebase"
