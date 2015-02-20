@@ -11,15 +11,13 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" I here by claim this place for my plugins accordingly
+" I here by claim this space for my plugins accordingly
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-sensible'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'kien/ctrlp.vim'
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'jiangmiao/auto-pairs'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
@@ -27,32 +25,18 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just
-":PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to
-" auto-approve removal
-"
+
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My Stuff:
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"set nocompatible
-set backspace=indent,eol,start
-"filetype plugin on
-let g:tex_flavor = "latex"
-
-
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
     set mouse=a
 endif
 
+" Usability fixes
 let mapleader = ","
 
 """" Cosmetics
@@ -65,12 +49,6 @@ set showcmd
 set splitbelow
 set splitright
 
-" Highlighting
-"highlight ColorColumn ctermbg=Black ctermfg=Red
-"let &colorcolumn=79             "Set what column to highlight.
-"let &colorcolumn=join(range(81,999),",")
-"let &colorcolumn="78,".join(range(120,999),",")
-
 """" Tidy writing
 set smartindent
 set tabstop=4
@@ -79,16 +57,13 @@ set expandtab
 
 """" Maps
 inoremap nore noremap
-inoremap <C-s> <Esc>:w<CR>
+inoremap <C-s> <Esc>:w<CR>a
 nnoremap <C-s> :w<CR>
 inoremap <C-x> <Esc>:q<CR>
 nnoremap <C-x> :q<CR>
 nnoremap <Enter> i<Enter>
 noremap <C-t> :tabedit<Space>
-"nnoremap <Space> i<Space>
-"noremap <C-Left> <Esc>b
 nnoremap <C-F> ggVG=
-nnoremap dapp %d%
 
 " Press f5 to insert timestamp YYYY-MM-DD_HH:MM:SS
 nnoremap <F5> "=strftime("%F_%T")<CR>P
@@ -102,11 +77,6 @@ cnoremap qq q!
 cmap te<Space> tabedit<Space>
 cnoremap R<Space> .-1read<space>
 
-" gq} for formatting current paragraph
-map Q gq    
-
-"nnoremap <C-S-o> :NERDTree<CR>
-
 " To move between panes without pain
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -114,8 +84,9 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 """" Macros
+nnoremap <S-Space> @q
 nnoremap <Leader><Space> @q
-let @q = ',ccj'
+let @q = ',c<space>j'
 
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -133,6 +104,8 @@ autocmd BufReadPost *
 
 """" Plugin helpers
 " RainbowParenthesis
+nnoremap <Leader>rb :RainbowParenthesesToggle<CR>
+"
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 let g:rbpt_colorpairs = [
@@ -145,7 +118,6 @@ let g:rbpt_colorpairs = [
             \ ['darkmagenta', 'DarkOrchid3'],
             \ ['brown',       'firebrick3'],
             \ ['gray',        'RoyalBlue3'],
-            \ ['black',       'SeaGreen3'],
             \ ['darkmagenta', 'DarkOrchid3'],
             \ ['Darkblue',    'firebrick3'],
             \ ['darkgreen',   'RoyalBlue3'],
@@ -155,23 +127,20 @@ let g:rbpt_colorpairs = [
             \]
 
 " auto-pairs å fix https://github.com/jiangmiao/auto-pairs/issues/88 and 93:
-let g:AutoPairsShortcutFastWrap=''
-
-"""" Don't know what this does:
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
+" let g:AutoPairsShortcutFastWrap=''
 
 """" TODO """""
-
-" NERDCommenter
-" fix shortcut <C-7>
-
-" RainbowParenthesis toggle
-"nnoremap <C-S-r> :RainbowParenthesesToggle<CR>
-
+" better esc
+"
 "autocmd FileType text setlocal textwidth=78
-
+"
+"autoclose
 "toggle autoclose on/off
 
-" better esc
+" Highlighting
+"highlight ColorColumn ctermbg=Black ctermfg=Red
+"let &colorcolumn=79             "Set what column to highlight.
+"let &colorcolumn=join(range(81,999),",")
+"let &colorcolumn="78,".join(range(120,999),",")
+
+

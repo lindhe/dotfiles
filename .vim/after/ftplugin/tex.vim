@@ -1,4 +1,5 @@
 """"" LaTeX
+let g:tex_flavor = "latex"
 " res
 nnoremap new <Esc>ggdG:.-1read ~/res/latex/default.tex<Enter>
 nnoremap it <esc>:.-1read ~/res/latex/itemize.tex<enter>j$a
