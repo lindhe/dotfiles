@@ -31,6 +31,7 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My Stuff:
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tex_flavor = "latex"
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
     set mouse=a
@@ -57,7 +58,7 @@ set expandtab
 
 """" Maps
 inoremap nore noremap
-inoremap <C-s> <Esc>:w<CR>a
+inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-s> :w<CR>
 inoremap <C-x> <Esc>:q<CR>
 nnoremap <C-x> :q<CR>
@@ -74,7 +75,6 @@ inoremap <F5><F5> <C-R>=strftime("%F")<CR>
 cnoremap so<space>& so<space>%
 cnoremap Q q
 cnoremap qq q!
-cmap te<Space> tabedit<Space>
 cnoremap R<Space> .-1read<space>
 
 " To move between panes without pain
