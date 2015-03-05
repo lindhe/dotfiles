@@ -18,6 +18,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-sleuth'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
@@ -56,15 +57,21 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+"""" Tidy reading
+set linebreak 
+set nowrap
+set textwidth=0
+set wrapmargin=0
+
 """" Maps
-inoremap nore noremap
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-s> :w<CR>
 inoremap <C-x> <Esc>:q<CR>
 nnoremap <C-x> :q<CR>
 nnoremap <Enter> i<Enter>
 noremap <C-t> :tabedit<Space>
-nnoremap <C-F> ggVG=
+noremap <C-f> ggVG=
+noremap <C-w> :vsp<Space>
 
 " Press f5 to insert timestamp YYYY-MM-DD_HH:MM:SS
 nnoremap <F5> "=strftime("%F_%T")<CR>P
