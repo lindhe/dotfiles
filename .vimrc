@@ -41,11 +41,25 @@ endif
 " Usability fixes
 let mapleader = ","
 
+"if ((set wrap?) == ('wrap'))
+"set number
+    "vmap <silent> <Right> l
+    "vmap <silent> <Left> h
+    "vmap <silent> <Up> gk
+    "vmap <silent> <Down> gj
+    "nmap <silent> <Right> l
+    "nmap <silent> <Left> h
+    "nmap <silent> <Up> gk
+    "nmap <silent> <Down> gj
+    "imap <silent> <Up> <C-o>gk
+    "imap <silent> <Down> <C-o>gj
+"endif
+
 """" Cosmetics
 "colorscheme monokai
 colorscheme jellybeans
 syntax on
-set number
+"set number
 set ruler
 set showcmd
 set splitbelow
@@ -66,9 +80,8 @@ set wrapmargin=0
 """" Maps
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-s> :w<CR>
-inoremap <C-x> <Esc>:q<CR>
-nnoremap <C-x> :q<CR>
-nnoremap <Enter> i<Enter>
+nnoremap <leader>q :q<CR>
+nnoremap <enter> i<enter>
 noremap <C-t> :tabedit<Space>
 noremap <C-f> ggVG=
 noremap <C-w> :vsp<Space>
