@@ -56,6 +56,9 @@ timestamp() {
 
 
 ## Aliases
+# Propagate aliases to sudo
+alias sudo="sudo "
+
 # General
 alias s="sudo"
 alias ..="cd .."
