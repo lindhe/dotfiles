@@ -1,0 +1,5 @@
+# Vim plugins appart from Vundle are handled by Vundle (well, once Vundle is in
+# place it too will be handled by Vundle, but it needs to be initialized from
+# here.
+.vim/bundle/*
+!.vim/bundle/Vundle.vim
