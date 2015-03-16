@@ -1,14 +1,16 @@
 """"" LaTeX
 set wrap
-noremap <C-s><C-s> :w \| ! pdflatex %<enter>
+set spell
+noremap <C-s><C-s> :w \| ! pdflatex %<CR>
 
 " res
-nnoremap <C-i>new <Esc>ggdG:.-1read ~/res/latex/default.tex<Enter>
-nnoremap <C-i>it <esc>:.-1read ~/res/latex/itemize.tex<enter>j$a
-nnoremap <C-i>en <esc>:.-1read ~/res/latex/enumerate.tex<enter>j$a
-nnoremap <C-i>fig <esc>:.-1read ~/res/latex/figure.tex<enter>jj$i
+nnoremap <C-i>new <Esc>ggdG:.-1read ~/res/latex/default.tex<CR>
+nnoremap <C-i>it <Esc>:.-1read ~/res/latex/itemize.tex<CR>j$a
+nnoremap <C-i>en <Esc>:.-1read ~/res/latex/enumerate.tex<CR>j$a
+nnoremap <C-i>fig <Esc>:.-1read ~/res/latex/figure.tex<CR>2j$i
+nnoremap <C-i>tab <Esc>:.-1read ~/res/latex/table.tex<CR>2jf}f}
 
 " one liners
-nnoremap <C-i>ip i\input{}<esc>i
-nnoremap <C-i>us <esc>:.-1read ~/res/latex/usepackage.tex<enter>$i
+nnoremap <C-i>ip i\input{}<Esc>i
+nnoremap <C-i>us <Esc>:.-1read ~/res/latex/usepackage.tex<CR>$i
 
