@@ -41,6 +41,8 @@ endif
 " Usability fixes
 let mapleader = ","
 
+set number
+
 "if ((set wrap?) == ('wrap'))
 "set number
     "vmap <silent> <Right> l
