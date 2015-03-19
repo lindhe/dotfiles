@@ -59,7 +59,8 @@ set number
 
 """" Cosmetics
 "colorscheme monokai
-colorscheme jellybeans
+"colorscheme jellybeans
+colorscheme tango
 syntax on
 "set number
 set ruler
