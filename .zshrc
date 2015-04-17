@@ -74,6 +74,7 @@ alias se="sudoedit"
 alias so="source"
 alias qq="exit"
 alias cdh="cd ~/"
+alias yao="yaourt"
 
 # Git
 alias gpr="git pull --rebase"
