@@ -63,7 +63,7 @@ alias sudoedit="sudoedit "
 # General
 alias sudovim="sudoedit "
 alias ..="cd .."
-alias ls="ls --color=auto"
+alias ls="ls -h --color=auto"
 alias lsl="ls -hl --color=auto"
 alias ll="ls -ahl --color=auto"
 alias tat="tmux attach -t"
