@@ -40,6 +40,8 @@ endif
 
 " Usability fixes
 let mapleader = ","
+set ignorecase
+set smartcase
 
 set number
 
