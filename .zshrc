@@ -58,14 +58,14 @@ timestamp() {
 ## Aliases
 # Propagate aliases to sudo
 alias sudo="sudo "
+alias sudoedit="sudoedit "
 
 # General
-alias s="sudo"
+alias sudovim="sudoedit "
 alias ..="cd .."
 alias ls="ls -h --color=auto"
 alias lsl="ls -hl --color=auto"
 alias ll="ls -ahl --color=auto"
-alias clr="clear"
 alias tat="tmux attach -t"
 alias tls="tmux list-sessions"
 alias mkdir="mkdir -p"
