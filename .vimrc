@@ -42,8 +42,13 @@ endif
 let mapleader = ","
 set ignorecase
 set smartcase
-
 set number
+
+" jklö
+nnoremap j h
+nnoremap k j
+nnoremap l k
+nnoremap ö l
 
 "if ((set wrap?) == ('wrap'))
 "set number
