@@ -75,6 +75,7 @@ alias so="source"
 alias qq="exit"
 alias cdh="cd ~/"
 alias yao="yaourt"
+alias pac="pacman"
 
 # Git
 alias gpr="git pull --rebase"
@@ -84,3 +85,6 @@ alias gs="git status"
 alias gl="git log"
 alias gad="git add"
 alias gb="git branch"
+
+# non-important
+alias cal="cal -m"

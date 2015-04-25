@@ -23,6 +23,23 @@
 # Global properties
 separator_block_width=15
 
+[upload]
+label=↑
+command=~/.config/i3blocks/scripts/bandwidth tx
+min_width=00000 kB/s
+align=left
+color=#e22c56
+interval=1 # IMPORTANT
+
+[download]
+label=↓
+command=~/.config/i3blocks/scripts/bandwidth rx
+min_width=00000 kB/s
+align=left
+color=#00ff00
+interval=1 # IMPORTANT
+separator=true
+
 [memory]
 label=MEM
 command=$SCRIPT_DIR/memory
@@ -33,17 +50,6 @@ interval=30
 label=SWAP
 instance=swap
 command=$SCRIPT_DIR/memory
-interval=30
-
-[wireless]
-command=$SCRIPT_DIR/network wlp2s0 W
-color=#00FF00
-interval=10
-
-[battery]
-label=⚡
-command=$SCRIPT_DIR/battery BAT1
-#command=acpi -b
 interval=30
 
 [volume]
