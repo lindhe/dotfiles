@@ -40,6 +40,17 @@ color=#00ff00
 interval=1 # IMPORTANT
 separator=true
 
+[wireless]
+command=$SCRIPT_DIR/network wlp2s0 W
+color=#00FF00
+interval=10
+
+[battery]
+label=⚡
+command=$SCRIPT_DIR/battery BAT1
+#command=acpi -b
+interval=30
+
 [memory]
 label=MEM
 command=$SCRIPT_DIR/memory
