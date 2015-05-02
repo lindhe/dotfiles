@@ -39,7 +39,7 @@ if has('mouse')
 endif
 
 " Usability fixes
-let mapleader = ","
+let mapleader = ','
 set ignorecase
 set smartcase
 set number
@@ -49,20 +49,14 @@ nnoremap j h
 nnoremap k j
 nnoremap l k
 nnoremap ö l
-
-"if ((set wrap?) == ('wrap'))
-"set number
-    "vmap <silent> <Right> l
-    "vmap <silent> <Left> h
-    "vmap <silent> <Up> gk
-    "vmap <silent> <Down> gj
-    "nmap <silent> <Right> l
-    "nmap <silent> <Left> h
-    "nmap <silent> <Up> gk
-    "nmap <silent> <Down> gj
-    "imap <silent> <Up> <C-o>gk
-    "imap <silent> <Down> <C-o>gj
-"endif
+vnoremap j h
+vnoremap k j
+vnoremap l k
+vnoremap ö l
+onoremap j h
+onoremap k j
+onoremap l k
+onoremap ö l
 
 """" Cosmetics
 "colorscheme monokai
@@ -94,7 +88,6 @@ nnoremap <leader>q :q<CR>
 nnoremap <enter> i<enter>
 noremap <C-t> :tabedit<Space>
 noremap <C-f> ggVG=
-noremap <C-w> :vsp<Space>
 
 " Press f5 to insert timestamp YYYY-MM-DD_HH:MM:SS
 nnoremap <F5> "=strftime("%F_%T")<CR>P
@@ -108,15 +101,14 @@ cnoremap qq q!
 cnoremap R<Space> .-1read<space>
 
 " To move between panes without pain
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <c-j> <C-W><C-H>
+nnoremap <c-k> <C-W><C-J>
+nnoremap <c-l> <C-W><C-K>
+nnoremap <c-ö> <C-W><C-L>
 
 """" Macros
-nnoremap <S-Space> @q
-nnoremap <Leader><Space> @q
-let @q = ',c<space>j'
+nnoremap <leader><space> @q
+let @q = '<leader>c<space>l'
 
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -160,8 +152,6 @@ let g:rbpt_colorpairs = [
 " let g:AutoPairsShortcutFastWrap=''
 
 """" TODO """""
-" better esc
-"
 "autocmd FileType text setlocal textwidth=78
 "
 "autoclose
@@ -173,4 +163,18 @@ let g:rbpt_colorpairs = [
 "let &colorcolumn=join(range(81,999),",")
 "let &colorcolumn="78,".join(range(120,999),",")
 
+
+"if ((set wrap?) == ('wrap'))
+"set number
+    "vmap <silent> <Right> l
+    "vmap <silent> <Left> h
+    "vmap <silent> <Up> gk
+    "vmap <silent> <Down> gj
+    "nmap <silent> <Right> l
+    "nmap <silent> <Left> h
+    "nmap <silent> <Up> gk
+    "nmap <silent> <Down> gj
+    "imap <silent> <Up> <C-o>gk
+    "imap <silent> <Down> <C-o>gj
+"endif
 
