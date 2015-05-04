@@ -88,3 +88,4 @@ alias gb="git branch"
 
 # non-important
 alias cal="cal -m"
+alias starwars="telnet towel.blinkenlights.nl"
