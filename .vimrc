@@ -13,12 +13,16 @@ Plugin 'gmarik/Vundle.vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " I here by claim this space for my plugins accordingly
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-sensible'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-sleuth'
+" These are the REALLY REALLY REALLY essential ones:
+Plugin 'tpope/vim-sensible'             " Fix the stupid things left from Vi
+Plugin 'tpope/vim-sleuth'               " Actually smart indentation
+Plugin 'flazz/vim-colorschemes'         " It's stupid not to have colorschemes available.
+Plugin 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
+
+" And here are some other neat plugins
+Plugin 'godlygeek/tabular'              " Align on colon etc. Usage: 
+Plugin 'kien/rainbow_parentheses.vim'   " Make shit pretty and readable
+Plugin 'scrooloose/nerdcommenter'       " Semi automatic comments made easy 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
@@ -32,42 +36,33 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My Stuff:
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""" Usability fixes
 let g:tex_flavor = "latex"
+
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
     set mouse=a
 endif
 
-" Usability fixes
 let mapleader = ','
 set ignorecase
 set smartcase
 set number
-
-" jklö
-nnoremap j h
-nnoremap k j
-nnoremap l k
-nnoremap ö l
-vnoremap j h
-vnoremap k j
-vnoremap l k
-vnoremap ö l
-onoremap j h
-onoremap k j
-onoremap l k
-onoremap ö l
-
-"""" Cosmetics
-"colorscheme monokai
-"colorscheme jellybeans
-colorscheme tango
-syntax on
-"set number
 set ruler
 set showcmd
+syntax on
 set splitbelow
 set splitright
+
+" jklö
+noremap j h
+noremap k j
+noremap l k
+noremap ö l
+
+"""" Cosmetics
+"colorscheme molokai
+colorscheme tango
 
 """" Tidy writing
 set smartindent
@@ -75,13 +70,13 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-"""" Tidy reading
+"""" Tidy reading. (Honestly, I have no idea what most of this does)
 set linebreak 
 set nowrap
 set textwidth=0
 set wrapmargin=0
 
-"""" Maps
+"""" Mappings
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <leader>q :q<CR>
@@ -89,7 +84,7 @@ nnoremap <enter> i<enter>
 noremap <C-t> :tabedit<Space>
 noremap <C-f> ggVG=
 
-" Press f5 to insert timestamp YYYY-MM-DD_HH:MM:SS
+" Press <F5> to insert timestamp YYYY-MM-DD_HH:MM:SS
 nnoremap <F5> "=strftime("%F_%T")<CR>P
 nnoremap <F5><F5> "=strftime("%F")<CR>P
 inoremap <F5> <C-R>=strftime("%F_%T")<CR>
@@ -99,16 +94,35 @@ inoremap <F5><F5> <C-R>=strftime("%F")<CR>
 nnoremap <f7> :set spell!<cr>
 inoremap <f7> <esc>:set spell!<cr>a
 
+" Press <F8> to toggle textwidth=80
+nnoremap <F8> :call ToggleTextWidth()<CR>
+inoremap <F8> <Esc>:call ToggleTextWidth()<CR>
+
+function ToggleTextWidth()
+    if &textwidth
+        echo "textwidth=0"
+        set textwidth=0
+    else
+        echo "textwidth=80"
+        set textwidth=80
+    endif
+endfunction
+
+" Correct me
 cnoremap so<space>& so<space>%
 cnoremap Q q
+cnoremap Wq wq
+cnoremap WQ wq
+
+" Quicklings
 cnoremap qq q!
 cnoremap R<Space> .-1read<space>
 
 " To move between panes without pain
-nnoremap <c-j> <C-W><C-H>
-nnoremap <c-k> <C-W><C-J>
-nnoremap <c-l> <C-W><C-K>
-nnoremap <c-ö> <C-W><C-L>
+"nnoremap <c-j> <C-W><C-H>
+"nnoremap <c-k> <C-W><C-J>
+"nnoremap <c-l> <C-W><C-K>
+"nnoremap <c-ö> <C-W><C-L>
 
 """" Macros
 nnoremap <leader><space> @q
@@ -162,10 +176,10 @@ let g:rbpt_colorpairs = [
 "toggle autoclose on/off
 
 " Highlighting
-"highlight ColorColumn ctermbg=Black ctermfg=Red
-"let &colorcolumn=79             "Set what column to highlight.
-"let &colorcolumn=join(range(81,999),",")
-"let &colorcolumn="78,".join(range(120,999),",")
+highlight ColorColumn ctermbg=Black ctermfg=Red
+let &colorcolumn=79             "Set what column to highlight.
+let &colorcolumn=join(range(81,999),",")
+let &colorcolumn="78,".join(range(120,999),",")
 
 
 "if ((set wrap?) == ('wrap'))
