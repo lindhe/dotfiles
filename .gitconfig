@@ -6,8 +6,10 @@
 	lg = log --oneline
 	co = checkout
 	bra = branch
-        comam = commit -am
 	cl = clone
+	com = commit
+	comm = commit -m
+        comam = commit -am
 [branch]
 	autosetuprebase = always
 [push]
