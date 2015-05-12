@@ -104,6 +104,10 @@ function ToggleTextWidth()
     endif
 endfunction
 
+" f7 to toggle spell
+nnoremap <f7> :set spell!<cr>
+inoremap <f7> <esc>:set spell!<cr>a
+
 " Correct me
 cnoremap so<space>& so<space>%
 cnoremap Q q
