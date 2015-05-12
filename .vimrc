@@ -95,6 +95,10 @@ nnoremap <F5><F5> "=strftime("%F")<CR>P
 inoremap <F5> <C-R>=strftime("%F_%T")<CR>
 inoremap <F5><F5> <C-R>=strftime("%F")<CR>
 
+" f7 to toggle spell
+nnoremap <f7> :set spell!<cr>
+inoremap <f7> <esc>:set spell!<cr>a
+
 cnoremap so<space>& so<space>%
 cnoremap Q q
 cnoremap qq q!
