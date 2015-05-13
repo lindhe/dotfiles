@@ -10,6 +10,7 @@
 	com = commit
 	comm = commit -m
         comam = commit -am
+	cp = cherry-pick
 [branch]
 	autosetuprebase = always
 [push]
