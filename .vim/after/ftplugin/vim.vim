@@ -1,1 +1,1 @@
-inoremap nore noremap
+iab nore noremap
