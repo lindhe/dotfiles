@@ -79,7 +79,6 @@ set wrapmargin=0
 """" Mappings
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-s> :w<CR>
-nnoremap <leader>q :q<CR>
 nnoremap <enter> i<enter>
 
 noremap <C-t> :tabedit<Space>
