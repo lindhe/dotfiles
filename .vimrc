@@ -81,6 +81,7 @@ inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <enter> i<enter>
+
 noremap <C-t> :tabedit<Space>
 noremap <C-f> ggVG=
 
@@ -116,7 +117,7 @@ cnoremap WQ wq
 
 " Quicklings
 cnoremap qq q!
-cnoremap R<Space> .-1read<space>
+cab R .-1read 
 
 " To move between panes without pain
 "nnoremap <c-j> <C-W><C-H>
@@ -125,8 +126,10 @@ cnoremap R<Space> .-1read<space>
 "nnoremap <c-ö> <C-W><C-L>
 
 """" Macros
-nnoremap <leader><space> @q
-let @q = '<leader>c<space>l'
+nnoremap <space> @
+nnoremap <space><space> @q
+nnoremap <leader><space> @c
+let @c =',c k'
 
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -195,4 +198,10 @@ let &colorcolumn="78,".join(range(120,999),",")
     "imap <silent> <Up> <C-o>gk
     "imap <silent> <Down> <C-o>gj
 "endif
+
+
+" Status line color
+"au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
+"au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
+
 
