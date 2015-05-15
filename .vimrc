@@ -37,6 +37,7 @@ filetype plugin indent on    " required
 " My Stuff:
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" Usability fixes
+" tex = latex
 let g:tex_flavor = "latex"
 
 " In many terminal emulators the mouse works just fine, thus enable it.
@@ -48,11 +49,9 @@ let mapleader = ','
 set ignorecase
 set smartcase
 set number
-set ruler
-set showcmd
-syntax on
 set splitbelow
 set splitright
+syntax on
 
 " jklö
 noremap j h
@@ -65,16 +64,17 @@ noremap ö l
 colorscheme tango
 
 """" Tidy writing
+"set autoindent
+" autoindent uses the same indentation for the next row as the current row.
 set smartindent
+" smartindent uses a smarter alorithm than autoindent.
 set tabstop=4
 set shiftwidth=4
 set expandtab
-
-"""" Tidy reading. (Honestly, I have no idea what most of this does)
+set textwidth=0
 set linebreak 
 set nowrap
-set textwidth=0
-set wrapmargin=0
+set wrapmargin=0 " Prevent vim from automatically inserting line breaks in newly entered text.
 
 """" Mappings
 inoremap <C-s> <Esc>:w<CR>
@@ -97,7 +97,6 @@ inoremap <f7> <esc>:set spell!<cr>a
 " Press <F8> to toggle textwidth=80
 nnoremap <F8> :call ToggleTextWidth()<CR>
 inoremap <F8> <Esc>:call ToggleTextWidth()<CR>
-
 function ToggleTextWidth()
     if &textwidth
         echo "textwidth=0"
@@ -107,6 +106,11 @@ function ToggleTextWidth()
         set textwidth=80
     endif
 endfunction
+
+"highlight ColorColumn ctermbg=Black ctermfg=Red
+"let &colorcolumn=79             "Set what column to highlight.
+"let &colorcolumn=join(range(81,999),",")
+"let &colorcolumn="78,".join(range(120,999),",")
 
 " Correct me
 cnoremap so<space>& so<space>%
@@ -125,10 +129,9 @@ cab R .-1read
 "nnoremap <c-ö> <C-W><C-L>
 
 """" Macros
-nnoremap <space> @
 nnoremap <space><space> @q
-nnoremap <leader><space> @c
-let @c =',c k'
+nnoremap <leader><space> @
+let @q =',c k'
 
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -168,21 +171,9 @@ let g:rbpt_colorpairs = [
             \ ['red',         'firebrick3'],
             \]
 
-" auto-pairs å fix https://github.com/jiangmiao/auto-pairs/issues/88 and 93:
-" let g:AutoPairsShortcutFastWrap=''
-
 """" TODO """""
-"autocmd FileType text setlocal textwidth=78
-"
 "autoclose
 "toggle autoclose on/off
-
-" Highlighting
-highlight ColorColumn ctermbg=Black ctermfg=Red
-let &colorcolumn=79             "Set what column to highlight.
-let &colorcolumn=join(range(81,999),",")
-let &colorcolumn="78,".join(range(120,999),",")
-
 
 "if ((set wrap?) == ('wrap'))
 "set number
