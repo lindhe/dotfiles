@@ -151,6 +151,9 @@ autocmd BufReadPost *
 
 
 """" Plugin helpers
+" MultipleCursorsFind
+nnoremap <C-m> :MultipleCursorsFind<Space>
+
 " Lorem Ipsum
 nnoremap <C-i><C-l> :Loremipsum 100<CR>
 
