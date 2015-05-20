@@ -23,6 +23,7 @@ Plugin 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 Plugin 'godlygeek/tabular'              " Align on colon etc. Usage: 
 Plugin 'kien/rainbow_parentheses.vim'   " Make shit pretty and readable
 Plugin 'scrooloose/nerdcommenter'       " Semi automatic comments made easy 
+Plugin 'loremipsum'                     " Lorem ipusm 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
@@ -71,7 +72,7 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set textwidth=0
+set textwidth=80
 set linebreak 
 set nowrap
 set wrapmargin=0 " Prevent vim from automatically inserting line breaks in newly entered text.
@@ -82,7 +83,8 @@ nnoremap <C-s> :w<CR>
 nnoremap <enter> i<enter>
 
 noremap <C-t> :tabedit<Space>
-noremap <C-f> ggVG=
+noremap <C-f> gg=G''
+noremap <C-f><C-f> gggqG''
 
 " Press <F5> to insert timestamp YYYY-MM-DD_HH:MM:SS
 nnoremap <F5> "=strftime("%F_%T")<CR>P
@@ -148,6 +150,9 @@ autocmd BufReadPost *
 
 
 """" Plugin helpers
+" Lorem Ipsum
+nnoremap <C-i><C-l> :Loremipsum 100<CR>
+
 " RainbowParenthesis
 nnoremap <Leader>rb :RainbowParenthesesToggle<CR>
 "
