@@ -134,7 +134,6 @@ cab R .-1read
 """" Macros
 nnoremap <space><space> @q
 nnoremap <leader><space> @
-let @q =',c k'
 
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -152,7 +151,7 @@ autocmd BufReadPost *
 
 """" Plugin helpers
 " MultipleCursorsFind
-nnoremap <C-m> :MultipleCursorsFind<Space>
+nnoremap // :MultipleCursorsFind<Space>
 
 " Lorem Ipsum
 nnoremap <C-i><C-l> :Loremipsum 100<CR>
