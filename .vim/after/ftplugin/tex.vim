@@ -12,3 +12,6 @@ nnoremap <C-i>lst :.-1read ~/res/latex/lstlisting.tex<CR>ji
 nnoremap <C-i>fig :.-1read ~/res/latex/figure.tex<CR>2k$i
 nnoremap <C-i>tab :.-1read ~/res/latex/table.tex<CR>2kf}f}
 nnoremap <C-i>env :.-1read ~/res/latex/environment.tex<CR>Vk<C-n>$i
+
+nnoremap <C-i>en :.-1read ~/res/latex/english.tex<CR>
+nnoremap <C-i>sv :.-1read ~/res/latex/swedish.tex<CR>
