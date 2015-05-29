@@ -76,6 +76,7 @@ alias qq="exit"
 alias cdh="cd ~/"
 alias yao="yaourt"
 alias pac="pacman"
+alias open="xdg-open"
 
 # Git
 alias gpr="git pull --rebase"
