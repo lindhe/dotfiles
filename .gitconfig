@@ -2,6 +2,7 @@
 	name = Andreas Lindhé
 	email = Lindhe94@gmail.com
 [alias]
+	s = status
 	st = status
 	lg = log --oneline
 	co = checkout
@@ -9,6 +10,7 @@
 	cl = clone
 	com = commit
 	comm = commit -m
+	coma = commit -a
         comam = commit -am
 	cp = cherry-pick
 [branch]
