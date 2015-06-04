@@ -75,7 +75,7 @@ alias so="source"
 alias qq="exit"
 alias cdh="cd ~/"
 alias yao="yaourt"
-alias pac="pacman"
+alias pac="pacaur"
 alias open="xdg-open"
 
 # Git
