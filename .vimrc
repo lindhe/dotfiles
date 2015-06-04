@@ -20,6 +20,7 @@ Plugin 'flazz/vim-colorschemes'         " It's stupid not to have colorschemes a
 Plugin 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 
 " And here are some other neat plugins
+Plugin 'bling/vim-airline'              " The status bar as it should be
 Plugin 'terryma/vim-multiple-cursors'   " Do it like they do it in sublime
 Plugin 'godlygeek/tabular'              " Align on colon etc. Usage: 
 Plugin 'kien/rainbow_parentheses.vim'   " Make shit pretty and readable
