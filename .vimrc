@@ -124,6 +124,7 @@ cnoremap WQ wq
 " Quicklings
 cnoremap qq q!
 cab R .-1read 
+cab spg spellgood
 
 " To move between panes without pain
 "nnoremap <c-j> <C-W><C-H>

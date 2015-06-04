@@ -4,15 +4,16 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-%% Language specific:
 \usepackage[english]{babel}
 \usepackage[iso,english]{isodate}
+\usepackage{icomma}
 
 %% Usually preferred packages:
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref} % Usage: \url{}
 \usepackage{mathtools}
 \usepackage[section]{placeins} % Restrict figures to stay within section
+\usepackage[top=1cm,bottom=1cm,left=1in,right=1in]{geometry}
 
 \title{Title} 
 %\date{}
@@ -23,8 +24,9 @@
 \maketitle
 
 \tableofcontents
+\newpage
 
-\abstract{Abstract}
+\abstract
 
 % lorem{{{
 Nisi felis nec nibh. Nulla facilisi. Etiam at tortor. Vivamus quis sapien nec
@@ -56,17 +58,49 @@ Donec consequat mi. Quisque vitae dolor. Integer lobortis. Maecenas id nulla.
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed volutpat felis.
 % lorem}}}
 
+\subsection{Subsection} % The lowest level in an article is \subsubsection.
+
+% lorem{{{
+In, erat. Aenean vel quam at eros mattis commodo. Aenean feugiat iaculis justo.
+Maecenas accumsan justo ut nibh. Donec ac lectus vitae odio lobortis tristique.
+Donec vestibulum mattis lectus. Donec et lorem.
+
+Cras sit amet mauris. Curabitur a quam. Aliquam neque. Nam nunc nunc, lacinia
+sed, varius quis, iaculis eget, ante. Nulla dictum justo eu lacus. Phasellus sit
+amet quam. Nullam sodales. Cras non magna eu est consectetuer faucibus. Donec
+tempor lobortis turpis. Sed tellus velit, ullamcorper ac, fringilla vitae,
+sodales nec, purus. Morbi aliquet risus in mi.
+
+Curabitur cursus volutpat neque. Proin posuere mauris ut ipsum. Praesent
+scelerisque tortor a justo. Quisque.
+% lorem}}}
 
 %\newpage
 %\bibliographystyle{IEEEtran}
 %\bibliography{ref}
 
 \newpage
-\appendix{Appendix}
+\appendix
 
 \section{Section}
 
-%\section{}
+% lorem{{{
+Ultricies turpis. Pellentesque a pede. Duis sed tortor. Phasellus egestas porta
+lectus. Aliquam dignissim consequat diam. Pellentesque pede.
+
+Ut varius tincidunt tellus. Curabitur ornare ipsum. Aenean laoreet posuere orci.
+Etiam id nisl. Suspendisse volutpat elit molestie orci. Suspendisse vel augue at
+felis tincidunt sollicitudin. Fusce arcu. Duis a tortor. Duis et odio et leo
+sollicitudin consequat. Aliquam lobortis. Phasellus condimentum. Ut porttitor
+bibendum libero. Integer euismod lacinia velit. Donec velit justo, sodales
+varius, cursus sed, mattis a, arcu.
+
+Maecenas accumsan, sem iaculis egestas gravida, odio nunc aliquet dui, eget
+cursus diam purus vel augue. Donec eros nisi, imperdiet quis, volutpat ac,
+sollicitudin sed.
+% lorem}}}
+
+
 %\input{}
 
 \end{document}
