@@ -5,6 +5,7 @@
 	s = status
 	st = status
 	lg = log --oneline
+	ll = log --oneline
 	co = checkout
 	bra = branch
 	cl = clone
