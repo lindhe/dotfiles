@@ -26,6 +26,8 @@ Plugin 'godlygeek/tabular'              " Align on colon etc. Usage:
 Plugin 'kien/rainbow_parentheses.vim'   " Make shit pretty and readable
 Plugin 'scrooloose/nerdcommenter'       " Semi automatic comments made easy 
 Plugin 'loremipsum'                     " Lorem ipusm 
+Plugin 'Yggdroot/indentLine'            " Show indentation
+Plugin 'mattn/emmet-vim'                " The essential tool for web developers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
@@ -64,7 +66,8 @@ noremap ö l
 
 """" Cosmetics
 "colorscheme molokai
-colorscheme tango
+"colorscheme tango
+colorscheme jelleybeans
 
 """" Tidy writing
 "set autoindent
@@ -74,7 +77,7 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set textwidth=80
+set textwidth=0
 set linebreak 
 set nowrap
 set wrapmargin=0 " Prevent vim from automatically inserting line breaks in newly entered text.
@@ -181,6 +184,12 @@ let g:rbpt_colorpairs = [
             \ ['red',         'firebrick3'],
             \]
 
+
+" emmet
+let g:user_emmet_leader_key='<C-l>' " Remember to use `,` after emmet leader 
+
+
+
 """" TODO """""
 "autoclose
 "toggle autoclose on/off
@@ -198,10 +207,3 @@ let g:rbpt_colorpairs = [
     "imap <silent> <Up> <C-o>gk
     "imap <silent> <Down> <C-o>gj
 "endif
-
-
-" Status line color
-"au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
-"au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
-
-
