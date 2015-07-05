@@ -141,14 +141,27 @@ bar {
         status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config 
         #status_command i3status --config ~/.config/i3/i3status.conf 
 }
+#####################################################################
+#
+## Media
+# Media player controls (GIU applications)
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl stop
+
+# Pulse Audio controls
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5%
+bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle # mute sound
 
 
 ## Custom
-focus_follows_mouse yes
+focus_follows_mouse no
 
 ## Autostart
-exec_always "~/.i3auto.sh"
-#exec dropbox start
+exec numlockx
+exec dropbox start
 #exec owncloud
 
 ######################################################################
@@ -162,3 +175,6 @@ client.focused_inactive #111111 #222222 #888888 #484e50
 client.unfocused #111111 #222222 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
 
+# workspaces
+#
+workspace 1 output DVI-D-0
