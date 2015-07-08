@@ -77,6 +77,8 @@ alias cdh="cd ~/"
 alias yao="yaourt"
 alias pac="pacaur"
 alias open="xdg-open"
+alias df="df -H"
+alias du="du -h"
 
 # Git
 alias gpr="git pull --rebase"
