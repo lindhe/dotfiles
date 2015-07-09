@@ -54,6 +54,11 @@ timestamp() {
     date +'%F_%T'
 }
 
+mkcd() {
+    mkdir -p "$1"
+    cd "$1"
+}
+
 
 ## Aliases
 # Propagate aliases to sudo
