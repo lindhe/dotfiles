@@ -59,9 +59,7 @@ set splitright
 syntax on
 
 " jklö
-noremap j h
-noremap k j
-noremap l k
+noremap l h
 noremap ö l
 
 """" Cosmetics
