@@ -161,7 +161,7 @@ focus_follows_mouse no
 
 ## Autostart
 exec numlockx
-exec dropbox start
+#exec dropbox start
 #exec owncloud
 
 ######################################################################
