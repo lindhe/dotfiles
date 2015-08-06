@@ -14,3 +14,14 @@ https://btrfs.wiki.kernel.org/index.php/Incremental_Backup#Doing_it_by_hand.2C_s
 * `sync`
 * `sudo su -c "btrfs send -p /snap/home/initial /snap/home/2015-07-08_21:38:32 | btrfs receive /backup/home"`
 * `sudo su -c "btrfs send -p /snap/root/initial /snap/root/2015-07-08_21:38:54 | btrfs receive /backup/root"`
+
+
+# Debian dist-upgrade
+* `apt-get update`
+* `apt-get upgrade`
+* `apt-get dist-upgrade`
+* `sed -i 's/wheezy/jessie/g' /etc/apt/sources.list`
+* `apt-get update`
+* `apt-get upgrade`
+* `apt-get dist-upgrade`
+* `reboot`
