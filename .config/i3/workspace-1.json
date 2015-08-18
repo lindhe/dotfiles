@@ -1,0 +1,21 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1857,
+       "width": 1076,
+       "x": 2,
+       "y": 269
+    },
+    "name": "Spotify Premium - Linux Preview",
+    "percent": 1,
+    "swallows": [
+       {
+           "class": "^Spotify$"
+       }
+    ],
+    "type": "con"
+}
+
