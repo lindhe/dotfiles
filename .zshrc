@@ -15,6 +15,8 @@ setopt HIST_NO_STORE
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
+# why would you type 'cd dir' if you could just type 'dir'?
+setopt AUTO_CD
 
 # Completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}'
