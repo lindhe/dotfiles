@@ -159,11 +159,6 @@ bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle # mute sound
 ## Custom
 focus_follows_mouse no
 
-## Autostart
-exec --no-startup-id numlockx
-#exec --no-startup-id dropbox start
-#exec owncloud
-
 ######################################################################
 ## Cosmetics
 # Which border style will new windows have
@@ -205,3 +200,8 @@ exec --no-startup-id telegram
 exec --no-startup-id firefox
 exec --no-startup-id chromium
 exec --no-startup-id gnome-terminal
+
+## Autostart
+exec --no-startup-id numlockx
+exec --no-startup-id dropbox start
+exec --no-startup-id owncloud
