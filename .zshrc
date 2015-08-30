@@ -64,6 +64,9 @@ mkcd() {
     cd "$1"
 }
 
+md2pdf() {
+    pandoc $1 -s -o $1.pdf
+}
 
 ## Aliases
 # Propagate aliases to sudo
@@ -89,6 +92,7 @@ alias pac="pacaur"
 alias open="xdg-open"
 alias df="df -H"
 alias du="du -h"
+alias bc="bc -l"
 
 # Git
 alias gpr="git pull --rebase"
