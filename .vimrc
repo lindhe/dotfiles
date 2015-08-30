@@ -18,9 +18,10 @@ Plugin 'tpope/vim-sensible'             " Fix the stupid things left from Vi
 Plugin 'tpope/vim-sleuth'               " Actually smart indentation
 Plugin 'flazz/vim-colorschemes'         " It's stupid not to have colorschemes available.
 Plugin 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
+Plugin 'bling/vim-airline'              " The status bar as it should be
 
 " And here are some other neat plugins
-Plugin 'bling/vim-airline'              " The status bar as it should be
+Plugin 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
 Plugin 'terryma/vim-multiple-cursors'   " Do it like they do it in sublime
 Plugin 'godlygeek/tabular'              " Align on colon etc. Usage: 
 Plugin 'kien/rainbow_parentheses.vim'   " Make shit pretty and readable
