@@ -162,7 +162,9 @@ focus_follows_mouse no
 ######################################################################
 ## Cosmetics
 # Which border style will new windows have
-new_window 1pixel
+new_window pixel 1
+hide_edge_borders both
+
 # Colors
 # class border backgr text indicator
 client.focused #0099cc #0099cc #ffffff #2e9ef4
@@ -203,5 +205,5 @@ exec --no-startup-id gnome-terminal
 
 ## Autostart
 exec --no-startup-id numlockx
-exec --no-startup-id dropbox start
+exec dropbox start
 exec --no-startup-id owncloud

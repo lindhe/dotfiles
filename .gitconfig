@@ -4,8 +4,7 @@
 [alias]
 	s = status
 	st = status
-	lg = log --oneline
-	ll = log --oneline
+	lg = log --oneline --decorate
 	co = checkout
 	bra = branch
 	cl = clone

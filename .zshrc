@@ -66,7 +66,13 @@ mkcd() {
 
 md2pdf() {
     pandoc $1 -s -o $1.pdf
+    rename md.pdf pdf ./$1.pdf
 }
+
+#ddiso() {
+    #size=$(stat -c%s $1)
+    #dd if=$1 &> /dev/null | pv -petra -s $size | dd of=$2 bs=4k
+#}
 
 ## Aliases
 # Propagate aliases to sudo
@@ -77,8 +83,8 @@ alias sudoedit="sudoedit "
 alias sudovim="sudoedit "
 alias ..="cd .."
 alias ls="ls -h --color=auto"
-alias lsl="ls -hl --color=auto"
-alias ll="ls -ahl --color=auto"
+alias ll="ls -hl --color=auto"
+alias lsl="ls -ahl --color=auto"
 alias tat="tmux attach -t"
 alias tls="tmux list-sessions"
 alias mkdir="mkdir -p"
