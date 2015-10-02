@@ -67,7 +67,7 @@ noremap ö l
 """" Cosmetics
 "colorscheme molokai
 "colorscheme tango
-colorscheme jelleybeans
+"colorscheme jelleybeans
 
 """" Tidy writing
 "set autoindent
