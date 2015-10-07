@@ -113,10 +113,10 @@ function ToggleTextWidth()
     endif
 endfunction
 
-"highlight ColorColumn ctermbg=Black ctermfg=Red
-"let &colorcolumn=79             "Set what column to highlight.
-"let &colorcolumn=join(range(81,999),",")
-"let &colorcolumn="78,".join(range(120,999),",")
+highlight ColorColumn ctermbg=Black ctermfg=Red
+let &colorcolumn=80             "Set what column to highlight.
+let &colorcolumn=join(range(81,999),",")
+let &colorcolumn="80,".join(range(120,999),",")
 
 " Correct me
 cnoremap so<space>& so<space>%
