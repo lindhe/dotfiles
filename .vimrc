@@ -28,7 +28,6 @@ Plugin 'godlygeek/tabular'              " Align on colon etc. Usage:
 Plugin 'kien/rainbow_parentheses.vim'   " Make shit pretty and readable
 Plugin 'scrooloose/nerdcommenter'       " Semi automatic comments made easy 
 Plugin 'loremipsum'                     " Lorem ipusm 
-Plugin 'Yggdroot/indentLine'            " Show indentation
 Plugin 'mattn/emmet-vim'                " The essential tool for web developers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
