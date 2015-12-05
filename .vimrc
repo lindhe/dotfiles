@@ -23,6 +23,7 @@ Plugin 'tpope/vim-commentary'           " Better than nerdCommenter?
 
 
 " And here are some other neat plugins
+"Plugin 'easymotion/vim-easymotion'      " Vim EasyMotion
 Plugin 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
 Plugin 'majutsushi/tagbar'              " Easy way to navigate log files
 Plugin 'terryma/vim-multiple-cursors'   " Do it like they do it in sublime
@@ -92,19 +93,36 @@ noremap <C-f> gg=G''
 noremap <C-f><C-f> gggqG''
 
 " Press <F5> to insert timestamp YYYY-MM-DD_HH:MM:SS
-nnoremap <F5> "=strftime("%F_%T")<CR>P
-nnoremap <F5><F5> "=strftime("%F")<CR>P
-inoremap <F5> <C-R>=strftime("%F_%T")<CR>
-inoremap <F5><F5> <C-R>=strftime("%F")<CR>
+nnoremap <F5><F5> "=strftime("%F_%T")<CR>P
+nnoremap <F5> "=strftime("%F")<CR>P
+inoremap <F5><F5> <C-R>=strftime("%F_%T")<CR>
+inoremap <F5> <C-R>=strftime("%F")<CR>
 
-" f7 to toggle spell
-nnoremap <f7> :set spell!<cr>
+" f7 to cycle spell
 nnoremap <f7><f7> :set spl=sv<cr>
-inoremap <f7> <esc>:set spell!<cr>a
+nnoremap <F7> :call CycleSpell()<CR>
+inoremap <F7> <Esc>:call CycleSpell()<CR>a
+
+fun! CycleSpell()
+    let langs = ['', 'en', 'sv']
+
+    let i = index(langs, &spl)
+    let j = (i+1)%len(langs)
+    let &spl = langs[j]
+
+    if empty(&spl)
+        set nospell
+        echo "set nospell"
+    else
+        set spell
+        echo "spelllang="&spl
+    endif
+endfun
 
 " Press <F8> to toggle textwidth=80
 nnoremap <F8> :call ToggleTextWidth()<CR>
-inoremap <F8> <Esc>:call ToggleTextWidth()<CR>
+inoremap <F8> <Esc>:call ToggleTextWidth()<CR>a
+
 function ToggleTextWidth()
     if &textwidth
         echo "textwidth=0"
@@ -114,6 +132,13 @@ function ToggleTextWidth()
         set textwidth=80
     endif
 endfunction
+
+" f9 to toggle paste
+nnoremap <f9> :set paste!<cr>
+inoremap <f9> <esc>:set paste!<cr>a
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 highlight ColorColumn ctermbg=Black ctermfg=Red
 let &colorcolumn=80             "Set what column to highlight.
@@ -159,9 +184,6 @@ autocmd BufReadPost *
 " MultipleCursorsFind
 nnoremap // :MultipleCursorsFind<Space>
 
-" Lorem Ipsum
-nnoremap <C-i><C-l> :Loremipsum 100<CR>
-
 " RainbowParenthesis
 nnoremap <Leader>rb :RainbowParenthesesToggle<CR>
 "
@@ -188,8 +210,6 @@ let g:rbpt_colorpairs = [
 
 " emmet
 let g:user_emmet_leader_key='<C-l>' " Remember to use `,` after emmet leader 
-
-
 
 """" TODO """""
 "autoclose
