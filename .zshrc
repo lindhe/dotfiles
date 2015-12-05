@@ -59,12 +59,16 @@ timestamp() {
     date +'%F_%T'
 }
 
+datestamp() {
+    date +'%F'
+}
+
 mkcd() {
     mkdir -p "$1"
     cd "$1"
 }
 
-md2pdf() {
+m2p() {
     pandoc $1 -s -o $1.pdf
     rename md.pdf pdf ./$1.pdf
 }
@@ -99,6 +103,7 @@ alias open="xdg-open"
 alias df="df -H"
 alias du="du -h"
 alias bc="bc -l"
+alias rmlatex="rm *.aux *.out *.toc *.log"
 
 # Git
 alias gpr="git pull --rebase"
