@@ -1,4 +1,5 @@
 """"" LaTeX
+"set textwidth=80
 noremap <C-s><C-s> :w \| ! pdflatex %<CR>
 
 " Templates
@@ -15,3 +16,4 @@ nnoremap <C-i>lst :.-1read ~/res/latex/snippets/lstlisting.tex<CR>ji
 nnoremap <C-i>fig :.-1read ~/res/latex/snippets/figure.tex<CR>2k$i
 nnoremap <C-i>tab :.-1read ~/res/latex/snippets/table.tex<CR>2kf}f}
 nnoremap <C-i>env :.-1read ~/res/latex/snippets/environment.tex<CR>Vk<C-n>$i
+nnoremap <C-i>eq :.-1read ~/res/latex/snippets/equation.tex<CR>jA

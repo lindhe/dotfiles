@@ -76,7 +76,7 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set textwidth=0
+set textwidth=80
 set linebreak 
 set nowrap
 set wrapmargin=0 " Prevent vim from automatically inserting line breaks in newly entered text.
@@ -84,7 +84,6 @@ set wrapmargin=0 " Prevent vim from automatically inserting line breaks in newly
 """" Mappings
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-s> :w<CR>
-nnoremap <enter> i<enter>
 
 noremap <C-t> :tabedit<Space>
 noremap <C-f> gg=G''
@@ -98,6 +97,7 @@ inoremap <F5><F5> <C-R>=strftime("%F")<CR>
 
 " f7 to toggle spell
 nnoremap <f7> :set spell!<cr>
+nnoremap <f7><f7> :set spl=sv<cr>
 inoremap <f7> <esc>:set spell!<cr>a
 
 " Press <F8> to toggle textwidth=80
