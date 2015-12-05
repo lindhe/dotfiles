@@ -202,14 +202,14 @@ assign [class="^Telegram$"] 3
 
 # Auto layout
 exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/andreas/.config/i3/workspace-1.json'"
-exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/andreas/.config/i3/workspace-2.json'"
+#exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/andreas/.config/i3/workspace-2.json'"
 exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/andreas/.config/i3/workspace-3.json'"
 
 exec --no-startup-id spotify
 exec --no-startup-id telegram
-exec --no-startup-id firefox
-exec --no-startup-id chromium
-exec --no-startup-id gnome-terminal
+#exec --no-startup-id firefox
+#exec --no-startup-id chromium
+#exec --no-startup-id gnome-terminal
 
 ## Autostart
 exec --no-startup-id numlockx
