@@ -6,14 +6,32 @@
 
 \usepackage[english]{babel}
 \usepackage[iso,english]{isodate}
-\usepackage{icomma}
 
 %% Usually preferred packages:
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref} % Usage: \url{}
 \usepackage{mathtools}
 \usepackage[section]{placeins} % Restrict figures to stay within section
-\usepackage[top=1cm,bottom=1cm,left=1in,right=1in]{geometry}
+%\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{listings}
+
+% Good preset for code listings. \usepackage{mcode} for matlab syntax
+%\lstset{language=Matlab,
+    %frame=tblr,
+    %aboveskip=3mm,
+    %belowskip=3mm,
+    %showstringspaces=false,
+    %columns=flexible,
+    %basicstyle={\small\ttfamily},
+    %numbers=none,
+    %breaklines=true,
+    %breakatwhitespace=true,
+    %tabsize=4
+%}
+
+\usepackage[page,titletoc,title]{appendix}
+%\renewcommand\appendixname{Bilaga}
+%\renewcommand\appendixpagename{Bilagor}
 
 \title{Title} 
 %\date{}
@@ -79,28 +97,19 @@ scelerisque tortor a justo. Quisque.
 %\bibliographystyle{IEEEtran}
 %\bibliography{ref}
 
+%%%%%%%%%%%%%%%%%%%% Appendix starts here %%%%%%%%%%%%%%%%%%%%
 \newpage
-\appendix
 
-\section{Section}
+\begin{appendices}
 
-% lorem{{{
-Ultricies turpis. Pellentesque a pede. Duis sed tortor. Phasellus egestas porta
-lectus. Aliquam dignissim consequat diam. Pellentesque pede.
+\section{Appendix name}
+\label{app:}
+\input{appendix}
 
-Ut varius tincidunt tellus. Curabitur ornare ipsum. Aenean laoreet posuere orci.
-Etiam id nisl. Suspendisse volutpat elit molestie orci. Suspendisse vel augue at
-felis tincidunt sollicitudin. Fusce arcu. Duis a tortor. Duis et odio et leo
-sollicitudin consequat. Aliquam lobortis. Phasellus condimentum. Ut porttitor
-bibendum libero. Integer euismod lacinia velit. Donec velit justo, sodales
-varius, cursus sed, mattis a, arcu.
+%\section{Code}
+%\label{app:code}
+%\lstinputlisting{code.m}
 
-Maecenas accumsan, sem iaculis egestas gravida, odio nunc aliquet dui, eget
-cursus diam purus vel augue. Donec eros nisi, imperdiet quis, volutpat ac,
-sollicitudin sed.
-% lorem}}}
-
-
-%\input{}
+\end{appendices}
 
 \end{document}
