@@ -12,7 +12,7 @@
 	comm = commit -m
 	coma = commit -a
         comam = commit -am
-	cp = cherry-pick
+	df = diff --color-words
 [branch]
 	autosetuprebase = always
 [push]
