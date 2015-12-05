@@ -118,19 +118,19 @@ mode "resize" {
 # Pressing up will shrink the window’s height.
 # Pressing down will grow the window’s height.
         bindsym l resize shrink width 1 px or 1 ppt
-                bindsym k resize grow height 1 px or 1 ppt
-                bindsym j resize shrink height 1 px or 1 ppt
-                bindsym odiaeresis resize grow width 1 px or 1 ppt
+        bindsym k resize grow height 1 px or 1 ppt
+        bindsym j resize shrink height 1 px or 1 ppt
+        bindsym odiaeresis resize grow width 1 px or 1 ppt
 
 # same bindings, but for the arrow keys
-                bindsym Left resize shrink width 10 px or 10 ppt
-                bindsym Up resize grow height 10 px or 10 ppt
-                bindsym Down resize shrink height 10 px or 10 ppt
-                bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Up resize grow height 10 px or 10 ppt
+        bindsym Down resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
 # back to normal: Enter or Escape
-                bindsym Return mode "default"
-                bindsym Escape mode "default"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -139,6 +139,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config 
+        tray_padding 0
 #status_command i3status --config ~/.config/i3/i3status.conf 
 }
 #####################################################################
@@ -155,6 +156,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 
+# Screenshot
+#bindsym --release Print exec
 
 ## Custom
 focus_follows_mouse no
@@ -175,7 +178,6 @@ client.focused_inactive #111111 #222222 #888888 #484e50
 client.unfocused #111111 #222222 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
 
-######################################################################
 ## Disable screen tearing
-
-exec --no-startup-id compton -CGb
+exec --no-startup-id compton -cCGb --backend glx --vsync opengl
+######################################################################

@@ -68,7 +68,7 @@ interval=30
 label=♪
 command=$SCRIPT_DIR/volume
 instance=Master
-interval=once
+interval=1
 signal=10
 
 [time]
