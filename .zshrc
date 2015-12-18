@@ -78,10 +78,6 @@ m2p() {
     #dd if=$1 &> /dev/null | pv -petra -s $size | dd of=$2 bs=4k
 #}
 
-printall() {
-    for x in ./*.pdf; do lpr -P nc-2504-laser3 ./*.pdf; done
-}
-
 ## Aliases
 # Propagate aliases to sudo
 alias sudo="sudo "
