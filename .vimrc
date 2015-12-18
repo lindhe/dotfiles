@@ -155,12 +155,18 @@ cnoremap WQ wq
 cnoremap qq q!
 cab R .-1read 
 cab spg spellgood
+map <leader>q gqap
 
 " To move between panes without pain
 "nnoremap <c-j> <C-W><C-H>
 "nnoremap <c-k> <C-W><C-J>
 "nnoremap <c-l> <C-W><C-K>
 "nnoremap <c-ö> <C-W><C-L>
+
+" Pairs
+inoremap () ()<Esc>i
+inoremap [] []<Esc>i
+inoremap {} {}<Esc>i
 
 """" Macros
 nnoremap <space><space> @q
