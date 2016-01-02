@@ -103,7 +103,9 @@ alias open="xdg-open"
 alias df="df -H"
 alias du="du -h"
 alias bc="bc -l"
-alias rmlatex="rm *.aux *.out *.toc *.log"
+alias rmlatex="rm *.aux; rm *.out; rm *.toc; rm *.log"
+alias rmbibtex="rm *.bbl; rm *.blg"
+alias watch="watch --color"
 
 # Git
 alias gi="git"
