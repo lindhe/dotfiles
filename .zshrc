@@ -106,13 +106,9 @@ alias bc="bc -l"
 alias rmlatex="rm *.aux *.out *.toc *.log"
 
 # Git
-alias gpr="git pull --rebase"
-alias gca="git commit -a"
-alias gpm="git push -u origin master"
-alias gs="git status"
-alias gl="git log"
-alias gad="git add"
-alias gb="git branch"
+alias gi="git"
+alias gis="git status"
+alias gif="git diff"
 
 # non-important
 alias cal="cal -m"
