@@ -21,3 +21,7 @@
 	helper = cache
 [core]
 	excludesfile = ~/.gitignore_global
+[push]
+	default = simple
+[color]
+	status = always
