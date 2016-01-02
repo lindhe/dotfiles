@@ -14,24 +14,29 @@ Plugin 'gmarik/Vundle.vim'
 " I here by claim this space for my plugins accordingly
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " These are the REALLY REALLY REALLY essential ones:
-Plugin 'tpope/vim-sensible'             " Fix the stupid things left from Vi
-Plugin 'tpope/vim-sleuth'               " Actually smart indentation
 Plugin 'flazz/vim-colorschemes'         " It's stupid not to have colorschemes available.
 Plugin 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 Plugin 'bling/vim-airline'              " The status bar as it should be
+
+" TPopes corner
+Plugin 'tpope/vim-sensible'             " Fix the stupid things left from Vi
+Plugin 'tpope/vim-sleuth'               " Actually smart indentation
+Plugin 'tpope/vim-repeat'               " Make . repeat (some) plugin actions
+Plugin 'tpope/vim-speeddating'          " <c-a> and <c-x> correct with iso dates
 Plugin 'tpope/vim-commentary'           " Better than nerdCommenter?
 
+" tmp:
+"Plugin 'vim-auto-save'
+"Plugin 'tpope/vim-fugitive'
 
 " And here are some other neat plugins
-"Plugin 'easymotion/vim-easymotion'      " Vim EasyMotion
+Plugin 'junegunn/vim-easy-align'        " A simple vim alignment plugin
 Plugin 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
 Plugin 'majutsushi/tagbar'              " Easy way to navigate log files
 Plugin 'terryma/vim-multiple-cursors'   " Do it like they do it in sublime
 Plugin 'godlygeek/tabular'              " Align on colon etc. Usage: 
 Plugin 'kien/rainbow_parentheses.vim'   " Make shit pretty and readable
-Plugin 'scrooloose/nerdcommenter'       " Semi automatic comments made easy 
 Plugin 'loremipsum'                     " Lorem ipusm 
-Plugin 'mattn/emmet-vim'                " The essential tool for web developers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
@@ -99,7 +104,6 @@ inoremap <F5><F5> <C-R>=strftime("%F_%T")<CR>
 inoremap <F5> <C-R>=strftime("%F")<CR>
 
 " f7 to cycle spell
-nnoremap <f7><f7> :set spl=sv<cr>
 nnoremap <F7> :call CycleSpell()<CR>
 inoremap <F7> <Esc>:call CycleSpell()<CR>a
 
@@ -156,6 +160,8 @@ cnoremap qq q!
 cab R .-1read 
 cab spg spellgood
 map <leader>q gqap
+map <leader>b 0"qd$
+map <c-q> :q<cr>
 
 " To move between panes without pain
 "nnoremap <c-j> <C-W><C-H>
@@ -190,32 +196,35 @@ autocmd BufReadPost *
 " MultipleCursorsFind
 nnoremap // :MultipleCursorsFind<Space>
 
+" Commentary
+map <leader>c :Commentary<CR>
+
 " RainbowParenthesis
-nnoremap <Leader>rb :RainbowParenthesesToggle<CR>
+map <Leader>rb :RainbowParenthesesToggle<CR>
 "
+" let g:rbpt_colorpairs = [
+"             \ ['brown',       'RoyalBlue3'],
+"             \ ['Darkblue',    'SeaGreen3'],
+"             \ ['darkgray',    'DarkOrchid3'],
+"             \ ['darkgreen',   'firebrick3'],
+"             \ ['darkcyan',    'RoyalBlue3'],
+"             \ ['darkred',     'SeaGreen3'],
+"             \ ['darkmagenta', 'DarkOrchid3'],
+"             \ ['brown',       'firebrick3'],
+"             \ ['gray',        'RoyalBlue3'],
+"             \ ['darkmagenta', 'DarkOrchid3'],
+"             \ ['Darkblue',    'firebrick3'],
+"             \ ['darkgreen',   'RoyalBlue3'],
+"             \ ['darkcyan',    'SeaGreen3'],
+"             \ ['darkred',     'DarkOrchid3'],
+"             \ ['red',         'firebrick3'],
+"             \]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
-let g:rbpt_colorpairs = [
-            \ ['brown',       'RoyalBlue3'],
-            \ ['Darkblue',    'SeaGreen3'],
-            \ ['darkgray',    'DarkOrchid3'],
-            \ ['darkgreen',   'firebrick3'],
-            \ ['darkcyan',    'RoyalBlue3'],
-            \ ['darkred',     'SeaGreen3'],
-            \ ['darkmagenta', 'DarkOrchid3'],
-            \ ['brown',       'firebrick3'],
-            \ ['gray',        'RoyalBlue3'],
-            \ ['darkmagenta', 'DarkOrchid3'],
-            \ ['Darkblue',    'firebrick3'],
-            \ ['darkgreen',   'RoyalBlue3'],
-            \ ['darkcyan',    'SeaGreen3'],
-            \ ['darkred',     'DarkOrchid3'],
-            \ ['red',         'firebrick3'],
-            \]
 
-
-" emmet
-let g:user_emmet_leader_key='<C-l>' " Remember to use `,` after emmet leader 
+" vim-easy-align
+map ga <Plug>(EasyAlign)
+map <leader>a <Plug>(EasyAlign)
 
 """" TODO """""
 "autoclose
