@@ -169,8 +169,8 @@ focus_follows_mouse no
 ######################################################################
 ## Cosmetics
 # Which border style will new windows have
-new_window pixel 1
-hide_edge_borders both
+new_window none
+# hide_edge_borders both
 
 # Colors
 # class border backgr text indicator
