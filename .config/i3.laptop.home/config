@@ -24,7 +24,7 @@ font pango:DejaVu Sans Mono 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal 
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -32,6 +32,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run
 bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -i -fuzzy -lines 5 -eh 3 -width 60 -padding 80 -opacity '90' -bw 0 -bc '$bg-color' -bg '$bg-color' -fg '$text-color' -hlbg '$bg-color' -hlfg '#9575cd' -font 'mono  18'"
+
 # change focus
 bindsym $mod+l focus left
 bindsym $mod+j focus down
@@ -142,9 +143,10 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config 
+        status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config
         tray_padding 0
-#status_command i3status --config ~/.config/i3/i3status.conf 
+        position top
+#status_command i3status --config ~/.config/i3/i3status.conf
 }
 #####################################################################
 #
@@ -171,14 +173,13 @@ bindsym XF86MonBrightnessUp exec light -As 'acpi_video1' 5
 focus_follows_mouse no
 
 ## Autostart
-exec --no-startup-id numlockx
 exec --no-startup-id dropbox start
 exec --no-startup-id owncloud
 
 ######################################################################
 ## Cosmetics
 # Which border style will new windows have
-new_window 1pixel
+new_window none
 # Colors
 # class border backgr text indicator
 client.focused #0099cc #0099cc #ffffff #2e9ef4
