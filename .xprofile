@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+#~/.xprofile
+#
+setxkbmap se-A5
+setxkbmap -option caps:swapescape
+xinput set-prop 12 275 1
+xsetroot -solid black
+xset r rate 325 85
+xset s off
+xset -dpms
+sh ~/.fehbg &
+numlockx &
+unclutter &
