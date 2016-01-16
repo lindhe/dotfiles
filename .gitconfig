@@ -4,6 +4,7 @@
 [alias]
 	s = status
 	st = status
+	dif = diff
 	lg = log --oneline --decorate
 	l = log --oneline --decorate
 	log = log --decorate
