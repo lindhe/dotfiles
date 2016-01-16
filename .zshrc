@@ -104,7 +104,8 @@ alias df="df -H"
 alias du="du -h"
 alias bc="bc -l"
 alias rmlatex="rm *.aux; rm *.out; rm *.toc; rm *.log"
-alias rmbibtex="rm *.bbl; rm *.blg"
+alias rml="rm *.aux; rm *.out; rm *.toc; rm *.log"
+alias rmb="rm *.bbl; rm *.blg"
 alias watch="watch --color"
 
 # Git
