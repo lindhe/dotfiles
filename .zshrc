@@ -111,6 +111,7 @@ alias watch="watch --color"
 alias gi="git"
 alias gis="git status"
 alias gif="git diff"
+alias gip="git pull"
 
 # non-important
 alias cal="cal -m"

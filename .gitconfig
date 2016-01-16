@@ -5,6 +5,9 @@
 	s = status
 	st = status
 	lg = log --oneline --decorate
+	l = log --oneline --decorate
+	log = log --decorate
+	reb = rebase
 	co = checkout
 	bra = branch
 	cl = clone
