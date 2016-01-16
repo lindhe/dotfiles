@@ -167,11 +167,13 @@ map <leader>q gqap
 map <leader>b 0"qd$
 map <c-q> :q<cr>
 
+" set langmap=öV
 " To move between panes without pain
-"nnoremap <c-j> <C-W><C-H>
-"nnoremap <c-k> <C-W><C-J>
-"nnoremap <c-l> <C-W><C-K>
-"nnoremap <c-ö> <C-W><C-L>
+map <c-l> <C-W><C-H>
+map <c-j> <C-W><C-J>
+map <c-k> <C-W><C-K>
+" map <c-ö> <C-W><C-L>
+" set langmap=öö
 
 " Pairs
 inoremap () ()<Esc>i
