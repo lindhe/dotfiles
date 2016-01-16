@@ -173,6 +173,7 @@ map <c-q> :q<cr>
 inoremap () ()<Esc>i
 inoremap [] []<Esc>i
 inoremap {} {}<Esc>i
+inoremap <> <><Esc>i
 
 """" Macros
 nnoremap <space><space> @q
