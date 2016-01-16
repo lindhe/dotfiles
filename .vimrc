@@ -15,15 +15,16 @@ Plugin 'gmarik/Vundle.vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " These are the REALLY REALLY REALLY essential ones:
 Plugin 'flazz/vim-colorschemes'         " It's stupid not to have colorschemes available.
-Plugin 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 Plugin 'bling/vim-airline'              " The status bar as it should be
 
 " TPopes corner
+Plugin 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 Plugin 'tpope/vim-sensible'             " Fix the stupid things left from Vi
 Plugin 'tpope/vim-sleuth'               " Actually smart indentation
 Plugin 'tpope/vim-repeat'               " Make . repeat (some) plugin actions
 Plugin 'tpope/vim-speeddating'          " <c-a> and <c-x> correct with iso dates
 Plugin 'tpope/vim-commentary'           " Better than nerdCommenter?
+Plugin 'tpope/vim-endwise'              " Autocomplete if ... endif
 
 " tmp:
 "Plugin 'vim-auto-save'
