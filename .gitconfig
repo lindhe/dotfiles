@@ -11,6 +11,8 @@
 	reb = rebase
 	rem = remote
 	co = checkout
+	sho = show
+	h = help
 	bra = branch
 	cl = clone
 	com = commit -v
