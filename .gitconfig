@@ -7,15 +7,16 @@
 	dif = diff
 	lg = log --oneline --decorate
 	l = log --oneline --decorate
-	log = log --decorate
+	log = log
 	reb = rebase
+	rem = remote
 	co = checkout
 	bra = branch
 	cl = clone
-	com = commit
+	com = commit -v
 	comm = commit -m
-	coma = commit -a
-        comam = commit -am
+	coma = commit -av
+    comam = commit -am
 	df = diff --color-words
 [branch]
 	autosetuprebase = always
