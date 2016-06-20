@@ -167,7 +167,7 @@ bindsym XF86MonBrightnessDown exec light -Us 'acpi_video1' 5
 bindsym XF86MonBrightnessUp exec light -As 'acpi_video1' 5
 
 # Screenshot
-#bindsym --release Print exec
+bindsym --release Print exec gnome-screenshot -a
 
 ## Custom
 focus_follows_mouse no
