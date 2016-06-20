@@ -4,7 +4,7 @@
 #
 setxkbmap se-A5
 setxkbmap -option caps:swapescape
-xinput set-prop 12 275 1
+xinput set-prop 12 277 1
 xsetroot -solid black
 xset r rate 325 85
 xset s off
@@ -12,3 +12,4 @@ xset -dpms
 sh ~/.fehbg &
 numlockx &
 unclutter &
+# xss-lock -- i3lock-fancy -p &
