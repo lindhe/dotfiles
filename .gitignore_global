@@ -5,7 +5,7 @@
 
 # Temporary files #
 ###################
-.*~
+*~
 .*.swp
 
 # LaTeX files #
@@ -17,3 +17,8 @@
 *.blg
 *.dvi
 *.out
+_minted-*/
+*.pyg
+
+# Common binaries #
+#*.pdf
