@@ -63,7 +63,7 @@ datestamp() {
     date +'%F'
 }
 
-mkcd() {
+mcd() {
     mkdir -p "$1"
     cd "$1"
 }
@@ -104,16 +104,23 @@ alias df="df -H"
 alias du="du -h"
 alias bc="bc -l"
 alias rmlatex="rm *.aux; rm *.out; rm *.toc; rm *.log"
-alias rml="rm *.aux; rm *.out; rm *.toc; rm *.log"
-alias rmb="rm *.bbl; rm *.blg"
+alias rml="rm *.aux; rm *.out; rm *.toc; rm *.log; rm *.lof; rm *.lot; rm *.tdo; rm *.dvi"
+alias rmb="rm *.bbl; rm *.blg; rm *bcf; rm *.run.xml"
 alias watch="watch --color"
+alias bcl="bluetoothctl"
+alias vimrc="vim ~/.vimrc"
+alias zshrc="vim ~/.zshrc"
 
 # Git
 alias gi="git"
 alias gis="git status"
+alias gs="git status"
 alias gif="git diff"
 alias gip="git pull"
+alias gil="git log --oneline --decorate"
 
 # non-important
 alias cal="cal -m"
 alias starwars="telnet towel.blinkenlights.nl"
+alias gnu="gnuplot"
+
