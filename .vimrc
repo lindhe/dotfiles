@@ -38,6 +38,7 @@ Plugin 'terryma/vim-multiple-cursors'   " Do it like they do it in sublime
 Plugin 'godlygeek/tabular'              " Align on colon etc. Usage: 
 Plugin 'kien/rainbow_parentheses.vim'   " Make shit pretty and readable
 Plugin 'loremipsum'                     " Lorem ipusm 
+" Plugin 'haya14busa/incsearch.vim'       " Improved hlsearch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
@@ -70,8 +71,9 @@ set number
 set splitbelow
 set splitright
 syntax on
+syntax spell toplevel
 
-" jklö
+""jklö
 noremap l h
 noremap ö l
 
@@ -81,10 +83,6 @@ noremap ö l
 "colorscheme jelleybeans
 
 """" Tidy writing
-"set autoindent
-" autoindent uses the same indentation for the next row as the current row.
-set smartindent
-" smartindent uses a smarter alorithm than autoindent.
 set tabstop=4
 set shiftwidth=4
 set expandtab
