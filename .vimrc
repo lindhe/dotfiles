@@ -31,6 +31,7 @@ Plugin 'tpope/vim-endwise'              " Autocomplete if ... endif
 "Plugin 'tpope/vim-fugitive'
 
 " And here are some other neat plugins
+Plugin 'jiangmiao/auto-pairs'           " Insert or delete brackets, parens, quotes in pair
 Plugin 'junegunn/vim-easy-align'        " A simple vim alignment plugin
 Plugin 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
 Plugin 'majutsushi/tagbar'              " Easy way to navigate log files
@@ -173,12 +174,6 @@ map <c-k> <C-W><C-K>
 " map <c-ö> <C-W><C-L>
 " set langmap=öö
 
-" Pairs
-inoremap () ()<Esc>i
-inoremap [] []<Esc>i
-inoremap {} {}<Esc>i
-inoremap <> <><Esc>i
-
 """" Macros
 nnoremap <space><space> @q
 nnoremap <leader><space> @
@@ -232,8 +227,6 @@ map ga <Plug>(EasyAlign)
 map <leader>a <Plug>(EasyAlign)
 
 """" TODO """""
-"autoclose
-"toggle autoclose on/off
 
 "if ((set wrap?) == ('wrap'))
 "set number
