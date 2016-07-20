@@ -1,5 +1,5 @@
 """"" LaTeX
-noremap <C-s><C-s> :w \| ! pdflatex %<CR>
+noremap <C-s><C-s> :w \| ! pdflatex -shell-escape %<CR>
 
 " Templates
 nnoremap <C-i>article ggdG:.-1read ~/res/latex/templates/article.tex<CR>
