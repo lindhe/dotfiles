@@ -153,12 +153,6 @@ let &colorcolumn=80             "Set what column to highlight.
 let &colorcolumn=join(range(81,999),",")
 let &colorcolumn="80,".join(range(120,999),",")
 
-" Correct me
-cnoremap so<space>& so<space>%
-cnoremap Q q
-cnoremap Wq wq
-cnoremap WQ wq
-
 " Quicklings
 cnoremap qq q!
 cab R .-1read 
