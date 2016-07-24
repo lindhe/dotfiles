@@ -31,6 +31,7 @@ Plugin 'tpope/vim-endwise'              " Autocomplete if ... endif
 "Plugin 'tpope/vim-fugitive'
 
 " And here are some other neat plugins
+Plugin 'scrooloose/syntastic'           " Linting
 Plugin 'jiangmiao/auto-pairs'           " Insert or delete brackets, parens, quotes in pair
 Plugin 'junegunn/vim-easy-align'        " A simple vim alignment plugin
 Plugin 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
@@ -225,6 +226,21 @@ let g:rbpt_loadcmd_toggle = 0
 " vim-easy-align
 map ga <Plug>(EasyAlign)
 map <leader>a <Plug>(EasyAlign)
+
+" Syntastic
+" Press <leader>S to toggle Syntastic checking
+nnoremap <leader>S :SyntasticToggleMode<CR>
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes": [],
+    \ "passive_filetypes": [] }
 
 """" TODO """""
 
