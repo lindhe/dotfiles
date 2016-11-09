@@ -70,6 +70,7 @@ let mapleader = ','
 set ignorecase
 set smartcase
 set number
+set relativenumber
 set splitbelow
 set splitright
 syntax on
