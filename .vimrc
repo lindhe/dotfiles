@@ -11,7 +11,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" I here by claim this space for my plugins accordingly
+" I hereby claim this space for my plugins accordingly
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " These are the REALLY REALLY REALLY essential ones:
 Plugin 'flazz/vim-colorschemes'         " It's stupid not to have colorschemes available.
@@ -39,7 +39,7 @@ Plugin 'majutsushi/tagbar'              " Easy way to navigate log files
 Plugin 'terryma/vim-multiple-cursors'   " Do it like they do it in sublime
 Plugin 'godlygeek/tabular'              " Align on colon etc. Usage: 
 Plugin 'kien/rainbow_parentheses.vim'   " Make shit pretty and readable
-Plugin 'loremipsum'                     " Lorem ipusm 
+Plugin 'loremipsum'                     " Lorem ipsum 
 " Plugin 'haya14busa/incsearch.vim'       " Improved hlsearch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -108,7 +108,7 @@ nnoremap <F5> "=strftime("%F")<CR>P
 inoremap <F5><F5> <C-R>=strftime("%F_%T")<CR>
 inoremap <F5> <C-R>=strftime("%F")<CR>
 
-" f7 to cycle spell
+" F7 to cycle spell
 nnoremap <F7> :call CycleSpell()<CR>
 inoremap <F7> <Esc>:call CycleSpell()<CR>a
 
@@ -195,7 +195,7 @@ nnoremap // :MultipleCursorsFind<Space>
 " Commentary
 map <leader>c :Commentary<CR>
 
-" RainbowParenthesis
+" RainbowParentheses
 map <Leader>rb :RainbowParenthesesToggle<CR>
 "
 " let g:rbpt_colorpairs = [
