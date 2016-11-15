@@ -32,7 +32,6 @@ Plugin 'tpope/vim-endwise'              " Autocomplete if ... endif
 
 " And here are some other neat plugins
 Plugin 'scrooloose/syntastic'           " Linting
-Plugin 'jiangmiao/auto-pairs'           " Insert or delete brackets, parens, quotes in pair
 Plugin 'junegunn/vim-easy-align'        " A simple vim alignment plugin
 Plugin 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
 Plugin 'majutsushi/tagbar'              " Easy way to navigate log files
