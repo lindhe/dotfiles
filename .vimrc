@@ -98,9 +98,9 @@ set wrapmargin=0 " Prevent vim from automatically inserting line breaks in newly
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-s> :w<CR>
 
-noremap <C-t> :tabedit<Space>
-noremap <C-f> gg=G''
-noremap <C-f><C-f> gggqG''
+nnoremap <C-t> :tabedit<Space>
+nnoremap <C-f> gg=G''
+nnoremap <C-f><C-f> gggqG''
 
 " Press <F5> to insert timestamp YYYY-MM-DD_HH:MM:SS
 nnoremap <F5><F5> "=strftime("%F_%T")<CR>P
