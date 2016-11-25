@@ -2,6 +2,7 @@
     name = Andreas Lindhé
     email = Lindhe94@gmail.com
 [alias]
+    bi = bisect
     bra = branch
     cl = clone
     co = checkout
