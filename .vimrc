@@ -257,3 +257,6 @@ let g:syntastic_mode_map = {
     "imap <silent> <Up> <C-o>gk
     "imap <silent> <Down> <C-o>gj
 "endif
+"
+"" Find a good place for:
+au BufReadPost *.repy set syntax=python
