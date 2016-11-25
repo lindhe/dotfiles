@@ -107,6 +107,12 @@ nnoremap <F5> "=strftime("%F")<CR>P
 inoremap <F5><F5> <C-R>=strftime("%F_%T")<CR>
 inoremap <F5> <C-R>=strftime("%F")<CR>
 
+" <F6> to remove trailing whitespace
+nnoremap <F6> :%s/\s\+$//<CR>
+
+" g<F6> to remove double spaces (often caused by J or gq)
+nnoremap g<F6> :%s/\(\S\) \{2,}\(\S\)/\1 \2/g<CR>
+
 " F7 to cycle spell
 nnoremap <F7> :call CycleSpell()<CR>
 inoremap <F7> <Esc>:call CycleSpell()<CR>a
