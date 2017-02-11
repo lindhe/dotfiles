@@ -72,6 +72,8 @@ set number
 set relativenumber
 set splitbelow
 set splitright
+set list
+set hlsearch
 syntax on
 syntax spell toplevel
 
@@ -93,13 +95,19 @@ set linebreak
 set nowrap
 set wrapmargin=0 " Prevent vim from automatically inserting line breaks in newly entered text.
 
+set spell
+set spelllang=en
+
 """" Mappings
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-s> :w<CR>
 
 nnoremap <C-t> :tabedit<Space>
-nnoremap <C-f> gg=G''
-nnoremap <C-f><C-f> gggqG''
+
+nnoremap gf :tabedit <cfile><CR>
+
+" <Esc><Esc> to clear hlsearch
+nnoremap <Esc><Esc> :noh<CR>
 
 " Press <F5> to insert timestamp YYYY-MM-DD_HH:MM:SS
 nnoremap <F5><F5> "=strftime("%F_%T")<CR>P
@@ -108,10 +116,10 @@ inoremap <F5><F5> <C-R>=strftime("%F_%T")<CR>
 inoremap <F5> <C-R>=strftime("%F")<CR>
 
 " <F6> to remove trailing whitespace
-nnoremap <F6> :%s/\s\+$//<CR>
+nnoremap <silent> <F6> :%s/\s\+$//<CR>''
 
 " g<F6> to remove double spaces (often caused by J or gq)
-nnoremap g<F6> :%s/\(\S\) \{2,}\(\S\)/\1 \2/g<CR>
+nnoremap <silent> g<F6> :%s/\(\S\) \{2,}\(\S\)/\1 \2/g<CR>''
 
 " F7 to cycle spell
 nnoremap <F7> :call CycleSpell()<CR>
