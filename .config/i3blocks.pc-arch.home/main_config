@@ -33,7 +33,7 @@ color=#FF8000
 [upload]
 label=↑
 command=$SCRIPT_DIR/bandwidth tx
-min_width=0000000 kB/s
+min_width=00000000 kB/s
 align=right
 color=#e22c56
 interval=1
@@ -41,7 +41,7 @@ interval=1
 [download]
 label=↓
 command=$SCRIPT_DIR/bandwidth rx
-min_width=0000000 kB/s
+min_width=00000000 kB/s
 align=right
 color=#00ff00
 interval=1
