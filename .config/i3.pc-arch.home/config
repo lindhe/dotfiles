@@ -183,37 +183,31 @@ client.urgent #2f343a #900000 #ffffff #900000
 # workspaces
 #
 workspace 1 output DVI-D-0
+workspace 2 output DVI-D-0
 workspace 3 output DVI-D-0
+workspace 4 output DVI-D-0
 workspace 5 output DVI-D-0
-workspace 7 output DVI-D-0
-workspace 9 output DVI-D-0
 #
-workspace 2 output DP-1
-workspace 4 output DP-1
 workspace 6 output DP-1
+workspace 7 output DP-1
 workspace 8 output DP-1
+workspace 9 output DP-1
 workspace 10 output DP-1
 
 # Assign spotify to workspace 1
 assign [class="^Spotify$"] 1
 
 # Assign telegram to workspace 3
-assign [class="^Telegram$"] 3
+assign [class="^Telegram"] 2
 
 # Auto layout
 exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/andreas/.config/i3/workspace-1.json'"
-#exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/andreas/.config/i3/workspace-2.json'"
-exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/andreas/.config/i3/workspace-3.json'"
+exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/andreas/.config/i3/workspace-2.json'"
 
 exec --no-startup-id spotify
-exec --no-startup-id telegram
-#exec --no-startup-id firefox
-#exec --no-startup-id chromium
-#exec --no-startup-id gnome-terminal
+exec --no-startup-id telegram-desktop
 
 ## Autostart
-exec --no-startup-id numlockx
-exec dropbox start
 exec --no-startup-id owncloud
 
 # Disable screen tearing
