@@ -79,6 +79,11 @@ m2p() {
 #}
 
 ## Aliases
+
+# edit rc files
+alias vimrc="vim ~/.vimrc"
+alias zshrc="vim ~/.zshrc"
+
 # Propagate aliases to sudo
 alias sudo="sudo "
 alias sudoedit="sudoedit "
