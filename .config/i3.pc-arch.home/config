@@ -155,8 +155,11 @@ bar {
         tray_output DVI-D-0
         tray_padding 0
 }
+
 #####################################################################
-#
+# Take screenshot with PrtScn
+bindsym --release Print exec gnome-screenshot --area
+
 ## Media
 # Media player controls (GIU applications)
 bindsym XF86AudioPlay exec playerctl play-pause
