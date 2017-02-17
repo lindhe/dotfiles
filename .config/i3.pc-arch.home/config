@@ -212,3 +212,5 @@ exec --no-startup-id owncloud
 
 # Disable screen tearing
 exec --no-startup-id compton -cCGb --backend glx --vsync opengl
+
+bindsym $mod+z exec evince
