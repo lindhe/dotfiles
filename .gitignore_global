@@ -20,5 +20,7 @@
 _minted-*/
 *.pyg
 
-# Common binaries #
-#*.pdf
+# Binaries #
+############
+*.pdf
+*.out
