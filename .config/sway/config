@@ -11,7 +11,8 @@ set $up k
 # Your preferred terminal emulator
 set $term gnome-terminal
 # Your preferred application launcher
-set $menu dmenu_run
+set $dmenu dmenu_run
+set $menu sway-dmenu-desktop
 
 ### Output configuration
 #
@@ -51,6 +52,7 @@ output * bg /usr/share/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     # start your launcher
     bindsym $mod+d exec $menu
+    bindsym $mod+Shift+d exec $dmenu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
