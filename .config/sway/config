@@ -142,7 +142,10 @@ output * bg /usr/share/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
     # move focus to the parent container
     bindsym $mod+a focus parent
-#
+
+    # focus the child container
+    bindsym $mod+Shift+a focus child
+
 # Scratchpad:
 #
     # Sway has a "scratchpad", which is a bag of holding for windows.
