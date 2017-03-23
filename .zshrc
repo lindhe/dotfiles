@@ -63,11 +63,6 @@ datestamp() {
     date +'%F'
 }
 
-mcd() {
-    mkdir -p "$1"
-    cd "$1"
-}
-
 m2p() {
     pandoc $1 -s -o $1.pdf
     rename md.pdf pdf ./$1.pdf
