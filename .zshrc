@@ -64,7 +64,7 @@ datestamp() {
 }
 
 m2p() {
-    pandoc $1 -s -o $1.pdf
+    pandoc $1 -s -o $1.pdf &&\
     rename md.pdf pdf ./$1.pdf
 }
 
