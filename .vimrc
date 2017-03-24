@@ -268,3 +268,8 @@ let g:syntastic_mode_map = {
 "
 "" Find a good place for:
 au BufReadPost *.repy set syntax=python
+
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+endif
