@@ -28,6 +28,7 @@ zstyle ':completion:*' menu select
 
 autoload -U compinit
 compinit
+zstyle ':completion:*:*:vim:*' file-patterns '*.(tex|bib):source-files' '*:all-files'
 
 # Exports
 export PATH=$PATH
