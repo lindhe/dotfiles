@@ -209,20 +209,28 @@ workspace 10 output DP-1
 # Assign spotify to workspace 1
 assign [class="^Spotify$"] 1
 
+# Assign telegram to workspace 2
+assign [class="^TelegramDesktop$"] 2
+
 # Assign telegram to workspace 3
-assign [class="^Telegram"] 2
+assign [class="^Slack$"] 3
+
+# Assign spotify to workspace 6
+assign [class="^Firefox$"] 6
 
 # Auto layout
 exec --no-startup-id "i3-msg 'workspace 1; append_layout /home/andreas/.config/i3/workspace-1.json'"
 exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/andreas/.config/i3/workspace-2.json'"
-
-exec --no-startup-id spotify
-exec --no-startup-id telegram-desktop
+exec --no-startup-id "i3-msg 'workspace 3; append_layout /home/andreas/.config/i3/workspace-3.json'"
 
 ## Autostart
-exec --no-startup-id owncloud
+exec spotify
+exec telegram-desktop
+exec slack
 
-# Disable screen tearing
+## Autostart background programs
+exec --no-startup-id nextcloud
 exec --no-startup-id compton -cCGb --backend glx --vsync opengl
 
+## Manual start
 bindsym $mod+z exec evince

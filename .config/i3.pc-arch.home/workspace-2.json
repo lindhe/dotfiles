@@ -13,9 +13,10 @@
     "percent": 1,
     "swallows": [
        {
-       "class": "^Telegram",
-       "instance": "^telegram",
-       "transient_for": "^$"
+       // "class": "^TelegramDesktop$",
+       // "instance": "^telegram\\-desktop$",
+       // "title": "^Telegram$",
+       // "transient_for": "^$"
        }
     ],
     "type": "con"
