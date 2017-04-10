@@ -95,7 +95,7 @@ set linebreak
 set nowrap
 set wrapmargin=0 " Prevent vim from automatically inserting line breaks in newly entered text.
 
-set spell
+set nospell
 set spelllang=en
 
 """" Mappings

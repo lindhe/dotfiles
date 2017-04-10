@@ -1,3 +1,6 @@
+" Configs:
+set spell
+
 """"" LaTeX
 noremap <C-s><C-s> :w \| ! pdflatex -shell-escape %<CR>
 
