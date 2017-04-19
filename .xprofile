@@ -12,4 +12,3 @@ xset -dpms
 sh ~/.fehbg &
 numlockx &
 unclutter &
-# xss-lock -- i3lock-fancy -p &
