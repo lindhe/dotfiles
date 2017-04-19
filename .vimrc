@@ -60,10 +60,10 @@ let g:tex_flavor = "latex"
 " Remove that damn menu!!
 map q: nop
 
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-    set mouse=a
-endif
+" " In many terminal emulators the mouse works just fine, thus enable it.
+" if has('mouse')
+"     set mouse=a
+" endif
 
 let mapleader = ','
 set ignorecase
