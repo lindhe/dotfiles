@@ -146,7 +146,7 @@ endfun
 nnoremap <F8> :call ToggleTextWidth()<CR>
 inoremap <F8> <Esc>:call ToggleTextWidth()<CR>a
 
-function ToggleTextWidth()
+function! ToggleTextWidth()
     if &textwidth
         echo "textwidth=0"
         set textwidth=0
