@@ -207,7 +207,7 @@ workspace 9 output DP-1
 workspace 10 output DP-1
 
 # Assign spotify to workspace 1
-assign [class="^Spotify$"] 1
+for_window [class="Spotify"] move to workspace 1
 
 # Assign telegram to workspace 2
 assign [class="^TelegramDesktop$"] 2
