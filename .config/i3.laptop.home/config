@@ -1,6 +1,10 @@
 set $mod Mod4
 set $alt Mod1
-# Mod4 for super key
+
+set $down j
+set $up k
+set $left l
+set $right odiaeresis
 
 set $bg-color 	         #2f343f
 set $inactive-bg-color   #2f343f
@@ -35,22 +39,22 @@ bindsym $mod+Shift+d exec --no-startup-id dmenu_run
 bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -i -lines 5 -eh 3 -width 60 -padding 80 -opacity '90' -bw 0 -bc '$bg-color' -bg '$bg-color' -fg '$text-color' -hlbg '$bg-color' -hlfg '#9575cd' -font 'mono  18'"
 
 # change focus
-bindsym $mod+l focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+odiaeresis focus right
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$left focus left
+bindsym $mod+$right focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
+bindsym $mod+Left focus left
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+l move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+odiaeresis move right
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$right move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -144,20 +148,20 @@ mode "resize" {
 # Pressing right will grow the window’s width.
 # Pressing up will shrink the window’s height.
 # Pressing down will grow the window’s height.
-        bindsym l resize shrink width 1 px or 1 ppt
-        bindsym k resize grow height 1 px or 1 ppt
-        bindsym j resize shrink height 1 px or 1 ppt
-        bindsym odiaeresis resize grow width 1 px or 1 ppt
+    bindsym $up resize grow height 1 px or 1 ppt
+    bindsym $down resize shrink height 1 px or 1 ppt
+    bindsym $left resize shrink width 1 px or 1 ppt
+    bindsym $right resize grow width 1 px or 1 ppt
 
 # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Up resize grow height 10 px or 10 ppt
-        bindsym Down resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Up resize grow height 10 px or 10 ppt
+    bindsym Down resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
 # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
