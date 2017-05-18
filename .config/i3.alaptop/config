@@ -172,7 +172,6 @@ bar {
         status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config
         tray_padding 0
         position top
-#status_command i3status --config ~/.config/i3/i3status.conf
 }
 #####################################################################
 #
@@ -198,10 +197,6 @@ bindsym --release Print exec gnome-screenshot -a
 ## Custom
 focus_follows_mouse no
 
-## Autostart
-exec --no-startup-id dropbox start
-exec --no-startup-id owncloud
-
 ######################################################################
 ## Cosmetics
 # Which border style will new windows have
@@ -213,6 +208,13 @@ client.focused_inactive #111111 #222222 #888888 #484e50
 client.unfocused #111111 #222222 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
 
-exec --no-startup-id compton -f
-
 bindsym $mod+z exec evince
+
+## Lockscreen:
+bindsym $mod+Escape exec i3lock -fnei ~/Pictures/images/wallpaper.png
+
+## Autostart
+exec --no-startup-id xss-lock -- i3lock -fnei ~/Pictures/images/wallpaper.png
+exec --no-startup-id nm-applet
+exec --no-startup-id nextcloud
+
