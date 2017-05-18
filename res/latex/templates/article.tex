@@ -5,35 +5,20 @@
 \usepackage[T1]{fontenc}
 \usepackage[a4paper,margin=1in]{geometry}
 
-\usepackage[english]{babel}
-\usepackage[iso,english]{isodate}
-
 %% Usually preferred packages:
 \usepackage{graphicx}
 \usepackage[hidelinks]{hyperref} % Usage: \url{}
 \usepackage{mathtools}
 \usepackage[section]{placeins} % Restrict figures to stay within section
-
-%\usepackage[a4paper,margin=1in]{geometry}
-\usepackage{listings}
-
-% Good preset for code listings. \usepackage{mcode} for matlab syntax
-%\lstset{language=Matlab,
-    %frame=tblr,
-    %aboveskip=3mm,
-    %belowskip=3mm,
-    %showstringspaces=false,
-    %columns=flexible,
-    %basicstyle={\small\ttfamily},
-    %numbers=none,
-    %breaklines=true,
-    %breakatwhitespace=true,
-    %tabsize=4
-%}
+\usepackage{tabu}
 
 \usepackage[page,titletoc,title]{appendix}
 
-\title{Title} 
+\usepackage[english]{babel}
+\usepackage[iso,english]{isodate}
+
+
+\title{Title}
 %\date{}
 \author{Andreas Lindhé} % Add more authors with \and
 
@@ -98,18 +83,18 @@ scelerisque tortor a justo. Quisque.
 %\bibliography{ref}
 
 %%%%%%%%%%%%%%%%%%%% Appendix starts here %%%%%%%%%%%%%%%%%%%%
-\newpage
+% \newpage
 
-\begin{appendices}
+% \begin{appendices}
 
-\section{Appendix name}
-\label{app:}
-\input{appendix}
+% \section{Appendix name}
+% \label{app:}
+% \input{appendix}
 
 %\section{Code}
 %\label{app:code}
 %\lstinputlisting{code.m}
 
-\end{appendices}
+% \end{appendices}
 
 \end{document}
