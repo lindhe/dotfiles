@@ -4,6 +4,7 @@
 [alias]
     bi = bisect
     bra = branch
+    change = commit --amend
     cl = clone
     co = checkout
     com = commit -v
@@ -12,7 +13,9 @@
     comm = commit -m
     df = diff --color-words
     dif = diff
+    dra = pull
     h = help
+    knuff = push
     l = log --oneline --decorate
     lg = log --oneline --decorate
     log = log --decorate
@@ -20,6 +23,7 @@
     rem = remote
     s = status
     sho = show
+    sorry = commit -a --amend --no-edit
     st = status
 #   difftex = difftool -y -t latex
 [branch]
