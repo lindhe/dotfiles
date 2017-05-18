@@ -189,8 +189,8 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
 
 # Backlight controls
-bindsym XF86MonBrightnessDown exec light -Us 'acpi_video1' 5
-bindsym XF86MonBrightnessUp exec light -As 'acpi_video1' 5
+bindsym XF86MonBrightnessDown exec light -Us 'intel_backlight' 5
+bindsym XF86MonBrightnessUp exec light -As 'intel_backlight' 5
 
 # Screenshot
 bindsym --release Print exec gnome-screenshot -a
