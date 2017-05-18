@@ -187,6 +187,7 @@ map <c-k> <C-W><C-K>
 """" Macros
 nnoremap <space><space> @q
 nnoremap <leader><space> @
+nnoremap <enter> @@
 
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
