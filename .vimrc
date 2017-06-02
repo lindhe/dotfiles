@@ -83,9 +83,8 @@ noremap l h
 noremap ö l
 
 """" Cosmetics
-"colorscheme molokai
-"colorscheme tango
-"colorscheme jelleybeans
+hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
+set cursorline
 
 """" Tidy writing
 set tabstop=4
@@ -162,11 +161,9 @@ inoremap <f9> <esc>:set paste!<cr>a
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
-
-highlight ColorColumn ctermbg=Black ctermfg=Red
-let &colorcolumn=80             "Set what column to highlight.
-let &colorcolumn=join(range(81,999),",")
-let &colorcolumn="80,".join(range(120,999),",")
+" Highlight the n'th column (depending on &textwidth) and also column 100+
+highlight ColorColumn ctermbg=NONE ctermfg=Red
+let &colorcolumn="+0,".join(range(100,999),",")
 
 " Quicklings
 cnoremap qq q!
