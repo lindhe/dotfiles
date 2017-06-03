@@ -30,9 +30,8 @@ autoload -U compinit
 compinit
 zstyle ':completion:*:*:vim:*' file-patterns '*.(tex|bib):source-files' '*:all-files'
 
-# Environment variables
+# Exports
 export PATH=$PATH
-export MANPAGER="nvim -c 'set ft=man' -"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
