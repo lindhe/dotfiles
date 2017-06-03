@@ -8,4 +8,7 @@ xinput set-prop 10 274 1
 xinput set-prop "ImPS/2 Generic Wheel Mouse" "libinput Scroll Method Enabled" 0 0 1
 xsetroot -solid black
 xset r rate 325 75
+xset b off
+xset +dpms
+xset s 600
 unclutter &
