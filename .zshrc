@@ -69,6 +69,12 @@ m2p() {
     rename md.pdf pdf ./$1.pdf
 }
 
+checksum() {
+    echo "$1 $2" > /tmp/hash.txt &&\
+        md5sum -c /tmp/hash.txt
+}
+
+
 #ddiso() {
     #size=$(stat -c%s $1)
     #dd if=$1 &> /dev/null | pv -petra -s $size | dd of=$2 bs=4k
