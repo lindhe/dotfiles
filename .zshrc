@@ -117,6 +117,7 @@ alias zshrc="vim ~/.zshrc"
 
 
 # Git
+alias g="git"
 alias gi="git"
 alias gif="git diff"
 alias gil="git log --oneline --decorate"
