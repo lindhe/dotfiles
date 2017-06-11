@@ -92,6 +92,12 @@ noremap ö l
 hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
 set cursorline
 
+" Change of Spell* behave
+hi clear SpellBad
+hi SpellBad cterm=underline,bold ctermfg=red
+hi clear SpellCap
+hi SpellCap cterm=underline,bold ctermfg=blue
+
 """" Tidy writing
 set tabstop=4
 set shiftwidth=4
