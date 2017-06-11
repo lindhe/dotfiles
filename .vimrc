@@ -76,6 +76,8 @@ cmap <C-f> <Nop>
 " endif
 
 let mapleader = ','
+map <space> <leader>
+
 set ignorecase
 set smartcase
 set number
@@ -198,7 +200,6 @@ map <c-k> <C-W><C-K>
 
 """" Macros
 nnoremap <space><space> @q
-nnoremap <leader><space> @
 nnoremap <enter> @@
 
 " Git
