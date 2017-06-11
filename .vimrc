@@ -14,33 +14,39 @@ Plugin 'gmarik/Vundle.vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " I hereby claim this space for my plugins accordingly
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" These are the REALLY REALLY REALLY essential ones:
-Plugin 'flazz/vim-colorschemes'         " It's stupid not to have colorschemes available.
-Plugin 'bling/vim-airline'              " The status bar as it should be
-
-" TPopes corner
+" Can't imagine Vim without these
 Plugin 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 Plugin 'tpope/vim-sensible'             " Fix the stupid things left from Vi
-Plugin 'tpope/vim-sleuth'               " Actually smart indentation
 Plugin 'tpope/vim-repeat'               " Make . repeat (some) plugin actions
 Plugin 'tpope/vim-speeddating'          " <c-a> and <c-x> correct with iso dates
-Plugin 'tpope/vim-commentary'           " Better than nerdCommenter?
+Plugin 'tpope/vim-commentary'           " Toggle comments
+Plugin 'junegunn/vim-easy-align'        " Align on a character: `gaip&`
+
+" Looks nice:
+Plugin 'bling/vim-airline'              " The status bar as it should be
+
+" TPopes corner:
+Plugin 'tpope/vim-sleuth'               " Actually smart indentation
 Plugin 'tpope/vim-endwise'              " Autocomplete if ... endif
+Plugin 'tpope/vim-abolish'              " Change words better
 
-" tmp:
-"Plugin 'vim-auto-save'
-"Plugin 'tpope/vim-fugitive'
+" Beta:
+Plugin 'wellle/targets.vim'             " Add more text objects to work on
+Plugin 'haya14busa/incsearch.vim'       " Improved hlsearch
 
-" And here are some other neat plugins
-Plugin 'scrooloose/syntastic'           " Linting
-Plugin 'junegunn/vim-easy-align'        " A simple vim alignment plugin
+" Do I use these?
 Plugin 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
-Plugin 'majutsushi/tagbar'              " Easy way to navigate log files
-Plugin 'terryma/vim-multiple-cursors'   " Do it like they do it in sublime
-Plugin 'godlygeek/tabular'              " Align on colon etc. Usage: 
-Plugin 'kien/rainbow_parentheses.vim'   " Make shit pretty and readable
-Plugin 'loremipsum'                     " Lorem ipsum 
-" Plugin 'haya14busa/incsearch.vim'       " Improved hlsearch
+Plugin 'godlygeek/tabular'              " Good at aligning on multiple chars at once: `:Tab /&`
+
+" Parked plugins:
+" Plugin 'scrooloose/syntastic'           " Linting
+" Plugin 'majutsushi/tagbar'              " Easy way to navigate log files
+" Plugin 'terryma/vim-multiple-cursors'   " Do it like they do it in sublime
+" Plugin 'kien/rainbow_parentheses.vim'   " Make shit pretty and readable
+" Plugin 'loremipsum'                     " Lorem ipsum
+" Plugin 'vim-auto-save'
+" Plugin 'tpope/vim-fugitive'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
@@ -208,7 +214,7 @@ nnoremap // :MultipleCursorsFind<Space>
 map <leader>c :Commentary<CR>
 
 " RainbowParentheses
-map <Leader>rb :RainbowParenthesesToggle<CR>
+" map <Leader>rb :RainbowParenthesesToggle<CR>
 "
 " let g:rbpt_colorpairs = [
 "             \ ['brown',       'RoyalBlue3'],
