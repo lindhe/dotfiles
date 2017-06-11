@@ -64,8 +64,11 @@ filetype plugin indent on    " required
 " tex = latex
 let g:tex_flavor = "latex"
 
-" Remove that damn menu!!
-map q: nop
+" Disbale command-line menu (see `:h q:`)
+noremap q: <Nop>
+noremap q/ <Nop>
+noremap q? <Nop>
+cmap <C-f> <Nop>
 
 " " In many terminal emulators the mouse works just fine, thus enable it.
 " if has('mouse')
