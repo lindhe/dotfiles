@@ -220,6 +220,9 @@ bindsym XF86MonBrightnessUp exec light -As 'intel_backlight' 5
 # Screenshot
 bindsym --release Print exec gnome-screenshot -a
 
+# Toggle Touchpad
+bindsym XF86Tools exec ~/.config/i3/toggle_touchpad.sh
+
 ## Custom
 focus_follows_mouse no
 
