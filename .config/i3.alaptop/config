@@ -1,32 +1,61 @@
+# vim: set tw=0 ft=config
+##########################     alaptop i3 config     ##########################
+
+## Pre setup ##
+
+# Bind mod keys
 set $mod Mod4
 set $alt Mod1
 
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Resize
+bindsym $mod+r mode "resize"
+
+# Bind movement keys
 set $down j
 set $up k
 set $left l
 set $right odiaeresis
 
-set $bg-color 	         #2f343f
+
+################################################################################
+#
+###############################     Vainity     ###############################
+
+# Colours
+set $bg-color            #2f343f
 set $inactive-bg-color   #2f343f
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
-######################################################################
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# Which border style will new windows have
+new_window none
+
+# class border backgr text indicator
+client.focused #0099cc #0099cc #ffffff #2e9ef4
+client.focused_inactive #111111 #222222 #888888 #484e50
+client.unfocused #111111 #222222 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000
+
+# Font for window titles.
 font pango:DejaVu Sans Mono 10
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+
+################################################################################
+
+#############################     Key bindings     #############################
 
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
@@ -37,6 +66,15 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run
 bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -i -lines 5 -eh 3 -width 60 -padding 80 -opacity '90' -bw 0 -bc '$bg-color' -bg '$bg-color' -fg '$text-color' -hlbg '$bg-color' -hlfg '#9575cd' -font 'mono  18'"
+
+# Open PDF reader
+bindsym $mod+z exec evince
+
+# Lockscreen:
+bindsym $mod+Escape exec i3lock -fnei ~/Pictures/images/wallpaper.png
+
+
+###############################     Movement     ###############################
 
 # change focus
 bindsym $mod+$down focus down
@@ -61,6 +99,9 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+
+##########################     Tree manipulation     ##########################
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -87,6 +128,12 @@ bindsym $mod+a focus parent
 
 # focus the child container
 bindsym $mod+Shift+a focus child
+
+## Mouse focus
+focus_follows_mouse no
+
+
+##############################     Workspaces     ##############################
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -132,6 +179,9 @@ bindsym $mod+$alt+Shift+8 move container to workspace 18
 bindsym $mod+$alt+Shift+9 move container to workspace 19
 bindsym $mod+$alt+Shift+0 move container to workspace 20
 
+
+###############################     Displays     ###############################
+
 # Put workspaces on sensible displays
 #
 ## eDP-1
@@ -160,50 +210,43 @@ workspace 19 output HDMI-1
 workspace 20 output HDMI-1
 
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# resize window (you can also use the mouse for that)
+############################     Resize windows     ############################
 mode "resize" {
-# These bindings trigger as soon as you enter the resize mode
 
-# Pressing left will shrink the window’s width.
-# Pressing right will grow the window’s width.
-# Pressing up will shrink the window’s height.
-# Pressing down will grow the window’s height.
-    bindsym $up resize grow height 1 px or 1 ppt
-    bindsym $down resize shrink height 1 px or 1 ppt
-    bindsym $left resize shrink width 1 px or 1 ppt
-    bindsym $right resize grow width 1 px or 1 ppt
+# resizing windows a little
+bindsym $up resize grow height 1 px or 1 ppt
+bindsym $down resize shrink height 1 px or 1 ppt
+bindsym $left resize shrink width 1 px or 1 ppt
+bindsym $right resize grow width 1 px or 1 ppt
 
-# same bindings, but for the arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Up resize grow height 10 px or 10 ppt
-    bindsym Down resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+# resizing windows a little more
+bindsym Left resize shrink width 10 px or 10 ppt
+bindsym Up resize grow height 10 px or 10 ppt
+bindsym Down resize shrink height 10 px or 10 ppt
+bindsym Right resize grow width 10 px or 10 ppt
 
 # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+bindsym Return mode "default"
+bindsym Escape mode "default"
+
 }
 
-bindsym $mod+r mode "resize"
+################################     i3bar     ################################
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
-        status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config
-        tray_padding 0
-        position top
+
+status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config
+tray_padding 0
+position top
+
 }
-#####################################################################
-#
-## Media
-# Media player controls (GIU applications)
+
+
+################################################################################
+
+############################     Media controls     ############################
+
+# Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
@@ -224,26 +267,11 @@ bindsym --release Print exec gnome-screenshot -a
 # Toggle Touchpad
 bindsym XF86Tools exec ~/.config/i3/toggle_touchpad.sh
 
-## Custom
-focus_follows_mouse no
 
-######################################################################
-## Cosmetics
-# Which border style will new windows have
-new_window none
-# Colors
-# class border backgr text indicator
-client.focused #0099cc #0099cc #ffffff #2e9ef4
-client.focused_inactive #111111 #222222 #888888 #484e50
-client.unfocused #111111 #222222 #888888 #292d2e
-client.urgent #2f343a #900000 #ffffff #900000
+################################################################################
 
-bindsym $mod+z exec evince
+##############################     Autostart     ##############################
 
-## Lockscreen:
-bindsym $mod+Escape exec i3lock -fnei ~/Pictures/images/wallpaper.png
-
-## Autostart
 exec --no-startup-id xss-lock -- i3lock -fnei ~/Pictures/images/wallpaper.png
 exec --no-startup-id nm-applet
 exec --no-startup-id nextcloud
