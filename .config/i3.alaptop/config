@@ -253,9 +253,9 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl stop
 
 # Pulse Audio controls
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioLowerVolume exec amixer -q -D default sset Master 5%-
+bindsym XF86AudioRaiseVolume exec amixer -q -D default sset Master 5%+
+bindsym XF86AudioMute exec amixer -q -D default sset Master toggle
 
 # Backlight controls
 bindsym XF86MonBrightnessDown exec light -Us 'intel_backlight' 5
