@@ -176,8 +176,41 @@ endfunction
 nnoremap <f9> :set paste!<cr>
 inoremap <f9> <esc>:set paste!<cr>a
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""
+"""" Non function key functions """"
+function! MakeCenterTitle(character)
+    let pad = a:character
+    let safetyDistance = 5
+    if &textwidth
+        let tw = &textwidth
+    else
+        let tw = 80
+    endif
 
+    s/^\s*//
+    execute "normal $"
+
+    let contentSize = col(".")
+    let marginSize = (tw - contentSize)/2
+    if (marginSize - safetyDistance > 0)
+        let padding = marginSize - safetyDistance
+    else
+        let padding = 1
+    endif
+    let sr = marginSize - padding
+
+    " go to 0
+    " insert padding chars
+    " go to $
+    " insert spacingRight spaces
+    " insert padding chars
+    if (marginSize > 1)
+        center
+        exec "normal! 0".padding."r".pad."$".sr."a ".padding."a".pad.""
+    endif
+
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Highlight the n'th column (depending on &textwidth) and also column 100+
 highlight ColorColumn ctermbg=NONE ctermfg=Red
 let &colorcolumn="+0,+".join(range(20,999), ",+")
