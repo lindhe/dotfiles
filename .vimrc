@@ -221,6 +221,8 @@ map <leader>q gqap
 map <leader>b 0"qd$
 map <c-q> :q<cr>
 
+"""""""""""""""""""""""""""""""     Movement     """""""""""""""""""""""""""""""
+
 " set langmap=öV
 " To move between panes without pain
 map <c-l> <C-W><C-H>
@@ -228,6 +230,12 @@ map <c-j> <C-W><C-J>
 map <c-k> <C-W><C-K>
 " map <c-ö> <C-W><C-L>
 " set langmap=öö
+
+
+" Make vertical movement work with wrapped lines
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+
 
 """" Macros
 nnoremap <space><space> @q
@@ -255,23 +263,6 @@ map <leader>c :Commentary<CR>
 " vim-easy-align
 map ga <Plug>(EasyAlign)
 
-
-"""" TODO """""
-
-"if ((set wrap?) == ('wrap'))
-"set number
-    "vmap <silent> <Right> l
-    "vmap <silent> <Left> h
-    "vmap <silent> <Up> gk
-    "vmap <silent> <Down> gj
-    "nmap <silent> <Right> l
-    "nmap <silent> <Left> h
-    "nmap <silent> <Up> gk
-    "nmap <silent> <Down> gj
-    "imap <silent> <Up> <C-o>gk
-    "imap <silent> <Down> <C-o>gj
-"endif
-"
 "" Find a good place for:
 au BufReadPost *.repy set syntax=python
 
