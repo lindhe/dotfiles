@@ -11,5 +11,5 @@ xsetroot -solid black
 xset r rate 325 75
 xset b off
 xset +dpms
-xset s 600
+xset s 1800
 unclutter &
