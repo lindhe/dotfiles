@@ -24,7 +24,7 @@
     rem = remote
     s = status
     sho = show
-    sorry = commit -a --amend --no-edit
+    sorry = commit --amend --no-edit
     st = status
     whatchanged = !git pull && git log ORIG_HEAD..HEAD
 #   difftex = difftool -y -t latex
