@@ -67,6 +67,10 @@ noremap q/ <Nop>
 noremap q? <Nop>
 cmap <C-f> <Nop>
 
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+endif
 
 let mapleader = ','
 map <space> <leader>
@@ -95,6 +99,10 @@ hi clear SpellBad
 hi SpellBad cterm=underline,bold ctermfg=red
 hi clear SpellCap
 hi SpellCap cterm=underline,bold ctermfg=blue
+
+" Highlight the n'th column (depending on &textwidth) and also column 100+
+highlight ColorColumn ctermbg=NONE ctermfg=Red
+let &colorcolumn="+0,+".join(range(20,999), ",+")
 
 """" Tidy writing
 set tabstop=4
@@ -204,9 +212,6 @@ function! MakeCenterTitle(character)
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" Highlight the n'th column (depending on &textwidth) and also column 100+
-highlight ColorColumn ctermbg=NONE ctermfg=Red
-let &colorcolumn="+0,+".join(range(20,999), ",+")
 
 " Quicklings
 cnoremap qq q!
@@ -270,7 +275,3 @@ map ga <Plug>(EasyAlign)
 "" Find a good place for:
 au BufReadPost *.repy set syntax=python
 
-if has("persistent_undo")
-    set undodir=~/.undodir/
-    set undofile
-endif
