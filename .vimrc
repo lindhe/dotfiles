@@ -39,10 +39,7 @@ Plugin 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
 Plugin 'godlygeek/tabular'              " Good at aligning on multiple chars at once: `:Tab /&`
 
 " Parked plugins:
-" Plugin 'scrooloose/syntastic'           " Linting
 " Plugin 'majutsushi/tagbar'              " Easy way to navigate log files
-" Plugin 'terryma/vim-multiple-cursors'   " Do it like they do it in sublime
-" Plugin 'kien/rainbow_parentheses.vim'   " Make shit pretty and readable
 " Plugin 'loremipsum'                     " Lorem ipsum
 " Plugin 'vim-auto-save'
 " Plugin 'tpope/vim-fugitive'
@@ -70,10 +67,6 @@ noremap q/ <Nop>
 noremap q? <Nop>
 cmap <C-f> <Nop>
 
-" " In many terminal emulators the mouse works just fine, thus enable it.
-" if has('mouse')
-"     set mouse=a
-" endif
 
 let mapleader = ','
 map <space> <leader>
@@ -249,54 +242,14 @@ autocmd BufReadPost *
             \ endif
 
 
-"""" Plugin helpers
-" MultipleCursorsFind
-nnoremap // :MultipleCursorsFind<Space>
+""""""""""""""""""""""""""""     Plugin helpers     """"""""""""""""""""""""""""
 
 " Commentary
 map <leader>c :Commentary<CR>
 
-" RainbowParentheses
-" map <Leader>rb :RainbowParenthesesToggle<CR>
-"
-" let g:rbpt_colorpairs = [
-"             \ ['brown',       'RoyalBlue3'],
-"             \ ['Darkblue',    'SeaGreen3'],
-"             \ ['darkgray',    'DarkOrchid3'],
-"             \ ['darkgreen',   'firebrick3'],
-"             \ ['darkcyan',    'RoyalBlue3'],
-"             \ ['darkred',     'SeaGreen3'],
-"             \ ['darkmagenta', 'DarkOrchid3'],
-"             \ ['brown',       'firebrick3'],
-"             \ ['gray',        'RoyalBlue3'],
-"             \ ['darkmagenta', 'DarkOrchid3'],
-"             \ ['Darkblue',    'firebrick3'],
-"             \ ['darkgreen',   'RoyalBlue3'],
-"             \ ['darkcyan',    'SeaGreen3'],
-"             \ ['darkred',     'DarkOrchid3'],
-"             \ ['red',         'firebrick3'],
-"             \]
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-
 " vim-easy-align
 map ga <Plug>(EasyAlign)
-map <leader>a <Plug>(EasyAlign)
 
-" Syntastic
-" Press <leader>S to toggle Syntastic checking
-nnoremap <leader>S :SyntasticToggleMode<CR>
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode_map = {
-    \ "mode": "passive",
-    \ "active_filetypes": [],
-    \ "passive_filetypes": [] }
 
 """" TODO """""
 
