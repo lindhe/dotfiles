@@ -266,3 +266,8 @@ map ga <Plug>(EasyAlign)
 "" Find a good place for:
 au BufReadPost *.repy set syntax=python
 
+"""""""""""""""""""""""""""""""""     Misc     """""""""""""""""""""""""""""""""
+
+" Prepopulate script files with shebang
+autocmd BufNewFile  *.sh    0r ~/res/skeleton.sh
+autocmd BufNewFile  *.py    0r ~/res/skeleton.py
