@@ -11,9 +11,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" I hereby claim this space for my plugins accordingly
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""     Plugins     """""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Can't imagine Vim without these
 Plugin 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 Plugin 'tpope/vim-sensible'             " Fix the stupid things left from Vi
@@ -44,7 +44,7 @@ Plugin 'godlygeek/tabular'              " Good at aligning on multiple chars at 
 " Plugin 'vim-auto-save'
 " Plugin 'tpope/vim-fugitive'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,12 +54,11 @@ filetype plugin indent on    " required
 
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" My Stuff:
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""" Usability fixes
-" tex = latex
-let g:tex_flavor = "latex"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""     Non plugin stuff     """""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""     Usability fixes     """""""""""""""""""""""""""
 
 " Disbale command-line menu (see `:h q:`)
 noremap q: <Nop>
@@ -67,14 +66,42 @@ noremap q/ <Nop>
 noremap q? <Nop>
 cmap <C-f> <Nop>
 
+" Use global undo history
 if has("persistent_undo")
     set undodir=~/.undodir/
     set undofile
 endif
 
-let mapleader = ','
-map <space> <leader>
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+" Also don't do it when the mark is in the first line, that is the default
+" position when opening a file.
+autocmd BufReadPost *
+            \ if line("'\"") > 1 && line("'\"") <= line("$") |
+            \   exe "normal! g`\"" |
+            \ endif
 
+
+"""""""""""""""""""""""""""""""     Movement     """""""""""""""""""""""""""""""
+
+""jklö
+noremap l h
+noremap ö l
+
+" Make vertical movement work with wrapped lines
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+
+" set langmap=öV might fix something...
+" To move between panes without pain
+" map <c-l> <C-W><C-H>
+" map <c-j> <C-W><C-J>
+" map <c-k> <C-W><C-K>
+" map <c-ö> <C-W><C-L>
+" set langmap=öö
+
+""""""""""""""""""""""""""""""     Interface     """"""""""""""""""""""""""""""
 set ignorecase
 set smartcase
 set number
@@ -86,12 +113,12 @@ set hlsearch
 syntax on
 syntax spell toplevel
 
-""jklö
-noremap l h
-noremap ö l
+set nospell
+set spelllang=en
 
-"""" Cosmetics
-hi CursorLine cterm=NONE ctermbg=black ctermfg=NONE
+
+"""""""""""""""""""""""""""""""     Vainity     """""""""""""""""""""""""""""""
+
 set cursorline
 
 " Change of Spell* behave
@@ -104,19 +131,22 @@ hi SpellCap cterm=underline,bold ctermfg=blue
 highlight ColorColumn ctermbg=NONE ctermfg=Red
 let &colorcolumn="+0,+".join(range(20,999), ",+")
 
-"""" Tidy writing
+
+""""""""""""""""""""""""""""""     Text style     """"""""""""""""""""""""""""""
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set textwidth=80
-set linebreak 
+set linebreak
 set nowrap
 set wrapmargin=0 " Prevent vim from automatically inserting line breaks in newly entered text.
 
-set nospell
-set spelllang=en
+"""""""""""""""""""""""""""""""     Mappings     """""""""""""""""""""""""""""""
 
-"""" Mappings
+" Leader mapping
+let mapleader = ','
+map h <leader>
+
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-s> :w<CR>
 
@@ -124,8 +154,32 @@ nnoremap <C-t> :tabedit<Space>
 
 nnoremap gf :tabedit <cfile><CR>
 
+nnoremap Y y$
+
+" Quicklings
+cnoremap qq q!
+cab spg spellgood
+map <leader>q gqap
+map <leader>b 0"qd$
+map <c-q> :q<cr>
+
 " <Esc><Esc> to clear hlsearch
 nnoremap <Esc><Esc> :noh<CR>
+nnoremap <silent> <c-l> :noh<CR>
+
+nnoremap <leader>t :call MakeCenterTitle('')<CR>
+
+"""" Macros
+nnoremap <space><space> @q
+nnoremap <enter> @@
+
+"""""""""""""""""""""""""     Prerecorded macros:     """""""""""""""""""""""""
+
+" Put sentence on its own line and reformat it
+let @s='disOPgqis<<'
+nnoremap <leader>s @s
+
+""""""""""""""""""""""""""""     Function keys     """"""""""""""""""""""""""""
 
 " Press <F5> to insert timestamp YYYY-MM-DD_HH:MM:SS
 nnoremap <F5><F5> "=strftime("%F_%T")<CR>P
@@ -139,11 +193,22 @@ nnoremap <silent> <F6> :%s/\s\+$//<CR>''
 " g<F6> to remove double spaces (often caused by J or gq)
 nnoremap <silent> g<F6> :%s/\(\S\) \{2,}\(\S\)/\1 \2/g<CR>''
 
-" F7 to cycle spell
+" <F7> to cycle spell
 nnoremap <F7> :call CycleSpell()<CR>
 inoremap <F7> <Esc>:call CycleSpell()<CR>a
 
-fun! CycleSpell()
+" Press <F8> to toggle textwidth=80
+nnoremap <F8> :call ToggleTextWidth()<CR>
+inoremap <F8> <Esc>:call ToggleTextWidth()<CR>a
+
+" <F9> to toggle paste
+nnoremap <f9> :set paste!<cr>
+inoremap <f9> <esc>:set paste!<cr>a
+
+
+""""""""""""""""""""""""""""""     Functions     """"""""""""""""""""""""""""""
+
+function! CycleSpell()
     let langs = ['', 'en', 'sv']
 
     let i = index(langs, &spl)
@@ -159,10 +224,6 @@ fun! CycleSpell()
     endif
 endfun
 
-" Press <F8> to toggle textwidth=80
-nnoremap <F8> :call ToggleTextWidth()<CR>
-inoremap <F8> <Esc>:call ToggleTextWidth()<CR>a
-
 function! ToggleTextWidth()
     if &textwidth
         echo "textwidth=0"
@@ -173,13 +234,9 @@ function! ToggleTextWidth()
     endif
 endfunction
 
-" f9 to toggle paste
-nnoremap <f9> :set paste!<cr>
-inoremap <f9> <esc>:set paste!<cr>a
-
-nnoremap <leader>t :call MakeCenterTitle('')<left><left>
-
-"""" Non function key functions """"
+" MakeCenterTitle
+" Removes surrounding whitespace, and put text at the center of textwidth and
+" then padd with comments (or optional other character) around it.
 function! MakeCenterTitle(...)
 
     " Use commenstring character if no other string is specified
@@ -220,49 +277,6 @@ function! MakeCenterTitle(...)
 
 endfunction
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Quicklings
-cnoremap qq q!
-cab R .-1read 
-cab spg spellgood
-map <leader>q gqap
-map <leader>b 0"qd$
-map <c-q> :q<cr>
-
-"""""""""""""""""""""""""""""""     Movement     """""""""""""""""""""""""""""""
-
-" set langmap=öV
-" To move between panes without pain
-map <c-l> <C-W><C-H>
-map <c-j> <C-W><C-J>
-map <c-k> <C-W><C-K>
-" map <c-ö> <C-W><C-L>
-" set langmap=öö
-
-
-" Make vertical movement work with wrapped lines
-nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
-nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
-
-
-"""" Macros
-nnoremap <space><space> @q
-nnoremap <enter> @@
-
-" Git
-autocmd Filetype gitcommit setlocal spell textwidth=72
-
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-" Also don't do it when the mark is in the first line, that is the default
-" position when opening a file.
-autocmd BufReadPost *
-            \ if line("'\"") > 1 && line("'\"") <= line("$") |
-            \   exe "normal! g`\"" |
-            \ endif
-
 
 """"""""""""""""""""""""""""     Plugin helpers     """"""""""""""""""""""""""""
 
@@ -272,11 +286,18 @@ map <leader>c :Commentary<CR>
 " vim-easy-align
 map ga <Plug>(EasyAlign)
 
+"""""""""""""""""""""""""""""     To be moved     """""""""""""""""""""""""""""
+
+" Git
+autocmd Filetype gitcommit setlocal spell textwidth=72
+
+" tex = latex
+let g:tex_flavor = "latex"
+
 "" Find a good place for:
 au BufReadPost *.repy set syntax=python
-
-"""""""""""""""""""""""""""""""""     Misc     """""""""""""""""""""""""""""""""
 
 " Prepopulate script files with shebang
 autocmd BufNewFile  *.sh    0r ~/res/skeleton.sh
 autocmd BufNewFile  *.py    0r ~/res/skeleton.py
+
