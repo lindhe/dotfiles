@@ -26,16 +26,18 @@ Plugin 'junegunn/vim-easy-align'        " Align on a character: `gaip&`
 Plugin 'bling/vim-airline'              " The status bar as it should be
 
 " TPopes corner:
-Plugin 'tpope/vim-sleuth'               " Actually smart indentation
 Plugin 'tpope/vim-endwise'              " Autocomplete if ... endif
 Plugin 'tpope/vim-abolish'              " Change words better
 
 " Beta:
 Plugin 'wellle/targets.vim'             " Add more text objects to work on
-Plugin 'haya14busa/incsearch.vim'       " Improved hlsearch
+Plugin 'airblade/vim-gitgutter'         " Shows git diff (+/-) in the gutter
+Plugin 'nathanaelkane/vim-indent-guides'
+" Plugin 'yggdroot/indentline'            " Sublime indent guides
 
 " Do I use these?
 Plugin 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
+Plugin 'haya14busa/incsearch.vim'       " Improved hlsearch
 Plugin 'godlygeek/tabular'              " Good at aligning on multiple chars at once: `:Tab /&`
 
 " Parked plugins:
@@ -43,6 +45,7 @@ Plugin 'godlygeek/tabular'              " Good at aligning on multiple chars at 
 " Plugin 'loremipsum'                     " Lorem ipsum
 " Plugin 'vim-auto-save'
 " Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-sleuth'               " Actually smart indentation
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -110,8 +113,9 @@ set splitbelow
 set splitright
 set list
 set hlsearch
-syntax on
+syntax enable
 syntax spell toplevel
+set showmatch
 
 set nospell
 set spelllang=en
@@ -119,7 +123,12 @@ set spelllang=en
 
 """""""""""""""""""""""""""""""     Vainity     """""""""""""""""""""""""""""""
 
+set background=dark
+
 set cursorline
+set cursorcolumn
+hi CursorLine   cterm=NONE ctermbg=Black
+hi CursorColumn cterm=NONE ctermbg=Black
 
 " Change of Spell* behave
 hi clear SpellBad
@@ -131,6 +140,7 @@ hi SpellCap cterm=underline,bold ctermfg=blue
 highlight ColorColumn ctermbg=NONE ctermfg=Red
 let &colorcolumn="+0,+".join(range(20,999), ",+")
 
+highlight Normal ctermfg=white ctermbg=NONE
 
 """"""""""""""""""""""""""""""     Text style     """"""""""""""""""""""""""""""
 set tabstop=4
@@ -147,6 +157,7 @@ set wrapmargin=0 " Prevent vim from automatically inserting line breaks in newly
 let mapleader = ','
 map h <leader>
 
+noremap <space> :
 inoremap <C-s> <Esc>:w<CR>
 nnoremap <C-s> :w<CR>
 
