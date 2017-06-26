@@ -2,31 +2,50 @@
 # monman, the monitor manager
 #
 # Author: Andreas Lindhé
-# Version: 1.0
+# Version: 2.0
 # License: MIT License
 
-import sys, argparse
+import sys, os, argparse
 from subprocess import run, PIPE
 import re
+import json
 
-version = "1.0"
-verbose = False
+###########################     global variables     ###########################
+conf_str = os.path.expanduser('~/.config/monitors.json')
+dryrun = False
 sorting = False
-# right = True
+verbose = False
+version = "2.0"
 
-# def activate(monitors=[]):
-#     # Default: activate all connected monitors:
-#     if (monitors == "all" or not monitors):
-#         monitors = connectedMonitors()
-#     # Default: each monitor is "--right-of" the previous
-#     direction = " --right-of " if right else " --left-of "
-#     config = "xrandr"
-#     for i, monitor in enumerate(monitors):
-#         config += " --output " + monitor + " --auto"
-#         if i:
-#             config += direction + monitors[i-1]
-#     if verbose: print(config)
+#####################     activate connected monitors     #####################
+# Returns: nothing, unless failure
+def activate(config_file=conf_str):
+    with open(config_file) as data:
+        config = json.load(data)
 
+    xrandrargs = " --dryrun" if dryrun else ""
+    for monitors in config:
+        for i,m in enumerate(monitors):
+            if checkMonitor(m):
+                xrandrargs += " --output " + str(m)
+                if i:
+                    xrandrargs += direction + monitors[i-1]
+                for setting in monitors[m]:
+                    xrandrargs += " --" + setting
+                    if (type(monitors[m][setting]) != bool):
+                        xrandrargs += " " + str(monitors[m][setting])
+
+    success = run(("xrandr" + xrandrargs).split())
+    if verbose:
+        print("xrandr" + xrandrargs)
+        if (not success.returncode):
+            print("Successfully set new screen configuration!")
+        else:
+            print("Failure to set screen configuration. Returncode: " + str(success.returncode))
+    return success.returncode
+
+##################     return list of connected monitors     ##################
+# Returns: List
 def connectedMonitors():
     xrandr = run(["xrandr", "--query"], universal_newlines=True, stdout=PIPE)
     if xrandr.returncode:
@@ -43,6 +62,8 @@ def connectedMonitors():
         print(cm)
     return cm
 
+####################     check if monitor is connected     ####################
+# Returns: Bool
 def checkMonitor(m):
     c = connectedMonitors()
     if verbose:
@@ -54,25 +75,23 @@ def checkMonitor(m):
 
 #################################     Main     #################################
 def main():
+    global dryrun
     global verbose
 
 # Argument parsing
     p = argparse.ArgumentParser(description="Find and activate monitors via xrandr!")
 
-    # p.add_argument('-a', '--activate', metavar="M", nargs="*", default="all",
-    #         help="activate all connected monitors specified. Default: \"all\"")
+    p.add_argument('-a', '--activate', action="store_true",
+            help="activate monitors from config")
+
+    p.add_argument('config', nargs="?", default=conf_str,
+            help="path to configuration file (default " + conf_str +")")
 
     p.add_argument('-c', '--check', metavar="M",
             help="Check if monitor M is connected")
 
-    # p.add_argument('-d', '--deactivate', metavar="M", nargs="*",
-    #         help="deactivate specified monitors. Default: all but primary")
-
-    # p.add_argument('-l', '--left', action="store_true",
-    #         help="set every screen --left-of the other")
-
-    # p.add_argument('-r', '--right', action="store_true",
-    #         help="set every screen --right-of the other (default)")
+    p.add_argument('--dryrun', action="store_true",
+            help="try action without making any real changes")
 
     p.add_argument('-s', '--sort', dest="sorting", action="store_true",
             help="sort the list of monitors")
@@ -83,12 +102,15 @@ def main():
     p.add_argument('-V', '--version', action="version", version=version)
 
     args = p.parse_args()
-    # right = False if args.left else True
+    dryrun = args.dryrun
     sorting = args.sorting
     verbose = args.verbose
 
 # Dynamically choose function
-    if (args.check):
+    if (args.activate):
+        if verbose: print("Activating monitors from file " + args.config)
+        activate(args.config)
+    elif (args.check):
         if verbose: print("Checking for monitor " + args.check)
         print(checkMonitor(args.check))
     else:
