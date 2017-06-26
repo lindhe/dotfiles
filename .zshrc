@@ -116,9 +116,9 @@ alias yao="yaourt"
 alias zshrc="vim ~/.zshrc"
 
 # Docking
-alias keyboard="xset r rate 330 75; setxkbmap se-A5"
-alias monitors="xrandr --output eDP-1 --auto --output HDMI-1 --auto --right-of eDP-1 --rotate left --output DP-2  --auto --right-of HDMI-1 --primary; echo 'on'"
-alias unmonitors="xrandr --output eDP-1 --auto --primary --output HDMI-1 --off --output DP-2 --off; echo 'off'"
+alias keyboard="xset r rate 330 75; setxkbmap se-A5; setxkbmap -option caps:swapescape"
+alias monitors="xrandr --output eDP-1 --auto --output HDMI-1 --auto --right-of eDP-1 --rotate left --output DP-2 --auto --right-of HDMI-1 --primary; echo 'on'"
+alias unmonitors="xrandr --output eDP-1 --auto --primary --output HDMI-1 --off --ouput DP-1 --off --output DP-2 --off; echo 'off'"
 alias dock="keyboard;monitors"
 alias undock="unmonitors"
 
