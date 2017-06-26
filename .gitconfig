@@ -19,6 +19,7 @@
     l = log --oneline --decorate
     lg = log --oneline --decorate
     log = log --decorate
+    new = diff --cached
     pl = !git pull && git log ORIG_HEAD..HEAD
     reb = rebase
     rem = remote
