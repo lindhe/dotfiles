@@ -14,6 +14,7 @@
     df = diff --color-words
     dif = diff
     dra = pull
+    files-in = diff-tree --no-commit-id --name-only -r
     h = help
     knuff = push
     l = log --oneline --decorate
