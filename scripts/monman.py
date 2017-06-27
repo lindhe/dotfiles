@@ -23,10 +23,12 @@ def activate(config_file=conf_str):
     with open(config_file) as data:
         config = json.load(data)
 
+    connectedList = connectedMonitors()
+
     xrandrargs = " --dryrun" if dryrun else ""
     for monitors in config:
         for i,m in enumerate(monitors):
-            if checkMonitor(m):
+            if m in connectedList:
                 xrandrargs += " --output " + str(m)
                 if i:
                     xrandrargs += direction + monitors[i-1]
