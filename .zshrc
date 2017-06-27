@@ -119,8 +119,6 @@ alias zshrc="vim ~/.zshrc"
 alias keyboard="xset r rate 330 75; setxkbmap se-A5; setxkbmap -option caps:swapescape"
 alias monitors="~/scripts/monman.py -a && echo 'Monitors on'"
 alias unmonitors="xrandr --output eDP-1 --auto --primary --output HDMI-1 --off --output DP-1 --off --output DP-2 --off; echo 'off'"
-alias dock="keyboard;monitors"
-alias undock="unmonitors"
 
 
 # Git
