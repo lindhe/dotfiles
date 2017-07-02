@@ -239,6 +239,7 @@ bindsym Escape mode "default"
 
 ################################     i3bar     ################################
 
+# Default
 bar {
 
 status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config
@@ -246,7 +247,6 @@ tray_padding 0
 position top
 
 }
-
 
 ################################################################################
 
