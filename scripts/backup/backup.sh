@@ -2,6 +2,7 @@
 # Checks for authorized Wi-Fi SSID or connected Ethernet before performing
 # backup.
 
+HOST=$(hostname)
 RUN=false;
 AUTHFILE=authorized_networks.txt;
 WIFI=$(iwgetid --raw);
@@ -21,20 +22,25 @@ elif [ -f $AUTHFILE ]; then
         fi
     else
         echo "Not connected to a network."
-        exit 1;
     fi
 else
     echo "No AUTHFILE found!";
-    exit 1;
 fi
 
 if $RUN; then
-    echo "Starting backup at $(date +'%F_%T')";
+    echo "Starting backup of $HOST at $(date +'%F_%T')";
     rsync -azAX --partial --delete --exclude-from=exclude.txt \
         --delete-excluded \
         / \
         backup:/ \
-        && echo "Backup finnished $(date +'%F_%T')" || echo "Backup failed $(date +'%F_%T')"
+        && (echo "Backup finished $(date +'%F_%T')"; \
+            logger "Backup finished $(date +'%F_%T')") \
+        || (echo "Backup failed $(date +'%F_%T')"; \
+            logger "Backup failed $(date +'%F_%T')")
+else
+    echo "Backup failed $(date +'%F_%T')";
+    logger "Backup failed $(date +'%F_%T')";
+    exit 1;
 fi
 
 exit 0;
