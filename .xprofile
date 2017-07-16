@@ -2,11 +2,11 @@
 #
 #~/.xprofile
 #
-setxkbmap se-A5,svorak
-setxkbmap -option grp:lctrl_lwin_toggle
-setxkbmap -option caps:swapescape
-xinput set-prop "ImPS/2 Generic Wheel Mouse" "libinput Scroll Method Enabled" 0 0 1
-xsetroot -solid black
-xset r rate 325 75
-xset b off
-unclutter &
+setxkbmap se-A5,svorak;
+# setxkbmap -option grp:lctrl_lwin_toggle;
+setxkbmap -option caps:swapescape;
+xinput set-prop "ImPS/2 Generic Wheel Mouse" "libinput Scroll Method Enabled" 0 0 1;
+xsetroot -solid black;
+xset r rate 325 75;
+xset b off;
+unclutter &;
