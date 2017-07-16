@@ -25,8 +25,8 @@ separator_block_width=20
 
 [media]
 command=$SCRIPT_DIR/mediaplayer
-align=right
-# min_width=325
+align=left
+min_width=1225
 interval=1
 color=#FF8000
 

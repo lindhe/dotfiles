@@ -196,6 +196,7 @@ workspace 7 output DP-1
 workspace 8 output DP-1
 workspace 9 output DP-1
 workspace 10 output DP-1
+
 ## DP-2
 workspace 6 output DP-2
 workspace 7 output DP-2
@@ -241,11 +242,18 @@ bindsym Escape mode "default"
 
 # Default
 bar {
+    status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config
+    output eDP-1
+    tray_padding 0
+    tray_output primary
+}
 
-status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config
-tray_padding 0
-position top
-
+# External displays
+bar {
+    output DP-1
+    output DP-2
+    output HDMI-1
+    status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/external
 }
 
 ################################################################################
