@@ -6,10 +6,12 @@ HOST=$(hostname)
 RUN=false;
 AUTHFILE=authorized_networks.txt;
 WIFI=$(iwgetid --raw);
-ETH_IF=enp0s31f6;
-ETH=$(ip link show $ETH_IF | perl -n -e'/state (\w+)/ && print $1');
+ETH_IF1=enp0s31f6;
+ETH_IF2=enp13s0u1;
+ETH1=$(ip link show $ETH_IF1 | perl -n -e'/state (\w+)/ && print $1');
+ETH2=$(ip link show $ETH_IF2 | perl -n -e'/state (\w+)/ && print $1');
 
-if [ "$ETH" = "UP" ]; then
+if [ "$ETH1" = "UP" ] || [ "$ETH2" = "UP" ]; then
     echo "Performing backup over Ethernet";
     RUN=true;
 elif [ -f $AUTHFILE ]; then
