@@ -20,6 +20,9 @@
 _minted-*/
 *.pyg
 *.tdo
+*-blx.bib
+*.bcf
+*.run.xml
 
 # Binaries #
 ############
