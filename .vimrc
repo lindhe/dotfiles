@@ -1,3 +1,4 @@
+""""""""""""""""""""""""""""""""     vimrc     """""""""""""""""""""""""""""""""{{{
 set nocompatible              " be iMproved, required
 set encoding=utf-8
 filetype off                  " required
@@ -11,9 +12,9 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""     Plugins     """""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"}}}
+
+"""""""""""""""""""""""""""""""     Plugins     """"""""""""""""""""""""""""""""{{{
 " Can't imagine Vim without these
 Plugin 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 Plugin 'tpope/vim-sensible'             " Fix the stupid things left from Vi
@@ -61,7 +62,9 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""     Non plugin stuff     """""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""""""""""     Usability fixes     """""""""""""""""""""""""""
+"}}}
+
+"""""""""""""""""""""""""""     Usability fixes     """"""""""""""""""""""""""""{{{
 
 " Disbale command-line menu (see `:h q:`)
 noremap q: <Nop>
@@ -85,8 +88,9 @@ autocmd BufReadPost *
             \   exe "normal! g`\"" |
             \ endif
 
+"}}}
 
-"""""""""""""""""""""""""""""""     Movement     """""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""     Movement     """"""""""""""""""""""""""""""""{{{
 
 ""jklö
 noremap l h
@@ -104,7 +108,9 @@ nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 " map <c-ö> <C-W><C-L>
 " set langmap=öö
 
-""""""""""""""""""""""""""""""     Interface     """"""""""""""""""""""""""""""
+"}}}
+
+""""""""""""""""""""""""""""""     Interface     """""""""""""""""""""""""""""""{{{
 set ignorecase
 set smartcase
 set number
@@ -120,8 +126,9 @@ set showmatch
 set nospell
 set spelllang=en
 
+"}}}
 
-"""""""""""""""""""""""""""""""     Vainity     """""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""     Vainity     """"""""""""""""""""""""""""""""{{{
 
 set background=dark
 
@@ -142,7 +149,11 @@ let &colorcolumn="+0,+".join(range(20,999), ",+")
 
 highlight Normal ctermfg=white ctermbg=NONE
 
-""""""""""""""""""""""""""""""     Text style     """"""""""""""""""""""""""""""
+set foldmethod=marker
+
+"}}}
+
+""""""""""""""""""""""""""""""     Text style     """""""""""""""""""""""""""""""{{{
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -151,7 +162,9 @@ set linebreak
 set nowrap
 set wrapmargin=0 " Prevent vim from automatically inserting line breaks in newly entered text.
 
-"""""""""""""""""""""""""""""""     Mappings     """""""""""""""""""""""""""""""
+"}}}
+
+"""""""""""""""""""""""""""""""     Mappings     """"""""""""""""""""""""""""""""{{{
 
 " Leader mapping
 let mapleader = ','
@@ -184,13 +197,17 @@ nnoremap <leader>t :call MakeCenterTitle('')<CR>
 nnoremap <space><space> @q
 nnoremap <enter> @@
 
-"""""""""""""""""""""""""     Prerecorded macros:     """""""""""""""""""""""""
+"}}}
+
+"""""""""""""""""""""""""     Prerecorded macros:     """"""""""""""""""""""""""{{{
 
 " Put sentence on its own line and reformat it
 let @s='disOPgqis<<'
 nnoremap <leader>s @s
 
-""""""""""""""""""""""""""""     Function keys     """"""""""""""""""""""""""""
+"}}}
+
+""""""""""""""""""""""""""""     Function calls     """""""""""""""""""""""""""""{{{
 
 " Press <F5> to insert timestamp YYYY-MM-DD_HH:MM:SS
 nnoremap <F5><F5> "=strftime("%F_%T")<CR>P
@@ -217,7 +234,9 @@ nnoremap <f9> :set paste!<cr>
 inoremap <f9> <esc>:set paste!<cr>a
 
 
-""""""""""""""""""""""""""""""     Functions     """"""""""""""""""""""""""""""
+"}}}
+
+""""""""""""""""""""""""""""""     Functions     """""""""""""""""""""""""""""""{{{
 
 function! CycleSpell()
     let langs = ['', 'en', 'sv']
@@ -248,7 +267,7 @@ endfunction
 " MakeCenterTitle
 " Removes surrounding whitespace, and put text at the center of textwidth and
 " then padd with comments (or optional other character) around it.
-function! MakeCenterTitle(...)
+function! MakeCenterTitle(...)"{{{
 
     " Use commenstring character if no other string is specified
     let pad = (a:000 != [] && a:1 != '') ? a:1 : &commentstring[0]
@@ -286,18 +305,21 @@ function! MakeCenterTitle(...)
         echo "There was an error. Please fix."
     endif
 
+endfunction"}}}
 endfunction
 
+"}}}
 
-""""""""""""""""""""""""""""     Plugin helpers     """"""""""""""""""""""""""""
+""""""""""""""""""""""""""""     Plugin helpers     """""""""""""""""""""""""""""{{{
 
 " Commentary
 map <leader>c :Commentary<CR>
 
 " vim-easy-align
 map ga <Plug>(EasyAlign)
+"}}}
 
-"""""""""""""""""""""""""""""     To be moved     """""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""     To be moved     """"""""""""""""""""""""""""""{{{
 
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -312,3 +334,4 @@ au BufReadPost *.repy set syntax=python
 autocmd BufNewFile  *.sh    0r ~/res/skeleton.sh
 autocmd BufNewFile  *.py    0r ~/res/skeleton.py
 
+"}}}
