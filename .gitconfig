@@ -4,7 +4,7 @@
 [alias]
     bi = bisect
     bra = branch
-    change = commit --amend
+    change = commit --amend -v
     cl = clone
     co = checkout
     com = commit -v
