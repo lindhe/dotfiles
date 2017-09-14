@@ -145,7 +145,7 @@ hi SpellCap cterm=underline,bold ctermfg=blue
 
 " Highlight the n'th column (depending on &textwidth) and also column 100+
 highlight ColorColumn ctermbg=NONE ctermfg=Red
-let &colorcolumn="+0,+".join(range(20,999), ",+")
+let &colorcolumn="+1,+".join(range(20,999), ",+")
 
 highlight Normal ctermfg=white ctermbg=NONE
 
@@ -168,7 +168,6 @@ set wrapmargin=0 " Prevent vim from automatically inserting line breaks in newly
 
 " Leader mapping
 let mapleader = ','
-map h <leader>
 
 noremap <space> :
 inoremap <C-s> <Esc>:w<CR>
@@ -196,6 +195,9 @@ nnoremap <leader>t :call MakeCenterTitle('')<CR>
 """" Macros
 nnoremap <space><space> @q
 nnoremap <enter> @@
+
+" Spell
+map h zG
 
 "}}}
 
