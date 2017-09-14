@@ -71,7 +71,9 @@ m2p() {
 
 checksum() {
     echo "$1 $2" > /tmp/hash.txt &&\
-        md5sum -c /tmp/hash.txt
+        printf 'md5:\n'; md5sum -c /tmp/hash.txt;\
+        printf '\n';\
+        printf 'sha256:\n'; sha256sum -c /tmp/hash.txt
 }
 
 
