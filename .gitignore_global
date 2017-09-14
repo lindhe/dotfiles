@@ -23,6 +23,8 @@ _minted-*/
 *-blx.bib
 *.bcf
 *.run.xml
+*.fdb_latexmk
+*.fls
 
 # Binaries #
 ############
