@@ -235,6 +235,8 @@ inoremap <F8> <Esc>:call ToggleTextWidth()<CR>a
 nnoremap <f9> :set paste!<cr>
 inoremap <f9> <esc>:set paste!<cr>a
 
+nnoremap gy :call AccYank()<CR>
+nnoremap gcy :let @y=''<CR>
 
 "}}}
 
@@ -308,6 +310,11 @@ function! MakeCenterTitle(...)"{{{
     endif
 
 endfunction"}}}
+
+function! AccYank()
+    exec 'normal! yE'
+    let @y=@y.@"
+    let @"=@y
 endfunction
 
 "}}}
