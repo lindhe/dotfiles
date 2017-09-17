@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=env MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre /usr/local/bin/matlab -desktop
+Icon=matlab
+Type=Application
+Terminal=false
+Comment=Matrix Laboratory
+Name=MATLAB
+GenericName=matlab
+StartupNotify=false
+Categories=Education;Science;Development
