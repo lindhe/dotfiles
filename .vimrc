@@ -186,14 +186,11 @@ map <leader>q gqap
 map <leader>b 0"qd$
 map <c-q> :q<cr>
 
-" <Esc><Esc> to clear hlsearch
-nnoremap <Esc><Esc> :noh<CR>
+" Clear hlsearch
 nnoremap <silent> <c-l> :noh<CR>
 
-nnoremap <leader>t :call MakeCenterTitle('')<CR>
-
 """" Macros
-nnoremap <space><space> @q
+nnoremap <leader><leader> @q
 nnoremap <enter> @@
 
 " Spell
@@ -237,6 +234,9 @@ inoremap <f9> <esc>:set paste!<cr>a
 
 nnoremap gy :call AccYank()<CR>
 nnoremap gcy :let @y=''<CR>
+
+" Make line outcommented title
+nnoremap <leader>t :call MakeCenterTitle('')<CR>
 
 "}}}
 
