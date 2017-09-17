@@ -1,15 +1,16 @@
-" Configs:
+" LaTeX
 set spell
 
-""""" LaTeX
+" """"""""""""""""""""""""""""""     Shortcuts     """"""""""""""""""""""""""""""
 noremap <C-s><C-s> :w \| call Compile()<CR>
 
-" Templates
-nnoremap <C-i>article ggdG:.-1read ~/res/latex/templates/article.tex<CR>
-nnoremap <C-i>letter ggdG:.-1read ~/res/latex/templates/letter.tex<CR>
-nnoremap <C-i>report ggdG:.-1read ~/res/latex/templates/report.tex<CR>
+""""""""""""""""""""""""""""""     Templates     """"""""""""""""""""""""""""""
+nnoremap <C-i>art ggdG:.-1read ~/res/latex/templates/article.tex<CR>
+nnoremap <C-i>let ggdG:.-1read ~/res/latex/templates/letter.tex<CR>
+nnoremap <C-i>rep ggdG:.-1read ~/res/latex/templates/report.tex<CR>
+" nnoremap <C-i>proto ggdG:.-1read ~/res/latex/templates/protocol.tex<CR>
 
-" Snippets
+"""""""""""""""""""""""""""""""     Snippets     """""""""""""""""""""""""""""""
 nnoremap <C-i>en :.-1read ~/res/latex/snippets/english.tex<CR>
 nnoremap <C-i>sv :.-1read ~/res/latex/snippets/swedish.tex<CR>
 nnoremap <C-i>it :.-1read ~/res/latex/snippets/itemize.tex<CR>jA
@@ -22,7 +23,7 @@ nnoremap <C-i>env :.-1read ~/res/latex/snippets/environment.tex<CR>Vj<C-n>$i
 nnoremap <C-i>eq :.-1read ~/res/latex/snippets/equation.tex<CR>jA
 nnoremap <C-i>mini :.-1read ~/res/latex/snippets/minipage.tex<CR>jjA<tab>
 
-" Functions
+""""""""""""""""""""""""""""""     Functions     """"""""""""""""""""""""""""""
 " Smart compile function that checks if comile script exsists:
 function! Compile()
     if filereadable("compile.sh")
@@ -33,3 +34,7 @@ function! Compile()
         execute '!pdflatex -shell-escape %'
     endif
 endfunction
+
+"""""""""""""""""""""""""""""""     Writing     """""""""""""""""""""""""""""""
+
+inoremap .<space> .<CR>
