@@ -28,6 +28,7 @@ set $up k
 set $left l
 set $right odiaeresis
 
+set $wallpaper ~/Pictures/images/wallpaper/wallpaper.png
 
 ################################################################################
 #
@@ -71,7 +72,7 @@ bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -i -li
 bindsym $mod+z exec evince
 
 # Lockscreen:
-bindsym $mod+Escape exec i3lock -fnei ~/Pictures/images/wallpaper.png
+bindsym $mod+Escape exec i3lock -fnei $wallpaper
 
 
 ###############################     Movement     ###############################
@@ -279,7 +280,7 @@ bindsym XF86Tools exec ~/scripts/toggle_touchpad.sh
 
 ##############################     Autostart     ##############################
 
-exec --no-startup-id xss-lock -- i3lock -fnei ~/Pictures/images/wallpaper.png
+exec --no-startup-id xss-lock -- i3lock -fnei $wallpaper
 exec --no-startup-id nm-applet
 exec --no-startup-id nextcloud
 # exec --no-startup-id compton --backend glx --vsync opengl
