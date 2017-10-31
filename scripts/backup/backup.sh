@@ -5,28 +5,33 @@
 HOST=$(hostname)
 RUN=false;
 AUTHFILE=authorized_networks.txt;
+CHARGING=$(acpi --ac-adapter | grep "on-line")
 WIFI=$(iwgetid --raw);
 ETH_IF1=enp0s31f6;
 ETH_IF2=enp13s0u1;
 ETH1=$(ip link show $ETH_IF1 | perl -n -e'/state (\w+)/ && print $1');
 ETH2=$(ip link show $ETH_IF2 | perl -n -e'/state (\w+)/ && print $1');
 
-if [ "$ETH1" = "UP" ] || [ "$ETH2" = "UP" ]; then
-    echo "Performing backup over Ethernet";
-    RUN=true;
-elif [ -f $AUTHFILE ]; then
-    if [ ! -z "$WIFI" ]; then
-        if [ ! -z $(grep -e "^$WIFI$" "$AUTHFILE") ]; then
-            echo "Performing backup over Wi-fi: $WIFI";
-            RUN=true;
+if [ ! -z "$CHARGING" ]; then
+    if [ "$ETH1" = "UP" ] || [ "$ETH2" = "UP" ]; then
+        echo "Performing backup over Ethernet";
+        RUN=true;
+    elif [ -f $AUTHFILE ]; then
+        if [ ! -z "$WIFI" ]; then
+            if [ ! -z $(grep -e "^$WIFI$" "$AUTHFILE") ]; then
+                echo "Performing backup over Wi-fi: $WIFI";
+                RUN=true;
+            else
+                echo "Prohibited backup due to unauthorized Wi-fi: $WIFI";
+            fi
         else
-            echo "Prohibited backup due to unauthorized Wi-fi: $WIFI";
+            echo "Not connected to a network."
         fi
     else
-        echo "Not connected to a network."
+        echo "No AUTHFILE found!";
     fi
 else
-    echo "No AUTHFILE found!";
+    echo "Not charging";
 fi
 
 if $RUN; then
