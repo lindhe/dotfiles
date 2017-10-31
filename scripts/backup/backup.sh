@@ -27,8 +27,8 @@ RUN=false;
 AUTHFILE=authorized_networks.txt;
 CHARGING=$(acpi --ac-adapter | grep "on-line")
 WIFI=$(iwgetid --raw);
-ETH_IF1=enp0s31f6;
-ETH_IF2=enp13s0u1;
+ETH_IF1=eth0;
+ETH_IF2=eth1;
 ETH1=$(ip link show $ETH_IF1 | perl -n -e'/state (\w+)/ && print $1');
 ETH2=$(ip link show $ETH_IF2 | perl -n -e'/state (\w+)/ && print $1');
 
