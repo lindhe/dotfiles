@@ -2,7 +2,7 @@
 # monman, the monitor manager
 #
 # Author: Andreas Lindhé
-# Version: 2.0
+# Version: 2.1
 # License: MIT License
 
 import sys, os, argparse
@@ -15,7 +15,7 @@ conf_str = os.path.expanduser('~/.config/monitors.json')
 dryrun = False
 sorting = False
 verbose = False
-version = "2.0"
+version = "2.1"
 
 #####################     activate connected monitors     #####################
 # Returns: nothing, unless failure
@@ -44,6 +44,26 @@ def activate(config_file=conf_str):
             print("Successfully set new screen configuration!")
         else:
             print("Failure to set screen configuration. Returncode: " + str(success.returncode))
+    return success.returncode
+
+####################     deactivate connected monitors     ####################
+# Returns: nothing, unless failure
+def deactivate():
+    externalMonitors = connectedMonitors()
+    primary = externalMonitors.pop(0)
+
+    xrandrargs = " --dryrun" if dryrun else ""
+    if externalMonitors:
+        for monitor in externalMonitors:
+            xrandrargs += " --output " + str(monitor) + " --off "
+
+    success = run(("xrandr" + xrandrargs).split())
+    if verbose:
+        print("xrandr" + xrandrargs)
+        if (not success.returncode):
+            print("Successfully disabled all external monitors!")
+        else:
+            print("Failed disabling all external monitors. Returncode: " + str(success.returncode))
     return success.returncode
 
 ##################     return list of connected monitors     ##################
@@ -92,6 +112,9 @@ def main():
     p.add_argument('-c', '--check', metavar="M",
             help="Check if monitor M is connected")
 
+    p.add_argument('-d', '--deactivate', action="store_true",
+            help="activate monitors from config")
+
     p.add_argument('--dryrun', action="store_true",
             help="try action without making any real changes")
 
@@ -115,6 +138,9 @@ def main():
     elif (args.check):
         if verbose: print("Checking for monitor " + args.check)
         print(checkMonitor(args.check))
+    elif (args.deactivate):
+        if verbose: print("Deactivating all external monitors.")
+        deactivate()
     else:
         if verbose: print("Looking for connected monitors...")
         connectedMonitors()
