@@ -31,7 +31,7 @@ fi
 
 if $RUN; then
     echo "Starting backup of $HOST at $(date +'%F_%T')";
-    rsync -azAX --partial --delete --exclude-from=exclude.txt \
+    rsync -aAX --partial --delete --exclude-from=exclude.txt \
         --delete-excluded \
         / \
         backup:/ \
