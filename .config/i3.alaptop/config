@@ -181,7 +181,7 @@ bindsym $mod+$alt+Shift+9 move container to workspace 19
 bindsym $mod+$alt+Shift+0 move container to workspace 20
 
 
-##########################     Displays, Monitors     ##########################
+#####################     Displays, Monitors, Screens     #####################
 
 # Put workspaces on sensible displays
 #
@@ -287,4 +287,4 @@ exec --no-startup-id nextcloud
 
 #################################     Dock     #################################
 
-exec_always ~/scripts/dock.sh
+exec_always toggle_dock.sh
