@@ -8,7 +8,7 @@ noremap <C-s><C-s> :w \| call Compile()<CR>
 nnoremap <C-i>art ggdG:.-1read ~/res/latex/templates/article.tex<CR>
 nnoremap <C-i>let ggdG:.-1read ~/res/latex/templates/letter.tex<CR>
 nnoremap <C-i>rep ggdG:.-1read ~/res/latex/templates/report.tex<CR>
-" nnoremap <C-i>proto ggdG:.-1read ~/res/latex/templates/protocol.tex<CR>
+nnoremap <C-i>pro ggdG:.-1read ~/res/latex/templates/protocol.tex<CR>
 
 """""""""""""""""""""""""""""""     Snippets     """""""""""""""""""""""""""""""
 nnoremap <C-i>en :.-1read ~/res/latex/snippets/english.tex<CR>
