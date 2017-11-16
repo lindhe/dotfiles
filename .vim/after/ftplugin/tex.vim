@@ -35,6 +35,27 @@ function! Compile()
     endif
 endfunction
 
+" `Smart` wordcount for LaTeX
+let g:word_count="<unknown>"
+function! WordCount()
+    return g:word_count
+endfunction
+
+function! UpdateWordCount()
+    let filename = expand("%")
+    let cmd = "detex " . filename . " | wc -w | tr -d '[:space:]'"
+    let result = system(cmd)
+    let g:word_count = result
+endfunction
+
+set updatetime=1000
+augroup WordCounter
+    au! CursorHold,CursorHoldI * call UpdateWordCount()
+augroup END
+
+""""""""""""""""""""""""""""     User Interface     """"""""""""""""""""""""""""
+set statusline+=\(%{WordCount()}\ w)
+
 """""""""""""""""""""""""""""""     Writing     """""""""""""""""""""""""""""""
 
 inoremap .<space> .<CR>
