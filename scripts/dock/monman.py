@@ -49,8 +49,7 @@ def activate(config_file=conf_str):
 ####################     deactivate connected monitors     ####################
 # Returns: nothing, unless failure
 def deactivate():
-    externalMonitors = connectedMonitors()
-    primary = externalMonitors.pop(0)
+    externalMonitors = allExternalOutputs()
 
     xrandrargs = " --dryrun" if dryrun else ""
     if externalMonitors:
@@ -65,6 +64,23 @@ def deactivate():
         else:
             print("Failed disabling all external monitors. Returncode: " + str(success.returncode))
     return success.returncode
+
+#################     return list of all external outputs     #################
+# Returns: List
+def allExternalOutputs():
+    xrandr = run(["xrandr", "--query"], universal_newlines=True, stdout=PIPE)
+    if xrandr.returncode:
+        exit(1)
+    # Save list of monitor names
+    externalOutputs = re.compile("(.+) .+connected [^primary]")
+    em = externalOutputs.findall(xrandr.stdout)
+    # If sorting is on, sort it. Keep primary at the head.
+    if sorting:
+        em = sorted(em)
+    if verbose:
+        print("List of connected monitors:")
+        print(em)
+    return em
 
 ##################     return list of connected monitors     ##################
 # Returns: List
@@ -113,7 +129,7 @@ def main():
             help="Check if monitor M is connected")
 
     p.add_argument('-d', '--deactivate', action="store_true",
-            help="activate monitors from config")
+            help="deactivate all monitors except for primary")
 
     p.add_argument('--dryrun', action="store_true",
             help="try action without making any real changes")
