@@ -31,6 +31,7 @@ Plugin 'tpope/vim-endwise'              " Autocomplete if ... endif
 Plugin 'tpope/vim-abolish'              " Change words better
 
 " Beta:
+Plugin 'airblade/vim-gitgutter'         " Shows git diff (+/-) in the gutter
 Plugin 'wellle/targets.vim'             " Add more text objects to work on
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/searchfold.vim'     " fold lines not in /
@@ -42,7 +43,6 @@ Plugin 'haya14busa/incsearch.vim'       " Improved hlsearch
 Plugin 'godlygeek/tabular'              " Good at aligning on multiple chars at once: `:Tab /&`
 
 " Parked plugins:
-" Plugin 'airblade/vim-gitgutter'         " Shows git diff (+/-) in the gutter
 " Plugin 'majutsushi/tagbar'              " Easy way to navigate log files
 " Plugin 'loremipsum'                     " Lorem ipsum
 " Plugin 'vim-auto-save'
@@ -328,6 +328,10 @@ map <leader>c :Commentary<CR>
 
 " vim-easy-align
 map ga <Plug>(EasyAlign)
+
+" gitgutter
+let g:gitgutter_enabled = 0
+
 "}}}
 
 """""""""""""""""""""""""""""     To be moved     """"""""""""""""""""""""""""""{{{
