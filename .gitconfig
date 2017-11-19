@@ -8,8 +8,6 @@
     cl = clone
     co = checkout
     com = commit -v
-    coma = commit -av
-    comam = commit -am
     comm = commit -m
     df = diff --color-words
     dif = diff
