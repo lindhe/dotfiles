@@ -30,7 +30,11 @@ Plugin 'bling/vim-airline'              " The status bar as it should be
 Plugin 'tpope/vim-endwise'              " Autocomplete if ... endif
 Plugin 'tpope/vim-abolish'              " Change words better
 
+" Syntax highligting
+Plugin 'mephux/bro.vim'                 " For bro scripts
+
 " Beta:
+Plugin 'tmhedberg/SimpylFold'           " Correct python folding
 Plugin 'airblade/vim-gitgutter'         " Shows git diff (+/-) in the gutter
 Plugin 'wellle/targets.vim'             " Add more text objects to work on
 Plugin 'nathanaelkane/vim-indent-guides'
