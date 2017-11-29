@@ -72,7 +72,7 @@ def allExternalOutputs():
     if xrandr.returncode:
         exit(1)
     # Save list of monitor names
-    externalOutputs = re.compile("(.+) .+connected [^primary]")
+    externalOutputs = re.compile("(.+) .*connected [^primary]")
     em = externalOutputs.findall(xrandr.stdout)
     # If sorting is on, sort it. Keep primary at the head.
     if sorting:
