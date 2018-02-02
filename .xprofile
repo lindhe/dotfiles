@@ -11,4 +11,3 @@ xset r rate 325 75;
 xset b off;
 xset s off;
 xset -dpms;
-killall unclutter; unclutter &
