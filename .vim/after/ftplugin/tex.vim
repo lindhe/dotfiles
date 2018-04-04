@@ -2,7 +2,7 @@
 set spell
 
 " """"""""""""""""""""""""""""""     Shortcuts     """"""""""""""""""""""""""""""
-noremap <C-s><C-s> :w \| call Compile()<CR>
+noremap <F12> :w \| call Compile()<CR>
 
 """"""""""""""""""""""""""""""     Templates     """"""""""""""""""""""""""""""
 nnoremap <C-i>art ggdG:.-1read ~/res/latex/templates/article.tex<CR>
