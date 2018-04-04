@@ -153,6 +153,7 @@ highlight ColorColumn ctermbg=NONE ctermfg=Red
 let &colorcolumn="+1,+".join(range(20,999), ",+")
 
 highlight Normal ctermfg=white ctermbg=NONE
+highlight Todo ctermfg=white ctermbg=NONE
 
 set foldmethod=marker
 
