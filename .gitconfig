@@ -21,7 +21,7 @@
     new = diff --cached
     pl = !git pull && git log ORIG_HEAD..HEAD
     reb = rebase
-    rem = remote
+    rem = remote -v
     s = status
     sho = show
     sorry = commit --amend --no-edit
