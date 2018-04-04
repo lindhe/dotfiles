@@ -38,7 +38,7 @@ if [ ! -z "$CHARGING" ]; then
         RUN=true;
     elif [ -f $AUTHFILE ]; then
         if [ ! -z "$WIFI" ]; then
-            if [ ! -z $(grep -e "^$WIFI$" "$AUTHFILE") ]; then
+            if [ ! -z "$(grep -e "^$WIFI$" "$AUTHFILE")" ]; then
                 echo "Performing backup over Wi-fi: $WIFI";
                 RUN=true;
             else
