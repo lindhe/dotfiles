@@ -190,7 +190,6 @@ cnoremap qq q!
 cab spg spellgood
 map <leader>q gqap
 map <leader>b 0"qd$
-map <c-q> :q<cr>
 
 " Clear hlsearch
 nnoremap <silent> <c-l> :noh<CR>
