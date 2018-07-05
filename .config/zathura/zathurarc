@@ -6,7 +6,6 @@ set search-hadjust false
 set abort-clear-search true
 
 ##################################     UI     ##################################
-set vertical-center true
 set selection-notification false
 
 ##############################     SHORTCUTS     ##############################
