@@ -1,6 +1,6 @@
 # vim: set tw=0 ft=config
 ##########################     alaptop i3 config     ##########################
-
+# {{{
 ## Pre setup ##
 
 # Bind mod keys
@@ -29,9 +29,10 @@ set $left l
 set $right odiaeresis
 
 set $wallpaper ~/Pictures/images/wallpaper/wallpaper.png
+# }}}
 
 ###############################     Vainity     ###############################
-
+# {{{
 # Colours
 set $bg-color            #2f343f
 set $inactive-bg-color   #2f343f
@@ -50,10 +51,10 @@ client.urgent #2f343a #900000 #ffffff #900000
 
 # Font for window titles.
 font pango:DejaVu Sans Mono 10
-
+# }}}
 
 #############################     Key bindings     #############################
-
+# {{{
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
 
@@ -69,10 +70,10 @@ bindsym $mod+z exec zathura
 
 # Lockscreen:
 bindsym $mod+Escape exec i3lock -fnei $wallpaper
-
+# }}}
 
 ###############################     Movement     ###############################
-
+# {{{
 # change focus
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
@@ -96,10 +97,10 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-
+# }}}
 
 ##########################     Tree manipulation     ##########################
-
+# {{{
 # split in horizontal orientation
 bindsym $mod+h split h
 
@@ -128,10 +129,10 @@ bindsym $mod+Shift+a focus child
 
 ## Mouse focus
 focus_follows_mouse no
-
+# }}}
 
 ##############################     Workspaces     ##############################
-
+# {{{
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -225,10 +226,10 @@ workspace 20 output DP-1-2
 # workspace 18 output HDMI-1
 # workspace 19 output HDMI-1
 # workspace 20 output HDMI-1
-
+# }}}
 
 ############################     Resize windows     ############################
-
+# {{{
 mode "resize" {
 
 # resizing windows a little
@@ -248,9 +249,10 @@ bindsym Return mode "default"
 bindsym Escape mode "default"
 
 }
+# }}}
 
 ################################     i3bar     ################################
-
+# {{{
 # Default
 bar {
     status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config
@@ -268,9 +270,10 @@ bar {
     font pango:DejaVu Sans Mono 18
     status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/external
 }
+# }}}
 
 ############################     Media controls     ############################
-
+# {{{
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
@@ -291,10 +294,10 @@ bindsym --release Print exec gnome-screenshot -a
 
 # Toggle Touchpad
 bindsym XF86Tools exec ~/scripts/toggle_touchpad.sh
-
+# }}}
 
 ##############################     Autostart     ##############################
-
+# {{{
 exec --no-startup-id xss-lock -- i3lock -fnei $wallpaper
 exec --no-startup-id nm-applet
 exec --no-startup-id nextcloud
@@ -302,7 +305,9 @@ exec --no-startup-id unclutter
 exec --no-startup-id redshift
 
 # exec --no-startup-id compton --backend glx --vsync opengl
+# }}}
 
 #################################     Dock     #################################
-
+# {{{
 exec_always toggle_dock.sh
+# }}}
