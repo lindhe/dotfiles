@@ -68,6 +68,9 @@ bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -i -li
 # Open PDF reader
 bindsym $mod+z exec zathura
 
+# Open image viewer
+bindsym $mod+i exec eog
+
 # Lockscreen:
 bindsym $mod+Escape exec i3lock -fnei $wallpaper
 # }}}
