@@ -30,8 +30,6 @@ set $right odiaeresis
 
 set $wallpaper ~/Pictures/images/wallpaper/wallpaper.png
 
-################################################################################
-#
 ###############################     Vainity     ###############################
 
 # Colours
@@ -53,8 +51,6 @@ client.urgent #2f343a #900000 #ffffff #900000
 # Font for window titles.
 font pango:DejaVu Sans Mono 10
 
-
-################################################################################
 
 #############################     Key bindings     #############################
 
@@ -196,7 +192,7 @@ workspace 12 output eDP-1
 workspace 13 output eDP-1
 workspace 14 output eDP-1
 workspace 15 output eDP-1
-## DP-1
+## DP-1-2
 workspace 6 output DP-1-2
 workspace 7 output DP-1-2
 workspace 8 output DP-1-2
@@ -207,9 +203,32 @@ workspace 17 output DP-1-2
 workspace 18 output DP-1-2
 workspace 19 output DP-1-2
 workspace 20 output DP-1-2
+# DP-2
+# workspace 6 output DP-2
+# workspace 7 output DP-2
+# workspace 8 output DP-2
+# workspace 9 output DP-2
+# workspace 10 output DP-2
+# workspace 16 output DP-2
+# workspace 17 output DP-2
+# workspace 18 output DP-2
+# workspace 19 output DP-2
+# workspace 20 output DP-2
+# HDMI-1
+# workspace 6 output HDMI-1
+# workspace 7 output HDMI-1
+# workspace 8 output HDMI-1
+# workspace 9 output HDMI-1
+# workspace 10 output HDMI-1
+# workspace 16 output HDMI-1
+# workspace 17 output HDMI-1
+# workspace 18 output HDMI-1
+# workspace 19 output HDMI-1
+# workspace 20 output HDMI-1
 
 
 ############################     Resize windows     ############################
+
 mode "resize" {
 
 # resizing windows a little
@@ -250,8 +269,6 @@ bar {
     status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/external
 }
 
-################################################################################
-
 ############################     Media controls     ############################
 
 # Media player controls
@@ -275,8 +292,6 @@ bindsym --release Print exec gnome-screenshot -a
 # Toggle Touchpad
 bindsym XF86Tools exec ~/scripts/toggle_touchpad.sh
 
-
-################################################################################
 
 ##############################     Autostart     ##############################
 
