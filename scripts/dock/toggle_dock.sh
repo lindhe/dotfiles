@@ -2,8 +2,7 @@
 
 RES=''
 
-# If the dock ethernet interface is available, we are probably docked.
-ip link show eth0 2> /dev/null > /dev/null;
+~/scripts/dock/check_for_dock.sh
 
 if [ $? -eq 0 ]; then
     ~/scripts/dock/monman.py -a \
