@@ -312,5 +312,5 @@ exec --no-startup-id redshift
 
 #################################     Dock     #################################
 # {{{
-exec_always toggle_dock.sh
+exec_always ~/scripts/dock/toggle_dock.sh
 # }}}
