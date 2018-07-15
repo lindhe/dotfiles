@@ -61,12 +61,12 @@ if $RUN; then
         / \
         backup:/ \
         && (echo "Backup finished $(date +'%F_%T')"; \
-            logger "backup finished $(date +'%F_%T')") \
+            logger "Backup finished $(date +'%F_%T')") \
         || (echo "Backup failed $(date +'%F_%T')"; \
-            logger "backup failed $(date +'%F_%T')")
+            logger -p syslog.err "Backup failed $(date +'%F_%T')")
 else
     echo "Backup failed $(date +'%F_%T')";
-    logger "Backup failed $(date +'%F_%T')";
+    logger -p syslog.err "Backup failed $(date +'%F_%T')";
     exit 1;
 fi
 
