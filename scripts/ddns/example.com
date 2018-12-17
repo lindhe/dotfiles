@@ -67,7 +67,7 @@ def api_error():
     """Print a warning message because an error has occured"""
 
     print('Error! Not sure why, sorry! Please check your internet connection and http://www.driftbloggen.se. Contact support@loopia.se if the problem persists.')
-    quit(1)
+    sys.exit(1)
 
 def del_excess(Config, zone_records):
     """Remove all A records except the first one"""
@@ -97,19 +97,15 @@ def get_records(Config):
             Config.password,
             Config.domain,
             Config.subdomain)
-        # Remove irrelevant records and return
-        return [d for d in zone_records if d['type'] == 'A']
-    except:
-        # Quit if unable to authorize
         if 'AUTH_ERROR' in zone_records:
             print('Your user information seems to be incorrect. Please edit this file and check your username and password.')
-            quit(2)
-
-        # Quit if API returns unknown error
+            sys.exit(2)
         if 'UNKNOWN_ERROR' in zone_records:
             print('API returned "UNKNOWN ERROR". This could mean that the requested (sub)domain does not exist in this account.')
-            quit(3)
-
+            sys.exit(3)
+        # No error found. Remove irrelevant records and return.
+        return [d for d in zone_records if d['type'] == 'A']
+    except:
         # Can't connect to the API for other reasons
         api_error()
 
