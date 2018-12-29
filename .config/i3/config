@@ -290,8 +290,8 @@ bindsym XF86AudioRaiseVolume exec amixer -q -D default sset Master 5%+
 bindsym XF86AudioMute exec amixer -q -D default sset Master toggle
 
 # Backlight controls
-bindsym XF86MonBrightnessDown exec light -Us 'intel_backlight' 5
-bindsym XF86MonBrightnessUp exec light -As 'intel_backlight' 5
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
 
 # Screenshot
 bindsym --release Print exec gnome-screenshot -a
