@@ -302,7 +302,7 @@ bindsym XF86Tools exec ~/scripts/toggle_touchpad.sh
 
 ##############################     Autostart     ##############################
 # {{{
-exec --no-startup-id xss-lock -- i3lock -fnei $wallpaper
+exec --no-startup-id xss-lock -- i3lock -fne -c 000000
 exec --no-startup-id nm-applet
 exec --no-startup-id nextcloud
 exec --no-startup-id unclutter
