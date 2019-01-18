@@ -30,9 +30,11 @@ On Windows you can use the "Task Scheduler".
 Please contact support@loopia.se if you have any questions./*}}}*/
 """
 
+import sys
 import xmlrpc.client
 import urllib.request
 import re
+from urllib.error import URLError
 
 class Config:
     ########## EDIT HERE ##########
@@ -86,8 +88,12 @@ def del_excess(Config, zone_records):
 
 def get_ip():
     """Get public IP adress"""
-    result = urllib.request.urlopen('http://dns.loopia.se/checkip/checkip.php').read()
-    return re.search('[0-9.]+', str(result)).group(0) # Very sloppy regex, but it gets the job done.
+    try:
+        result = urllib.request.urlopen('http://dns.loopia.se/checkip/checkip.php').read()
+        return re.search('[0-9.]+', str(result)).group(0) # Very sloppy regex, but it gets the job done.
+    except URLError  as e:
+        print("Could not find public IP address.")
+        print("Reason: ", e.reason)
 
 def get_records(Config):
     """Get current zone records"""
