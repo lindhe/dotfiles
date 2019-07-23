@@ -23,35 +23,27 @@ Plugin 'tpope/vim-speeddating'          " <c-a> and <c-x> correct with iso dates
 Plugin 'tpope/vim-commentary'           " Toggle comments
 Plugin 'junegunn/vim-easy-align'        " Align on a character: `gaip&`
 
-" Looks nice:
-Plugin 'bling/vim-airline'              " The status bar as it should be
-
 " TPopes corner:
 Plugin 'tpope/vim-endwise'              " Autocomplete if ... endif
 Plugin 'tpope/vim-abolish'              " Change words better
 
 " Syntax highligting
 Plugin 'mephux/bro.vim'                 " For bro scripts
+Plugin 'chikamichi/mediawiki.vim'       " Syntax highlighting for MediaWiki-based projects
+
+" Writing
+Plugin 'godlygeek/tabular'              " Good at aligning on multiple chars at once: `:Tab /&`
 
 " Beta:
-Plugin 'tmhedberg/SimpylFold'           " Correct python folding
+Plugin 'jpalardy/vim-slime'
 Plugin 'airblade/vim-gitgutter'         " Shows git diff (+/-) in the gutter
 Plugin 'wellle/targets.vim'             " Add more text objects to work on
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/searchfold.vim'     " fold lines not in /
-" Plugin 'yggdroot/indentline'            " Sublime indent guides
 
 " Do I use these?
 Plugin 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
 Plugin 'haya14busa/incsearch.vim'       " Improved hlsearch
-Plugin 'godlygeek/tabular'              " Good at aligning on multiple chars at once: `:Tab /&`
-
-" Parked plugins:
-" Plugin 'majutsushi/tagbar'              " Easy way to navigate log files
-" Plugin 'loremipsum'                     " Lorem ipsum
-" Plugin 'vim-auto-save'
-" Plugin 'tpope/vim-fugitive'
-" Plugin 'tpope/vim-sleuth'               " Actually smart indentation
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -335,6 +327,12 @@ map ga <Plug>(EasyAlign)
 
 " gitgutter
 let g:gitgutter_enabled = 0
+
+" slime
+let g:slime_target = "tmux"
+let g:slime_paste_file = "/tmp/slime_paste"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "0"}
+let g:slime_dont_ask_default = 1
 
 "}}}
 
