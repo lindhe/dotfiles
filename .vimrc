@@ -346,6 +346,7 @@ let g:tex_flavor = "latex"
 
 "" Find a good place for:
 au BufReadPost *.repy set syntax=python
+autocmd BufNewFile,BufRead *.log setfiletype log
 
 " Prepopulate script files with shebang
 autocmd BufNewFile  *.sh    0r ~/res/skeleton.sh
