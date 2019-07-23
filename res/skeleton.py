@@ -1,23 +1,28 @@
-#!/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
 # License: MIT
 # Author: Andreas Lindhé
 
+""" Main function description.
+This is where general documentation should go.
+"""
+
 import sys
+import argparse
 
 def main():
-  print("Main program")
-  return (0)
+  """ Main function description """
 
 if __name__ == '__main__':
-  program = sys.argv[0]
-
+  # Bootstrapping
+  p = argparse.ArgumentParser(description="Skeleton file for Python!")
+  # Add cli arguments
+  # p.add_argument('-f', '--foo', help="Just a dummmy flag")
+  # Run:
+  args = p.parse_args()
   try:
     main()
   except KeyboardInterrupt:
-    sys.stderr.write("Interrupted\n")
-    try:
-      sys.exit(0)
-    except SystemExit:
-      sys.exit(1)
+    sys.exit("\nInterrupted by ^C\n")
+
