@@ -52,6 +52,9 @@ promptinit
 PROMPT="%{$fg_bold[white]%}%n%{$fg[magenta]%}@%{$fg_no_bold[cyan]%}%m %{$fg_no_bold[yellow]%}%~ %{$reset_color%}>%"
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# New terminals adopt current directory
+source /etc/profile.d/vte.sh
+
 # Keybindings
 bindkey "^[[3~" delete-char
 
