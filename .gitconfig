@@ -36,6 +36,7 @@
     helper = cache
 [core]
     excludesfile = ~/.gitignore_global
+    quotepath = off
 # [difftool.latex]
 #    cmd = latexdiff "$LOCAL" "$REMOTE"
 [push]
