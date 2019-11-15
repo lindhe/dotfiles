@@ -3,7 +3,7 @@
     email = andreas@lindhe.io
 [alias]
     bi = bisect
-    bra = branch
+    bra = branch -v
     change = commit --amend -v
     cl = clone
     co = checkout
@@ -26,7 +26,9 @@
     sho = show
     sorry = commit --amend --no-edit
     st = status
+    sw = switch
     whatchanged = !git pull && git log ORIG_HEAD..HEAD
+    wt = worktree
 #   difftex = difftool -y -t latex
 [branch]
     autosetuprebase = always
@@ -36,6 +38,7 @@
     helper = cache
 [core]
     excludesfile = ~/.gitignore_global
+    editor = vim
     quotepath = off
 # [difftool.latex]
 #    cmd = latexdiff "$LOCAL" "$REMOTE"
