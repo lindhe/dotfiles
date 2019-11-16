@@ -260,9 +260,11 @@ function! ToggleTextWidth()
     if &textwidth
         echo "textwidth=0"
         set textwidth=0
+        set wrap
     else
         echo "textwidth=80"
         set textwidth=80
+        set nowrap
     endif
 endfunction
 
