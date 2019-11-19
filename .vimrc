@@ -338,6 +338,9 @@ let g:slime_dont_ask_default = 1
 
 """""""""""""""""""""""""""""     To be moved     """"""""""""""""""""""""""""""{{{
 
+" Docker
+autocmd BufNewFile,BufRead Dockerfile* set syntax=dockerfile
+
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
@@ -353,3 +356,4 @@ autocmd BufNewFile  *.sh    0r ~/res/skeleton.sh
 autocmd BufNewFile  *.py    0r ~/res/skeleton.py
 
 "}}}
+
