@@ -53,7 +53,10 @@ PROMPT="%{$fg_bold[white]%}%n%{$fg[magenta]%}@%{$fg_no_bold[cyan]%}%m %{$fg_no_b
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # New terminals adopt current directory
-source /etc/profile.d/vte.sh
+set VTE_FILE = /etc/profile.d/vte.sh
+if [[ -a $VTE_FILE ]]; then
+  source $VTE_FILE
+fi
 
 # Keybindings
 bindkey "^[[3~" delete-char
