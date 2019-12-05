@@ -111,7 +111,6 @@ nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 set ignorecase
 set smartcase
 set number
-set relativenumber
 set splitbelow
 set splitright
 set list
@@ -119,6 +118,8 @@ set hlsearch
 syntax enable
 syntax spell toplevel
 set showmatch
+set sidescroll=1
+set sidescrolloff=0
 
 set nospell
 set spelllang=en
@@ -192,7 +193,7 @@ nnoremap <leader><leader> @q
 nnoremap <enter> @@
 
 " Spell
-map h zG
+map hh zG
 
 "}}}
 
@@ -207,9 +208,9 @@ nnoremap <leader>s @s
 """"""""""""""""""""""""""""     Function calls     """""""""""""""""""""""""""""{{{
 
 " Press <F5> to insert timestamp YYYY-MM-DD_HH:MM:SS
-nnoremap <F5><F5> "=strftime("%F_%T")<CR>P
+nnoremap h<F5> "=strftime("%F_%T")<CR>P
 nnoremap <F5> "=strftime("%F")<CR>P
-inoremap <F5><F5> <C-R>=strftime("%F_%T")<CR>
+inoremap h<F5> <C-R>=strftime("%F_%T")<CR>
 inoremap <F5> <C-R>=strftime("%F")<CR>
 
 " <F6> to remove trailing whitespace
@@ -230,7 +231,9 @@ inoremap <F8> <Esc>:call ToggleTextWidth()<CR>a
 nnoremap <f9> :set paste!<cr>
 inoremap <f9> <esc>:set paste!<cr>a
 
+" Accumulative yank
 nnoremap gy :call AccYank()<CR>
+" Clear y register
 nnoremap gcy :let @y=''<CR>
 
 " Make line outcommented title
@@ -311,6 +314,7 @@ function! MakeCenterTitle(...)"{{{
 
 endfunction"}}}
 
+" Accumulative yank
 function! AccYank()
     exec 'normal! yE'
     let @y=@y.@"
@@ -351,6 +355,7 @@ let g:tex_flavor = "latex"
 
 "" Find a good place for:
 au BufReadPost *.repy set syntax=python
+autocmd FileType gnuplot setlocal commentstring=#\ %s
 autocmd BufNewFile,BufRead *.log setfiletype log
 
 " Prepopulate script files with shebang
