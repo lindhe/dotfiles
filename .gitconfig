@@ -2,6 +2,7 @@
     name = Andreas Lindhé
     email = andreas@lindhe.io
 [alias]
+    b = branch
     bi = bisect
     bra = branch -v
     change = commit --amend -v
@@ -15,7 +16,7 @@
     files-in = diff-tree --no-commit-id --name-only -r
     h = help
     knuff = push
-    l = log --oneline --decorate
+    l = log --oneline --decorate --graph
     lg = log --oneline --decorate
     log = log --decorate
     new = diff --cached
