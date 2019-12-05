@@ -40,7 +40,8 @@ set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
 # Which border style will new windows have
-new_window none
+default_border none
+default_floating_border none
 
 # class border backgr text indicator
 client.focused #0099cc #0099cc #ffffff #2e9ef4
@@ -70,6 +71,9 @@ bindsym $mod+z exec zathura
 
 # Open image viewer
 bindsym $mod+i exec eog
+
+# Open calculator
+bindsym $mod+c exec gnome-calculator
 
 # Lockscreen:
 bindsym $mod+Escape exec i3lock -fne -c 000000
@@ -323,7 +327,13 @@ exec --no-startup-id redshift
 # exec --no-startup-id compton --backend glx --vsync opengl
 # }}}
 
+#########################     Application Specific     #########################
+# {{{
+for_window [class="Gnome-calculator"] floating enable
+# }}}
+
 #################################     Dock     #################################
 # {{{
 exec_always ~/scripts/dock/toggle_dock.sh
 # }}}
+
