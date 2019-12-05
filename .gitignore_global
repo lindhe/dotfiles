@@ -28,6 +28,7 @@ _minted-*/
 
 # Binaries #
 ############
-*.pdf
 *.out
+*.pdf
+!**/figures/*.pdf
 __pycache__/
