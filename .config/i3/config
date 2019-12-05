@@ -28,7 +28,6 @@ set $up k
 set $left l
 set $right odiaeresis
 
-set $wallpaper ~/Pictures/images/wallpaper/wallpaper.png
 # }}}
 
 ###############################     Vainity     ###############################
@@ -73,7 +72,9 @@ bindsym $mod+z exec zathura
 bindsym $mod+i exec eog
 
 # Lockscreen:
-bindsym $mod+Escape exec i3lock -fnei $wallpaper
+bindsym $mod+Escape exec i3lock -fne -c 000000
+
+
 # }}}
 
 ###############################     Movement     ###############################
@@ -138,6 +139,16 @@ focus_follows_mouse no
 ##############################     Workspaces     ##############################
 # {{{
 # switch to workspace
+# bindsym $mod+1 workspace 1
+# bindsym $mod+2 workspace 2
+# bindsym $mod+3 workspace 3
+# bindsym $mod+4 workspace 4
+# bindsym $mod+5 workspace 5
+# bindsym $mod+6 workspace 6
+# bindsym $mod+7 workspace 7
+# bindsym $mod+8 workspace 8
+# bindsym $mod+9 workspace 9
+# bindsym $mod+0 workspace 10
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -271,6 +282,7 @@ bar {
     output DP-1-2
     output DP-2-2
     output DP-2
+    output HDMI-1
     font pango:DejaVu Sans Mono 18
     status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/external
 }

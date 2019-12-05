@@ -17,5 +17,11 @@
             "auto": true,
             "pos": "1920x0"
         }
+    },
+    {
+        "HDMI-1": {
+            "auto": true,
+            "above": "eDP-1"
+        }
     }
 ]
