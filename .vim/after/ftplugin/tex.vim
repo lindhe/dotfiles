@@ -1,5 +1,7 @@
 " LaTeX
-set spell
+setlocal spell
+setlocal tabstop=4
+setlocal shiftwidth=4
 
 " """"""""""""""""""""""""""""""     Shortcuts     """"""""""""""""""""""""""""""
 noremap <F12> :w \| call Compile()<CR>
@@ -48,13 +50,13 @@ function! UpdateWordCount()
     let g:word_count = result
 endfunction
 
-set updatetime=1000
+setlocal updatetime=1000
 augroup WordCounter
     au! CursorHold,CursorHoldI * call UpdateWordCount()
 augroup END
 
 """"""""""""""""""""""""""""     User Interface     """"""""""""""""""""""""""""
-set statusline+=\(%{WordCount()}\ w)
+setlocal statusline+=\(%{WordCount()}\ w)
 
 """""""""""""""""""""""""""""""     Writing     """""""""""""""""""""""""""""""
 
