@@ -16,7 +16,9 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
 # why would you type 'cd dir' if you could just type 'dir'?
-#setopt AUTO_CD
+setopt AUTO_CD
+# Allow bash-like comments inline
+setopt interactivecomments
 
 # Completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}'
@@ -71,7 +73,7 @@ datestamp() {
 }
 
 m2p() {
-    pandoc $1 -s -o $1.pdf &&\
+    pandoc $1 -s -f gfm -o $1.pdf &&\
     rename md.pdf pdf ./$1.pdf
 }
 
@@ -82,11 +84,10 @@ checksum() {
         printf 'sha256:\n'; sha256sum -c /tmp/hash.txt
 }
 
-
-#ddiso() {
-    #size=$(stat -c%s $1)
-    #dd if=$1 &> /dev/null | pv -petra -s $size | dd of=$2 bs=4k
-#}
+# ddiso() {
+#     size=$(stat -c%s $1)
+#     dd if=$1 &> /dev/null | pv -petra -s $size | dd of=$2 bs=4k
+# }
 
 ## Aliases
 
