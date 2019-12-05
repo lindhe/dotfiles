@@ -94,8 +94,10 @@ checksum() {
 # edit rc files
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
+alias zathurarc="vim ~/.config/zathura/zathurarc"
 
 # Propagate aliases to sudo
+alias s="sudo "
 alias sudo="sudo "
 alias sudoedit="sudoedit "
 
@@ -111,9 +113,10 @@ alias ls="ls -Hhv --color=always"
 alias lsl="ls -Ahl --color=always"
 alias mkdir="mkdir -p"
 alias open="xdg-open"
-alias pac="pacaur"
+alias pac="pacman"
+alias pik="pikaur"
 alias qq="exit"
-alias rml="rm *.aux; rm *.out; rm *.toc; rm *.log; rm *.lof; rm *.lot; rm *.tdo; rm *.dvi; rm *.bbl; rm *.blg; rm *bcf; rm *.run.xml; l"
+alias rml="rm *.aux; rm *.out; rm *.toc; rm *.log; rm *.lof; rm *.lot; rm *.tdo; rm *.dvi; rm *.bbl; rm *.blg; rm *bcf; rm *.run.xml; rm *-blx.bib; rm *.apc"
 alias se="sudoedit"
 alias so="source"
 alias tat="tmux attach -t"
@@ -134,15 +137,14 @@ alias unmonitors="xrandr --output eDP-1 --auto --primary --output HDMI-1 --off -
 alias g="git"
 alias gi="git"
 alias gif="git diff"
-alias gil="git log --oneline --decorate"
+alias gil="git l"
 alias gip="git pl"
 alias gis="git status"
 alias gs="git status"
-alias pac="pacaur"
+alias pac="pacman"
 alias qq="exit"
 alias rmb="rm *.bbl; rm *.blg; rm *.bcf; rm *.run.xml; rm *-blx.bib"
 alias rmt="rm *.aux; rm *.out; rm *.toc; rm *.log; rm *.tdo; rm *.fdb_latexmk; rm *dvi; rm *.fls"
-alias rml="rmb;rmt"
 alias so="source"
 alias sudovim="sudoedit "
 alias tat="tmux attach -t"
@@ -150,9 +152,21 @@ alias tls="tmux list-sessions"
 alias tree="tree -C"
 alias watch="watch --color"
 
+# Dev
+alias d="docker"
+alias dc="docker container ls"
+alias k="kubectl"
+alias h="helm"
+
 # non-important
 alias pwd="pwd | tee | xclip -i; xclip -o"
 alias cal="cal -m"
 alias starwars="telnet towel.blinkenlights.nl"
 alias gnu="gnuplot"
 alias vimcognito="vim -i NONE -u NONE -U NONE --cmd 'set noswapfile' --cmd 'set nobackup'"
+
+# Helm
+alias helm2="/usr/bin/helm"
+alias h2="/usr/bin/helm"
+alias helm3="/usr/local/bin/helm"
+alias h3="/usr/local/bin/helm"
