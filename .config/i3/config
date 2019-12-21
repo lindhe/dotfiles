@@ -84,6 +84,8 @@ bindsym $mod+Escape exec i3lock -fne -c 000000
 # Open Thunderbird
 bindsym $mod+m exec thunderbird
 
+bindsym $mod+y exec firefox -p minimal-ui https://youtube.com
+
 # }}}
 
 ###############################     Movement     ###############################
@@ -306,9 +308,9 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl stop
 
 # Pulse Audio controls
-bindsym XF86AudioLowerVolume exec amixer -q -D default sset Master 5%-
-bindsym XF86AudioRaiseVolume exec amixer -q -D default sset Master 5%+
-bindsym XF86AudioMute exec amixer -q -D default sset Master toggle
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%-
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
 
 # Backlight controls
 bindsym XF86MonBrightnessDown exec light -U 5
