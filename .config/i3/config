@@ -308,8 +308,8 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioStop exec playerctl stop
 
 # Pulse Audio controls
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%-
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- unmute
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ unmute
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
 
 # Backlight controls
