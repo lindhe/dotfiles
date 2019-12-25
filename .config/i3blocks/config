@@ -71,9 +71,8 @@ command=$SCRIPT_DIR/memory
 interval=30
 
 [volume]
-#label=VOL
 label=♪
-command=$SCRIPT_DIR/volume
+command=~/.config/i3blocks/contrib/volume/volume
 instance=Master
 interval=1
 signal=10
