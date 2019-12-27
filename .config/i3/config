@@ -295,7 +295,7 @@ bar {
     output DP-2
     output HDMI-1
     font pango:DejaVu Sans Mono 18
-    status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/external
+    status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config
 }
 # }}}
 
