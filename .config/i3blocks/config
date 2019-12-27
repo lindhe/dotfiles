@@ -7,11 +7,11 @@
 separator_block_width=20
 
 [media]
-command=$SCRIPT_DIR/mediaplayer
+command=$SCRIPT_DIR/mediaplayer/mediaplayer
 align=right
-# min_width=325
 interval=1
 color=#FF8000
+instance=spotify
 
 [upload]
 label=↑
@@ -30,32 +30,25 @@ color=#00ff00
 interval=1 # IMPORTANT
 separator=true
 
-[wireless]
-command=$SCRIPT_DIR/network wlp4s0 W
+[iface]
+command=$SCRIPT_DIR/iface/iface
 color=#00FF00
 interval=10
 
 [battery]
 label=⚡
-command=$SCRIPT_DIR/battery BAT0
-# command=acpi -b
+command=$SCRIPT_DIR/battery/battery BAT0
 interval=30
 
 [memory]
 label=MEM
-command=$SCRIPT_DIR/memory
+command=$SCRIPT_DIR/memory/memory
 separator=false
-interval=30
-
-[swap]
-label=SWAP
-instance=swap
-command=$SCRIPT_DIR/memory
 interval=30
 
 [volume]
 label=♪
-command=~/.config/i3blocks/contrib/volume/volume
+command=$SCRIPT_DIR/volume/volume
 instance=Master
 interval=1
 signal=10
@@ -63,3 +56,4 @@ signal=10
 [time]
 command=date '+%Y-%m-%d %H:%M:%S'
 interval=1
+

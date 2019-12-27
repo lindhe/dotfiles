@@ -281,7 +281,7 @@ bindsym Escape mode "default"
 # {{{
 # Default
 bar {
-    status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config
+    status_command SCRIPT_DIR=~/.config/i3blocks/contrib i3blocks -c ~/.config/i3blocks/config
     output eDP-1
     tray_padding 0
     tray_output primary
@@ -295,7 +295,7 @@ bar {
     output DP-2
     output HDMI-1
     font pango:DejaVu Sans Mono 18
-    status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks -c ~/.config/i3blocks/config
+    status_command SCRIPT_DIR=~/.config/i3blocks/contrib i3blocks -c ~/.config/i3blocks/config
 }
 # }}}
 
