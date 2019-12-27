@@ -6,5 +6,6 @@ i3
 rofi
 j4-dmenu-desktop
 i3blocks
+xss-lock
 playerctl # https://github.com/altdesktop/playerctl/releases
 ```
