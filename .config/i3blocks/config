@@ -13,22 +13,9 @@ interval=1
 color=#FF8000
 instance=spotify
 
-[upload]
-label=↑
-command=~/.config/i3blocks/scripts/bandwidth tx
-min_width=00000 kB/s
-align=left
-color=#e22c56
-interval=1 # IMPORTANT
-
-[download]
-label=↓
-command=~/.config/i3blocks/scripts/bandwidth rx
-min_width=00000 kB/s
-align=left
-color=#00ff00
-interval=1 # IMPORTANT
-separator=true
+[bandwidth]
+command=$SCRIPT_DIR/bandwidth/bandwidth
+interval=5
 
 [iface]
 command=$SCRIPT_DIR/iface/iface
