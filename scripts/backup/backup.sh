@@ -56,7 +56,7 @@ if [ ! -z "$CHARGING" ]; then
         echo 'No AUTHFILE found!';
     fi
 else
-    echo "Not charging";
+    echo "Not charging."
 fi
 
 if $RUN; then
@@ -64,14 +64,14 @@ if $RUN; then
     rsync -aAX --partial --delete --exclude-from=${BACKUP_SCRIPT_DIR}/exclude.txt \
         --delete-excluded / \
         backup:/ \
-        && (echo "Backup finished $(date +'%F_%T')"; \
-            logger "Backup finished $(date +'%F_%T')") \
-        || (echo "Backup failed $(date +'%F_%T')"; \
-            logger -p syslog.err "Backup failed $(date +'%F_%T')"; \
+        && (echo "Backup of $HOST finished $(date +'%F_%T')"; \
+            logger "Backup of $HOST finished $(date +'%F_%T')") \
+        || (echo "Backup of $HOST failed $(date +'%F_%T')"; \
+            logger -p syslog.err "Backup of $HOST failed $(date +'%F_%T')"; \
             notify-send --urgency=critical 'Backup failed!' 'Check journalctl for details.')
 else
-    echo "Backup failed $(date +'%F_%T')";
-    logger -p syslog.err "Backup failed $(date +'%F_%T')";
+    echo "Backup of $HOST failed $(date +'%F_%T')";
+    logger -p syslog.err "Backup of $HOST failed $(date +'%F_%T')";
     notify-send --urgency=critical 'Backup failed!' 'Check journalctl for details.';
     exit 1;
 fi
