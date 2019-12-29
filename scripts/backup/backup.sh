@@ -22,6 +22,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+# The first argument given, $1, will be treated as the --max-size
+# If empty, --max-size is not set.
+MAX_SIZE="${1:+--max-size ${1}}"
+
 BACKUP_SCRIPT_DIR='/etc/backup'
 
 # Update alive file
@@ -37,7 +41,7 @@ ETH_IF1=eth1;
 ETH_IF0_UP=$(ip link show $ETH_IF0 | perl -n -e'/state (\w+)/ && print $1');
 ETH_IF1_UP=$(ip link show $ETH_IF1 | perl -n -e'/state (\w+)/ && print $1');
 
-if [ ! -z "$CHARGING" ]; then
+if [ ! -z "$CHARGING" ] || [ ! -z "${MAX_SIZE}" ]; then
     if [ "$ETH_IF0_UP" = "UP" ] || [ "$ETH_IF1_UP" = "UP" ]; then
         echo "Performing backup over Ethernet";
         RUN=true;
@@ -61,8 +65,12 @@ fi
 
 if $RUN; then
     echo "Backup of $HOST started at $(date +'%F_%T')";
+    if [ ! -z "${MAX_SIZE}" ]; then
+        echo "Only backing up files smaller than ${1}"
+    fi
     rsync -aAX --partial --delete --delete-excluded / \
         --exclude-from=${BACKUP_SCRIPT_DIR}/exclude.txt \
+        ${MAX_SIZE} \
         backup:/ \
         && (echo "Backup of $HOST finished $(date +'%F_%T')"; \
             logger "Backup of $HOST finished $(date +'%F_%T')") \
