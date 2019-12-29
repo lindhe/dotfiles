@@ -29,7 +29,7 @@ date '+%s' > ${BACKUP_SCRIPT_DIR}/alive
 
 HOST=$(hostname)
 RUN=false;
-AUTHFILE=authorized_networks.txt;
+AUTHFILE=${BACKUP_SCRIPT_DIR}/authorized_networks.txt;
 CHARGING=$(acpi --ac-adapter | grep "on-line")
 WIFI=$(iwgetid --raw);
 ETH_IF0=eth0;
@@ -60,9 +60,9 @@ else
 fi
 
 if $RUN; then
-    echo "Starting backup of $HOST at $(date +'%F_%T')";
-    rsync -aAX --partial --delete --exclude-from=${BACKUP_SCRIPT_DIR}/exclude.txt \
-        --delete-excluded / \
+    echo "Backup of $HOST started at $(date +'%F_%T')";
+    rsync -aAX --partial --delete --delete-excluded / \
+        --exclude-from=${BACKUP_SCRIPT_DIR}/exclude.txt \
         backup:/ \
         && (echo "Backup of $HOST finished $(date +'%F_%T')"; \
             logger "Backup of $HOST finished $(date +'%F_%T')") \
