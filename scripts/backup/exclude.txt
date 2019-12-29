@@ -11,4 +11,8 @@
 - /*
 - Trash
 - .cache/*
+- .hidden/*
+- .tmp/*
+- tmp/*
+- no-backup
 - Downloads/*
