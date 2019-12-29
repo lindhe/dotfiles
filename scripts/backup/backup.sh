@@ -32,13 +32,13 @@ RUN=false;
 AUTHFILE=authorized_networks.txt;
 CHARGING=$(acpi --ac-adapter | grep "on-line")
 WIFI=$(iwgetid --raw);
-ETH_IF1=eth0;
-ETH_IF2=eth1;
-ETH1=$(ip link show $ETH_IF1 | perl -n -e'/state (\w+)/ && print $1');
-ETH2=$(ip link show $ETH_IF2 | perl -n -e'/state (\w+)/ && print $1');
+ETH_IF0=eth0;
+ETH_IF1=eth1;
+ETH_IF0_UP=$(ip link show $ETH_IF0 | perl -n -e'/state (\w+)/ && print $1');
+ETH_IF1_UP=$(ip link show $ETH_IF1 | perl -n -e'/state (\w+)/ && print $1');
 
 if [ ! -z "$CHARGING" ]; then
-    if [ "$ETH1" = "UP" ] || [ "$ETH2" = "UP" ]; then
+    if [ "$ETH_IF0_UP" = "UP" ] || [ "$ETH_IF1_UP" = "UP" ]; then
         echo "Performing backup over Ethernet";
         RUN=true;
     elif [ -f $AUTHFILE ]; then
