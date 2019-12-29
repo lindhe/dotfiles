@@ -16,8 +16,8 @@
     files-in = diff-tree --no-commit-id --name-only -r
     h = help
     knuff = push
-    l = log --oneline --decorate --graph
-    lg = log --oneline --decorate
+    lob = log --oneline --decorate --graph
+    l = log --oneline --decorate
     log = log --decorate
     new = diff --cached
     pl = !git pull && git log ORIG_HEAD..HEAD
