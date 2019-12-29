@@ -156,6 +156,7 @@ set foldmethod=marker
 set tabstop=4
 set shiftwidth=4
 set smarttab
+set expandtab
 set textwidth=80
 set linebreak
 set nowrap
