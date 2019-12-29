@@ -48,7 +48,7 @@ if [ ! -z "$CHARGING" ]; then
             echo "Not connected to a network."
         fi
     else
-        echo "No AUTHFILE found!";
+        echo 'No AUTHFILE found!';
     fi
 else
     echo "Not charging";
@@ -64,11 +64,11 @@ if $RUN; then
             logger "Backup finished $(date +'%F_%T')") \
         || (echo "Backup failed $(date +'%F_%T')"; \
             logger -p syslog.err "Backup failed $(date +'%F_%T')"; \
-            notify-send --urgency=critical "Backup failed!" "Check journalctl for details.")
+            notify-send --urgency=critical 'Backup failed!' 'Check journalctl for details.')
 else
     echo "Backup failed $(date +'%F_%T')";
     logger -p syslog.err "Backup failed $(date +'%F_%T')";
-    notify-send --urgency=critical "Backup failed!" "Check journalctl for details.";
+    notify-send --urgency=critical 'Backup failed!' 'Check journalctl for details.';
     exit 1;
 fi
 
