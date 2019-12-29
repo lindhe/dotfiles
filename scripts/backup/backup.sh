@@ -24,6 +24,9 @@
 
 BACKUP_SCRIPT_DIR='/etc/backup'
 
+# Update alive file
+date '+%s' > ${BACKUP_SCRIPT_DIR}/alive
+
 HOST=$(hostname)
 RUN=false;
 AUTHFILE=authorized_networks.txt;
