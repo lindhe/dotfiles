@@ -22,6 +22,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+BACKUP_SCRIPT_DIR='/etc/backup'
+
 HOST=$(hostname)
 RUN=false;
 AUTHFILE=authorized_networks.txt;
@@ -56,9 +58,8 @@ fi
 
 if $RUN; then
     echo "Starting backup of $HOST at $(date +'%F_%T')";
-    rsync -aAX --partial --delete --exclude-from=exclude.txt \
-        --delete-excluded \
-        / \
+    rsync -aAX --partial --delete --exclude-from=${BACKUP_SCRIPT_DIR}/exclude.txt \
+        --delete-excluded / \
         backup:/ \
         && (echo "Backup finished $(date +'%F_%T')"; \
             logger "Backup finished $(date +'%F_%T')") \
