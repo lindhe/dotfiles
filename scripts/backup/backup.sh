@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Checks for authorized Wi-Fi SSID or connected Ethernet before performing
 # backup.
 
