@@ -41,6 +41,20 @@ ETH_IF1=eth1;
 ETH_IF0_UP=$(ip link show $ETH_IF0 | perl -n -e'/state (\w+)/ && print $1');
 ETH_IF1_UP=$(ip link show $ETH_IF1 | perl -n -e'/state (\w+)/ && print $1');
 
+# print to both stdout and log
+logprint () {
+    echo "${1}"
+    logger "${1}"
+}
+
+# print to both stderr and log
+logprint_err () {
+    echo "${1}" 1>&2
+    logger -p syslog.err "${1}"
+    notify-send --urgency=critical 'Backup error' \
+        "${1}\n\nPlease check journalctl for more info."
+}
+
 if [ ! -z "$CHARGING" ] || [ ! -z "${MAX_SIZE}" ]; then
     if [ "$ETH_IF0_UP" = "UP" ] || [ "$ETH_IF1_UP" = "UP" ]; then
         echo "Performing backup over Ethernet";
@@ -64,23 +78,18 @@ else
 fi
 
 if $RUN; then
-    echo "Backup of $HOST started at $(date +'%F_%T')";
+    logprint "Backup of $HOST started at $(date +'%F_%T')";
     if [ ! -z "${MAX_SIZE}" ]; then
-        echo "Only backing up files smaller than ${1}"
+        logprint "Only backing up files smaller than ${1}"
     fi
     rsync -aAX --partial --delete --delete-excluded / \
         --exclude-from=${BACKUP_SCRIPT_DIR}/exclude.txt \
         ${MAX_SIZE} \
         backup:/ \
-        && (echo "Backup of $HOST finished $(date +'%F_%T')"; \
-            logger "Backup of $HOST finished $(date +'%F_%T')") \
-        || (echo "Backup of $HOST failed $(date +'%F_%T')"; \
-            logger -p syslog.err "Backup of $HOST failed $(date +'%F_%T')"; \
-            notify-send --urgency=critical 'Backup failed!' 'Check journalctl for details.')
+        && logprint "Backup of $HOST finished $(date +'%F_%T')" \
+        || logprint_err "Backup of $HOST failed $(date +'%F_%T')"
 else
-    echo "Backup of $HOST failed $(date +'%F_%T')";
-    logger -p syslog.err "Backup of $HOST failed $(date +'%F_%T')";
-    notify-send --urgency=critical 'Backup failed!' 'Check journalctl for details.';
+    logprint_err "Backup of $HOST failed $(date +'%F_%T')";
     exit 1;
 fi
 
