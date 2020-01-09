@@ -16,7 +16,7 @@
     files-in = diff-tree --no-commit-id --name-only -r
     h = help
     knuff = push
-    lob = log --oneline --decorate --graph
+    lob = log --oneline --decorate --graph --branches
     l = log --oneline --decorate
     log = log --decorate
     new = diff --cached
