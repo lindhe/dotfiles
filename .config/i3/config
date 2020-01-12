@@ -40,11 +40,10 @@ set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
 ## Which border style will new windows have
-# default_border none
-# default_floating_border none
-## default_border don't exist in i3 4.14, so need to use old new_window
-new_window none
-new_window none
+default_border none
+default_floating_border none
+# ## default_border don't exist in i3 4.14, so need to use old new_window
+# new_window none
 
 # class border backgr text indicator
 client.focused #0099cc #0099cc #ffffff #2e9ef4
