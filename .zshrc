@@ -84,6 +84,10 @@ checksum() {
         printf 'sha256:\n'; sha256sum -c /tmp/hash.txt
 }
 
+title() {
+    echo -ne "\033]0;${1}\007"
+}
+
 # ddiso() {
 #     size=$(stat -c%s $1)
 #     dd if=$1 &> /dev/null | pv -petra -s $size | dd of=$2 bs=4k
