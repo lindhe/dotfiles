@@ -23,7 +23,7 @@
 # SOFTWARE.
 
 # The first argument given, $1, will be treated as the --max-size
-# If empty, --max-size is not set.
+# If $1 is empty, --max-size is not used.
 MAX_SIZE="${1:+--max-size ${1}}"
 
 BACKUP_SCRIPT_DIR='/etc/backup'
@@ -55,10 +55,13 @@ logprint_err () {
         "${1}\n\nPlease check journalctl for more info."
 }
 
+# When carging, we'll perform a full backup. Otherwise, just backup smaller files.
 if [ ! -z "$CHARGING" ] || [ ! -z "${MAX_SIZE}" ]; then
+    # Ethernet connection is always OK for backup
     if [ "$ETH_IF0_UP" = "UP" ] || [ "$ETH_IF1_UP" = "UP" ]; then
         echo "Performing backup over Ethernet";
         RUN=true;
+    # If there's a whitelist defined, match WLAN_SSID against that list.
     elif [ -f $AUTHFILE ]; then
         if [ ! -z "$WLAN_SSID" ]; then
             if [ ! -z "$(grep -e "^$WLAN_SSID$" "$AUTHFILE")" ]; then
