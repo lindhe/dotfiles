@@ -35,7 +35,7 @@ HOST=$(hostname)
 RUN=false;
 AUTHFILE=${BACKUP_SCRIPT_DIR}/authorized_networks.txt;
 CHARGING=$(acpi --ac-adapter | grep "on-line")
-WIFI=$(iwgetid --raw);
+WLAN_SSID=$(iwgetid --raw);
 ETH_IF0=eth0;
 ETH_IF1=eth1;
 ETH_IF0_UP=$(ip link show $ETH_IF0 | perl -n -e'/state (\w+)/ && print $1');
@@ -60,12 +60,12 @@ if [ ! -z "$CHARGING" ] || [ ! -z "${MAX_SIZE}" ]; then
         echo "Performing backup over Ethernet";
         RUN=true;
     elif [ -f $AUTHFILE ]; then
-        if [ ! -z "$WIFI" ]; then
-            if [ ! -z "$(grep -e "^$WIFI$" "$AUTHFILE")" ]; then
-                echo "Performing backup over Wi-fi: $WIFI";
+        if [ ! -z "$WLAN_SSID" ]; then
+            if [ ! -z "$(grep -e "^$WLAN_SSID$" "$AUTHFILE")" ]; then
+                echo "Performing backup over Wi-fi: $WLAN_SSID";
                 RUN=true;
             else
-                echo "Prohibited backup due to unauthorized Wi-fi: $WIFI";
+                echo "Prohibited backup due to unauthorized Wi-fi: $WLAN_SSID";
             fi
         else
             echo "Not connected to a network."
