@@ -60,10 +60,15 @@ DEFAULT_ROUTE_DEV=$(ip route show default | cut -d ' ' -f 5)
 
 # Determine network connection type
 CONNECTED_VIA_ETHERNET=false
+# Note that this check if an ethernet dev is a default route, but WLAN devices
+# might also be default routes (since there might be many). Not sure how to work
+# around this.
 for DEV in ${LIST_OF_ETH_IF[@]}; do
-    if [[ "${DEV}" = "${DEFAULT_ROUTE_DEV}" ]]; then
-        CONNECTED_VIA_ETHERNET=true
-    fi
+    for ROUTE_DEV in ${DEFAULT_ROUTE_DEV[@]}; do
+        if [[ "${DEV}" = "${ROUTE_DEV}" ]]; then
+            CONNECTED_VIA_ETHERNET=true
+        fi
+    done
 done
 
 # We'll always backup if charging or just making a small backup
