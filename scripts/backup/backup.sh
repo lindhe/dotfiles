@@ -66,7 +66,7 @@ for DEV in ${LIST_OF_ETH_IF[@]}; do
     fi
 done
 
-# When carging, we'll perform a full backup. Otherwise, just backup smaller files.
+# We'll always backup if charging or just making a small backup
 if [ ! -z "$CHARGING" ] || [ ! -z "${MAX_SIZE}" ]; then
     # Ethernet connection is always OK for backup
     if [[ "${CONNECTED_VIA_ETHERNET}" = "true" ]]; then
