@@ -36,10 +36,10 @@ RUN=false;
 AUTHFILE=${BACKUP_SCRIPT_DIR}/authorized_networks.txt;
 CHARGING=$(acpi --ac-adapter | grep "on-line")
 WLAN_SSID=$(iwgetid --raw);
-ETH_IF0=eth0;
-ETH_IF1=eth1;
-ETH_IF0_UP=$(ip link show $ETH_IF0 | perl -n -e'/state (\w+)/ && print $1');
-ETH_IF1_UP=$(ip link show $ETH_IF1 | perl -n -e'/state (\w+)/ && print $1');
+LIST_OF_ETH_IF=(
+    eth0
+    eth1
+)
 
 # print to both stdout and log
 logprint () {
@@ -55,11 +55,22 @@ logprint_err () {
         "${1}\n\nPlease check journalctl for more info."
 }
 
+# Check which device is used for default route
+DEFAULT_ROUTE_DEV=$(ip route show default | cut -d ' ' -f 5)
+
+# Determine network connection type
+CONNECTED_VIA_ETHERNET=false
+for DEV in ${LIST_OF_ETH_IF[@]}; do
+    if [[ "${DEV}" = "${DEFAULT_ROUTE_DEV}" ]]; then
+        CONNECTED_VIA_ETHERNET=true
+    fi
+done
+
 # When carging, we'll perform a full backup. Otherwise, just backup smaller files.
 if [ ! -z "$CHARGING" ] || [ ! -z "${MAX_SIZE}" ]; then
     # Ethernet connection is always OK for backup
-    if [ "$ETH_IF0_UP" = "UP" ] || [ "$ETH_IF1_UP" = "UP" ]; then
-        echo "Performing backup over Ethernet";
+    if [[ "${CONNECTED_VIA_ETHERNET}" = "true" ]]; then
+        echo "Performing backup over Ethernet (${DEFAULT_ROUTE_DEV})";
         RUN=true;
     # If there's a whitelist defined, match WLAN_SSID against that list.
     elif [ -f $AUTHFILE ]; then
