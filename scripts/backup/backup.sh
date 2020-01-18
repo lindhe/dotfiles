@@ -70,25 +70,25 @@ done
 if [ ! -z "$CHARGING" ] || [ ! -z "${MAX_SIZE}" ]; then
     # Ethernet connection is always OK for backup
     if [[ "${CONNECTED_VIA_ETHERNET}" = "true" ]]; then
-        echo "Performing backup over Ethernet (${DEFAULT_ROUTE_DEV})";
+        logprint "Performing backup over Ethernet (${DEFAULT_ROUTE_DEV})";
         RUN=true;
     # If there's a whitelist defined, match WLAN_SSID against that list.
     elif [ -f $AUTHFILE ]; then
         if [ ! -z "$WLAN_SSID" ]; then
             if [ ! -z "$(grep -e "^$WLAN_SSID$" "$AUTHFILE")" ]; then
-                echo "Performing backup over Wi-fi: $WLAN_SSID";
+                logprint "Performing backup over Wi-fi: $WLAN_SSID";
                 RUN=true;
             else
-                echo "Prohibited backup due to unauthorized Wi-fi: $WLAN_SSID";
+                logprint_err "Prohibited backup due to unauthorized Wi-fi: $WLAN_SSID";
             fi
         else
-            echo "Not connected to a network."
+            logprint_err "Could not identify network connection. Prohibiting backup."
         fi
     else
-        echo 'No AUTHFILE found!';
+        logprint_err 'No AUTHFILE found! Prohibiting backup over WLAN.';
     fi
 else
-    echo "Not charging."
+    logprint_err "Not charging. Prohibiting backup."
 fi
 
 if $RUN; then
