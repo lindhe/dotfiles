@@ -21,7 +21,7 @@
     log = log --decorate
     new = diff --cached
     nu = diff --cached --color-words
-    pl = !git pull && git log ORIG_HEAD..HEAD
+    pl = !git pull && git log ORIG_HEAD..origin/$(git branch --show-current)
     reb = rebase
     rem = remote -v
     s = status
