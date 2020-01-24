@@ -10,7 +10,9 @@ eth_if=$?
 monitors=$(xrandr --query | grep -E 'DP-[1-2]-[1-2] connected')
 
 if [ "$eth_if" == 0 ] || [ -n "$monitors" ]; then
+  echo "Connected to dock"
   true
 else
+  echo "Not connected to dock"
   false
 fi

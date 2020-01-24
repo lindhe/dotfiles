@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # monman, the monitor manager
 #
 # Author: Andreas Lindhé
