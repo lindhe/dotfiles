@@ -108,7 +108,6 @@ alias sudoedit="sudoedit "
 # General
 alias ..="cd .."
 alias bcl="bluetoothctl"
-alias cdh="cd ~/"
 alias df="df -H"
 alias du="du -h"
 alias l="ls -FHhlv --color=always --group-directories-first"
