@@ -5,6 +5,8 @@ RES=''
 ~/scripts/dock/check_for_dock.sh
 
 if [ $? -eq 0 ]; then
+    ~/scripts/dock/monman.py -d \
+        && RES='Undocking before new config!' || RES='Undocking failed!!';
     ~/scripts/dock/monman.py -a \
         && RES='Docking successful!' || RES='Docking failed!';
 else
