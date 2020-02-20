@@ -40,6 +40,7 @@ Plugin 'airblade/vim-gitgutter'         " Shows git diff (+/-) in the gutter
 Plugin 'wellle/targets.vim'             " Add more text objects to work on
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/searchfold.vim'     " fold lines not in /
+Plugin 'fatih/vim-go'                   " golang
 
 " Do I use these?
 Plugin 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
