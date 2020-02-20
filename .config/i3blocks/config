@@ -13,9 +13,9 @@ interval=1
 color=#FF8000
 instance=spotify
 
-[bandwidth]
-command=$SCRIPT_DIR/bandwidth/bandwidth
-interval=5
+# [bandwidth]
+# command=$SCRIPT_DIR/bandwidth/bandwidth
+# interval=5
 
 [iface]
 command=$SCRIPT_DIR/iface/iface
