@@ -168,9 +168,3 @@ alias cal="cal -m"
 alias starwars="telnet towel.blinkenlights.nl"
 alias gnu="gnuplot"
 alias vimcognito="vim -i NONE -u NONE -U NONE --cmd 'set noswapfile' --cmd 'set nobackup'"
-
-# Helm
-alias helm2="/usr/bin/helm"
-alias h2="/usr/bin/helm"
-alias helm3="/usr/local/bin/helm"
-alias h3="/usr/local/bin/helm"
