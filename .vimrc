@@ -42,6 +42,10 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/searchfold.vim'     " fold lines not in /
 Plugin 'fatih/vim-go'                   " golang
 
+" Looks
+Plugin 'junegunn/goyo.vim'              " Distraction-free writing in Vim
+Plugin 'flazz/vim-colorschemes'         " All the colorschemes
+
 " Do I use these?
 Plugin 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
 Plugin 'haya14busa/incsearch.vim'       " Improved hlsearch
