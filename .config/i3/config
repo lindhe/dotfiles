@@ -335,6 +335,8 @@ exec --no-startup-id redshift
 
 #########################     Application Specific     #########################
 # {{{
+
+# Floating Calculator
 for_window [class="Gnome-calculator"] floating enable
 # }}}
 
