@@ -6,13 +6,30 @@
 
 """ Update Cloudflare DNS record
 This script helps you to update a DNS recrod that lives on Cloudflare.
+
+Before running, make sure you have set the following environment variables:
+CF_DNS_API_TOKEN
+CF_DNS_ZONE_ID
+CF_DNS_RECORD_ID
 """
 
+from typing import List
+import os
 import sys
 import argparse
 
 def main(hostname: str):
-  pass
+  required_environment_variables = [
+      'CF_DNS_API_TOKEN',
+      'CF_DNS_ZONE_ID',
+      'CF_DNS_RECORD_ID'
+      ]
+  assert_env_vars(required_environment_variables)
+
+def assert_env_vars(envs: List):
+  for e in envs:
+    if not os.getenv(e):
+      sys.exit(f'ERROR: Environment variable {e} is not defined.')
 
 if __name__ == '__main__':
   # Bootstrapping
