@@ -35,7 +35,10 @@ if __name__ == '__main__':
   # Bootstrapping
   p = argparse.ArgumentParser(description="Updates a DNS record on Cloudflare")
   # Add cli arguments
+  p.add_argument('--content', help="content of the hostname", required=True)
   p.add_argument('--hostname', help="hostname to update", required=True)
+  p.add_argument('--ttl', help="ttl in seconds for the DNS record (default: 3600)", default=3600)
+  p.add_argument('--type', help="record type (default: A)", choices=['A', 'AAAA', 'CNAME'], default='A')
   # Run:
   args = p.parse_args()
   try:
