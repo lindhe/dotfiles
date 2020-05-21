@@ -160,6 +160,7 @@ alias tree="tree -C"
 alias watch="watch --color"
 
 # Dev
+export GOPATH=/home/andreas/go
 alias d="docker"
 alias dc="docker container ls"
 alias k="kubectl"
