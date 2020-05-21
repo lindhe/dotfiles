@@ -5,23 +5,24 @@
     b = branch
     bi = bisect
     bra = branch -v
+    c = commit
     change = commit --amend -v
     cl = clone
+    cm = commit -m
     co = checkout
     com = commit -v
-    cm = commit -m
     df = diff --color-words
     dif = diff
     dra = pull
     files-in = diff-tree --no-commit-id --name-only -r
     h = help
     knuff = push
-    lob = log --oneline --decorate --graph --branches
     l = log --oneline --decorate
+    lob = log --oneline --decorate --graph --branches
     log = log --decorate
     new = diff --cached
-    nw = diff --cached --color-words
     nu = diff --cached --color-words
+    nw = diff --cached --color-words
     pl = !git pull && git log ORIG_HEAD..origin/$(git branch --show-current)
     reb = rebase
     rem = remote -v
@@ -32,7 +33,6 @@
     sw = switch
     whatchanged = log ORIG_HEAD..HEAD
     wt = worktree
-    c = commit
 [branch]
     autosetuprebase = always
 [pull]
