@@ -9,7 +9,7 @@
     cl = clone
     co = checkout
     com = commit -v
-    comm = commit -m
+    cm = commit -m
     df = diff --color-words
     dif = diff
     dra = pull
@@ -20,6 +20,7 @@
     l = log --oneline --decorate
     log = log --decorate
     new = diff --cached
+    nw = diff --cached --color-words
     nu = diff --cached --color-words
     pl = !git pull && git log ORIG_HEAD..origin/$(git branch --show-current)
     reb = rebase
@@ -31,6 +32,7 @@
     sw = switch
     whatchanged = log ORIG_HEAD..HEAD
     wt = worktree
+    c = commit
 #   difftex = difftool -y -t latex
 [branch]
     autosetuprebase = always
