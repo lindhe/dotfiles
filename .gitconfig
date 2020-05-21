@@ -33,7 +33,6 @@
     whatchanged = log ORIG_HEAD..HEAD
     wt = worktree
     c = commit
-#   difftex = difftool -y -t latex
 [branch]
     autosetuprebase = always
 [pull]
@@ -44,8 +43,6 @@
     excludesfile = ~/.gitignore_global
     editor = vim
     quotepath = off
-# [difftool.latex]
-#    cmd = latexdiff "$LOCAL" "$REMOTE"
 [push]
     default = simple
 [color]
