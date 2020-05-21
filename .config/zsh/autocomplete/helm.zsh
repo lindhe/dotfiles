@@ -36,7 +36,10 @@ __helm_compgen() {
 	fi
 	for w in "${completions[@]}"; do
 		if [[ "${w}" = "$1"* ]]; then
-			echo "${w}"
+			# Use printf instead of echo beause it is possible that
+			# the value to print is -n, which would be interpreted
+			# as a flag to echo
+			printf "%s\n" "${w}"
 		fi
 	done
 }
@@ -378,47 +381,6 @@ __helm_handle_word()
 }
 
 
-__helm_override_flag_list=(--kubeconfig --kube-context --namespace -n)
-__helm_override_flags()
-{
-    local ${__helm_override_flag_list[*]##*-} two_word_of of var
-    for w in "${words[@]}"; do
-        if [ -n "${two_word_of}" ]; then
-            eval "${two_word_of##*-}=\"${two_word_of}=\${w}\""
-            two_word_of=
-            continue
-        fi
-        for of in "${__helm_override_flag_list[@]}"; do
-            case "${w}" in
-                ${of}=*)
-                    eval "${of##*-}=\"${w}\""
-                    ;;
-                ${of})
-                    two_word_of="${of}"
-                    ;;
-            esac
-        done
-    done
-    for var in "${__helm_override_flag_list[@]##*-}"; do
-        if eval "test -n \"\$${var}\""; then
-            eval "echo \${${var}}"
-        fi
-    done
-}
-
-__helm_override_flags_to_kubectl_flags()
-{
-    # --kubeconfig, -n, --namespace stay the same for kubectl
-    # --kube-context becomes --context for kubectl
-    __helm_debug "${FUNCNAME[0]}: flags to convert: $1"
-    echo "$1" | sed s/kube-context/context/
-}
-
-__helm_get_repos()
-{
-    eval $(__helm_binary_name) repo list 2>/dev/null | tail +2 | cut -f1
-}
-
 __helm_get_contexts()
 {
     __helm_debug "${FUNCNAME[0]}: c is $c words[c] is ${words[c]}"
@@ -429,217 +391,60 @@ __helm_get_contexts()
     fi
 }
 
-__helm_get_namespaces()
-{
-    __helm_debug "${FUNCNAME[0]}: c is $c words[c] is ${words[c]}"
-    local template out
-    template="{{ range .items  }}{{ .metadata.name }} {{ end }}"
-
-    flags=$(__helm_override_flags_to_kubectl_flags "$(__helm_override_flags)")
-    __helm_debug "${FUNCNAME[0]}: override flags for kubectl are: $flags"
-
-    # Must use eval in case the flags contain a variable such as $HOME
-    if out=$(eval kubectl get ${flags} -o template --template=\"${template}\" namespace 2>/dev/null); then
-        COMPREPLY+=( $( compgen -W "${out[*]}" -- "$cur" ) )
-    fi
-}
-
-__helm_output_options()
-{
-    __helm_debug "${FUNCNAME[0]}: c is $c words[c] is ${words[c]}"
-    COMPREPLY+=( $( compgen -W "table json yaml" -- "$cur" ) )
-}
-
-__helm_binary_name()
-{
-    local helm_binary
-    helm_binary="${words[0]}"
-    __helm_debug "${FUNCNAME[0]}: helm_binary is ${helm_binary}"
-    echo ${helm_binary}
-}
-
-# This function prevents the zsh shell from adding a space after
-# a completion by adding a second, fake completion
-__helm_zsh_comp_nospace() {
-    __helm_debug "${FUNCNAME[0]}: in is ${in[*]}"
-
-    local out in=("$@")
-
-    # The shell will normally add a space after these completions.
-    # To avoid that we should use "compopt -o nospace".  However, it is not
-    # available in zsh.
-    # Instead, we trick the shell by pretending there is a second, longer match.
-    # We only do this if there is a single choice left for completion
-    # to reduce the times the user could be presented with the fake completion choice.
-
-    out=($(echo ${in[*]} | tr " " "\n" | \grep "^${cur}"))
-    __helm_debug "${FUNCNAME[0]}: out is ${out[*]}"
-
-    [ ${#out[*]} -eq 1 ] && out+=("${out}.")
-
-    __helm_debug "${FUNCNAME[0]}: out is now ${out[*]}"
-
-    echo "${out[*]}"
-}
-
-# $1 = 1 if the completion should include local charts (which means file completion)
-__helm_list_charts()
-{
-    __helm_debug "${FUNCNAME[0]}: c is $c words[c] is ${words[c]}"
-    local repo url file out=() nospace=0 wantFiles=$1
-
-    # Handle completions for repos
-    for repo in $(__helm_get_repos); do
-        if [[ "${cur}" =~ ^${repo}/.* ]]; then
-            # We are doing completion from within a repo
-            out=$(eval $(__helm_binary_name) search repo ${cur} 2>/dev/null | cut -f1 | \grep ^${cur})
-            nospace=0
-        elif [[ ${repo} =~ ^${cur}.* ]]; then
-            # We are completing a repo name
-            out+=(${repo}/)
-            nospace=1
-        fi
-    done
-    __helm_debug "${FUNCNAME[0]}: out after repos is ${out[*]}"
-
-    # Handle completions for url prefixes
-    for url in https:// http:// file://; do
-        if [[ "${cur}" =~ ^${url}.* ]]; then
-            # The user already put in the full url prefix.  Return it
-            # back as a completion to avoid the shell doing path completion
-            out="${cur}"
-            nospace=1
-        elif [[ ${url} =~ ^${cur}.* ]]; then
-            # We are completing a url prefix
-            out+=(${url})
-            nospace=1
-        fi
-    done
-    __helm_debug "${FUNCNAME[0]}: out after urls is ${out[*]}"
-
-    # Handle completion for files.
-    # We only do this if:
-    #   1- There are other completions found (if there are no completions,
-    #      the shell will do file completion itself)
-    #   2- If there is some input from the user (or else we will end up
-    #      lising the entire content of the current directory which will
-    #      be too many choices for the user to find the real repos)
-    if [ $wantFiles -eq 1 ] && [ -n "${out[*]}" ] && [ -n "${cur}" ]; then
-        for file in $(\ls); do
-            if [[ ${file} =~ ^${cur}.* ]]; then
-                # We are completing a file prefix
-                out+=(${file})
-                nospace=1
-            fi
-        done
-    fi
-    __helm_debug "${FUNCNAME[0]}: out after files is ${out[*]}"
-
-    # If the user didn't provide any input to completion,
-    # we provide a hint that a path can also be used
-    [ $wantFiles -eq 1 ] && [ -z "${cur}" ] && out+=(./ /)
-
-    __helm_debug "${FUNCNAME[0]}: out after checking empty input is ${out[*]}"
-
-    if [ $nospace -eq 1 ]; then
-        if [[ -n "${ZSH_VERSION}" ]]; then
-            # Don't let the shell add a space after the completion
-            local tmpout=$(__helm_zsh_comp_nospace "${out[@]}")
-            unset out
-            out=$tmpout
-        elif [[ $(type -t compopt) = "builtin" ]]; then
-            compopt -o nospace
-        fi
-    fi
-
-    __helm_debug "${FUNCNAME[0]}: final out is ${out[*]}"
-    COMPREPLY=( $( compgen -W "${out[*]}" -- "$cur" ) )
-}
-
-__helm_list_releases()
-{
-	__helm_debug "${FUNCNAME[0]}: c is $c words[c] is ${words[c]}"
-	local out filter
-	# Use ^ to map from the start of the release name
-	filter="^${words[c]}"
-    # Use eval in case helm_binary_name or __helm_override_flags contains a variable (e.g., $HOME/bin/h3)
-    if out=$(eval $(__helm_binary_name) list $(__helm_override_flags) -a -q -m 1000 -f ${filter} 2>/dev/null); then
-        COMPREPLY=( $( compgen -W "${out[*]}" -- "$cur" ) )
-    fi
-}
-
-__helm_list_repos()
-{
-    __helm_debug "${FUNCNAME[0]}: c is $c words[c] is ${words[c]}"
-    local out
-    # Use eval in case helm_binary_name contains a variable (e.g., $HOME/bin/h3)
-    if out=$(__helm_get_repos); then
-        COMPREPLY=( $( compgen -W "${out[*]}" -- "$cur" ) )
-    fi
-}
-
-__helm_list_plugins()
-{
-    __helm_debug "${FUNCNAME[0]}: c is $c words[c] is ${words[c]}"
-    local out
-    # Use eval in case helm_binary_name contains a variable (e.g., $HOME/bin/h3)
-    if out=$(eval $(__helm_binary_name) plugin list 2>/dev/null | tail +2 | cut -f1); then
-        COMPREPLY=( $( compgen -W "${out[*]}" -- "$cur" ) )
-    fi
-}
-
-__helm_list_charts_after_name() {
-    __helm_debug "${FUNCNAME[0]}: last_command is $last_command"
-    if [[ ${#nouns[@]} -eq 1 ]]; then
-        __helm_list_charts 1
-    fi
-}
-
-__helm_list_releases_then_charts() {
-    __helm_debug "${FUNCNAME[0]}: last_command is $last_command"
-    if [[ ${#nouns[@]} -eq 0 ]]; then
-        __helm_list_releases
-    elif [[ ${#nouns[@]} -eq 1 ]]; then
-        __helm_list_charts 1
-    fi
-}
-
 __helm_custom_func()
 {
-    __helm_debug "${FUNCNAME[0]}: last_command is $last_command"
-    case ${last_command} in
-        helm_pull)
-            __helm_list_charts 0
-            return
-            ;;
-        helm_show_*)
-            __helm_list_charts 1
-            return
-            ;;
-        helm_install | helm_template)
-            __helm_list_charts_after_name
-            return
-            ;;
-        helm_upgrade)
-            __helm_list_releases_then_charts
-            return
-            ;;
-        helm_uninstall | helm_history | helm_status | helm_test |\
-        helm_rollback | helm_get_*)
-            __helm_list_releases
-            return
-            ;;
-        helm_repo_remove)
-            __helm_list_repos
-            return
-            ;;
-        helm_plugin_uninstall | helm_plugin_update)
-            __helm_list_plugins
-            return
-            ;;
-        *)
-            ;;
-    esac
+    __helm_debug "${FUNCNAME[0]}: c is $c, words[@] is ${words[@]}, #words[@] is ${#words[@]}"
+    __helm_debug "${FUNCNAME[0]}: cur is ${cur}, cword is ${cword}, words is ${words}"
+
+    local out requestComp lastParam lastChar
+    requestComp="${words[0]} __complete ${words[@]:1}"
+
+    lastParam=${words[$((${#words[@]}-1))]}
+    lastChar=${lastParam:$((${#lastParam}-1)):1}
+    __helm_debug "${FUNCNAME[0]}: lastParam ${lastParam}, lastChar ${lastChar}"
+
+    if [ -z "${cur}" ] && [ "${lastChar}" != "=" ]; then
+        # If the last parameter is complete (there is a space following it)
+        # We add an extra empty parameter so we can indicate this to the go method.
+        __helm_debug "${FUNCNAME[0]}: Adding extra empty parameter"
+        requestComp="${requestComp} \"\""
+    fi
+
+    __helm_debug "${FUNCNAME[0]}: calling ${requestComp}"
+    # Use eval to handle any environment variables and such
+    out=$(eval ${requestComp} 2>/dev/null)
+
+    # Extract the directive int at the very end of the output following a :
+    directive=${out##*:}
+    # Remove the directive
+    out=${out%:*}
+    if [ "${directive}" = "${out}" ]; then
+        # There is not directive specified
+        directive=0
+    fi
+    __helm_debug "${FUNCNAME[0]}: the completion directive is: ${directive}"
+    __helm_debug "${FUNCNAME[0]}: the completions are: ${out[*]}"
+
+    if [ $((${directive} & 1)) -ne 0 ]; then
+        __helm_debug "${FUNCNAME[0]}: received error, completion failed"
+    else
+        if [ $((${directive} & 2)) -ne 0 ]; then
+            if [[ $(type -t compopt) = "builtin" ]]; then
+                __helm_debug "${FUNCNAME[0]}: activating no space"
+                compopt -o nospace
+            fi
+        fi
+        if [ $((${directive} & 4)) -ne 0 ]; then
+            if [[ $(type -t compopt) = "builtin" ]]; then
+                __helm_debug "${FUNCNAME[0]}: activating no file completion"
+                compopt +o default
+            fi
+        fi
+
+        while IFS='' read -r comp; do
+            COMPREPLY+=("$comp")
+        done < <(compgen -W "${out[*]}" -- "$cur")
+    fi
 }
 
 _helm_completion()
@@ -680,10 +485,10 @@ _helm_completion()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -746,10 +551,10 @@ _helm_create()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -811,10 +616,10 @@ _helm_dependency_build()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -871,10 +676,10 @@ _helm_dependency_list()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -938,10 +743,10 @@ _helm_dependency_update()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -1009,10 +814,10 @@ _helm_dependency()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -1069,10 +874,10 @@ _helm_env()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -1110,6 +915,8 @@ _helm_get_all()
 
     flags+=("--revision=")
     two_word_flags+=("--revision")
+    flags_with_completion+=("--revision")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--revision=")
     flags+=("--template=")
     two_word_flags+=("--template")
@@ -1135,10 +942,10 @@ _helm_get_all()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -1176,6 +983,8 @@ _helm_get_hooks()
 
     flags+=("--revision=")
     two_word_flags+=("--revision")
+    flags_with_completion+=("--revision")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--revision=")
     flags+=("--add-dir-header")
     flags+=("--alsologtostderr")
@@ -1198,10 +1007,10 @@ _helm_get_hooks()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -1239,6 +1048,8 @@ _helm_get_manifest()
 
     flags+=("--revision=")
     two_word_flags+=("--revision")
+    flags_with_completion+=("--revision")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--revision=")
     flags+=("--add-dir-header")
     flags+=("--alsologtostderr")
@@ -1261,10 +1072,10 @@ _helm_get_manifest()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -1302,6 +1113,8 @@ _helm_get_notes()
 
     flags+=("--revision=")
     two_word_flags+=("--revision")
+    flags_with_completion+=("--revision")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--revision=")
     flags+=("--add-dir-header")
     flags+=("--alsologtostderr")
@@ -1324,10 +1137,10 @@ _helm_get_notes()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -1369,13 +1182,15 @@ _helm_get_values()
     flags+=("--output=")
     two_word_flags+=("--output")
     flags_with_completion+=("--output")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-o")
     flags_with_completion+=("-o")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--output=")
     flags+=("--revision=")
     two_word_flags+=("--revision")
+    flags_with_completion+=("--revision")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--revision=")
     flags+=("--add-dir-header")
     flags+=("--alsologtostderr")
@@ -1398,10 +1213,10 @@ _helm_get_values()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -1463,10 +1278,10 @@ _helm_get()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -1508,10 +1323,10 @@ _helm_history()
     flags+=("--output=")
     two_word_flags+=("--output")
     flags_with_completion+=("--output")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-o")
     flags_with_completion+=("-o")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--output=")
     flags+=("--add-dir-header")
     flags+=("--alsologtostderr")
@@ -1534,10 +1349,10 @@ _helm_history()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -1583,8 +1398,13 @@ _helm_install()
     local_nonpersistent_flags+=("--cert-file=")
     flags+=("--dependency-update")
     local_nonpersistent_flags+=("--dependency-update")
+    flags+=("--description=")
+    two_word_flags+=("--description")
+    local_nonpersistent_flags+=("--description=")
     flags+=("--devel")
     local_nonpersistent_flags+=("--devel")
+    flags+=("--disable-openapi-validation")
+    local_nonpersistent_flags+=("--disable-openapi-validation")
     flags+=("--dry-run")
     local_nonpersistent_flags+=("--dry-run")
     flags+=("--generate-name")
@@ -1604,14 +1424,17 @@ _helm_install()
     flags+=("--output=")
     two_word_flags+=("--output")
     flags_with_completion+=("--output")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-o")
     flags_with_completion+=("-o")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--output=")
     flags+=("--password=")
     two_word_flags+=("--password")
     local_nonpersistent_flags+=("--password=")
+    flags+=("--post-renderer=")
+    two_word_flags+=("--post-renderer")
+    local_nonpersistent_flags+=("--post-renderer=")
     flags+=("--render-subchart-notes")
     local_nonpersistent_flags+=("--render-subchart-notes")
     flags+=("--replace")
@@ -1668,10 +1491,10 @@ _helm_install()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -1722,6 +1545,8 @@ _helm_lint()
     two_word_flags+=("--values")
     two_word_flags+=("-f")
     local_nonpersistent_flags+=("--values=")
+    flags+=("--with-subcharts")
+    local_nonpersistent_flags+=("--with-subcharts")
     flags+=("--add-dir-header")
     flags+=("--alsologtostderr")
     flags+=("--debug")
@@ -1743,10 +1568,10 @@ _helm_lint()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -1786,6 +1611,7 @@ _helm_list()
     flags+=("-a")
     local_nonpersistent_flags+=("--all")
     flags+=("--all-namespaces")
+    flags+=("-A")
     local_nonpersistent_flags+=("--all-namespaces")
     flags+=("--date")
     flags+=("-d")
@@ -1808,10 +1634,10 @@ _helm_list()
     flags+=("--output=")
     two_word_flags+=("--output")
     flags_with_completion+=("--output")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-o")
     flags_with_completion+=("-o")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--output=")
     flags+=("--pending")
     local_nonpersistent_flags+=("--pending")
@@ -1848,10 +1674,10 @@ _helm_list()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -1903,21 +1729,8 @@ _helm_package()
     flags+=("--keyring=")
     two_word_flags+=("--keyring")
     local_nonpersistent_flags+=("--keyring=")
-    flags+=("--set=")
-    two_word_flags+=("--set")
-    local_nonpersistent_flags+=("--set=")
-    flags+=("--set-file=")
-    two_word_flags+=("--set-file")
-    local_nonpersistent_flags+=("--set-file=")
-    flags+=("--set-string=")
-    two_word_flags+=("--set-string")
-    local_nonpersistent_flags+=("--set-string=")
     flags+=("--sign")
     local_nonpersistent_flags+=("--sign")
-    flags+=("--values=")
-    two_word_flags+=("--values")
-    two_word_flags+=("-f")
-    local_nonpersistent_flags+=("--values=")
     flags+=("--version=")
     two_word_flags+=("--version")
     local_nonpersistent_flags+=("--version=")
@@ -1942,10 +1755,10 @@ _helm_package()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2005,10 +1818,10 @@ _helm_plugin_install()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2065,10 +1878,10 @@ _helm_plugin_list()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2125,10 +1938,10 @@ _helm_plugin_uninstall()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2185,10 +1998,10 @@ _helm_plugin_update()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2267,10 +2080,10 @@ _helm_plugin()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2366,10 +2179,10 @@ _helm_pull()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2443,10 +2256,10 @@ _helm_repo_add()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2509,10 +2322,10 @@ _helm_repo_index()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2551,10 +2364,10 @@ _helm_repo_list()
     flags+=("--output=")
     two_word_flags+=("--output")
     flags_with_completion+=("--output")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-o")
     flags_with_completion+=("-o")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--output=")
     flags+=("--add-dir-header")
     flags+=("--alsologtostderr")
@@ -2577,10 +2390,10 @@ _helm_repo_list()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2637,10 +2450,10 @@ _helm_repo_remove()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2697,10 +2510,10 @@ _helm_repo_update()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2774,10 +2587,10 @@ _helm_repo()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2849,10 +2662,10 @@ _helm_rollback()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2897,10 +2710,10 @@ _helm_search_hub()
     flags+=("--output=")
     two_word_flags+=("--output")
     flags_with_completion+=("--output")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-o")
     flags_with_completion+=("-o")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--output=")
     flags+=("--add-dir-header")
     flags+=("--alsologtostderr")
@@ -2923,10 +2736,10 @@ _helm_search_hub()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -2970,10 +2783,10 @@ _helm_search_repo()
     flags+=("--output=")
     two_word_flags+=("--output")
     flags_with_completion+=("--output")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-o")
     flags_with_completion+=("-o")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--output=")
     flags+=("--regexp")
     flags+=("-r")
@@ -3005,10 +2818,10 @@ _helm_search_repo()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -3067,10 +2880,10 @@ _helm_search()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -3153,10 +2966,10 @@ _helm_show_all()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -3239,10 +3052,10 @@ _helm_show_chart()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -3325,10 +3138,10 @@ _helm_show_readme()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -3411,10 +3224,10 @@ _helm_show_values()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -3475,10 +3288,10 @@ _helm_show()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -3517,13 +3330,15 @@ _helm_status()
     flags+=("--output=")
     two_word_flags+=("--output")
     flags_with_completion+=("--output")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-o")
     flags_with_completion+=("-o")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--output=")
     flags+=("--revision=")
     two_word_flags+=("--revision")
+    flags_with_completion+=("--revision")
+    flags_completion+=("__helm_custom_func")
     flags+=("--add-dir-header")
     flags+=("--alsologtostderr")
     flags+=("--debug")
@@ -3545,10 +3360,10 @@ _helm_status()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -3598,13 +3413,22 @@ _helm_template()
     local_nonpersistent_flags+=("--cert-file=")
     flags+=("--dependency-update")
     local_nonpersistent_flags+=("--dependency-update")
+    flags+=("--description=")
+    two_word_flags+=("--description")
+    local_nonpersistent_flags+=("--description=")
     flags+=("--devel")
     local_nonpersistent_flags+=("--devel")
+    flags+=("--disable-openapi-validation")
+    local_nonpersistent_flags+=("--disable-openapi-validation")
     flags+=("--dry-run")
     local_nonpersistent_flags+=("--dry-run")
     flags+=("--generate-name")
     flags+=("-g")
     local_nonpersistent_flags+=("--generate-name")
+    flags+=("--include-crds")
+    local_nonpersistent_flags+=("--include-crds")
+    flags+=("--is-upgrade")
+    local_nonpersistent_flags+=("--is-upgrade")
     flags+=("--key-file=")
     two_word_flags+=("--key-file")
     local_nonpersistent_flags+=("--key-file=")
@@ -3622,6 +3446,11 @@ _helm_template()
     flags+=("--password=")
     two_word_flags+=("--password")
     local_nonpersistent_flags+=("--password=")
+    flags+=("--post-renderer=")
+    two_word_flags+=("--post-renderer")
+    local_nonpersistent_flags+=("--post-renderer=")
+    flags+=("--release-name")
+    local_nonpersistent_flags+=("--release-name")
     flags+=("--render-subchart-notes")
     local_nonpersistent_flags+=("--render-subchart-notes")
     flags+=("--replace")
@@ -3684,10 +3513,10 @@ _helm_template()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -3749,10 +3578,10 @@ _helm_test()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -3788,6 +3617,9 @@ _helm_uninstall()
     flags_with_completion=()
     flags_completion=()
 
+    flags+=("--description=")
+    two_word_flags+=("--description")
+    local_nonpersistent_flags+=("--description=")
     flags+=("--dry-run")
     local_nonpersistent_flags+=("--dry-run")
     flags+=("--keep-history")
@@ -3818,10 +3650,10 @@ _helm_uninstall()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -3867,6 +3699,9 @@ _helm_upgrade()
     local_nonpersistent_flags+=("--cert-file=")
     flags+=("--cleanup-on-fail")
     local_nonpersistent_flags+=("--cleanup-on-fail")
+    flags+=("--description=")
+    two_word_flags+=("--description")
+    local_nonpersistent_flags+=("--description=")
     flags+=("--devel")
     local_nonpersistent_flags+=("--devel")
     flags+=("--dry-run")
@@ -3890,14 +3725,17 @@ _helm_upgrade()
     flags+=("--output=")
     two_word_flags+=("--output")
     flags_with_completion+=("--output")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-o")
     flags_with_completion+=("-o")
-    flags_completion+=("__helm_output_options")
+    flags_completion+=("__helm_custom_func")
     local_nonpersistent_flags+=("--output=")
     flags+=("--password=")
     two_word_flags+=("--password")
     local_nonpersistent_flags+=("--password=")
+    flags+=("--post-renderer=")
+    two_word_flags+=("--post-renderer")
+    local_nonpersistent_flags+=("--post-renderer=")
     flags+=("--render-subchart-notes")
     local_nonpersistent_flags+=("--render-subchart-notes")
     flags+=("--repo=")
@@ -3916,6 +3754,8 @@ _helm_upgrade()
     flags+=("--set-string=")
     two_word_flags+=("--set-string")
     local_nonpersistent_flags+=("--set-string=")
+    flags+=("--skip-crds")
+    local_nonpersistent_flags+=("--skip-crds")
     flags+=("--timeout=")
     two_word_flags+=("--timeout")
     local_nonpersistent_flags+=("--timeout=")
@@ -3954,10 +3794,10 @@ _helm_upgrade()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -4017,10 +3857,10 @@ _helm_verify()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -4082,10 +3922,10 @@ _helm_version()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
@@ -4195,10 +4035,10 @@ _helm_root_command()
     flags+=("--namespace=")
     two_word_flags+=("--namespace")
     flags_with_completion+=("--namespace")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     two_word_flags+=("-n")
     flags_with_completion+=("-n")
-    flags_completion+=("__helm_get_namespaces")
+    flags_completion+=("__helm_custom_func")
     flags+=("--registry-config=")
     two_word_flags+=("--registry-config")
     flags+=("--repository-cache=")
