@@ -5,7 +5,7 @@
     b = branch
     bi = bisect
     bra = branch -v
-    c = commit
+    c = commit -v
     change = commit --amend -v
     cl = clone
     cm = commit -m
