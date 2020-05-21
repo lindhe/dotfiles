@@ -132,6 +132,7 @@ alias vimrc="vim ~/.vimrc"
 alias watch="watch --color"
 alias yao="yaourt"
 alias zshrc="vim ~/.zshrc"
+alias gitdiff="git diff --no-index --"
 
 # Docking
 alias keyboard="xset r rate 330 75; setxkbmap se-A5; setxkbmap -option caps:swapescape"
@@ -163,6 +164,8 @@ alias d="docker"
 alias dc="docker container ls"
 alias k="kubectl"
 alias h="helm"
+alias mk="microk8s.kubectl"
+alias pp="pipenv"
 
 # non-important
 alias pwd="pwd | tee | xclip -i; xclip -o"
@@ -170,3 +173,4 @@ alias cal="cal -m"
 alias starwars="telnet towel.blinkenlights.nl"
 alias gnu="gnuplot"
 alias vimcognito="vim -i NONE -u NONE -U NONE --cmd 'set noswapfile' --cmd 'set nobackup'"
+
