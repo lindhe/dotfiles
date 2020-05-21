@@ -61,3 +61,7 @@ setlocal statusline+=\(%{WordCount()}\ w)
 """""""""""""""""""""""""""""""     Writing     """""""""""""""""""""""""""""""
 
 inoremap .<space> .<CR>
+
+""""""""""""""""""""""""""""     Proof reading     """"""""""""""""""""""""""""
+nnoremap hn ]s
+nnoremap hy [s
