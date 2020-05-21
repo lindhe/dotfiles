@@ -167,7 +167,6 @@ alias k="kubectl"
 alias h="helm"
 alias mk="microk8s.kubectl"
 alias pp="pipenv"
-alias ip="ipython3"
 
 # non-important
 alias pwd="pwd | tee | xclip -i; xclip -o"
