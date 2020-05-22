@@ -1,69 +1,55 @@
-""""""""""""""""""""""""""""""""     vimrc     """""""""""""""""""""""""""""""""{{{
+""""""""""""""""""""""""""""""""     vimrc     """"""""""""""""""""""""""""""{{{
 set nocompatible              " be iMproved, required
 set encoding=utf-8
-filetype off                  " required
+"}}}
 
-"set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
+"""""""""""""""""""""""""""""""     vim-plug     """"""""""""""""""""""""""""{{{
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 "}}}
 
 """""""""""""""""""""""""""""""     Plugins     """"""""""""""""""""""""""""""""{{{
+call plug#begin('~/.vim/plugged')
+
 " Can't imagine Vim without these
-Plugin 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
-Plugin 'tpope/vim-sensible'             " Fix the stupid things left from Vi
-Plugin 'tpope/vim-repeat'               " Make . repeat (some) plugin actions
-Plugin 'tpope/vim-speeddating'          " <c-a> and <c-x> correct with iso dates
-Plugin 'tpope/vim-commentary'           " Toggle comments
-Plugin 'junegunn/vim-easy-align'        " Align on a character: `gaip&`
+Plug 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
+Plug 'tpope/vim-sensible'             " Fix the stupid things left from Vi
+Plug 'tpope/vim-repeat'               " Make . repeat (some) plugin actions
+Plug 'tpope/vim-speeddating'          " <c-a> and <c-x> correct with iso dates
+Plug 'tpope/vim-commentary'           " Toggle comments
+Plug 'junegunn/vim-easy-align'        " Align on a character: `gaip&`
 
 " TPopes corner:
-Plugin 'tpope/vim-endwise'              " Autocomplete if ... endif
-Plugin 'tpope/vim-abolish'              " Change words better
+Plug 'tpope/vim-endwise'              " Autocomplete if ... endif
+Plug 'tpope/vim-abolish'              " Change words better
 
 " Syntax highligting
-Plugin 'mephux/bro.vim'                 " For bro scripts
-Plugin 'chikamichi/mediawiki.vim'       " Syntax highlighting for MediaWiki-based projects
+Plug 'mephux/bro.vim'                 " For bro scripts
+Plug 'chikamichi/mediawiki.vim'       " Syntax highlighting for MediaWiki-based projects
 
 " Writing
-Plugin 'godlygeek/tabular'              " Good at aligning on multiple chars at once: `:Tab /&`
+Plug 'godlygeek/tabular'              " Good at aligning on multiple chars at once: `:Tab /&`
 
 " Beta:
-Plugin 'jpalardy/vim-slime'
-Plugin 'airblade/vim-gitgutter'         " Shows git diff (+/-) in the gutter
-Plugin 'wellle/targets.vim'             " Add more text objects to work on
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'vim-scripts/searchfold.vim'     " fold lines not in /
-Plugin 'fatih/vim-go'                   " golang
+Plug 'jpalardy/vim-slime'
+Plug 'airblade/vim-gitgutter'         " Shows git diff (+/-) in the gutter
+Plug 'wellle/targets.vim'             " Add more text objects to work on
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'vim-scripts/searchfold.vim'     " fold lines not in /
+Plug 'fatih/vim-go'                   " golang
 
 " Looks
-Plugin 'junegunn/goyo.vim'              " Distraction-free writing in Vim
-Plugin 'flazz/vim-colorschemes'         " All the colorschemes
+Plug 'junegunn/goyo.vim'              " Distraction-free writing in Vim
+Plug 'flazz/vim-colorschemes'         " All the colorschemes
 
 " Do I use these?
-Plugin 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
-Plugin 'haya14busa/incsearch.vim'       " Improved hlsearch
+Plug 'LaTeX-Box-Team/LaTeX-Box'       " LaTeX tools
+Plug 'haya14busa/incsearch.vim'       " Improved hlsearch
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""     Non plugin stuff     """""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+call plug#end()
 "}}}
 
 """""""""""""""""""""""""""     Usability fixes     """"""""""""""""""""""""""""{{{
@@ -120,7 +106,6 @@ set splitbelow
 set splitright
 set list
 set hlsearch
-syntax enable
 syntax spell toplevel
 set showmatch
 set sidescroll=1
