@@ -40,6 +40,7 @@ Plug 'wellle/targets.vim'             " Add more text objects to work on
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/searchfold.vim'     " fold lines not in /
 Plug 'fatih/vim-go'                   " golang
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " Looks
 Plug 'junegunn/goyo.vim'              " Distraction-free writing in Vim
