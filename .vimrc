@@ -41,6 +41,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/searchfold.vim'     " fold lines not in /
 Plug 'fatih/vim-go'                   " golang
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'scrooloose/nerdtree'
+Plug 'mbbill/undotree'
+
 
 " Looks
 Plug 'junegunn/goyo.vim'              " Distraction-free writing in Vim
@@ -331,6 +334,9 @@ let g:slime_target = "tmux"
 let g:slime_paste_file = "/tmp/slime_paste"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "0"}
 let g:slime_dont_ask_default = 1
+
+" NERDTree
+map <C-o> :NERDTreeToggle<CR>
 
 "}}}
 
