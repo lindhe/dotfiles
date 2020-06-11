@@ -48,7 +48,7 @@
     editor = vim
     quotepath = off
 [push]
-    default = simple
+	default = current
 [color]
     status = always
 [filter "lfs"]
