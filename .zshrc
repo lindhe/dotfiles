@@ -41,6 +41,7 @@ source ~/.config/zsh/autocomplete/kubectl.zsh
 
 # Exports
 export PATH=$PATH
+export PATH="${PATH}:${HOME}/.krew/bin"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
