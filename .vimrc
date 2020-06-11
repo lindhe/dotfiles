@@ -355,6 +355,7 @@ let g:tex_flavor = "latex"
 au BufReadPost *.repy set syntax=python
 autocmd FileType gnuplot setlocal commentstring=#\ %s
 autocmd BufNewFile,BufRead *.log setfiletype log
+au BufRead,BufNewFile *.tpl setfiletype go
 
 " Prepopulate script files with shebang
 autocmd BufNewFile  *.sh    0r ~/res/skeleton.sh
