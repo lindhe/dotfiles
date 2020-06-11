@@ -23,6 +23,7 @@
     lb = log --oneline --decorate --graph
     lob = log --oneline --decorate --graph --branches
     log = log --decorate
+    nb = "!git switch -c lindhe/$(date +'%F')/${1} #"
     new = diff --cached
     nw = diff --cached --color-words
     pl = !git pull && git log ORIG_HEAD..origin/$(git branch --show-current)
