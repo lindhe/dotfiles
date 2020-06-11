@@ -152,9 +152,15 @@ alias unmonitors="xrandr --output eDP-1 --auto --primary --output HDMI-1 --off -
 
 # Git
 alias g="git"
+alias ga="git add -p"
+alias gap="git add -p"
+alias gam="git commit -am"
+alias gc="git commit"
+alias gcm="git commit -m"
 alias gi="git"
 alias gif="git diff"
 alias gil="git l"
+alias gill="git lob"
 alias gip="git pl"
 alias gis="git status"
 alias gs="git status"
@@ -162,7 +168,6 @@ alias pac="pacman"
 alias qq="exit"
 alias rmb="rm *.bbl; rm *.blg; rm *.bcf; rm *.run.xml; rm *-blx.bib"
 alias rmt="rm *.aux; rm *.out; rm *.toc; rm *.log; rm *.tdo; rm *.fdb_latexmk; rm *dvi; rm *.fls"
-alias so="source"
 alias sudovim="sudoedit "
 alias tat="tmux attach -t"
 alias tls="tmux list-sessions"
@@ -173,11 +178,20 @@ alias watch="watch --color"
 export GOPATH=/home/andreas/go
 alias d="docker"
 alias dc="docker container ls"
-alias k="kubectl"
 alias h="helm"
 alias mk="microk8s.kubectl"
 alias pp="pipenv"
 alias ipy="ipython3"
+alias wkga="watch kubectl get all"
+alias t="terraform"
+
+# Kubernetes
+alias k="kubectl"
+alias kc="kubectl config"
+alias kns="kubectl config set-context --current --namespace"
+alias ktop='kubectl top'
+alias kk="kubectl -n andreas"
+alias hh="helm -n andreas"
 
 # non-important
 alias pwd="pwd | tee | xclip -i; xclip -o"
