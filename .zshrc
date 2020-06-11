@@ -101,6 +101,11 @@ title() {
 #     dd if=$1 &> /dev/null | pv -petra -s $size | dd of=$2 bs=4k
 # }
 
+# base64 -d
+bd() {
+    echo "$1" | base64 -d ; echo
+}
+
 ## Aliases
 
 # edit rc files
