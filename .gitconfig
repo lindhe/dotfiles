@@ -4,13 +4,15 @@
 [alias]
     b = branch
     bi = bisect
-    bra = branch -v
+    bra = branch -vv
+    bras = for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)|%(committerdate:relative)'
     c = commit -v
     change = commit --amend -v
     cl = clone
     cm = commit -m
     co = checkout
     com = commit -v
+    comm = commit -m
     df = diff --color-words
     dif = diff
     dra = pull
@@ -18,16 +20,17 @@
     h = help
     knuff = push
     l = log --oneline --decorate
+    lb = log --oneline --decorate --graph
     lob = log --oneline --decorate --graph --branches
     log = log --decorate
     new = diff --cached
-    nu = diff --cached --color-words
     nw = diff --cached --color-words
     pl = !git pull && git log ORIG_HEAD..origin/$(git branch --show-current)
     reb = rebase
     rem = remote -v
     s = status
-    sho = show
+    sh = show --color-words
+    shw = show --color-words
     sorry = commit --amend --no-edit
     st = status
     sw = switch
