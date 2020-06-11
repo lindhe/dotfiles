@@ -2,7 +2,7 @@
 # Fixing <C-s> issue (see http://unix.stackexchange.com/a/72092/33928)
 stty -ixon
 
-# History
+###############################     History     ###############################
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=SAVEHIST=99999
 setopt APPEND_HISTORY
@@ -20,7 +20,7 @@ setopt AUTO_CD
 # Allow bash-like comments inline
 setopt interactivecomments
 
-# Completion
+##############################     Completion     ##############################
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
@@ -66,7 +66,7 @@ fi
 # Keybindings
 bindkey "^[[3~" delete-char
 
-## Functions
+##############################     Functions     ##############################
 timestamp() {
     date +'%F_%T'
 }
