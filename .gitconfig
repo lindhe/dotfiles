@@ -43,7 +43,7 @@
 [pull]
     rebase = true
 [credential]
-    helper = cache
+    helper = store
 [core]
     excludesfile = ~/.gitignore_global
     editor = vim
