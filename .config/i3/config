@@ -338,6 +338,10 @@ exec --no-startup-id redshift
 
 # Floating Calculator
 for_window [class="Gnome-calculator"] floating enable
+
+for_window [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"] floating enable
+for_window [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"] resize set 350 200
+
 # }}}
 
 #################################     Dock     #################################
