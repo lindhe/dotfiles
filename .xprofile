@@ -3,7 +3,7 @@
 #~/.xprofile
 #
 # Set languages
-setxkbmap se-A5,svorak;
+setxkbmap se-A5
 # setxkbmap -option grp:lctrl_lwin_toggle
 # Misc
 setxkbmap -option caps:swapescape;
