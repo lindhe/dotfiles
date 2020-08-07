@@ -39,7 +39,7 @@ source ~/.config/zsh/autocomplete/minikube.zsh
 
 # Exports
 export PATH=$PATH
-export PATH="${PATH}:${HOME}/.krew/bin"
+export PATH="${PATH}:${KREW_ROOT:-$HOME/.krew}/bin"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
