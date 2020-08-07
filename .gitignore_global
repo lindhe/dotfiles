@@ -33,3 +33,4 @@ _minted-*/
 *.pdf
 !**/figures/*.pdf
 __pycache__/
+*.zip
