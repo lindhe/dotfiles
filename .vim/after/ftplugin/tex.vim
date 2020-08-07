@@ -2,6 +2,8 @@
 setlocal spell
 setlocal tabstop=4
 setlocal shiftwidth=4
+setlocal textwidth=0
+setlocal wrap
 
 " """"""""""""""""""""""""""""""     Shortcuts     """"""""""""""""""""""""""""""
 noremap <F12> :w \| call Compile()<CR>
