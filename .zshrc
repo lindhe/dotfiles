@@ -94,6 +94,12 @@ title() {
     echo -ne "\033]0;${1}\007"
 }
 
+# Search on both snap and apt
+apps() {
+    snap search $1
+    apt search $1
+}
+
 # ddiso() {
 #     size=$(stat -c%s $1)
 #     dd if=$1 &> /dev/null | pv -petra -s $size | dd of=$2 bs=4k
