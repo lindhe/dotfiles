@@ -183,6 +183,7 @@ export GOPATH=/home/andreas/go
 alias d="docker"
 alias dc="docker container ls"
 alias h="helm"
+alias hf="helmfile"
 alias mk="microk8s.kubectl"
 alias pp="pipenv"
 alias ipy="ipython3"
@@ -196,6 +197,9 @@ alias kns="kubectl config set-context --current --namespace"
 alias ktop='kubectl top'
 alias kk="kubectl -n andreas"
 alias hh="helm -n andreas"
+alias m="minikube"
+alias i="istioctl"
+alias tf="terraform"
 
 # non-important
 alias pwd="pwd | tee | xclip -i; xclip -o"
