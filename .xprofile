@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 #
 #~/.xprofile
-#
+
 # Set languages
 setxkbmap se-A5
 # setxkbmap -option grp:lctrl_lwin_toggle
+
 # Misc
 setxkbmap -option caps:swapescape;
 xinput set-prop "TPPS/2 ALPS TrackPoint" "libinput Scroll Method Enabled" 0 0 1;
