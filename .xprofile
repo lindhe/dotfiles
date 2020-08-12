@@ -8,10 +8,14 @@ setxkbmap se-A5
 
 # Misc
 setxkbmap -option caps:swapescape;
-xinput set-prop "TPPS/2 ALPS TrackPoint" "libinput Scroll Method Enabled" 0 0 1;
 xset r rate 325 75;
 xset b off;
 xset s off;
 xset -dpms;
 xsetroot -solid black;
 # feh --bg-scale  ~/Pictures/images/wallpaper/svorak-A1-wallpaper.png
+
+
+if [[ "${IAMAT}" == "home" ]]; then
+    xinput set-prop "TPPS/2 ALPS TrackPoint" "libinput Scroll Method Enabled" 0 0 1;
+fi
