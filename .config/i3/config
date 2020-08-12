@@ -289,7 +289,9 @@ bar {
 # External displays
 bar {
     output DP-1
+    output DP-1-1
     output DP-1-2
+    output DP-1-3
     output DP-2-2
     output DP-2
     output HDMI-1
