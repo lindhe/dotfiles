@@ -36,6 +36,7 @@ source ~/.config/zsh/autocomplete/helm.zsh
 source ~/.config/zsh/autocomplete/kubectl.zsh
 source ~/.config/zsh/autocomplete/istioctl.zsh
 source ~/.config/zsh/autocomplete/minikube.zsh
+# source ~/.config/zsh/autocomplete/jupyter.zsh
 
 # Exports
 export PATH=$PATH
@@ -207,4 +208,20 @@ alias cal="cal -m"
 alias starwars="telnet towel.blinkenlights.nl"
 alias gnu="gnuplot"
 alias vimcognito="vim -i NONE -u NONE -U NONE --cmd 'set noswapfile' --cmd 'set nobackup'"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/andreas/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/andreas/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/andreas/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/andreas/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
