@@ -36,6 +36,7 @@ source ~/.config/zsh/autocomplete/helm.zsh
 source ~/.config/zsh/autocomplete/kubectl.zsh
 source ~/.config/zsh/autocomplete/istioctl.zsh
 source ~/.config/zsh/autocomplete/minikube.zsh
+source ~/.jfrog/jfrog_zsh_completion
 # source ~/.config/zsh/autocomplete/jupyter.zsh
 
 # Exports
