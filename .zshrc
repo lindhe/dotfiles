@@ -112,6 +112,10 @@ bd() {
     echo "$1" | base64 -d ; echo
 }
 
+stderr() {
+    python -c "import sys; print('$1', file=sys.stderr)"
+}
+
 ## Aliases
 
 # edit rc files
