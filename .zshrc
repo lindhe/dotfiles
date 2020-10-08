@@ -208,7 +208,6 @@ alias i="istioctl"
 alias tf="terraform"
 
 # non-important
-alias pwd="pwd | tee | xclip -i; xclip -o"
 alias cal="cal -m"
 alias starwars="telnet towel.blinkenlights.nl"
 alias gnu="gnuplot"
