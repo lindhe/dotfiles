@@ -43,7 +43,7 @@ Plug 'fatih/vim-go'                   " golang
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'scrooloose/nerdtree'
 Plug 'mbbill/undotree'
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 
 
 " Looks
@@ -340,7 +340,7 @@ let g:slime_dont_ask_default = 1
 map <C-o> :NERDTreeToggle<CR>
 
 " Emmet
-let g:user_emmet_leader_key='<c-m>'
+" let g:user_emmet_leader_key='<c-m>'
 
 "}}}
 
