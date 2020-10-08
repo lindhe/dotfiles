@@ -187,7 +187,7 @@ alias watch="watch --color"
 # Dev
 export GOPATH=/home/andreas/go
 alias d="docker"
-alias dc="docker container ls"
+alias dc="docker-compose"
 alias h="helm"
 alias hf="helmfile"
 alias mk="microk8s.kubectl"
