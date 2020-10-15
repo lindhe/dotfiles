@@ -22,12 +22,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Resize
 bindsym $mod+r mode "resize"
 
-# Bind movement keys
-set $down j
-set $up k
-set $left l
-set $right odiaeresis
-
 # }}}
 
 ###############################     Vainity     ###############################
@@ -57,6 +51,13 @@ font pango:DejaVu Sans Mono 10
 
 #############################     Key bindings     #############################
 # {{{
+
+# Bind movement keys
+set $down j
+set $up k
+set $left l
+set $right odiaeresis
+
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
 
