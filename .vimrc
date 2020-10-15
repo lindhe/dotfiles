@@ -85,9 +85,11 @@ autocmd BufReadPost *
 
 """""""""""""""""""""""""""""""     Movement     """"""""""""""""""""""""""""""""{{{
 
+""hjkl
 ""jklö
 noremap l h
 noremap ö l
+noremap s l
 
 " Make vertical movement work with wrapped lines
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -189,7 +191,7 @@ nnoremap <leader><leader> @q
 nnoremap <enter> @@
 
 " Spell
-map hh zG
+map gh zG
 
 "}}}
 
@@ -204,9 +206,7 @@ nnoremap <leader>s @s
 """"""""""""""""""""""""""""     Function calls     """""""""""""""""""""""""""""{{{
 
 " Press <F5> to insert timestamp YYYY-MM-DD_HH:MM:SS
-nnoremap h<F5> "=strftime("%F_%T")<CR>P
 nnoremap <F5> "=strftime("%F")<CR>P
-inoremap h<F5> <C-R>=strftime("%F_%T")<CR>
 inoremap <F5> <C-R>=strftime("%F")<CR>
 
 " <F6> to remove trailing whitespace
