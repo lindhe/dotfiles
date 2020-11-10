@@ -328,6 +328,7 @@ bindsym XF86Tools exec ~/scripts/toggle_touchpad.sh
 ##############################     Autostart     ##############################
 # {{{
 exec --no-startup-id xss-lock -- i3lock -fne -c 000000
+exec --no-startup-id xautolock -time 15 -locker 'i3lock -fne -c 000000' -notify 60 -notifier 'notify-send --urgency=low "Computer will lock soon."' -corners ----
 exec --no-startup-id nm-applet
 exec --no-startup-id nextcloud
 exec --no-startup-id unclutter
