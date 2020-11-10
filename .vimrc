@@ -44,7 +44,7 @@ Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'scrooloose/nerdtree'
 Plug 'mbbill/undotree'
 " Plug 'mattn/emmet-vim'
-
+Plug 'hashivim/vim-terraform'
 
 " Looks
 Plug 'junegunn/goyo.vim'              " Distraction-free writing in Vim
@@ -341,6 +341,11 @@ map <C-o> :NERDTreeToggle<CR>
 
 " Emmet
 " let g:user_emmet_leader_key='<c-m>'
+
+" Terraform
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+" let g:terraform_fmt_on_save=1
 
 "}}}
 
