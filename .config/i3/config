@@ -347,6 +347,10 @@ for_window [title="Microsoft Teams Notification" class="Microsoft Teams - Previe
 for_window [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"] resize set 350 200
 no_focus [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"]
 
+# Prevent Firefox from closing with Ctrl+q
+bindsym Control+q exec "notify-send --urgency=low 'i3 saved you from Ctrl+q'"
+bindsym Control+Shift+q exec "notify-send --urgency=low 'i3 saved you from Ctrl+Shift+q'"
+
 # }}}
 
 #################################     Dock     #################################
