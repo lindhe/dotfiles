@@ -31,7 +31,7 @@ Plug 'mephux/bro.vim'                 " For bro scripts
 Plug 'chikamichi/mediawiki.vim'       " Syntax highlighting for MediaWiki-based projects
 
 " Writing
-Plug 'godlygeek/tabular'              " Good at aligning on multiple chars at once: `:Tab /&`
+Plug 'dhruvasagar/vim-table-mode'     " Vim table mode
 
 " Beta:
 Plug 'jpalardy/vim-slime'
