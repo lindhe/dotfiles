@@ -148,11 +148,10 @@ alias so="source"
 alias tat="tmux attach -t"
 alias tls="tmux list-sessions"
 alias tree="tree -C"
-alias vimrc="vim ~/.vimrc"
 alias watch="watch --color"
 alias yao="yaourt"
-alias zshrc="vim ~/.zshrc"
 alias gitdiff="git diff --no-index --"
+alias v="vim -p"
 
 # Docking
 alias keyboard="xset r rate 330 75; setxkbmap se-A5; setxkbmap -option caps:swapescape"
@@ -195,6 +194,7 @@ alias pp="pipenv"
 alias ipy="ipython3"
 alias wkga="watch kubectl get all"
 alias t="terraform"
+alias mp="multipass"
 
 # Kubernetes
 alias k="kubectl"
