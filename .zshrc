@@ -173,6 +173,8 @@ alias gill="git lob"
 alias gip="git pl"
 alias gis="git status"
 alias gs="git status"
+alias gg="git grep"
+
 alias pac="pacman"
 alias qq="exit"
 alias rmb="rm *.bbl; rm *.blg; rm *.bcf; rm *.run.xml; rm *-blx.bib"
@@ -206,6 +208,10 @@ alias hh="helm -n andreas"
 alias m="minikube"
 alias i="istioctl"
 alias tf="terraform"
+alias kaf='kubectl apply -f'
+alias kdf='kubectl delete -f'
+alias kd='kubectl describe'
+alias kg='kubectl get'
 
 # non-important
 alias cal="cal -m"
