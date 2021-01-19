@@ -1,0 +1,2 @@
+Successfully installed {{ include "empty.fullname" . }}
+in namespace {{ .Release.Namespace}}
