@@ -1,13 +1,13 @@
 [
     {
-        "eDP-1": {
+        "eDP1": {
             "auto": true,
             "primary": true,
             "pos": "1920x1080"
         }
     },
     {
-        "DP-1-2": {
+        "DP1-2": {
             "auto": true,
             "pos": "-1920x0"
         }
