@@ -1,6 +1,5 @@
 [user]
     name = Andreas Lindhé
-    email = andreas@lindhe.io
 [alias]
     b = branch
     bi = bisect
