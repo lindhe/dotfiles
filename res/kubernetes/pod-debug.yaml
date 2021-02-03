@@ -1,0 +1,17 @@
+# Pod to help with debugging
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hack
+  labels:
+    name: hack
+spec:
+  containers:
+  - name: hack
+    image: alpine
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+  restartPolicy: Always
+
