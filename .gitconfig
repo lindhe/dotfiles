@@ -27,6 +27,7 @@
     new = diff --cached
     nw = diff --cached --color-words
     pl = !git pull && git log ORIG_HEAD..origin/$(git branch --show-current)
+    psuh = push
     reb = rebase
     rem = remote -v
     s = status
