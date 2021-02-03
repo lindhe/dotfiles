@@ -13,15 +13,15 @@
         }
     },
     {
-        "DP-2-2": {
+        "DP2-2": {
             "auto": true,
             "pos": "-1920x0"
         }
     },
     {
-        "HDMI-1": {
+        "HDMI1": {
             "auto": true,
-            "above": "eDP-1"
+            "above": "eDP1"
         }
     }
 ]
