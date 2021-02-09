@@ -214,11 +214,11 @@ workspace 2 output eDP1
 workspace 3 output eDP1
 workspace 4 output eDP1
 workspace 5 output eDP1
-workspace 11 output eDP1
-workspace 12 output eDP1
-workspace 13 output eDP1
-workspace 14 output eDP1
-workspace 15 output eDP1
+workspace 11 output DP1-1
+workspace 12 output DP1-1
+workspace 13 output DP1-1
+workspace 14 output DP1-1
+workspace 15 output DP1-1
 ## DP1-2
 workspace 6 output DP1-2
 workspace 7 output DP1-2
