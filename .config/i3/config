@@ -354,6 +354,9 @@ bindsym Control+Shift+q exec "notify-send --urgency=low 'i3 saved you from Ctrl+
 # Put Zoom on eDP1 to make me look into the camera more
 assign [class="^zoom$"] 1
 
+# Put KeyPassXC on ws 2
+assign [class="^KeePassXC$"] 2
+
 # }}}
 
 #################################     Dock     #################################
