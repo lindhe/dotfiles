@@ -1,5 +1,5 @@
 [user]
-    name = Andreas Lindhé
+	name = Andreas Lindhé
 [alias]
     b = branch
     bi = bisect
@@ -16,6 +16,7 @@
     df = diff --color-words
     dif = diff
     dra = pull
+    email = config user.email andreas@lindhe.io
     files-in = diff-tree --no-commit-id --name-only -r
     h = help
     knuff = push
