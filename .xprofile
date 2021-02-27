@@ -15,7 +15,6 @@ xset -dpms;
 xsetroot -solid black;
 # feh --bg-scale  ~/Pictures/images/wallpaper/svorak-A1-wallpaper.png
 
-SYS_PROD_NAME=$(sudo dmidecode -s system-product-name)
-if [["${SYS_PROD_NAME}" == "20HRCTO1WW"]];then
+if [["${DMI_SYSTEM_PRODUCT_NAME}" == "20HRCTO1WW"]];then
     xinput set-prop "TPPS/2 ALPS TrackPoint" "libinput Scroll Method Enabled" 0 0 1;
 fi
