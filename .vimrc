@@ -31,6 +31,7 @@ Plug 'mephux/bro.vim'                 " For bro scripts
 Plug 'chikamichi/mediawiki.vim'       " Syntax highlighting for MediaWiki-based projects
 Plug 'fatih/vim-go'                   " golang
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'ekalinin/dockerfile.vim'
 
 " Writing
 Plug 'dhruvasagar/vim-table-mode'     " Vim table mode
