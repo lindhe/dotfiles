@@ -46,6 +46,7 @@ Plug 'vim-scripts/searchfold.vim'     " fold lines not in /
 Plug 'scrooloose/nerdtree'
 Plug 'mbbill/undotree'
 Plug 'hashivim/vim-terraform'
+Plug 'honza/vim-snippets' | Plug 'sirver/ultisnips' " Snippets & snippet engine
 
 " Looks
 Plug 'junegunn/goyo.vim'              " Distraction-free writing in Vim
