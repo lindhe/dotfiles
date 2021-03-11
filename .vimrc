@@ -26,24 +26,25 @@ Plug 'junegunn/vim-easy-align'        " Align on a character: `gaip&`
 Plug 'tpope/vim-endwise'              " Autocomplete if ... endif
 Plug 'tpope/vim-abolish'              " Change words better
 
-" Syntax highligting
+" Language specific
 Plug 'mephux/bro.vim'                 " For bro scripts
 Plug 'chikamichi/mediawiki.vim'       " Syntax highlighting for MediaWiki-based projects
+Plug 'fatih/vim-go'                   " golang
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 
 " Writing
 Plug 'dhruvasagar/vim-table-mode'     " Vim table mode
 
-" Beta:
+" Misc dev tools
 Plug 'jpalardy/vim-slime'
+
+" Beta:
 Plug 'airblade/vim-gitgutter'         " Shows git diff (+/-) in the gutter
 Plug 'wellle/targets.vim'             " Add more text objects to work on
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-scripts/searchfold.vim'     " fold lines not in /
-Plug 'fatih/vim-go'                   " golang
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'scrooloose/nerdtree'
 Plug 'mbbill/undotree'
-" Plug 'mattn/emmet-vim'
 Plug 'hashivim/vim-terraform'
 
 " Looks
