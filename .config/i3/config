@@ -321,6 +321,7 @@ bindsym XF86MonBrightnessUp exec light -A 5
 
 # Screenshot
 bindsym --release Print exec gnome-screenshot -a
+bindsym --release $mod+Shift+s exec gnome-screenshot -a
 
 # Toggle Touchpad
 bindsym XF86Tools exec ~/scripts/toggle_touchpad.sh
