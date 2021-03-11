@@ -1,5 +1,5 @@
 [user]
-	name = Andreas Lindhé
+    name = Andreas Lindhé
 [alias]
     b = branch
     bi = bisect
@@ -50,7 +50,7 @@
     editor = vim
     quotepath = off
 [push]
-	default = current
+    default = current
 [color]
     status = always
 [filter "lfs"]
