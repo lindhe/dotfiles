@@ -352,7 +352,7 @@ let g:terraform_fold_sections=1
 
 "}}}
 
-"""""""""""""""""""""""""""""     To be moved     """"""""""""""""""""""""""""""{{{
+"""""""""""""""""""""""""""""     Syntax fixes """""""""""""""""""""""""""""{{{
 
 " Docker
 autocmd BufNewFile,BufRead Dockerfile*[^md] set syntax=dockerfile
@@ -369,6 +369,9 @@ autocmd FileType gnuplot setlocal commentstring=#\ %s
 autocmd BufNewFile,BufRead *.log setfiletype log
 au BufRead,BufNewFile *.tpl set syntax=go
 
+"}}}
+
+"""""""""""""""""""""""""""""     To be moved     """"""""""""""""""""""""""""""{{{
 " Prepopulate script files with shebang
 autocmd BufNewFile  *.sh    0r ~/res/skeleton.sh
 autocmd BufNewFile  *.py    0r ~/res/skeleton.py
