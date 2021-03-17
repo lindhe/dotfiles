@@ -360,6 +360,9 @@ autocmd BufNewFile,BufRead Dockerfile*[^md] set syntax=dockerfile
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+" React Typescript
+autocmd BufNewFile,BufRead *.[jt]s[x] set syntax=typescript
+
 " tex = latex
 let g:tex_flavor = "latex"
 
