@@ -354,10 +354,13 @@ bindsym Control+q exec "notify-send --urgency=low 'i3 saved you from Ctrl+q'"
 bindsym Control+Shift+q exec "notify-send --urgency=low 'i3 saved you from Ctrl+Shift+q'"
 
 # Put Zoom on eDP1 to make me look into the camera more
-assign [class="^zoom$"] 1
+assign [class="^zoom$"] 3
 
 # Put KeyPassXC on ws 2
 assign [class="^KeePassXC$"] 2
+
+# Put Pavuctl on ws 1
+assign [class="^Pavucontrol$"] 1
 
 # }}}
 
