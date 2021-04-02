@@ -1,4 +1,5 @@
-# ##############################     Variables     ##############################{{{
+# ##############################     Variables     ##############################
+# {{{
 set $alt Mod1
 set $mod Mod4
 
@@ -17,11 +18,13 @@ set $dmenu dmenu_run
 set $menu wofi --show=drun -I
 # }}}
 
-#########################     Output configuration     #########################{{{
+#########################     Output configuration     #########################
+# {{{
 output DP-1 resolution 3840x2160
 # }}}
 
-#########################     Input configuration     #########################{{{
+#########################     Input configuration     #########################
+# {{{
 input "type:pointer" {
     accel_profile flat
     pointer_accel 0
@@ -36,7 +39,8 @@ input "type:keyboard" {
 
 # }}}
 
-#############################     Key bindings     #############################{{{
+#############################     Key bindings     #############################
+# {{{
 # start a terminal
 bindsym $mod+Return exec $term
 
@@ -61,7 +65,8 @@ bindsym $mod+Shift+r reload
 bindsym $mod+$alt+Shift+e exit
 # }}}
 
-###############################     Movement     ###############################{{{
+###############################     Movement     ###############################
+# {{{
 # Move your focus around
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -85,7 +90,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 # }}}
 
-##############################     Workspaces     ##############################{{{
+##############################     Workspaces     ##############################
+# {{{
 # Note: workspaces can have any name you want, not just numbers.
 
 # switch to workspace
@@ -134,7 +140,8 @@ bindsym $mod+$alt+Shift+0 move container to workspace 20
 
 # }}}
 
-##########################     Tree manipulation     ##########################{{{
+##########################     Tree manipulation     ##########################
+# {{{
 # Split horizontal and vertical
 bindsym $mod+h splith
 bindsym $mod+v splitv
@@ -160,7 +167,8 @@ bindsym $mod+Shift+a focus child
 focus_follows_mouse no
 # }}}
 
-#########################     Resizing containers:     #########################{{{
+#########################     Resizing containers:     #########################
+# {{{
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
@@ -184,7 +192,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 # }}}
 
-##############################     Status Bar     ##############################{{{
+##############################     Status Bar     ##############################
+# {{{
 # Read `man 5 sway-bar` for more information about this section.
 
 # Default
@@ -216,6 +225,7 @@ bar {
 
 # }}}
 
-###############################     Includes     ###############################{{{
+###############################     Includes     ###############################
+# {{{
 include /etc/sway/config.d/*
 # }}}
