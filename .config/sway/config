@@ -256,7 +256,7 @@ bindsym $mod+r mode "resize"
 # Default
 bar {
     id default
-    output eDP-1
+    output $monmain
     colors {
         statusline #ffffff
         background #323232
@@ -269,8 +269,8 @@ bar {
 # External displays
 bar {
     id external
-    output DP-4
-    output DP-5
+    output $monext1
+    output $monext2
     colors {
         statusline #ffffff
         background #323232
