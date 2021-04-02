@@ -12,7 +12,7 @@ set $up k
 set $term gnome-terminal
 # Your preferred application launcher
 set $dmenu dmenu_run
-set $menu sway-dmenu-desktop
+set $menu wofi --show=drun -I
 
 ### Output configuration
 #
