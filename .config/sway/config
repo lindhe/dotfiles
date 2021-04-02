@@ -66,11 +66,23 @@ bindsym $mod+Shift+r reload
 # exit sway (logs you out of your wayland session)
 bindsym $mod+$alt+Shift+e exit
 
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl stop
+
+# Audio controls
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- unmute
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ unmute
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
+
+# Screenshots
+bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
+bindsym Print exec grim -g "$(slurp)" "/home/andreas/Pictures/screenshots/screenshot-$(date +'%F_%T').png"
+
 # TODO
-# * Media controls
-# * Audio controls
 # * Backlight
-# * Screenshot
 
 # }}}
 
