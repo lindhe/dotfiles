@@ -16,6 +16,12 @@ set $term gnome-terminal
 # Application launcher
 set $dmenu dmenu_run
 set $menu wofi --show=drun -I
+
+# Displays
+set $monmain eDP-1
+set $monext1 DP-4
+set $monext2 DP-5
+
 # }}}
 
 #########################     Output configuration     #########################
@@ -190,10 +196,31 @@ focus_follows_mouse no
 # }}}
 
 #####################     Displays, Monitors, Screens     #####################
-# {{{
-# Put workspaces on sensible displays
+# {{{ Put workspaces on sensible displays
 
-# TODO
+## Main monitor
+workspace 1 output $monmain
+workspace 2 output $monmain
+workspace 3 output $monmain
+workspace 4 output $monmain
+workspace 5 output $monmain
+workspace 11 output $monmain
+workspace 12 output $monmain
+workspace 13 output $monmain
+workspace 14 output $monmain
+workspace 15 output $monmain
+
+## External
+workspace 6 output $monext1 $monext2 $monmain
+workspace 7 output $monext1 $monext2 $monmain
+workspace 8 output $monext1 $monext2 $monmain
+workspace 9 output $monext1 $monext2 $monmain
+workspace 10 output $monext1 $monext2 $monmain
+workspace 16 output $monext1 $monext2 $monmain
+workspace 17 output $monext1 $monext2 $monmain
+workspace 18 output $monext1 $monext2 $monmain
+workspace 19 output $monext1 $monext2 $monmain
+workspace 20 output $monext1 $monext2 $monmain
 
 # }}}
 
