@@ -135,10 +135,8 @@ bindsym $mod+$alt+Shift+0 move container to workspace 20
 # }}}
 
 ##########################     Tree manipulation     ##########################{{{
-# You can "split" the current object of your focus with
-# $mod+b or $mod+v, for horizontal and vertical splits
-# respectively.
-bindsym $mod+b splith
+# Split horizontal and vertical
+bindsym $mod+h splith
 bindsym $mod+v splitv
 
 # Switch the current container between different layout styles
@@ -155,11 +153,11 @@ bindsym $mod+Shift+space floating toggle
 # Swap focus between the tiling area and the floating area
 bindsym $mod+space focus mode_toggle
 
-# move focus to the parent container
+# focus the parent or child container
 bindsym $mod+a focus parent
-
-# focus the child container
 bindsym $mod+Shift+a focus child
+
+focus_follows_mouse no
 # }}}
 
 #########################     Resizing containers:     #########################{{{
