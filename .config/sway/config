@@ -58,7 +58,7 @@ floating_modifier $mod normal
 bindsym $mod+Shift+r reload
 
 # exit sway (logs you out of your wayland session)
-bindsym $mod+Shift+e exit
+bindsym $mod+$alt+Shift+e exit
 # }}}
 
 ###############################     Movement     ###############################{{{
