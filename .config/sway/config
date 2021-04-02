@@ -186,15 +186,34 @@ bindsym $mod+r mode "resize"
 
 ##############################     Status Bar     ##############################{{{
 # Read `man 5 sway-bar` for more information about this section.
+
+# Default
 bar {
-    position top
+    id default
+    output eDP-1
     colors {
         statusline #ffffff
         background #323232
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
     font 12
+    tray_padding 0
 }
+
+# External displays
+bar {
+    id external
+    output DP-4
+    output DP-5
+    colors {
+        statusline #ffffff
+        background #323232
+        inactive_workspace #32323200 #32323200 #5c5c5c
+    }
+    font 18
+    tray_padding 0
+}
+
 # }}}
 
 ###############################     Includes     ###############################{{{
