@@ -20,7 +20,9 @@ set $menu wofi --show=drun -I
 
 #########################     Output configuration     #########################
 # {{{
-output DP-1 resolution 3840x2160
+
+# TODO
+
 # }}}
 
 #########################     Input configuration     #########################
@@ -63,6 +65,13 @@ bindsym $mod+Shift+r reload
 
 # exit sway (logs you out of your wayland session)
 bindsym $mod+$alt+Shift+e exit
+
+# TODO
+# * Media controls
+# * Audio controls
+# * Backlight
+# * Screenshot
+
 # }}}
 
 ###############################     Movement     ###############################
@@ -167,6 +176,14 @@ bindsym $mod+Shift+a focus child
 focus_follows_mouse no
 # }}}
 
+#####################     Displays, Monitors, Screens     #####################
+# {{{
+# Put workspaces on sensible displays
+
+# TODO
+
+# }}}
+
 #########################     Resizing containers:     #########################
 # {{{
 mode "resize" {
@@ -235,4 +252,14 @@ include /etc/sway/config.d/*
 
 default_border none
 
+# }}}
+
+#########################     Application Specific     #########################
+# {{{
+# TODO
+# }}}
+
+##############################     Autostart     ##############################
+# {{{
+# TODO
 # }}}
