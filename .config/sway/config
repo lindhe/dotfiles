@@ -45,6 +45,9 @@ input "type:keyboard" {
     xkb_layout se-A5
 }
 
+# Unclutter
+seat * hide_cursor 5000
+
 # }}}
 
 #############################     Key bindings     #############################
