@@ -81,8 +81,9 @@ bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
 bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
 bindsym Print exec grim -g "$(slurp)" "/home/andreas/Pictures/screenshots/screenshot-$(date +'%F_%T').png"
 
-# TODO
-# * Backlight
+# Backlight
+bindsym XF86MonBrightnessUp exec brightnessctl -q set 10%+
+bindsym XF86MonBrightnessDown exec brightnessctl -q set 10%-
 
 # }}}
 
