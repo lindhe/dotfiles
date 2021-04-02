@@ -325,3 +325,7 @@ exec nm-applet
 exec nextcloud
 
 # }}}
+
+# TODO
+# * i3blocks (waybar)
+# * i3lock (swaylock)
