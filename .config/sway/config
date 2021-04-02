@@ -1,26 +1,27 @@
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
+# ##############################     Variables     ##############################{{{
+# Use Mod1 for Alt.
 set $mod Mod4
-# Home row direction keys, like vim
+
+
+# Shifted home row direction keys, like my vim configuration
 set $left l
 set $right odiaeresis
 set $down j
 set $up k
 
-# Your preferred terminal emulator
+# Terminal
 set $term gnome-terminal
-# Your preferred application launcher
+
+# Application launcher
 set $dmenu dmenu_run
 set $menu wofi --show=drun -I
+# }}}
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/sway/)
+#########################     Output configuration     #########################{{{
 output DP-1 resolution 3840x2160
-#output * bg /usr/share/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# }}}
 
-### Input configuration
+#########################     Input configuration     #########################{{{
 input "type:pointer" {
     accel_profile flat
     pointer_accel 0
@@ -33,10 +34,9 @@ input "type:keyboard" {
     xkb_layout se-A5
 }
 
-### Key bindings
-#
-# Basics:
-#
+# }}}
+
+#############################     Key bindings     #############################{{{
     # start a terminal
     bindsym $mod+Return exec $term
 
@@ -59,9 +59,9 @@ input "type:keyboard" {
 
     # exit sway (logs you out of your wayland session)
     bindsym $mod+Shift+e exit
-#
-# Moving around:
-#
+# }}}
+
+###############################     Movement     ###############################{{{
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
@@ -83,9 +83,9 @@ input "type:keyboard" {
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
-#
-# Workspaces:
-#
+# }}}
+
+##############################     Workspaces     ##############################{{{
     # switch to workspace
     bindsym $mod+1 workspace 1
     bindsym $mod+2 workspace 2
@@ -110,9 +110,9 @@ input "type:keyboard" {
     bindsym $mod+Shift+0 move container to workspace 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-#
-# Layout stuff:
-#
+# }}}
+
+##########################     Tree manipulation     ##########################{{{
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
@@ -138,6 +138,7 @@ input "type:keyboard" {
 
     # focus the child container
     bindsym $mod+Shift+a focus child
+# }}}
 
 # Scratchpad:
 #
@@ -150,9 +151,7 @@ input "type:keyboard" {
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
+#########################     Resizing containers:     #########################{{{
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
@@ -174,10 +173,9 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+# }}}
 
-#
-# Status Bar:
-#
+##############################     Status Bar     ##############################{{{
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
@@ -188,5 +186,8 @@ bar {
     }
     font 12
 }
+# }}}
 
+###############################     Includes     ###############################{{{
 include /etc/sway/config.d/*
+# }}}
