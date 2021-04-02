@@ -21,7 +21,7 @@ output DP-1 resolution 3840x2160
 #output * bg /usr/share/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 ### Input configuration
-input "1133:49277:Logitech_Gaming_Mous" {
+input "type:pointer" {
     accel_profile flat
     pointer_accel 0
 }
