@@ -88,6 +88,9 @@ bindsym Print exec grim -g "$(slurp)" "/home/andreas/Pictures/screenshots/screen
 bindsym XF86MonBrightnessUp exec brightnessctl -q set 10%+
 bindsym XF86MonBrightnessDown exec brightnessctl -q set 10%-
 
+# Lockscreen
+bindsym $mod+Escape exec swaylock -F --color '#000000' --indicator-radius 100
+
 # }}}
 
 ###############################     Movement     ###############################
@@ -328,4 +331,3 @@ exec nextcloud
 
 # TODO
 # * i3blocks (waybar)
-# * i3lock (swaylock)
