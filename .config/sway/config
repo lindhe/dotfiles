@@ -18,7 +18,7 @@ set $menu wofi --show=drun -I
 #
 # Default wallpaper (more resolutions are available in /usr/share/sway/)
 output DP-1 resolution 3840x2160
-output * bg /usr/share/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#output * bg /usr/share/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 ### Input configuration
 input "1133:49277:Logitech_Gaming_Mous" {
