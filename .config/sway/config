@@ -299,7 +299,29 @@ default_border none
 
 #########################     Application Specific     #########################
 # {{{
-# TODO
+
+# Prevent Firefox from closing with Ctrl+q
+bindsym Control+q exec "notify-send --urgency=low 'Sway saved you from Ctrl+q'"
+bindsym Control+Shift+q exec "notify-send --urgency=low 'Sway saved you from Ctrl+Shift+q'"
+
+# TODO: Fix window clases; I think they don't work.
+
+# Floating Calculator
+# for_window [class="Gnome-calculator"] floating enable
+
+# for_window [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"] floating enable
+# for_window [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"] resize set 350 200
+# no_focus [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"]
+
+# Put Zoom on eDP1 to make me look into the camera more
+# assign [class="^zoom$"] 3
+
+# Put KeyPassXC on ws 2
+# assign [class="^KeePassXC$"] 2
+
+# Put Pavuctl on ws 1
+# assign [class="^Pavucontrol$"] 1
+
 # }}}
 
 ##############################     Autostart     ##############################
