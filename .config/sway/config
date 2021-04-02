@@ -326,5 +326,8 @@ bindsym Control+Shift+q exec "notify-send --urgency=low 'Sway saved you from Ctr
 
 ##############################     Autostart     ##############################
 # {{{
-# TODO
+
+exec nm-applet
+exec nextcloud
+
 # }}}
