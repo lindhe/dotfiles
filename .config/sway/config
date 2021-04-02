@@ -1,8 +1,9 @@
-# ##############################     Variables     ##############################
+##############################     Variables     ##############################
 # {{{
+
+# Modifiers
 set $alt Mod1
 set $mod Mod4
-
 
 # Shifted home row direction keys, like my vim configuration
 set $left l
