@@ -26,6 +26,12 @@ input "type:pointer" {
     pointer_accel 0
 }
 
+input "type:keyboard" {
+    repeat_delay 325
+    repeat_rate 75
+    xkb_options caps:swapescape
+    xkb_layout se-A5
+}
 
 ### Key bindings
 #
