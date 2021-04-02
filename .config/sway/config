@@ -118,7 +118,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 # }}}
 
-##############################     Workspaces     ##############################
+########################     Workspace key bindings     ########################
 # {{{
 # Note: workspaces can have any name you want, not just numbers.
 
@@ -168,33 +168,6 @@ bindsym $mod+$alt+Shift+0 move container to workspace 20
 
 # }}}
 
-##########################     Tree manipulation     ##########################
-# {{{
-# Split horizontal and vertical
-bindsym $mod+h splith
-bindsym $mod+v splitv
-
-# Switch the current container between different layout styles
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# Make the current focus fullscreen
-bindsym $mod+f fullscreen
-
-# Toggle the current focus between tiling and floating mode
-bindsym $mod+Shift+space floating toggle
-
-# Swap focus between the tiling area and the floating area
-bindsym $mod+space focus mode_toggle
-
-# focus the parent or child container
-bindsym $mod+a focus parent
-bindsym $mod+Shift+a focus child
-
-focus_follows_mouse no
-# }}}
-
 #####################     Displays, Monitors, Screens     #####################
 # {{{ Put workspaces on sensible displays
 
@@ -222,6 +195,33 @@ workspace 18 output $monext1 $monext2 $monmain
 workspace 19 output $monext1 $monext2 $monmain
 workspace 20 output $monext1 $monext2 $monmain
 
+# }}}
+
+##########################     Tree manipulation     ##########################
+# {{{
+# Split horizontal and vertical
+bindsym $mod+h splith
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# focus the parent or child container
+bindsym $mod+a focus parent
+bindsym $mod+Shift+a focus child
+
+focus_follows_mouse no
 # }}}
 
 #########################     Resizing containers:     #########################
