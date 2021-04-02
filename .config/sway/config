@@ -44,6 +44,22 @@ seat * hide_cursor 5000
 
 # }}}
 
+#########################     Output configuration     #########################
+# {{{
+
+output $mainmon {
+    mode 1920x1080@60Hz
+    position 0 0
+}
+
+output $monext1 {
+    mode 3840x2160@60Hz
+    scale 2
+    position 1920 0
+}
+
+# }}}
+
 #############################     Key bindings     #############################
 # {{{
 # start a terminal
