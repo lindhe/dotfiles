@@ -25,13 +25,6 @@ set $monext2 DP-5
 
 # }}}
 
-#########################     Output configuration     #########################
-# {{{
-
-# TODO
-
-# }}}
-
 #########################     Input configuration     #########################
 # {{{
 input "type:pointer" {
