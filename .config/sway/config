@@ -23,6 +23,9 @@ set $monmain eDP-1
 set $monext1 DP-4
 set $monext2 DP-5
 
+# Text
+set $fontface DejaVu Sans Mono
+
 # }}}
 
 #########################     Input configuration     #########################
@@ -278,8 +281,9 @@ bar {
         background #323232
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
-    font 12
+    font $fontface 12
     tray_padding 0
+    status_command i3status
 }
 
 # External displays
@@ -292,8 +296,9 @@ bar {
         background #323232
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
-    font 18
+    font $fontface 18
     tray_padding 0
+    status_command i3status
 }
 
 # }}}
