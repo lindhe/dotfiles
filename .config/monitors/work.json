@@ -27,9 +27,14 @@
         }
     },
     {
+        "DP2-2": {
+            "off": true
+        }
+    },
+    {
         "HDMI1": {
             "auto": true,
-            "above": "eDP1"
+            "pos": "-3840x-1080"
         }
     }
 ]
