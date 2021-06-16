@@ -32,12 +32,14 @@
     psuh = push
     reb = rebase
     rem = remote -v
+    root = rev-parse --show-toplevel
     s = status
     sh = show --color-words
     shw = show --color-words
     sorry = commit --amend --no-edit
     st = status
     sw = switch
+    track = "!git branch --set-upstream-to=${1:-origin}/$(git branch --show-current) $(git branch --show-current) #"
     whatchanged = log ORIG_HEAD..HEAD
     wt = worktree
 [branch]
