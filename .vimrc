@@ -372,6 +372,7 @@ au BufReadPost *.repy set syntax=python
 au FileType gnuplot setlocal commentstring=#\ %s
 au BufNewFile,BufRead *.log setfiletype log
 au BufRead,BufNewFile *.tpl set syntax=go
+au BufNewFile,BufRead *.yaml.* setfiletype yaml
 
 "}}}
 
