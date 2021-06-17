@@ -156,6 +156,7 @@ alias watch="watch --color"
 alias yao="yaourt"
 alias gitdiff="git diff --no-index --"
 alias v="vim -p"
+alias dusch="du -sch .[^.]* * | sort -h"
 
 # Docking
 alias keyboard="xset r rate 330 75; setxkbmap se-A5; setxkbmap -option caps:swapescape"
@@ -194,6 +195,7 @@ export GOPATH=/home/andreas/go
 alias d="docker"
 alias dc="docker-compose"
 alias h="helm"
+alias hs="helm secrets"
 alias hf="helmfile"
 alias mk="microk8s.kubectl"
 alias pp="pipenv"
@@ -215,7 +217,11 @@ alias tf="terraform"
 alias kaf='kubectl apply -f'
 alias kdf='kubectl delete -f'
 alias kd='kubectl describe'
+alias kdesc='kubectl describe'
 alias kg='kubectl get'
+alias kget='kubectl get'
+alias kcc='kubectl create --dry-run=client -o yaml'
+alias kcd='kubectl create --dry-run=client -o yaml'
 
 # non-important
 alias cal="cal -m"
