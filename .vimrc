@@ -369,8 +369,8 @@ let g:tex_flavor = "latex"
 
 "" Find a good place for:
 au BufReadPost *.repy set syntax=python
-autocmd FileType gnuplot setlocal commentstring=#\ %s
-autocmd BufNewFile,BufRead *.log setfiletype log
+au FileType gnuplot setlocal commentstring=#\ %s
+au BufNewFile,BufRead *.log setfiletype log
 au BufRead,BufNewFile *.tpl set syntax=go
 
 "}}}
