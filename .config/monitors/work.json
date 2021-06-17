@@ -3,38 +3,25 @@
         "eDP1": {
             "auto": true,
             "primary": true,
-            "pos": "0x0"
-        }
-    },
-    {
-        "DP1-1": {
-            "auto": true,
-            "rotate": "left",
-            "pos": "-1440x-2050"
+            "pos": "1920x1080"
         }
     },
     {
         "DP1-2": {
             "auto": true,
-            "pos": "0x-1440"
-        }
-    },
-    {
-        "DP1-3": {
-            "auto": true,
-            "rotate": "left",
-            "pos": "-1200x-1200"
+            "pos": "-1920x0"
         }
     },
     {
         "DP2-2": {
-            "off": true
+            "auto": true,
+            "pos": "-1920x0"
         }
     },
     {
         "HDMI1": {
             "auto": true,
-            "pos": "-3840x-1080"
+            "above": "eDP1"
         }
     }
 ]
