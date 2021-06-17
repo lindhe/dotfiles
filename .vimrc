@@ -158,7 +158,7 @@ set tabstop=4
 set shiftwidth=4
 set smarttab
 set expandtab
-set textwidth=80
+set textwidth=0
 set linebreak
 set nowrap
 set wrapmargin=0 " Prevent vim from automatically inserting line breaks in newly entered text.
