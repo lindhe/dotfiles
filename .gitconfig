@@ -19,6 +19,7 @@
     email = config user.email andreas@lindhe.io
     files-in = diff-tree --no-commit-id --name-only -r
     get = "!~/scripts/git/git-get.sh"
+    get-gone = "!git branch -av | grep '\\[gone]'"
     h = help
     knuff = push
     l = log --oneline --decorate
@@ -32,6 +33,7 @@
     psuh = push
     reb = rebase
     rem = remote -v
+    remove-gone = "!git branch -av | grep -E '^[^\\+].*\\[gone]' | awk '{ print $1 }' | xargs git branch -D"
     root = rev-parse --show-toplevel
     s = status
     sh = show --color-words
