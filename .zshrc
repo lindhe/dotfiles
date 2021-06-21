@@ -230,6 +230,6 @@ alias gnu="gnuplot"
 alias vimcognito="vim -i NONE -u NONE -U NONE --cmd 'set noswapfile' --cmd 'set nobackup'"
 
 alias jqless="jq -C '' | less -Ri"
-alias jqless="yq -C eval | less -Ri"
+alias yqless="yq -C eval | less -Ri"
 
 
