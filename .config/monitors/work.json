@@ -1,19 +1,19 @@
 [
     {
-        "eDP1": {
+        "eDP-1": {
             "auto": true,
             "primary": true,
             "pos": "1920x1080"
         }
     },
     {
-        "DP1-2": {
+        "DP-1-2": {
             "auto": true,
             "pos": "-1920x0"
         }
     },
     {
-        "DP2-2": {
+        "DP-2-2": {
             "auto": true,
             "pos": "-1920x0"
         }
@@ -21,7 +21,7 @@
     {
         "HDMI1": {
             "auto": true,
-            "above": "eDP1"
+            "above": "eDP-1"
         }
     }
 ]
