@@ -205,6 +205,7 @@ alias t="terraform"
 alias mp="multipass"
 
 # Kubernetes
+export HELM_EXPERIMENTAL_OCI=1
 alias k="kubectl"
 alias kc="kubectl config"
 alias kns="kubectl config set-context --current --namespace"
