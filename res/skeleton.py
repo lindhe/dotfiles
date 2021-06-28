@@ -8,8 +8,14 @@
 This is where general documentation should go.
 """
 
-import sys
 import argparse
+import sys
+
+
+__author__ = "Andreas Lindhé"
+__license__ = "MIT"
+__version__ = "0.1.0"
+description = "Skeleton file for Python!"
 
 
 def main():
@@ -19,9 +25,10 @@ def main():
 
 if __name__ == '__main__':
     # Bootstrapping
-    p = argparse.ArgumentParser(description="Skeleton file for Python!")
+    p = argparse.ArgumentParser(description=description)
     # Add cli arguments
     # p.add_argument('-f', '--foo', help="Just a dummmy flag")
+    p.add_argument('-V', '--version', action='version', version=__version__)
     # Run:
     args = p.parse_args()
     try:
