@@ -178,7 +178,7 @@ alias gill="git lob"
 alias gip="git pl"
 alias gis="git status"
 alias gs="git status"
-alias gg="git grep"
+alias gg="git grep -i"
 
 alias pac="pacman"
 alias qq="exit"
