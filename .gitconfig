@@ -13,6 +13,7 @@
     co = checkout
     com = commit -v
     comm = commit -m
+    cp = cherry-pick
     df = diff --color-words
     dif = diff
     dra = pull
