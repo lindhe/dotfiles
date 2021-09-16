@@ -134,6 +134,9 @@ alias sudoedit="sudoedit "
 
 # General
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 alias bcl="bluetoothctl"
 alias df="df -H"
 alias du="du -h"
