@@ -14,7 +14,7 @@
     com = commit -v
     comm = commit -m
     cp = cherry-pick
-    df = diff --color-words
+    df = diff --color-words='\\w+'
     dif = diff
     dra = pull
     email = config user.email andreas@lindhe.io
@@ -29,7 +29,7 @@
     log = log --decorate
     nb = "!git switch -c lindhe/$(date +'%F')/${1} #"
     new = diff --cached
-    nw = diff --cached --color-words
+    nw = diff --cached --color-words='\\w+'
     pl = !git pull && git log ORIG_HEAD..origin/$(git branch --show-current)
     psuh = push
     reb = rebase
@@ -37,8 +37,7 @@
     remove-gone = "!git branch -av | grep -E '^[^\\+].*\\[gone]' | awk '{ print $1 }' | xargs git branch -D"
     root = rev-parse --show-toplevel
     s = status
-    sh = show --color-words
-    shw = show --color-words
+    shw = show --color-words='\\w+'
     sorry = commit --amend --no-edit
     st = status
     sw = switch
