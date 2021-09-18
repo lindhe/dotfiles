@@ -37,7 +37,6 @@ source ~/.config/zsh/autocomplete/kubectl.zsh
 source ~/.config/zsh/autocomplete/istioctl.zsh
 source ~/.config/zsh/autocomplete/minikube.zsh
 source ~/.config/zsh/autocomplete/yq.zsh
-source ~/.jfrog/jfrog_zsh_completion
 # source ~/.config/zsh/autocomplete/jupyter.zsh
 source /etc/bash_completion.d/azure-cli
 complete -o nospace -C /usr/bin/terraform terraform
