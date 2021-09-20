@@ -24,7 +24,7 @@
     knuff = push
     l = log --oneline --decorate
     lb = log --oneline --decorate --graph
-    lob = log --oneline --decorate --graph --branches
+    lob = log --oneline --decorate --graph --branches --color=always
     log = log --decorate
     nb = "!git switch -c lindhe/$(date +'%F')/${1} #"
     nwt = "!WTD=~/git/worktree/${1}; mkdir -p ${WTD}; git worktree add ${WTD}"
