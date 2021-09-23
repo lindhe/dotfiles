@@ -71,7 +71,7 @@ cmap <C-f> <Nop>
 
 " Use global undo history
 if has("persistent_undo")
-    set undodir=~/.undodir/
+    set undodir=~/.vim/undo/
     set undofile
 endif
 
