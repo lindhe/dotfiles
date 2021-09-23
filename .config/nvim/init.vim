@@ -27,7 +27,7 @@ Plug 'tpope/vim-sensible'             " Fix the stupid things left from Vi
 Plug 'tpope/vim-speeddating'          " <c-a> and <c-x> correct with iso dates
 Plug 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 
-" Grace period
+" Good ones, but dispensible
 Plug 'apzelos/blamer.nvim'            " Git blame for Vim
 
 call plug#end()
