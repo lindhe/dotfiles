@@ -45,15 +45,8 @@ complete -o nospace -C /usr/bin/terraform terraform
 source "${HOME}/.env"
 
 # Exports
-export PATH=$PATH
 export PATH="${PATH}:${KREW_ROOT:-$HOME/.krew}/bin"
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-else
-    export EDITOR='vim'
-fi
+export EDITOR='vim'
 
 # Enable colors
 autoload -U colors
