@@ -101,6 +101,12 @@ nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 """"""""""""""""""""""     Filetype customizations     """"""""""""""""""""{{{
 " *.vim files
 autocmd BufNewFile,BufRead *.vim set foldmethod=marker
+
+
+" Prepopulate script files with shebang
+autocmd BufNewFile  *.sh    0r ~/res/skeleton.sh
+autocmd BufNewFile  *.py    0r ~/res/skeleton.py
+
 "}}}
 
 """"""""""""""""""""""""     Function definitions     """""""""""""""""""""{{{
