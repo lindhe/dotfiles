@@ -121,6 +121,7 @@ stderr() {
 
 # edit rc files
 alias vimrc="vim ~/.vimrc"
+alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias zshrc="vim ~/.zshrc"
 alias zathurarc="vim ~/.config/zathura/zathurarc"
 
