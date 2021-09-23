@@ -42,3 +42,8 @@ nnoremap <C-t> :tabedit<Space>
 nnoremap gf :tabedit <cfile><CR>
 
 "}}}
+
+""""""""""""""""""""""     Filetype customizations     """"""""""""""""""""{{{
+" *.vim files
+autocmd BufNewFile,BufRead *.vim set foldmethod=marker
+"}}}
