@@ -30,6 +30,12 @@ Plug 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 " Good ones, but dispensible
 Plug 'apzelos/blamer.nvim'            " Git blame for Vim
 
+" Not sure about these yet
+Plug 'honza/vim-snippets' | Plug 'sirver/ultisnips' " Snippets & snippet engine
+
+" Language specific
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+
 call plug#end()
 unlet plugin_path
 "}}}
@@ -41,6 +47,12 @@ let g:blamer_enabled = 1
 let g:blamer_delay = 1000
 let g:blamer_prefix = ' '
 let g:blamer_date_format = '%Y-%m-%d'
+
+" UltiSnips
+let g:UltiSnipsEditSplit="vertical"
+
+" pymode
+let g:pymode_options = 0
 
 "}}}
 
