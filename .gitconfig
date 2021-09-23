@@ -67,3 +67,5 @@
     prune = true
 [diff "sopsdiffer"]
 	textconv = sops -d
+[rerere]
+	enabled = true
