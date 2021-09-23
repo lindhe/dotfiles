@@ -41,6 +41,8 @@ source ~/.config/zsh/autocomplete/yq.zsh
 source /etc/bash_completion.d/azure-cli
 complete -o nospace -C /usr/bin/terraform terraform
 
+# Source the local env file
+source "${HOME}/.env"
 
 # Exports
 export PATH=$PATH
@@ -235,5 +237,3 @@ alias markdownlint="mdl"
 
 alias jqless="jq -C '' | less -Ri"
 alias yqless="yq -C eval | less -Ri"
-
-
