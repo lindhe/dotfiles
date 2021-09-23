@@ -85,6 +85,15 @@ nnoremap <leader>t :call MakeCenterTitle('')<CR>
 
 "}}}
 
+"""""""""""""""""""""""""""""""     Movement     """"""""""""""""""""""""""""""""{{{
+
+" hjkl --> jklö
+noremap l h
+noremap ö l
+noremap s l
+
+"}}}
+
 """"""""""""""""""""""     Filetype customizations     """"""""""""""""""""{{{
 " *.vim files
 autocmd BufNewFile,BufRead *.vim set foldmethod=marker
