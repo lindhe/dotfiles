@@ -16,6 +16,17 @@ unlet autoload_plug_path
 """"""""""""""""""""""""""""""     Plugins     """"""""""""""""""""""""""""{{{
 let plugin_path = stdpath('data') . '/plugged'
 call plug#begin(plugin_path)
+
+" I cannot imagine Vim without these
+Plug 'junegunn/vim-easy-align'        " Align on a character: `gaip&`
+Plug 'mbbill/undotree'                " Here to save the day
+Plug 'tpope/vim-commentary'           " Toggle comments
+Plug 'tpope/vim-endwise'              " Autocomplete if ... endif
+Plug 'tpope/vim-repeat'               " Make . repeat (some) plugin actions
+Plug 'tpope/vim-sensible'             " Fix the stupid things left from Vi
+Plug 'tpope/vim-speeddating'          " <c-a> and <c-x> correct with iso dates
+Plug 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
+
 call plug#end()
 unlet plugin_path
 "}}}
