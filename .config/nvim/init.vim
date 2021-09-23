@@ -92,6 +92,10 @@ noremap l h
 noremap ö l
 noremap s l
 
+" Make vertical movement work with wrapped lines
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+
 "}}}
 
 """"""""""""""""""""""     Filetype customizations     """"""""""""""""""""{{{
