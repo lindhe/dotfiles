@@ -27,11 +27,20 @@ Plug 'tpope/vim-sensible'             " Fix the stupid things left from Vi
 Plug 'tpope/vim-speeddating'          " <c-a> and <c-x> correct with iso dates
 Plug 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 
+" Grace period
+Plug 'apzelos/blamer.nvim'            " Git blame for Vim
+
 call plug#end()
 unlet plugin_path
 "}}}
 
 """""""""""""""""""""""     Plugin Configurations     """""""""""""""""""""{{{
+
+" Blamer
+let g:blamer_enabled = 1
+let g:blamer_delay = 1000
+let g:blamer_prefix = ' '
+let g:blamer_date_format = '%Y-%m-%d'
 
 "}}}
 
