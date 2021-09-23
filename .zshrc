@@ -32,7 +32,7 @@ autoload -U compinit
 compinit
 zstyle ':completion:*:*:vim:*' file-patterns '*.tex:*.bib:source-files' '*:all-files'
 
-source ~/.config/zsh/autocomplete/helm.zsh
+source <(helm completion zsh)
 source ~/.config/zsh/autocomplete/kubectl.zsh
 source ~/.config/zsh/autocomplete/istioctl.zsh
 source ~/.config/zsh/autocomplete/minikube.zsh
