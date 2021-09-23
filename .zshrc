@@ -42,7 +42,10 @@ source /etc/bash_completion.d/azure-cli
 complete -o nospace -C /usr/bin/terraform terraform
 
 # Source the local env file
-source "${HOME}/.env"
+LOCAL_ENV="${HOME}/.env"
+if [[ -f ${LOCAL_ENV} ]]; then
+    source ${LOCAL_ENV}
+fi
 
 # Exports
 export PATH="${PATH}:${KREW_ROOT:-$HOME/.krew}/bin"
