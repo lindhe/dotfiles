@@ -66,9 +66,61 @@ nnoremap <enter> @@
 nnoremap <C-t> :tabedit<Space>
 nnoremap gf :tabedit <cfile><CR>
 
+" Make line outcommented title
+nnoremap <leader>t :call MakeCenterTitle('')<CR>
+
 "}}}
 
 """"""""""""""""""""""     Filetype customizations     """"""""""""""""""""{{{
 " *.vim files
 autocmd BufNewFile,BufRead *.vim set foldmethod=marker
+"}}}
+
+""""""""""""""""""""""""     Function definitions     """""""""""""""""""""{{{
+
+" MakeCenterTitle
+" Removes surrounding whitespace, and put text at the center of textwidth and
+" then padd with comments (or optional other character) around it.
+function! MakeCenterTitle(...)
+    "{{{
+
+    " Use commenstring character if no other string is specified
+    let pad = (a:000 != [] && a:1 != '') ? a:1 : &commentstring[0]
+
+    " Distance between text and padding:
+    let safetyDistance = 5
+
+    " Default width is 80 if textwidth=0
+    let tw = (&textwidth > 0) ? &textwidth : 80
+
+    " Trim surrounding whitespace
+    s/^\s*//
+    s/\s*$//
+
+    " Get length of string
+    execute "normal $"
+    let contentSize = col(".")
+
+    " Stuff happens
+    let marginSize = (tw - contentSize)/2
+    if (marginSize - safetyDistance > 0)
+        let padding = marginSize - safetyDistance
+    else
+        let padding = 1
+    endif
+    let sr = marginSize - padding
+
+    " insert leading padding chars
+    " insert spacingRight spaces
+    " insert trailing padding chars
+    if (marginSize > 1)
+        center
+        exec "normal! 0".padding."r".pad."$".sr."a ".padding."a".pad."0"
+    else
+        echo "There was an error. Please fix."
+    endif
+
+"}}}
+endfunction
+
 "}}}
