@@ -363,6 +363,9 @@ assign [class="^KeePassXC$"] 2
 # Put Pavuctl on ws 1
 assign [class="^Pavucontrol$"] 1
 
+# Put Citrix on ws 1
+assign [class="^Wfica$"] 1
+
 # }}}
 
 #################################     Dock     #################################
