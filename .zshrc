@@ -231,6 +231,7 @@ alias cal="cal -m"
 alias starwars="telnet towel.blinkenlights.nl"
 alias gnu="gnuplot"
 alias vimcognito="vim -i NONE -u NONE -U NONE --cmd 'set noswapfile' --cmd 'set nobackup'"
+alias markdownlint="mdl"
 
 alias jqless="jq -C '' | less -Ri"
 alias yqless="yq -C eval | less -Ri"
