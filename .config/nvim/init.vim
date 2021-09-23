@@ -31,6 +31,10 @@ call plug#end()
 unlet plugin_path
 "}}}
 
+"""""""""""""""""""""""     Plugin Configurations     """""""""""""""""""""{{{
+
+"}}}
+
 """""""""""""""""""""""""""     File handling     """""""""""""""""""""""""{{{
 set undofile
 set list
