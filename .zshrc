@@ -30,7 +30,7 @@ zstyle ':completion:*' menu select
 
 autoload -U compinit
 compinit
-zstyle ':completion:*:*:vim:*' file-patterns '*.tex:*.bib:source-files' '*:all-files'
+zstyle ':completion:*:*:nvim:*' file-patterns '*.tex:*.bib:source-files' '*:all-files'
 
 source <(helm completion zsh)
 source ~/.config/zsh/autocomplete/kubectl.zsh
@@ -49,7 +49,7 @@ fi
 
 # Exports
 export PATH="${PATH}:${KREW_ROOT:-$HOME/.krew}/bin"
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Enable colors
 autoload -U colors
@@ -119,11 +119,14 @@ stderr() {
 
 ## Aliases
 
+# Replace vim with nvim
+alias vim="nvim"
+
 # edit rc files
 alias vimrc="vim ~/.vimrc"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
-alias zshrc="vim ~/.zshrc"
-alias zathurarc="vim ~/.config/zathura/zathurarc"
+alias zshrc="nvim ~/.zshrc"
+alias zathurarc="nvim ~/.config/zathura/zathurarc"
 
 # Propagate aliases to sudo
 alias s="sudo "
@@ -156,7 +159,6 @@ alias tree="tree -C"
 alias watch="watch --color"
 alias yao="yaourt"
 alias gitdiff="git diff --no-index --"
-alias v="vim -p"
 alias dusch="du -sch .[^.]* * | sort -h"
 
 # Docking
