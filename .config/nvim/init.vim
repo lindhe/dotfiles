@@ -119,6 +119,9 @@ autocmd BufNewFile,BufRead *.vim set foldmethod=marker
 autocmd BufNewFile  *.sh    0r ~/res/skeleton.sh
 autocmd BufNewFile  *.py    0r ~/res/skeleton.py
 
+" Dockerfile
+autocmd BufNewFile,BufRead Dockerfile*[^md] set syntax=dockerfile
+
 "}}}
 
 """"""""""""""""""""""""     Function definitions     """""""""""""""""""""{{{
