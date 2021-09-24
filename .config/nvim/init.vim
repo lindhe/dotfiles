@@ -91,6 +91,10 @@ nnoremap gf :tabedit <cfile><CR>
 " Make line outcommented title
 nnoremap <leader>t :call MakeCenterTitle('')<CR>
 
+" Make it possible to exit :terminal mode
+" https://vi.stackexchange.com/a/6966/2082
+tnoremap <Esc> <C-\><C-n>
+
 "}}}
 
 """""""""""""""""""""""""""""""     Movement     """"""""""""""""""""""""""""""""{{{
