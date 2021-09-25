@@ -45,8 +45,9 @@ unlet plugin_path
 " Blamer
 let g:blamer_enabled = 1
 let g:blamer_delay = 1000
-let g:blamer_prefix = ' '
+let g:blamer_prefix = ' <-- '
 let g:blamer_date_format = '%Y-%m-%d'
+let g:blamer_template = '<commit-short> (<committer>): <summary>'
 
 " UltiSnips
 let g:UltiSnipsEditSplit="vertical"
