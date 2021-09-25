@@ -95,6 +95,10 @@ nnoremap <leader>t :call MakeCenterTitle('')<CR>
 " https://vi.stackexchange.com/a/6966/2082
 tnoremap <Esc> <C-\><C-n>
 
+" <F7> to cycle spell
+nnoremap <F7> :call CycleSpell()<CR>
+inoremap <F7> <Esc>:call CycleSpell()<CR>a
+
 "}}}
 
 """""""""""""""""""""""""""""""     Movement     """"""""""""""""""""""""""""""""{{{
@@ -171,4 +175,21 @@ function! MakeCenterTitle(...)
 "}}}
 endfunction
 
+" CycleSpell
+" Cycles between spelllang
+function! CycleSpell()
+"{{{
+    let langs = ['', 'en', 'sv']
+    let i = index(langs, &spl)
+    let j = (i+1)%len(langs)
+    let &spl = langs[j]
+    if empty(&spl)
+        set nospell
+        echo "set nospell"
+    else
+        set spell
+        echo "spelllang=" . &spl
+    endif
+"}}}
+endfunction
 "}}}
