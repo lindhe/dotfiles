@@ -55,6 +55,9 @@ let g:UltiSnipsEditSplit="vertical"
 " pymode
 let g:pymode_options = 0
 
+" vim-easy-align
+map ga <Plug>(EasyAlign)
+
 "}}}
 
 """""""""""""""""""""""""""     File handling     """""""""""""""""""""""""{{{
