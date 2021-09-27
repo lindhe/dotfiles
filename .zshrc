@@ -30,7 +30,7 @@ zstyle ':completion:*' menu select
 
 autoload -U compinit
 compinit
-zstyle ':completion:*:*:nvim:*' file-patterns '*.tex:*.bib:source-files' '*:all-files'
+zstyle ':completion:*:*:vim:*' file-patterns '*.tex:*.bib:source-files' '*:all-files'
 
 source <(helm completion zsh)
 source ~/.config/zsh/autocomplete/kubectl.zsh
@@ -118,9 +118,6 @@ stderr() {
 }
 
 ## Aliases
-
-# Replace vim with nvim
-alias vim="nvim"
 
 # edit rc files
 alias vimrc="vim ~/.vimrc"
