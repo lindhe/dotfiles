@@ -1,3 +1,4 @@
+# vim: foldmethod=marker
 ## Überimportant:
 # Fixing <C-s> issue (see http://unix.stackexchange.com/a/72092/33928)
 stty -ixon
