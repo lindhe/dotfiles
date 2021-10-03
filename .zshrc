@@ -145,10 +145,10 @@ stderr() {
 ###############################     Aliases     ###############################
 # {{{
 # edit rc files
-alias vimrc="vim ~/.vimrc"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
-alias zshrc="nvim ~/.zshrc"
+alias vimrc="vim ~/.vimrc"
 alias zathurarc="nvim ~/.config/zathura/zathurarc"
+alias zshrc="nvim ~/.zshrc"
 
 # Propagate aliases to sudo
 alias s="sudo "
@@ -156,13 +156,15 @@ alias sudo="sudo "
 alias sudoedit="sudoedit "
 
 # General
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias ....="cd ../../.."
+alias ...="cd ../.."
+alias ..="cd .."
 alias bcl="bluetoothctl"
 alias df="df -H"
 alias du="du -h"
+alias dusch="du -sch .[^.]* * | sort -h"
+alias gitdiff="git diff --no-index --"
 alias l="ls -FHhlv --color=always --group-directories-first"
 alias ll="ls -aFhlv --color=always"
 alias ls="ls -Hhv --color=always"
@@ -180,8 +182,6 @@ alias tls="tmux list-sessions"
 alias tree="tree -C"
 alias watch="watch --color"
 alias yao="yaourt"
-alias gitdiff="git diff --no-index --"
-alias dusch="du -sch .[^.]* * | sort -h"
 
 # Docking
 alias keyboard="xset r rate 330 75; setxkbmap se-A5; setxkbmap -option caps:swapescape"
@@ -192,10 +192,11 @@ alias unmonitors="xrandr --output eDP-1 --auto --primary --output HDMI-1 --off -
 # Git
 alias g="git"
 alias ga="git add -p"
-alias gap="git add -p"
 alias gam="git commit -am"
+alias gap="git add -p"
 alias gc="git commit"
 alias gcm="git commit -m"
+alias gg="git grep -i"
 alias gi="git"
 alias gif="git diff"
 alias gil="git l"
@@ -203,7 +204,6 @@ alias gill="git lob"
 alias gip="git pl"
 alias gis="git status"
 alias gs="git status"
-alias gg="git grep -i"
 
 alias pac="pacman"
 alias qq="exit"
@@ -220,41 +220,41 @@ export GOPATH=/home/andreas/go
 alias d="docker"
 alias dc="docker-compose"
 alias h="helm"
-alias hs="helm secrets"
 alias hf="helmfile"
-alias mk="microk8s.kubectl"
-alias pp="pipenv"
+alias hs="helm secrets"
 alias ipy="ipython3"
-alias wkga="watch kubectl get all"
-alias t="terraform"
+alias mk="microk8s.kubectl"
 alias mp="multipass"
+alias pp="pipenv"
+alias t="terraform"
+alias wkga="watch kubectl get all"
 
 # Kubernetes
-alias k="kubectl"
-alias kc="kubectl config"
-alias kns="kubectl config set-context --current --namespace"
-alias ktop='kubectl top'
-alias kk="kubectl -n andreas"
 alias hh="helm -n andreas"
-alias m="minikube"
 alias i="istioctl"
-alias tf="terraform"
+alias k="kubectl"
 alias kaf='kubectl apply -f'
-alias kdf='kubectl delete -f'
-alias kd='kubectl describe'
-alias kdesc='kubectl describe'
-alias kg='kubectl get'
-alias kget='kubectl get'
+alias kc="kubectl config"
 alias kcc='kubectl create --dry-run=client -o yaml'
 alias kcd='kubectl create --dry-run=client -o yaml'
+alias kd='kubectl describe'
+alias kdesc='kubectl describe'
+alias kdf='kubectl delete -f'
+alias kg='kubectl get'
+alias kget='kubectl get'
+alias kk="kubectl -n andreas"
+alias kns="kubectl config set-context --current --namespace"
+alias ktop='kubectl top'
+alias m="minikube"
+alias tf="terraform"
 
 # non-important
 alias cal="cal -m"
-alias starwars="telnet towel.blinkenlights.nl"
 alias gnu="gnuplot"
-alias vimcognito="vim -i NONE -u NONE -U NONE --cmd 'set noswapfile' --cmd 'set nobackup'"
-alias markdownlint="mdl"
 alias jqless="jq -C '' | less -Ri"
+alias markdownlint="mdl"
+alias starwars="telnet towel.blinkenlights.nl"
+alias vimcognito="vim -i NONE -u NONE -U NONE --cmd 'set noswapfile' --cmd 'set nobackup'"
 alias yqless="yq -C eval | less -Ri"
 
 # }}}
