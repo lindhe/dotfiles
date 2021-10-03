@@ -62,6 +62,7 @@ fi
 # Exports
 export PATH="${PATH}:${KREW_ROOT:-$HOME/.krew}/bin"
 export EDITOR='nvim'
+export GOPATH=/home/andreas/go
 # }}}
 
 ##########################     Prompt and colors     ##########################
@@ -216,7 +217,6 @@ alias tree="tree -C"
 alias watch="watch --color"
 
 # Dev
-export GOPATH=/home/andreas/go
 alias d="docker"
 alias dc="docker-compose"
 alias h="helm"
