@@ -98,8 +98,23 @@ bindkey "^[[3~" delete-char
 
 ##############################     Functions     ##############################
 # {{{
-timestamp() {
-    date +'%F_%T'
+
+# Search on both snap and apt
+apps() {
+    snap search $1
+    apt search $1
+}
+
+# base64 -d
+bd() {
+    echo "$1" | base64 -d ; echo
+}
+
+checksum() {
+    echo "$1 $2" > /tmp/hash.txt &&\
+        printf 'md5:\n'; md5sum -c /tmp/hash.txt;\
+        printf '\n';\
+        printf 'sha256:\n'; sha256sum -c /tmp/hash.txt
 }
 
 datestamp() {
@@ -111,36 +126,18 @@ m2p() {
     rename md.pdf pdf ./$1.pdf
 }
 
-checksum() {
-    echo "$1 $2" > /tmp/hash.txt &&\
-        printf 'md5:\n'; md5sum -c /tmp/hash.txt;\
-        printf '\n';\
-        printf 'sha256:\n'; sha256sum -c /tmp/hash.txt
+stderr() {
+    python -c "import sys; print('$1', file=sys.stderr)"
+}
+
+timestamp() {
+    date +'%F_%T'
 }
 
 title() {
     echo -ne "\033]0;${1}\007"
 }
 
-# Search on both snap and apt
-apps() {
-    snap search $1
-    apt search $1
-}
-
-# ddiso() {
-#     size=$(stat -c%s $1)
-#     dd if=$1 &> /dev/null | pv -petra -s $size | dd of=$2 bs=4k
-# }
-
-# base64 -d
-bd() {
-    echo "$1" | base64 -d ; echo
-}
-
-stderr() {
-    python -c "import sys; print('$1', file=sys.stderr)"
-}
 # }}}
 
 ###############################     Aliases     ###############################
