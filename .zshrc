@@ -4,6 +4,7 @@
 stty -ixon
 
 ###############################     History     ###############################
+# {{{
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=SAVEHIST=99999
 setopt APPEND_HISTORY
@@ -16,12 +17,18 @@ setopt HIST_NO_STORE
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_VERIFY
 setopt INC_APPEND_HISTORY
+# }}}
+
+#################################     Misc     #################################
+# {{{
 # why would you type 'cd dir' if you could just type 'dir'?
 setopt AUTO_CD
 # Allow bash-like comments inline
 setopt interactivecomments
+# }}}
 
 ##############################     Completion     ##############################
+# {{{
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
@@ -42,6 +49,10 @@ source ~/.config/zsh/autocomplete/yq.zsh
 source /etc/bash_completion.d/azure-cli
 complete -o nospace -C /usr/bin/terraform terraform
 
+# }}}
+
+##########################     Source and export     ##########################
+# {{{
 # Source the local env file
 LOCAL_ENV="${HOME}/.env"
 if [[ -f ${LOCAL_ENV} ]]; then
@@ -51,7 +62,10 @@ fi
 # Exports
 export PATH="${PATH}:${KREW_ROOT:-$HOME/.krew}/bin"
 export EDITOR='nvim'
+# }}}
 
+##########################     Prompt and colors     ##########################
+# {{{
 # Enable colors
 autoload -U colors
 colors
@@ -64,16 +78,25 @@ promptinit
 PROMPT="%{$fg_bold[white]%}%n%{$fg[magenta]%}@%{$fg_no_bold[cyan]%}%m %{$fg_no_bold[yellow]%}%~ %{$reset_color%}>%"
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# }}}
+
+############################     New terminals     ############################
+# {{{
 # New terminals adopt current directory
 set VTE_FILE = /etc/profile.d/vte.sh
 if [[ -a $VTE_FILE ]]; then
   source $VTE_FILE
 fi
+# }}}
 
+################################     Fixes     ################################
+# {{{
 # Keybindings
 bindkey "^[[3~" delete-char
+# }}}
 
 ##############################     Functions     ##############################
+# {{{
 timestamp() {
     date +'%F_%T'
 }
@@ -117,9 +140,10 @@ bd() {
 stderr() {
     python -c "import sys; print('$1', file=sys.stderr)"
 }
+# }}}
 
-## Aliases
-
+###############################     Aliases     ###############################
+# {{{
 # edit rc files
 alias vimrc="vim ~/.vimrc"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
@@ -230,6 +254,7 @@ alias starwars="telnet towel.blinkenlights.nl"
 alias gnu="gnuplot"
 alias vimcognito="vim -i NONE -u NONE -U NONE --cmd 'set noswapfile' --cmd 'set nobackup'"
 alias markdownlint="mdl"
-
 alias jqless="jq -C '' | less -Ri"
 alias yqless="yq -C eval | less -Ri"
+
+# }}}
