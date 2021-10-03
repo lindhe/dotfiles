@@ -41,7 +41,6 @@ compinit
 zstyle ':completion:*:*:vim:*' file-patterns '*.tex:*.bib:source-files' '*:all-files'
 
 source <(helm completion zsh)
-source ~/.config/zsh/autocomplete/kubectl.zsh
 source ~/.config/zsh/autocomplete/istioctl.zsh
 source ~/.config/zsh/autocomplete/minikube.zsh
 source ~/.config/zsh/autocomplete/yq.zsh
@@ -119,6 +118,13 @@ checksum() {
 
 datestamp() {
     date +'%F'
+}
+
+# setup kubectl environment
+kinit() {
+    # Source the zsh completion only on first run, since it is too slow to
+    # do in every new terminal.
+    source <(kubectl completion zsh)
 }
 
 m2p() {
