@@ -109,6 +109,9 @@ nnoremap <leader>t :call MakeCenterTitle('')<CR>
 " https://vi.stackexchange.com/a/6966/2082
 tnoremap <Esc> <C-\><C-n>
 
+" <F6> to remove trailing whitespace
+nnoremap <silent> <F6> :%s/\s\+$//<CR>''
+
 " <F7> to cycle spell
 nnoremap <F7> :call CycleSpell()<CR>
 inoremap <F7> <Esc>:call CycleSpell()<CR>a
