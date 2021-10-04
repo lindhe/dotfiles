@@ -15,6 +15,7 @@
     comm = commit -m
     cp = cherry-pick
     df = diff --color-words='\\w+'
+    dff = diff --color-words='.'
     dif = diff
     email = config user.email andreas@lindhe.io
     files-in = diff-tree --no-commit-id --name-only -r
@@ -30,6 +31,7 @@
     nwt = "!WTD=~/git/worktree/${1}; mkdir -p ${WTD}; git worktree add ${WTD}"
     new = diff --cached
     nw = diff --cached --color-words='\\w+'
+    nww = diff --cached --color-words='.'
     pl = !git pull && git log ORIG_HEAD..origin/$(git branch --show-current)
     psuh = push
     reb = rebase
@@ -38,6 +40,7 @@
     root = rev-parse --show-toplevel
     s = status
     shw = show --color-words='\\w+'
+    shww = show --color-words='.'
     sorry = commit --amend --no-edit
     st = status
     sw = switch
