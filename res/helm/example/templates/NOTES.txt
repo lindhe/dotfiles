@@ -1,0 +1,5 @@
+These are the value of some objects in Helm:
+.Chart.Name: {{ .Chart.Name }}
+.Chart.Description: {{ .Chart.Name }}
+.Values.foo: {{ .Values.foo }}
+.Release.Service {{.Release.Service }}
