@@ -47,7 +47,6 @@ zstyle ':completion:*:*:vim:*' file-patterns '*.tex:*.bib:source-files' '*:all-f
 
 source <(kubectl completion zsh)
 source <(helm completion zsh)
-source ~/.config/zsh/autocomplete/minikube.zsh
 source ~/.config/zsh/autocomplete/yq.zsh
 source /etc/bash_completion.d/azure-cli
 complete -o nospace -C /usr/bin/terraform terraform
@@ -126,9 +125,9 @@ datestamp() {
 
 # setup kubectl environment
 kinit() {
-    # Source the zsh completion only on first run, since it is too slow to
-    # do in every new terminal.
+    source <(helm completion zsh)
     source <(kubectl completion zsh)
+    source <(minikube completion zsh)
 }
 
 m2p() {
