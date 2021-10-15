@@ -3,6 +3,11 @@
 # Fixing <C-s> issue (see http://unix.stackexchange.com/a/72092/33928)
 stty -ixon
 
+###########################     Profiling Start     ###########################
+# Enable this (and zprof at bottom) for profiling.
+# https://stevenvanbael.com/profiling-zsh-startup
+# zmodload zsh/zprof
+
 ###############################     History     ###############################
 # {{{
 HISTFILE=$HOME/.zsh_history
@@ -262,3 +267,6 @@ alias vimcognito="vim -i NONE -u NONE -U NONE --cmd 'set noswapfile' --cmd 'set 
 alias yqless="yq -C eval | less -Ri"
 
 # }}}
+
+############################     Profiling End     ############################
+# zprof
