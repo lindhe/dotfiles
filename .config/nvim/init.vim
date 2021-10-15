@@ -141,7 +141,10 @@ autocmd BufNewFile  *.sh    0r ~/res/skeleton.sh
 autocmd BufNewFile  *.py    0r ~/res/skeleton.py
 
 " Dockerfile
-autocmd BufNewFile,BufRead Dockerfile*[^md] set syntax=dockerfile
+autocmd BufNewFile,BufRead Dockerfile*[^md] set filetype=dockerfile
+
+" *.yaml.gotmpl
+autocmd BufNewFile,BufRead *.yaml.gotmpl set filetype=yaml
 
 "}}}
 
