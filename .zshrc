@@ -49,7 +49,6 @@ source <(kubectl completion zsh)
 source <(helm completion zsh)
 source ~/.config/zsh/autocomplete/minikube.zsh
 source ~/.config/zsh/autocomplete/yq.zsh
-# source ~/.config/zsh/autocomplete/jupyter.zsh
 source /etc/bash_completion.d/azure-cli
 complete -o nospace -C /usr/bin/terraform terraform
 
