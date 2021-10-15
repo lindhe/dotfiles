@@ -47,7 +47,6 @@ zstyle ':completion:*:*:vim:*' file-patterns '*.tex:*.bib:source-files' '*:all-f
 
 source <(kubectl completion zsh)
 source <(helm completion zsh)
-source ~/.config/zsh/autocomplete/istioctl.zsh
 source ~/.config/zsh/autocomplete/minikube.zsh
 source ~/.config/zsh/autocomplete/yq.zsh
 # source ~/.config/zsh/autocomplete/jupyter.zsh
@@ -240,7 +239,6 @@ alias wkga="watch kubectl get all"
 
 # Kubernetes
 alias hh="helm -n andreas"
-alias i="istioctl"
 alias k="kubectl"
 alias kaf='kubectl apply -f'
 alias kc="kubectl config"
