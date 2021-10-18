@@ -45,7 +45,7 @@ unlet plugin_path
 """""""""""""""""""""""     Plugin Configurations     """""""""""""""""""""{{{
 
 " Blamer
-let g:blamer_enabled = 1
+let g:blamer_enabled = 0
 let g:blamer_delay = 1000
 let g:blamer_prefix = ' <-- '
 let g:blamer_date_format = '%Y-%m-%d'
