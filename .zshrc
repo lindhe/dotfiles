@@ -45,9 +45,13 @@ autoload -U compinit
 compinit
 zstyle ':completion:*:*:vim:*' file-patterns '*.tex:*.bib:source-files' '*:all-files'
 
+# Native ZSH completion
 source <(kubectl completion zsh)
 source <(helm completion zsh)
 source ~/.config/zsh/autocomplete/yq.zsh
+
+# Bash completion
+autoload -U +X bashcompinit && bashcompinit
 source /etc/bash_completion.d/azure-cli
 complete -o nospace -C /usr/bin/terraform terraform
 
