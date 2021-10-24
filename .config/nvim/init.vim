@@ -33,6 +33,7 @@ Plug 'apzelos/blamer.nvim'            " Git blame for Vim
 " Not sure about these yet
 Plug 'honza/vim-snippets' | Plug 'sirver/ultisnips' " Snippets & snippet engine
 Plug 'neovim/nvim-lspconfig'
+Plug 'mattn/emmet-vim'                " Emmet abbreviations
 
 " Language specific
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
