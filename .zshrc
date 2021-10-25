@@ -129,9 +129,15 @@ datestamp() {
 
 # setup kubectl environment
 kinit() {
-    source <(helm completion zsh)
-    source <(kubectl completion zsh)
-    source <(minikube completion zsh)
+    if $(command -v helm &> /dev/null); then
+        source <(helm completion zsh)
+    fi
+    if $(command -v kubectl &> /dev/null); then
+        source <(kubectl completion zsh)
+    fi
+    if $(command -v minikube &> /dev/null); then
+        source <(minikube completion zsh)
+    fi
 }
 
 m2p() {
