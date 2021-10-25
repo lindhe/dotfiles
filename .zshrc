@@ -94,12 +94,21 @@ set VTE_FILE = /etc/profile.d/vte.sh
 if [[ -a $VTE_FILE ]]; then
   source $VTE_FILE
 fi
+
 # }}}
 
 ################################     Fixes     ################################
 # {{{
 # Keybindings
 bindkey "^[[3~" delete-char
+
+# WLS2
+if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
+    if ! service docker status > /dev/null ; then
+        sudo service docker start
+    fi
+fi
+
 # }}}
 
 ##############################     Functions     ##############################
