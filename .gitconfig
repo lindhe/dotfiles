@@ -16,6 +16,7 @@
     cp = cherry-pick
     df = diff --color-words='\\w+'
     dff = diff --color-words='.'
+    dfff = diff --word-diff-regex='.'
     dif = diff
     email = config user.email andreas@lindhe.io
     files-in = diff-tree --no-commit-id --name-only -r
@@ -32,15 +33,18 @@
     new = diff --cached
     nw = diff --cached --color-words='\\w+'
     nww = diff --cached --color-words='.'
+    nwww = show --cached --word-diff-regex='.'
     pl = !git pull && git log ORIG_HEAD..origin/$(git branch --show-current)
     psuh = push
     reb = rebase
     rem = remote -v
     remove-gone = "!git branch -av | grep -E '^[^\\+].*\\[gone]' | awk '{ print $1 }' | xargs git branch -D #"
+    review = "!git diff $(git merge-base master HEAD) ${@} #"
     root = rev-parse --show-toplevel
     s = status
     shw = show --color-words='\\w+'
     shww = show --color-words='.'
+    shwww = show --word-diff-regex='.'
     sorry = commit --amend --no-edit
     st = status
     sw = switch
