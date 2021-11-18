@@ -1,6 +1,7 @@
 [user]
     name = Andreas Lindhé
 [alias]
+    ado = "log -q --pretty='format:%B'"
     b = branch
     bi = bisect
     bra = branch -vv
