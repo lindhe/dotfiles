@@ -81,6 +81,7 @@ set shiftwidth=4
 set number
 set ignorecase
 set smartcase
+set linebreak
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
