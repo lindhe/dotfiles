@@ -6,8 +6,7 @@ while [[ $ready != 'y' ]]; do
     read -n 1 ready
 done;
 
-wd=$PWD
-cd ~/
+pushd ~
 
 echo "Creating ~/.undodir for vim"
 mkdir -p ~/.undodir
@@ -25,7 +24,7 @@ ln -s ~/git/lindhe/dotfiles/.gitconfig .
 
 echo "Creating symlinks in ~/.config/"
 mkdir -p ~/.config
-cd ~/.config/
+pushd ~/.config/
 ln -s ~/git/lindhe/dotfiles/.config/compton.conf .
 ln -s ~/git/lindhe/dotfiles/.config/dunst/ .
 ln -s ~/git/lindhe/dotfiles/.config/i3 .
@@ -35,8 +34,9 @@ ln -s ~/git/lindhe/dotfiles/.config/monitors.json .
 ln -s ~/git/lindhe/dotfiles/.config/sway .
 ln -s ~/git/lindhe/dotfiles/.config/zathura/ .
 ln -s ~/git/lindhe/dotfiles/.config/zsh/ .
+popd
 
 echo "Installing custom keyboard layouts"
 sudo cp ~/git/lindhe/dotfiles/usr/share/X11/xkb/symbols/* -t /usr/share/X11/xkb/symbols
 
-cd $wd
+popd
