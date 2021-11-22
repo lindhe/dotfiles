@@ -30,6 +30,7 @@ ln -s ~/git/lindhe/dotfiles/.config/compton.conf .
 ln -s ~/git/lindhe/dotfiles/.config/dunst/ .
 ln -s ~/git/lindhe/dotfiles/.config/i3 .
 ln -s ~/git/lindhe/dotfiles/.config/i3blocks/ .
+ln -s ~/git/lindhe/dotfiles/.config/nvim/ .
 ln -s ~/git/lindhe/dotfiles/.config/monitors.json .
 ln -s ~/git/lindhe/dotfiles/.config/sway .
 ln -s ~/git/lindhe/dotfiles/.config/zathura/ .
