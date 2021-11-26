@@ -8,6 +8,20 @@ stty -ixon
 # https://stevenvanbael.com/profiling-zsh-startup
 # zmodload zsh/zprof
 
+##########################     Source and export     ##########################
+# {{{
+# Source the local env file
+LOCAL_ENV="${HOME}/.env"
+if [[ -f ${LOCAL_ENV} ]]; then
+    source ${LOCAL_ENV}
+fi
+
+# Exports
+export PATH="${PATH}:${KREW_ROOT:-$HOME/.krew}/bin"
+export EDITOR='nvim'
+export GOPATH=/home/andreas/go
+# }}}
+
 ###############################     History     ###############################
 # {{{
 HISTFILE=$HOME/.zsh_history
@@ -55,20 +69,6 @@ autoload -U +X bashcompinit && bashcompinit
 source /etc/bash_completion.d/azure-cli
 complete -o nospace -C /usr/bin/terraform terraform
 
-# }}}
-
-##########################     Source and export     ##########################
-# {{{
-# Source the local env file
-LOCAL_ENV="${HOME}/.env"
-if [[ -f ${LOCAL_ENV} ]]; then
-    source ${LOCAL_ENV}
-fi
-
-# Exports
-export PATH="${PATH}:${KREW_ROOT:-$HOME/.krew}/bin"
-export EDITOR='nvim'
-export GOPATH=/home/andreas/go
 # }}}
 
 ##########################     Prompt and colors     ##########################
