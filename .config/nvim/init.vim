@@ -38,6 +38,7 @@ Plug 'mattn/emmet-vim'                " Emmet abbreviations
 " Language specific
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'hashivim/vim-terraform'
+Plug 'fatih/vim-go'
 
 call plug#end()
 unlet plugin_path
