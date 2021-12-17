@@ -31,7 +31,6 @@ Plug 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 Plug 'apzelos/blamer.nvim'            " Git blame for Vim
 
 " Not sure about these yet
-Plug 'honza/vim-snippets' | Plug 'sirver/ultisnips' " Snippets & snippet engine
 Plug 'neovim/nvim-lspconfig'
 Plug 'mattn/emmet-vim'                " Emmet abbreviations
 
