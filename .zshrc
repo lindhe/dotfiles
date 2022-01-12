@@ -60,13 +60,20 @@ compinit
 zstyle ':completion:*:*:vim:*' file-patterns '*.tex:*.bib:source-files' '*:all-files'
 
 # Native ZSH completion
-source <(kubectl completion zsh)
-source <(helm completion zsh)
+if command -v kubectl > /dev/null; then
+    source <(kubectl completion zsh)
+fi
+if command -v kubectl > /dev/null; then
+    source <(helm completion zsh)
+fi
 source ~/.config/zsh/autocomplete/yq.zsh
 
 # Bash completion
 autoload -U +X bashcompinit && bashcompinit
-source /etc/bash_completion.d/azure-cli
+AZCLI_COMPLETION="/etc/bash_completion.d/azure-cli"
+if [[ -f ${AZCLI_COMPLETION} ]]; then
+    source ${AZCLI_COMPLETION}
+fi
 complete -o nospace -C /usr/bin/terraform terraform
 
 # }}}
@@ -104,8 +111,12 @@ bindkey "^[[3~" delete-char
 
 # WLS2
 if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
-    if ! service docker status > /dev/null ; then
-        sudo service docker start
+    # Check if docker service exists
+    if service --status-all |& grep -qE ' docker$'; then
+        # Start the docker service unless it's already running
+        if ! service docker status > /dev/null ; then
+            sudo service docker start
+        fi
     fi
 fi
 
