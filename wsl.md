@@ -44,3 +44,13 @@ and add the following:
 # Allow members of group sudo to start docker
 %sudo   ALL=(ALL) NOPASSWD: /usr/sbin/service docker start
 ```
+
+## Remove Windows interoperatbility
+
+```console
+$ cat <<EOF | sudo tee /etc/wsl.conf
+[interop]
+enabled=false
+appendWindowsPath=false
+EOF
+```
