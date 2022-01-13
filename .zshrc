@@ -72,7 +72,7 @@ if command -v kubectl &> /dev/null; then
 else
     echo "* kubectl is missing" >> ${TODOFILE}
 fi
-if command -v kubectl &> /dev/null; then
+if command -v helm &> /dev/null; then
     source <(helm completion zsh)
 else
     echo "* helm is missing" >> ${TODOFILE}
