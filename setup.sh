@@ -17,7 +17,6 @@ ln -s ~/git/lindhe/dotfiles/.vim .
 ln -s ~/git/lindhe/dotfiles/.zshrc .
 ln -s ~/git/lindhe/dotfiles/.xprofile .
 ln -s ~/git/lindhe/dotfiles/.tmux.conf .
-ln -s ~/git/lindhe/dotfiles/scripts/ .
 ln -s ~/git/lindhe/dotfiles/res .
 ln -s ~/git/lindhe/dotfiles/.gitignore_global .
 ln -s ~/git/lindhe/dotfiles/.gitconfig .
