@@ -115,6 +115,8 @@ if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
     if service --status-all |& grep -qE ' docker$'; then
         # Start the docker service unless it's already running
         if ! service docker status > /dev/null ; then
+            echo "Service docker not running!"
+            echo "service docker start ..."
             sudo service docker start
         fi
     fi
