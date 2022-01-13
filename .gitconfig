@@ -5,6 +5,7 @@
     b = branch
     bi = bisect
     bra = branch -vv
+    branch-age = "!git for-each-ref --sort=-committerdate refs/heads --format=\"%(refname:short)|%(committerdate:relative)\" | column -ts \"|\""
     bras = for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)|%(committerdate:relative)'
     c = commit -v
     ca = commit -av
