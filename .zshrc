@@ -8,6 +8,13 @@ stty -ixon
 # https://stevenvanbael.com/profiling-zsh-startup
 # zmodload zsh/zprof
 
+############################     TODO-file init     ############################
+# {{{
+TODOFILE=~/TODO.zsh.md
+# Clear the TODO-file
+rm --force ${TODOFILE}
+# }}}
+
 ##########################     Source and export     ##########################
 # {{{
 # Source the local env file
@@ -60,11 +67,15 @@ compinit
 zstyle ':completion:*:*:vim:*' file-patterns '*.tex:*.bib:source-files' '*:all-files'
 
 # Native ZSH completion
-if command -v kubectl > /dev/null; then
+if command -v kubectl &> /dev/null; then
     source <(kubectl completion zsh)
+else
+    echo "* kubectl is missing" >> ${TODOFILE}
 fi
-if command -v kubectl > /dev/null; then
+if command -v kubectl &> /dev/null; then
     source <(helm completion zsh)
+else
+    echo "* helm is missing" >> ${TODOFILE}
 fi
 source ~/.config/zsh/autocomplete/yq.zsh
 
@@ -73,6 +84,8 @@ autoload -U +X bashcompinit && bashcompinit
 AZCLI_COMPLETION="/etc/bash_completion.d/azure-cli"
 if [[ -f ${AZCLI_COMPLETION} ]]; then
     source ${AZCLI_COMPLETION}
+else
+    echo "* ${AZCLI_COMPLETION:?} is missing" >> ${TODOFILE}
 fi
 complete -o nospace -C /usr/bin/terraform terraform
 
@@ -109,6 +122,8 @@ if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
             echo "service docker start ..."
             sudo service docker start
         fi
+    else
+        echo "* service docker is missing" >> ${TODOFILE}
     fi
 fi
 
