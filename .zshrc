@@ -94,16 +94,6 @@ source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # }}}
 
-############################     New terminals     ############################
-# {{{
-# New terminals adopt current directory
-set VTE_FILE = /etc/profile.d/vte.sh
-if [[ -a $VTE_FILE ]]; then
-  source $VTE_FILE
-fi
-
-# }}}
-
 ################################     Fixes     ################################
 # {{{
 # Keybindings
