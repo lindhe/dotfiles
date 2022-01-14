@@ -116,6 +116,12 @@ bindkey "^[[3~" delete-char
 #################################     WSL2     #################################
 # {{{
 if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
+
+    # Set PROMPT_COMMAND to let us duplicate with path
+    # https://docs.microsoft.com/en-us/windows/terminal/tutorials/new-tab-same-directory
+    PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
+    precmd() { eval "$PROMPT_COMMAND" }
+
     # Check if docker service exists
     if service --status-all |& grep -qE ' docker$'; then
         # Start the docker service unless it's already running
@@ -127,6 +133,7 @@ if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
     else
         echo "* service docker is missing" >> ${TODOFILE}
     fi
+
 fi
 
 # }}}
