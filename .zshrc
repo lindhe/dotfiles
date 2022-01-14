@@ -111,8 +111,10 @@ source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # {{{
 # Keybindings
 bindkey "^[[3~" delete-char
+# }}}
 
-# WLS2
+#################################     WSL2     #################################
+# {{{
 if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
     # Check if docker service exists
     if service --status-all |& grep -qE ' docker$'; then
