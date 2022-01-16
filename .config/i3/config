@@ -342,8 +342,9 @@ exec --no-startup-id redshift
 #########################     Application Specific     #########################
 # {{{
 
-# Floating Calculator
+# Misc floating windows
 for_window [class="Gnome-calculator"] floating enable
+for_window [title="^About\ Mozilla\ Firefox$"] floating enable
 
 # Microsoft Teams
 for_window [title="Microsoft Teams Notification" class="Microsoft Teams - Preview"] floating enable
