@@ -9,4 +9,7 @@ setlocal nocursorcolumn
 
 """" MarkDown
 noremap <F12> :w \| ! pandoc % -s -o %:r.pdf --variable=geometry:a4paper<CR>
+
+"""""""""""""""""""""""""""""""     Typing     """""""""""""""""""""""""""""""
 inoremap .<space> .<CR>
+inoremap <C-space>  
