@@ -280,6 +280,7 @@ alias mp="multipass"
 alias pp="pipenv"
 alias t="terraform"
 alias wkga="watch kubectl get all"
+alias bbb="(base64 -d ; echo)"
 
 # Kubernetes
 alias hh="helm -n andreas"
