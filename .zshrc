@@ -281,24 +281,18 @@ alias pp="pipenv"
 alias t="terraform"
 alias wkga="watch kubectl get all"
 alias bbb="(base64 -d ; echo)"
+alias tf="terraform"
 
 # Kubernetes
-alias hh="helm -n andreas"
 alias k="kubectl"
 alias kaf='kubectl apply -f'
 alias kc="kubectl config"
 alias kcc='kubectl create --dry-run=client -o yaml'
 alias kcd='kubectl create --dry-run=client -o yaml'
-alias kd='kubectl describe'
 alias kdesc='kubectl describe'
-alias kdf='kubectl delete -f'
 alias kg='kubectl get'
 alias kget='kubectl get'
-alias kk="kubectl -n andreas"
-alias kns="kubectl config set-context --current --namespace"
 alias ktop='kubectl top'
-alias m="minikube"
-alias tf="terraform"
 
 # non-important
 alias cal="cal -m"
