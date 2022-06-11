@@ -152,6 +152,9 @@ autocmd BufNewFile,BufRead Dockerfile*[^md] set filetype=dockerfile
 " *.yaml.gotmpl
 autocmd BufNewFile,BufRead *.yaml.gotmpl set filetype=yaml
 
+" kube-config
+autocmd BufNewFile,BufRead ~/.kube/config set filetype=yaml
+
 "}}}
 
 """"""""""""""""""""""""     Function definitions     """""""""""""""""""""{{{
