@@ -51,6 +51,13 @@ setopt INC_APPEND_HISTORY
 setopt AUTO_CD
 # Allow bash-like comments inline
 setopt interactivecomments
+
+# Edit commmands
+# https://unix.stackexchange.com/questions/6620/how-to-edit-command-line-in-full-screen-editor-in-zsh
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 # }}}
 
 ##############################     Completion     ##############################
