@@ -30,8 +30,8 @@
     lb = log --oneline --decorate --graph
     lob = log --oneline --decorate --graph --branches --color=always
     log = log --decorate
-    nb = "!git switch -c lindhe/${1} #"
-    nwt = "!WTD=~/git/worktree/${1:?}; mkdir -p ${WTD}; git worktree add ${WTD} -b lindhe/${1:?} ; echo ${WTD} #"
+    nb = "!git switch -c lindhe/${1:?} #"
+    nwt = "!WTD=~/git/worktree/${1:?}; mkdir -p ${WTD}; git worktree add ${WTD} ${1:?} ; echo ${WTD} #"
     new = diff --cached
     nw = diff --cached --color-words='\\w+'
     nww = diff --cached --color-words='.'
