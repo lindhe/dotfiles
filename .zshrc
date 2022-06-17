@@ -58,6 +58,9 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
+# Set NO_UNSET option
+set -u
+
 # }}}
 
 ##############################     Completion     ##############################
