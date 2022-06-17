@@ -152,6 +152,12 @@ bd() {
     echo "$1" | base64 -d ; echo
 }
 
+# Copy the contents of a file to the clipboard and put its name in primary
+copy() {
+    cat ${1:?} | xclip -selection clipboard
+    echo -n ${1:?} | xclip -selection primary
+}
+
 checksum() {
     echo "$1 $2" > /tmp/hash.txt &&\
         printf 'md5:\n'; md5sum -c /tmp/hash.txt;\
