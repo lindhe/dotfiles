@@ -57,8 +57,6 @@
     autosetuprebase = always
 [pull]
     rebase = true
-[credential]
-    helper = store
 [core]
     attributesfile = ~/.gitattributes_global
     excludesfile = ~/.gitignore_global
@@ -78,3 +76,7 @@
 	textconv = sops -d
 [rerere]
 	enabled = true
+[credential]
+	helper = manager-core
+[credential "https://dev.azure.com"]
+	useHttpPath = true
