@@ -29,6 +29,7 @@ Plug 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 
 " Good ones, but dispensible
 Plug 'apzelos/blamer.nvim'            " Git blame for Vim
+Plug 'jpalardy/vim-slime'             " A vim plugin to give you some slime.
 
 " Not sure about these yet
 Plug 'neovim/nvim-lspconfig'
@@ -68,6 +69,12 @@ let g:terraform_fold_sections=1
 
 " LSP
 lua require'lspconfig'.terraformls.setup{}
+
+" slime
+let g:slime_target = "tmux"
+let g:slime_paste_file = "/tmp/slime_paste"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "0"}
+let g:slime_dont_ask_default = 1
 
 "}}}
 
