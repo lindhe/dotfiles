@@ -4,7 +4,8 @@ kind: Pod
 metadata:
   name: hack
   labels:
-    name: hack
+    app.kubernetes.io/name: hack
+    app.kubernetes.io/created-by: "Andreas"
 spec:
   containers:
   - name: hack
@@ -13,5 +14,5 @@ spec:
       - sleep
       - "3600"
     imagePullPolicy: IfNotPresent
-  restartPolicy: Always
+  restartPolicy: Never
 
