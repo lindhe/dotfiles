@@ -311,7 +311,6 @@ alias ktop='kubectl top'
 alias cal="cal -m"
 alias gnu="gnuplot"
 alias jqless="jq -C '' | less -Ri"
-alias markdownlint="mdl"
 alias starwars="telnet towel.blinkenlights.nl"
 alias vimcognito="vim -i NONE -u NONE -U NONE --cmd 'set noswapfile' --cmd 'set nobackup'"
 alias yqless="yq -C eval | less -Ri"
