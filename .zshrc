@@ -219,9 +219,8 @@ alias vimrc="vim ~/.vimrc"
 alias zathurarc="nvim ~/.config/zathura/zathurarc"
 alias zshrc="nvim ~/.zshrc"
 
-# Propagate aliases to sudo
-alias s="sudo "
-alias sudo="sudo "
+# Propagate aliases and environment to sudo
+alias sudo="sudo -E "
 alias sudoedit="sudoedit "
 
 # General
