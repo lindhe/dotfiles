@@ -31,3 +31,7 @@ sudo apt install \
     dunst i3 j4-dmenu-desktop playerctl rofi
 ```
 
+## Post-install checklist
+
+- [ ] Set shell: `sudo chsh -s /usr/bin/zsh andreas`
+- [ ] SSH hardening.
