@@ -44,4 +44,5 @@ sudo snap install \
 
 - [ ] Set shell: `sudo chsh -s /usr/bin/zsh andreas`
 - [ ] SSH hardening.
+- [ ] Setup SSH keys: `ssh-keygen -b 4096 -C "${USER:?}@$(hostname -f)"`
 
