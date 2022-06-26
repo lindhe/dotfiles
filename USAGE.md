@@ -1,19 +1,22 @@
 # Using dotfiles
 
-## Cloning
-* `git clone https://github.com/lindhe/dotfiles.git --recursive`
+## 1. Setup
 
-## Linking
-* `ln -s ~/git/dotfiles/.vimrc`
-* `ln -s ~/git/dotfiles/.vimrc /home/andreas/.vimrc`
+```shell
+git clone https://github.com/lindhe/dotfiles.git ~/git/lindhe/dotfiles
+~/git/lindhe/dotfiles/setup.sh
+```
 
-## Apply commits from another branch
-* To apply the four last commits from foo: `git cherry-pick foo~4..foo`
-* To apply the forth last commit from branch foo: `git cherry-pick foo~4`
+## 2. Install dependencies
 
-## Dependencies
-
-```console
+```shell
 sudo apt install \
-    playerctl
+    neovim tree zsh
+```
+
+### GUI extras
+
+```shell
+sudo apt install \
+    dunst i3 j4-dmenu-desktop playerctl rofi
 ```
