@@ -10,3 +10,24 @@ them easily, so I'll try to keep a list of them here:
 * `.config/i3blocks/contrib` https://github.com/vivien/i3blocks-contrib
 * `.config/zsh/plugins/zsh-syntax-highlighting` https://github.com/zsh-users/zsh-syntax-highlighting.git
 
+## Usage
+
+```shell
+git clone https://github.com/lindhe/dotfiles.git ~/git/lindhe/dotfiles
+~/git/lindhe/dotfiles/setup.sh
+```
+
+### Install dependencies
+
+```shell
+sudo apt install \
+    neovim tree zsh
+```
+
+#### GUI extras
+
+```shell
+sudo apt install \
+    dunst i3 j4-dmenu-desktop playerctl rofi
+```
+
