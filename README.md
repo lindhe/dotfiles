@@ -31,7 +31,17 @@ sudo apt install \
     dunst i3 j4-dmenu-desktop playerctl rofi
 ```
 
+#### Server extras
+
+```shell
+sudo apt install \
+    zfsutils-linux
+sudo snap install \
+    nextcloud
+```
+
 ## Post-install checklist
 
 - [ ] Set shell: `sudo chsh -s /usr/bin/zsh andreas`
 - [ ] SSH hardening.
+
