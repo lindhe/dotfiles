@@ -41,6 +41,8 @@ sudo snap install \
     nextcloud
 ```
 
+- [ ] <https://github.com/zfsonlinux/zfs-auto-snapshot>
+
 ## Post-install checklist
 
 ### Usability
