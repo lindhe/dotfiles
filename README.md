@@ -42,13 +42,19 @@ sudo snap install \
 
 ## Post-install checklist
 
+### Usability
+
 - [ ] Set shell: `sudo chsh -s /usr/bin/zsh andreas`
-- [ ] SSH hardening.
-- [ ] Setup SSH keys: `ssh-keygen -b 4096 -C "${USER:?}@$(hostname -f)"`
 - [ ] Configure locale:
 
     ```shell
     sudo locale-gen sv_SE.UTF-8
     cat ~/git/lindhe/dotfiles/locale/sv_SE | sudo tee -a /etc/default/locale
     ```
+
+### Hardening
+
+- [ ] SSH hardening.
+- [ ] Setup SSH keys: `ssh-keygen -b 4096 -C "${USER:?}@$(hostname -f)"`
+- [ ] Ubuntu Live Patch: https://ubuntu.com/advantage
 
