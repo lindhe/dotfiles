@@ -22,7 +22,8 @@ git clone https://github.com/lindhe/scripts.git ~/git/lindhe/scripts
 
 ```shell
 sudo apt install \
-    neovim tree zsh
+    neovim tree zsh \
+    build-essential
 ```
 
 #### GUI extras
