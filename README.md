@@ -55,6 +55,7 @@ sudo snap install \
     sudo locale-gen sv_SE.UTF-8
     cat ~/git/lindhe/dotfiles/locale/sv_SE | sudo tee -a /etc/default/locale
     ```
+- [ ] Add me to the `docker` group: `usermod -aG docker ${USER}`
 
 ### Hardening
 
