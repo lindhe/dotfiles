@@ -14,6 +14,7 @@ them easily, so I'll try to keep a list of them here:
 
 ```shell
 git clone https://github.com/lindhe/dotfiles.git ~/git/lindhe/dotfiles
+git clone https://github.com/lindhe/scripts.git ~/git/lindhe/scripts
 ~/git/lindhe/dotfiles/setup.sh
 ```
 
