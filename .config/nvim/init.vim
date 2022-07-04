@@ -29,7 +29,7 @@ Plug 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 
 " Good ones, but dispensible
 Plug 'apzelos/blamer.nvim'            " Git blame for Vim
-Plug 'jpalardy/vim-slime'             " A vim plugin to give you some slime.
+Plug 'jpalardy/vim-slime', { 'branch': 'main' } " A vim plugin to give you some slime.
 
 " Not sure about these yet
 Plug 'neovim/nvim-lspconfig'
