@@ -22,7 +22,7 @@
     dif = diff
     email = config user.email andreas@lindhe.io
     files-in = diff-tree --no-commit-id --name-only -r
-    get = "!~/scripts/git/git-get.py"
+    get = "!~/git/lindhe/scripts/git/git-get.py"
     get-gone = "!git branch -av | grep '\\[gone]' #"
     h = help
     knuff = push
