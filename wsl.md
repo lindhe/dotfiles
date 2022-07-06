@@ -15,9 +15,38 @@ Things to do when I'm forced to use Windows...
 ## Fix DNS
 
 ```console
-echo -e "[network]\ngenerateResolvConf = false" | sudo tee /etc/wsl.conf
 sudo unlink /etc/resolv.conf
-echo -e "nameserver 1.1.1.1\nnameserver 1.0.0.1\nnameserver 8.8.8.8\nnameserver 8.8.4.4" | sudo tee /etc/resolv.conf
+
+sudo tee -a /etc/wsl.conf <<EOF
+[network]
+generateResolvConf = false
+EOF
+
+sudo tee /etc/resolv.conf <<EOF
+nameserver 9.9.9.9
+nameserver 149.112.112.112
+nameserver 1.1.1.1
+nameserver 1.0.0.1
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+EOF
+
+sudo chattr +i /etc/resolv.conf #  https://github.com/microsoft/WSL/issues/6977
+```
+
+## Remove Windows Path
+
+```console
+sudo tee -a /etc/wsl.conf <<EOF
+[interop]
+appendWindowsPath = false
+EOF
+```
+
+## Configure Git Credential Helper
+
+```console
+git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
 ```
 
 ## Install Docker
@@ -45,12 +74,3 @@ and add the following:
 %sudo   ALL=(ALL) NOPASSWD: /usr/sbin/service docker start
 ```
 
-## Remove Windows interoperatbility
-
-```console
-$ cat <<EOF | sudo tee /etc/wsl.conf
-[interop]
-enabled=false
-appendWindowsPath=false
-EOF
-```
