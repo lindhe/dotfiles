@@ -21,9 +21,14 @@ git clone https://github.com/lindhe/scripts.git ~/git/lindhe/scripts
 ### Install dependencies
 
 ```shell
+sudo add-apt-repository ppa:neovim-ppa/stable
+```
+
+```shell
 sudo apt install \
     neovim tree zsh \
-    build-essential
+    build-essential \
+    git git-lfs
 ```
 
 #### GUI extras
