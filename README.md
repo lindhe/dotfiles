@@ -67,4 +67,5 @@ sudo snap install \
 - [ ] SSH hardening.
 - [ ] Setup SSH keys: `ssh-keygen -b 4096 -C "${USER:?}@$(hostname -f)"`
 - [ ] Ubuntu Live Patch: https://ubuntu.com/advantage
+- [ ] Configure a [Docker Credential Helper](https://github.com/docker/docker-credential-helpers/) in `~/.docker/config.json`.
 
