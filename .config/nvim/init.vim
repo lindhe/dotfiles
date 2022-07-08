@@ -35,6 +35,7 @@ Plug 'jpalardy/vim-slime', { 'branch': 'main' } " A vim plugin to give you some 
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
 Plug 'mattn/emmet-vim'                " Emmet abbreviations
+Plug 'Mofiqul/vscode.nvim'            " VS Code colorscheme
 
 " Language specific
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
@@ -73,6 +74,10 @@ let g:slime_target = "tmux"
 let g:slime_paste_file = "/tmp/slime_paste"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "0"}
 let g:slime_dont_ask_default = 1
+
+" vscode
+let g:vscode_italic_comment = 1
+colorscheme vscode
 
 "}}}
 
