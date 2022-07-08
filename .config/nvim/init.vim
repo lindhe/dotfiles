@@ -32,6 +32,7 @@ Plug 'apzelos/blamer.nvim'            " Git blame for Vim
 Plug 'jpalardy/vim-slime', { 'branch': 'main' } " A vim plugin to give you some slime.
 
 " Not sure about these yet
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
 Plug 'mattn/emmet-vim'                " Emmet abbreviations
 
@@ -67,15 +68,25 @@ let g:terraform_align=1
 let g:terraform_fold_sections=1
 " let g:terraform_fmt_on_save=1
 
-" LSP
-lua require'lspconfig'.terraformls.setup{}
-
 " slime
 let g:slime_target = "tmux"
 let g:slime_paste_file = "/tmp/slime_paste"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "0"}
 let g:slime_dont_ask_default = 1
 
+"}}}
+
+""""""""""""""""""""""""""""""""     LSP     """""""""""""""""""""""""""""""""{{{
+lua <<EOF
+
+require('nvim-lsp-installer').setup({
+    automatic_installation = true
+})
+require('lspconfig').terraformls.setup {}
+require('lspconfig').vimls.setup {}
+require('lspconfig').bashls.setup {}
+
+EOF
 "}}}
 
 """""""""""""""""""""""""""     File handling     """""""""""""""""""""""""{{{
