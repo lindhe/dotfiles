@@ -158,6 +158,9 @@ noremap s l
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 
+" Fix scrolling issues in WSL
+set mouse=a
+
 "}}}
 
 """"""""""""""""""""""     Filetype customizations     """"""""""""""""""""{{{
