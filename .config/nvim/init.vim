@@ -106,6 +106,7 @@ set number
 set ignorecase
 set smartcase
 set linebreak
+set signcolumn=yes
 
 "}}}
 
