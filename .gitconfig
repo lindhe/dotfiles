@@ -36,7 +36,7 @@
     new = diff --cached
     nw = diff --cached --color-words='\\w+'
     nww = diff --cached --color-words='.'
-    nwww = show --cached --word-diff-regex='.'
+    nwww = diff --cached --word-diff-regex='.'
     pl = !git pull && git log ORIG_HEAD..origin/$(git branch --show-current)
     psuh = push
     reb = rebase
