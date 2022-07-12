@@ -1,1 +1,1 @@
-💡 `git show --color-words='.'`
+    💡 git show --color-words='\w+'
