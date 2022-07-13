@@ -30,10 +30,10 @@ Plug 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 " Good ones, but dispensible
 Plug 'apzelos/blamer.nvim'            " Git blame for Vim
 Plug 'jpalardy/vim-slime', { 'branch': 'main' } " A vim plugin to give you some slime.
-
-" Not sure about these yet
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
+
+" Not sure about these yet
 Plug 'mattn/emmet-vim'                " Emmet abbreviations
 Plug 'Mofiqul/vscode.nvim'            " VS Code colorscheme
 
