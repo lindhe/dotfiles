@@ -81,19 +81,6 @@ colorscheme vscode
 
 "}}}
 
-""""""""""""""""""""""""""""""""     LSP     """""""""""""""""""""""""""""""""{{{
-lua <<EOF
-
-require('nvim-lsp-installer').setup({
-    automatic_installation = true
-})
-require('lspconfig').terraformls.setup {}
-require('lspconfig').vimls.setup {}
-require('lspconfig').bashls.setup {}
-
-EOF
-"}}}
-
 """"""""""""""""""""""""""""""     Settings     """"""""""""""""""""""""""""""{{{
 
 set undofile
