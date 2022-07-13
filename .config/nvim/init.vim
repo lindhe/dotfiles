@@ -76,7 +76,6 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": "0"}
 let g:slime_dont_ask_default = 1
 
 " vscode
-let g:vscode_italic_comment = 1
 colorscheme vscode
 
 "}}}
