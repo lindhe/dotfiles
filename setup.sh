@@ -14,11 +14,10 @@ echo "Creating ~/.undodir for vim"
 mkdir -p ~/.undodir
 
 echo "Creating symlinks …"
+
 ln -s ./git/lindhe/dotfiles/.gitconfig .
 ln -s ./git/lindhe/dotfiles/.gitignore_global .
 ln -s ./git/lindhe/dotfiles/.tmux.conf .
-ln -s ./git/lindhe/dotfiles/.vim .
-ln -s ./git/lindhe/dotfiles/.vimrc .
 ln -s ./git/lindhe/dotfiles/.xprofile .
 ln -s ./git/lindhe/dotfiles/.zshrc .
 ln -s ./git/lindhe/dotfiles/res .
