@@ -1,7 +1,8 @@
 [user]
     name = Andreas Lindhé
 [alias]
-    a = "!git config alias.${1:?} #"
+    a = add -p
+    al = "!git config alias.${1:?} #"
     ado = "log -q --pretty='format:%B'"
     b = branch
     bi = bisect
