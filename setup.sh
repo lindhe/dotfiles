@@ -5,7 +5,7 @@ set -euo pipefail
 ready="n"
 while [[ $ready != 'y' ]]; do
     echo -e "\nHave you cloned into ~/git/lindhe/dotfiles/? (y/n)"
-    read -n 1 ready
+    read -rn 1 ready
 done;
 
 pushd ~
