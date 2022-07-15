@@ -15,20 +15,6 @@ TODOFILE=~/TODO.zsh.md
 rm --force ${TODOFILE}
 # }}}
 
-##########################     Source and export     ##########################
-# {{{
-# Source the local env file
-LOCAL_ENV="${HOME}/.env"
-if [[ -f ${LOCAL_ENV} ]]; then
-    source ${LOCAL_ENV}
-fi
-
-# Exports
-export PATH="${PATH}:${KREW_ROOT:-$HOME/.krew}/bin"
-export EDITOR='nvim'
-export GOPATH=/home/andreas/go
-# }}}
-
 ###############################     History     ###############################
 # {{{
 HISTFILE=$HOME/.zsh_history
