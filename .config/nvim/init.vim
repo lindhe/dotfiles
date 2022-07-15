@@ -98,6 +98,21 @@ set smartcase
 set linebreak
 set signcolumn=yes
 
+" Cred: https://www.reddit.com/r/neovim/comments/fyj7mp/comment/fn0ut6o/
+let s:winclip = '/mnt/c/Windows/System32/clip.exe'
+let s:xclip = '/usr/bin/xclip'
+if filereadable(s:xclip)
+  augroup WSLYank
+    autocmd!
+    autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:xclip, @0) | endif
+  augroup END
+elseif filereadable(s:winclip)
+  augroup WSLYank
+    autocmd!
+    autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:winclip, @0) | endif
+  augroup END
+endif
+
 "}}}
 
 """"""""""""""""""""""""""""""     Mappings     """""""""""""""""""""""""""{{{
