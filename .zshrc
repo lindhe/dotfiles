@@ -17,7 +17,7 @@ rm --force ${TODOFILE}
 
 ###############################     History     ###############################
 # {{{
-HISTFILE=$HOME/.zsh_history
+HISTFILE=${ZDOTDIR:-~}/.zsh_history
 HISTSIZE=SAVEHIST=99999
 setopt APPEND_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
@@ -73,7 +73,7 @@ if command -v helm &> /dev/null; then
 else
     echo "* helm is missing" >> ${TODOFILE}
 fi
-source ~/.config/zsh/autocomplete/yq.zsh
+source "${ZDOTDIR:-~}/.config/zsh/autocomplete/yq.zsh"
 
 # Bash completion
 autoload -U +X bashcompinit && bashcompinit
@@ -99,7 +99,7 @@ promptinit
 
 # Configure prompt
 PROMPT="%{$fg_bold[white]%}%n%{$fg[magenta]%}@%{$fg_no_bold[cyan]%}%m %{$fg_no_bold[yellow]%}%~ %{$reset_color%}>%"
-source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ${ZDOTDIR:-~}/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # }}}
 
