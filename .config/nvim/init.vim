@@ -41,6 +41,7 @@ Plug 'Mofiqul/vscode.nvim'            " VS Code colorscheme
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'hashivim/vim-terraform'
 Plug 'fatih/vim-go'
+Plug 'Einenlum/yaml-revealer'         " Reveals the YAML hierarchy
 
 call plug#end()
 unlet plugin_path
@@ -77,6 +78,9 @@ let g:slime_dont_ask_default = 1
 
 " vscode
 colorscheme vscode
+
+" YAML Revealer
+let g:yaml_revealer_separator = "."
 
 "}}}
 
