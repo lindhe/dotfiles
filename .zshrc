@@ -164,8 +164,13 @@ bd() {
 
 # Copy the contents of a file to the clipboard and put its name in primary
 copy() {
-    cat ${1:?} | xclip -selection clipboard
-    echo -n ${1:?} | xclip -selection primary
+    # If WSL
+    if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
+        cat ${1:?} | /mnt/c/Windows/System32/clip.exe
+    else
+        cat ${1:?} | xclip -selection clipboard
+        echo -n ${1:?} | xclip -selection primary
+    fi
 }
 
 checksum() {
