@@ -9,18 +9,18 @@ mkdir -p ~/.undodir
 
 echo "Creating symlinks …"
 
-ln -s ~/git/lindhe/dotfiles/.gitconfig .
-ln -s ~/git/lindhe/dotfiles/.gitignore_global .
-ln -s ~/git/lindhe/dotfiles/.tmux.conf .
-ln -s ~/git/lindhe/dotfiles/.xprofile .
-ln -s ~/git/lindhe/dotfiles/.zshrc .
-ln -s ~/git/lindhe/dotfiles/res .
+ln -fs ~/git/lindhe/dotfiles/.gitconfig .
+ln -fs ~/git/lindhe/dotfiles/.gitignore_global .
+ln -fs ~/git/lindhe/dotfiles/.tmux.conf .
+ln -fs ~/git/lindhe/dotfiles/.xprofile .
+ln -fs ~/git/lindhe/dotfiles/.zshrc .
+ln -fs ~/git/lindhe/dotfiles/res .
 
 mkdir -p ~/.config
 cd ~/.config/
 
-ln -s ~/git/lindhe/dotfiles/.config/nvim/ .
-ln -s ~/git/lindhe/dotfiles/.config/zsh/ .
+ln -fs ~/git/lindhe/dotfiles/.config/nvim/ .
+ln -fs ~/git/lindhe/dotfiles/.config/zsh/ .
 
 popd
 

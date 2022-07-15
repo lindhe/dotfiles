@@ -26,13 +26,13 @@ echo -e "\n"
 
 if [[ "${FULL_SETUP}" == y ]]; then
 
-    ln -s ../git/lindhe/dotfiles/.config/compton.conf .
-    ln -s ../git/lindhe/dotfiles/.config/dunst/ .
-    ln -s ../git/lindhe/dotfiles/.config/i3 .
-    ln -s ../git/lindhe/dotfiles/.config/i3blocks/ .
-    ln -s ../git/lindhe/dotfiles/.config/monitors/ .
-    ln -s ../git/lindhe/dotfiles/.config/sway .
-    ln -s ../git/lindhe/dotfiles/.config/zathura/ .
+    ln -fs ../git/lindhe/dotfiles/.config/compton.conf .
+    ln -fs ../git/lindhe/dotfiles/.config/dunst/ .
+    ln -fs ../git/lindhe/dotfiles/.config/i3 .
+    ln -fs ../git/lindhe/dotfiles/.config/i3blocks/ .
+    ln -fs ../git/lindhe/dotfiles/.config/monitors/ .
+    ln -fs ../git/lindhe/dotfiles/.config/sway .
+    ln -fs ../git/lindhe/dotfiles/.config/zathura/ .
 
     echo "Installing custom keyboard layouts"
     sudo cp ~/git/lindhe/dotfiles/usr/share/X11/xkb/symbols/* -t /usr/share/X11/xkb/symbols
