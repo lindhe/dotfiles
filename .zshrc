@@ -113,21 +113,25 @@ bindkey "^[[3~" delete-char
 # {{{
 if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
 
-    # Set PROMPT_COMMAND to let us duplicate with path
-    # https://docs.microsoft.com/en-us/windows/terminal/tutorials/new-tab-same-directory
-    PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
-    precmd() { eval "$PROMPT_COMMAND" }
+    if command -v wslpath &> /dev/null; then
+        # Set PROMPT_COMMAND to let us duplicate with path
+        # https://docs.microsoft.com/en-us/windows/terminal/tutorials/new-tab-same-directory
+        PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
+        precmd() { eval "$PROMPT_COMMAND" }
+    fi
 
-    # Check if docker service exists
-    if service --status-all |& grep -qE ' docker$'; then
-        # Start the docker service unless it's already running
-        if ! service docker status > /dev/null ; then
-            echo "Service docker not running!"
-            echo "service docker start ..."
-            sudo service docker start
+    if command -v docker &> /dev/null; then
+        # Check if docker service exists
+        if service --status-all |& grep -qE ' docker$'; then
+            # Start the docker service unless it's already running
+            if ! service docker status > /dev/null ; then
+                echo "Service docker not running!"
+                echo "service docker start ..."
+                sudo service docker start
+            fi
+        else
+            echo "* service docker is missing" >> ${TODOFILE}
         fi
-    else
-        echo "* service docker is missing" >> ${TODOFILE}
     fi
 
 fi
