@@ -73,7 +73,6 @@ if command -v helm &> /dev/null; then
 else
     echo "* helm is missing" >> ${TODOFILE}
 fi
-source "${ZDOTDIR:-~}/.config/zsh/autocomplete/yq.zsh"
 
 # Bash completion
 autoload -U +X bashcompinit && bashcompinit
