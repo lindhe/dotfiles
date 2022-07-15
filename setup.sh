@@ -7,10 +7,10 @@ fail() {
     exit "${2:-1}"
 }
 
-ready="n"
-while [[ $ready != 'y' ]]; do
-    echo -e "\nHave you cloned into ~/git/lindhe/dotfiles/? (y/n)"
+while [[ ${ready:-x} != 'y' ]]; do
+    echo "Have you cloned into ~/git/lindhe/dotfiles/? (y/n)"
     read -rn 1 ready
+    echo -e "\n"
 done;
 
 pushd ~
