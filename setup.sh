@@ -13,6 +13,15 @@ while [[ ${ready:-x} != 'y' ]]; do
     echo -e "\n"
 done;
 
+echo "Do you want a minimal setup? [Y/n]"
+read -rn 1 yn
+if [[ "${yn}" == [Nn]* ]]; then
+    readonly FULL_SETUP=n
+else
+    readonly FULL_SETUP=y
+fi
+echo -e "\n"
+
 pushd ~
 
 echo "Creating ~/.undodir for vim"
@@ -30,17 +39,22 @@ ln -s ./git/lindhe/dotfiles/res .
 mkdir -p ~/.config
 cd ~/.config/
 
-ln -s ../git/lindhe/dotfiles/.config/compton.conf .
-ln -s ../git/lindhe/dotfiles/.config/dunst/ .
-ln -s ../git/lindhe/dotfiles/.config/i3 .
-ln -s ../git/lindhe/dotfiles/.config/i3blocks/ .
-ln -s ../git/lindhe/dotfiles/.config/monitors/ .
 ln -s ../git/lindhe/dotfiles/.config/nvim/ .
-ln -s ../git/lindhe/dotfiles/.config/sway .
-ln -s ../git/lindhe/dotfiles/.config/zathura/ .
 ln -s ../git/lindhe/dotfiles/.config/zsh/ .
 
-echo "Installing custom keyboard layouts"
-sudo cp ~/git/lindhe/dotfiles/usr/share/X11/xkb/symbols/* -t /usr/share/X11/xkb/symbols
+if [[ "${FULL_SETUP}" == y ]]; then
+    ln -s ../git/lindhe/dotfiles/.config/compton.conf .
+    ln -s ../git/lindhe/dotfiles/.config/dunst/ .
+    ln -s ../git/lindhe/dotfiles/.config/i3 .
+    ln -s ../git/lindhe/dotfiles/.config/i3blocks/ .
+    ln -s ../git/lindhe/dotfiles/.config/monitors/ .
+    ln -s ../git/lindhe/dotfiles/.config/sway .
+    ln -s ../git/lindhe/dotfiles/.config/zathura/ .
+
+    echo "Installing custom keyboard layouts"
+    sudo cp ~/git/lindhe/dotfiles/usr/share/X11/xkb/symbols/* -t /usr/share/X11/xkb/symbols
+
+fi
 
 popd
+
