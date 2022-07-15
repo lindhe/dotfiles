@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+fail() {
+    echo "FAILURE: ${1}" >&2
+    exit "${2:-1}"
+}
+
 ready="n"
 while [[ $ready != 'y' ]]; do
     echo -e "\nHave you cloned into ~/git/lindhe/dotfiles/? (y/n)"
