@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 ready="n"
 while [[ $ready != 'y' ]]; do
     echo -e "\nHave you cloned into ~/git/lindhe/dotfiles/? (y/n)"
