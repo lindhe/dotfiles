@@ -24,3 +24,7 @@ ln -fs ~/git/lindhe/dotfiles/.config/zsh/ .
 
 popd
 
+#########################     Download latest nvim     #########################
+wget -P ~/.local/bin $(curl --silent -H "Accept: application/vnd.github+json" "https://api.github.com/repos/neovim/neovim/releases/latest" | grep -oP '"browser_download_url": "(.*appimage)"' | awk '{ print $2 }' | sed 's/"//g') \
+    && chmod +x ~/.local/bin/nvim.appimage \
+    && mv ~/.local/bin/nvim.appimage ~/.local/bin/nvim
