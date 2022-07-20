@@ -56,7 +56,7 @@ sudo snap install \
 
 ### Usability
 
-- [ ] Set shell: `sudo chsh -s /usr/bin/zsh andreas`
+- [ ] Set shell: `sudo chsh -s /usr/bin/zsh ${USER}`
 - [ ] Configure locale:
 
     ```shell
