@@ -28,7 +28,8 @@ sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt install \
     neovim tree zsh \
     build-essential \
-    git git-lfs
+    git git-lfs \
+    tmux jq unzip
 ```
 
 #### GUI extras
@@ -42,7 +43,9 @@ sudo apt install \
 
 ```shell
 sudo apt install \
-    zfsutils-linux
+    zfsutils-linux \
+    mailutils msmtp-mta s-nail \
+    nfs-kernel-server
 sudo snap install \
     nextcloud
 ```
