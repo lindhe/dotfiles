@@ -12,7 +12,7 @@ xkb_symbols "se-symbols" {
     key <AD08> { [ i,          I,          ampersand,           none ] };
     key <AD09> { [ o,          O,          less,                none ] };
     key <AD10> { [ p,          P,          greater,             none ] };
-	
+
     key <AC01> { [ a,          A,          semicolon,           none ] };
     key <AC02> { [ s,          S,          slash,               none ] };
     key <AC03> { [ d,          D,          parenleft,           none ] };
@@ -22,7 +22,8 @@ xkb_symbols "se-symbols" {
     key <AC07> { [ j,          J,          asciicircum,         none ] };
     key <AC08> { [ k,          K,          numbersign,          none ] };
     key <AC09> { [ l,          L,          quotedbl,            none ] };
-	
+    key <AC10> { [ odiaeresis, Odiaeresis, asciitilde,          none ] };
+
     key <AB01> { [ z,          Z,          colon,               none ] };
     key <AB02> { [ x,          X,          equal,               none ] };
     key <AB03> { [ c,          C,          at,                  none ] };
@@ -30,5 +31,6 @@ xkb_symbols "se-symbols" {
     key <AB05> { [ b,          B,          backslash,           none ] };
     key <AB06> { [ n,          N,          percent,             none ] };
     key <AB07> { [ m,          M,          grave,               none ] };
+    key <AB09> { [ period,     colon,      U2026,               none ] };
 
 };
