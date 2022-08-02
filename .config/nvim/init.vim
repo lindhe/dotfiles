@@ -38,6 +38,7 @@ Plug 'Mofiqul/vscode.nvim'            " VS Code colorscheme
 " Not sure about these yet
 Plug 'mattn/emmet-vim'                " Emmet abbreviations
 Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
 
 " Language specific
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
