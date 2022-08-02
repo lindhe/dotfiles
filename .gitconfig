@@ -53,7 +53,7 @@
     shwww = show --word-diff-regex='.'
     sorry = commit --amend --no-edit
     st = status
-    sw = "!git switch ${1:?Missing branch name} && git diff --stat $(basename $(git symbolic-ref refs/remotes/origin/HEAD))... #"
+    sw = "!git switch ${@:?Missing branch name} && git diff --stat $(basename $(git symbolic-ref refs/remotes/origin/HEAD))... #"
     track = "!git branch --set-upstream-to=${1:-origin}/$(git branch --show-current) $(git branch --show-current) #"
     whatchanged = log ORIG_HEAD..HEAD
     wt = worktree
