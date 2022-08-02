@@ -26,6 +26,7 @@ Plug 'tpope/vim-repeat'               " Make . repeat (some) plugin actions
 Plug 'tpope/vim-sensible'             " Fix the stupid things left from Vi
 Plug 'tpope/vim-speeddating'          " <c-a> and <c-x> correct with iso dates
 Plug 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
+Plug 'Einenlum/yaml-revealer'         " Reveals the YAML hierarchy
 
 " Good ones, but dispensible
 Plug 'apzelos/blamer.nvim'            " Git blame for Vim
@@ -41,7 +42,6 @@ Plug 'Mofiqul/vscode.nvim'            " VS Code colorscheme
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'hashivim/vim-terraform'
 Plug 'fatih/vim-go'
-Plug 'Einenlum/yaml-revealer'         " Reveals the YAML hierarchy
 
 call plug#end()
 unlet plugin_path
