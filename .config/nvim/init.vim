@@ -37,6 +37,7 @@ Plug 'Mofiqul/vscode.nvim'            " VS Code colorscheme
 
 " Not sure about these yet
 Plug 'mattn/emmet-vim'                " Emmet abbreviations
+Plug 'scrooloose/nerdtree'
 
 " Language specific
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
@@ -55,6 +56,14 @@ let g:blamer_delay = 1000
 let g:blamer_prefix = ' <-- '
 let g:blamer_date_format = '%Y-%m-%d'
 let g:blamer_template = '<commit-short> (<committer>): <summary>'
+
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | wincmd p | endif
+
+" UltiSnips
+let g:UltiSnipsEditSplit="vertical"
 
 " pymode
 let g:pymode_options = 0
