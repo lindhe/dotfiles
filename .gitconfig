@@ -11,6 +11,7 @@
     bras = for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)|%(committerdate:relative)'
     c = commit -v
     ca = commit -av
+    cap = commit -vp
     change = commit --amend -v
     cl = clone
     cm = commit -m
