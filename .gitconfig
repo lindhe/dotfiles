@@ -24,7 +24,7 @@
     dff = diff --color-words='.'
     dfff = diff --word-diff-regex='.'
     dif = diff
-    email = config user.email andreas@lindhe.io
+    email = "!git config user.email ${EMAIL:?}"
     files-in = diff-tree --no-commit-id --name-only -r
     get = "!~/git/lindhe/scripts/git/git-get.py"
     get-gone = "!git branch -av | grep '\\[gone]' #"
@@ -84,5 +84,7 @@
 	useHttpPath = true
 [include]
     path = ~/.config/git/linux.gitconfig
+[include]
+    path = ~/.config/git/personal.gitconfig
 [include]
     path = ~/.config/git/wsl.gitconfig
