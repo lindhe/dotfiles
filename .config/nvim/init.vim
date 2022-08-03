@@ -186,6 +186,9 @@ autocmd BufNewFile  *.py    0r ~/res/skeleton.py
 " Dockerfile
 autocmd BufNewFile,BufRead Dockerfile*[^md] set filetype=dockerfile
 
+" *.gitconfig
+autocmd BufNewFile,BufRead *.gitconfig set filetype=gitconfig
+
 " *.yaml.gotmpl
 autocmd BufNewFile,BufRead *.yaml.gotmpl set filetype=yaml
 
