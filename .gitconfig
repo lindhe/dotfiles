@@ -77,10 +77,10 @@
 [fetch]
     prune = true
 [diff "sopsdiffer"]
-	textconv = sops -d
+    textconv = sops -d
 [rerere]
-	enabled = true
+    enabled = true
 [credential]
-	helper = manager-core
+    helper = manager-core
 [credential "https://dev.azure.com"]
 	useHttpPath = true
