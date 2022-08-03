@@ -80,7 +80,9 @@
     textconv = sops -d
 [rerere]
     enabled = true
-[credential]
-    helper = manager-core
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+[include]
+    path = ~/.config/git/linux.gitconfig
+[include]
+    path = ~/.config/git/wsl.gitconfig
