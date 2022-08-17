@@ -151,6 +151,13 @@ bd() {
     echo "$1" | base64 -d ; echo
 }
 
+checksum() {
+    echo "$1 $2" > /tmp/hash.txt &&\
+        printf 'md5:\n'; md5sum -c /tmp/hash.txt;\
+        printf '\n';\
+        printf 'sha256:\n'; sha256sum -c /tmp/hash.txt
+}
+
 # Copy the contents of a file to the clipboard and put its name in primary
 copy() {
     # If WSL
@@ -160,13 +167,6 @@ copy() {
         cat ${1:?} | xclip -selection clipboard
         echo -n ${1:?} | xclip -selection primary
     fi
-}
-
-checksum() {
-    echo "$1 $2" > /tmp/hash.txt &&\
-        printf 'md5:\n'; md5sum -c /tmp/hash.txt;\
-        printf '\n';\
-        printf 'sha256:\n'; sha256sum -c /tmp/hash.txt
 }
 
 datestamp() {
