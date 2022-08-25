@@ -225,6 +225,7 @@ mcd() {
 # {{{
 # edit rc files
 alias nvimrc="nvim ~/.config/nvim/init.vim"
+alias lvimrc="nvim ~/.config/nvim/after/plugin/lsp.lua"
 alias vimrc="vim ~/.vimrc"
 alias zathurarc="nvim ~/.config/zathura/zathurarc"
 alias zshrc="nvim ~/.zshrc"
