@@ -194,6 +194,12 @@ noremap s l
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 
+" Less pain with panes
+map <silent> <c-right> <c-w><c-h>
+map <silent> <c-up> <c-w><c-j>
+map <silent> <c-down> <c-w><c-k>
+map <silent> <c-left> <c-w><c-l>
+
 "}}}
 
 """"""""""""""""""""""     Filetype customizations     """"""""""""""""""""{{{
