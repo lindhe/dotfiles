@@ -97,8 +97,9 @@ set undofile
 set list listchars=eol:$,tab:>\ ,trail:-,extends:↩,precedes:…,nbsp:+
 set smarttab
 set expandtab
-set tabstop=4
-set shiftwidth=4
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
 set number
 set ignorecase
 set smartcase
