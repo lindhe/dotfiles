@@ -152,12 +152,24 @@ tnoremap <Esc> <C-\><C-n>
 
 nnoremap <silent> <c-w>0 <c-w><c-=>
 
+" <F3> Toggle list
+nnoremap <F3> :set list!<CR>
+inoremap <F3> <Esc>:set list!<CR>a
+
 " <F6> to remove trailing whitespace
 nnoremap <silent> <F6> :%s/\s\+$//<CR>''
 
 " <F7> to cycle spell
 nnoremap <F7> :call CycleSpell()<CR>
 inoremap <F7> <Esc>:call CycleSpell()<CR>a
+
+" <F9> Turn off LSP
+nnoremap <F9> :LspStop<CR>
+inoremap <F9> <Esc>:LspStop<CR>a
+
+" <F10> Toggle Blamer
+nnoremap <F10> :BlamerToggle<CR>
+inoremap <F10> <Esc>:BlamerToggle<CR>a
 
 "}}}
 
