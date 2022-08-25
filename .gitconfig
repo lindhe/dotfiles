@@ -57,6 +57,7 @@
 	track = "!git branch --set-upstream-to=${1:-origin}/$(git branch --show-current) $(git branch --show-current) #"
 	unstage = restore --staged
 	whatchanged = log ORIG_HEAD..HEAD
+	whats = "!git config alias.${1:?} #"
 	wt = worktree
 [branch]
 	autosetuprebase = always
