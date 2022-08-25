@@ -1,91 +1,91 @@
 [user]
-    name = Andreas Lindhé
+	name = Andreas Lindhé
 [alias]
-    a = add -p
-    al = "!git config alias.${1:?} #"
-    ado = "log -q --pretty='format:%B'"
-    b = branch
-    bi = bisect
-    bra = branch -vv
-    branch-age = "!git for-each-ref --sort=-committerdate refs/heads --format=\"%(refname:short)|%(committerdate:relative)\" | column -ts \"|\""
-    bras = for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)|%(committerdate:relative)'
-    c = commit -v
-    ca = commit -av
-    cap = commit -vp
-    change = commit --amend -v
-    cl = clone
-    cm = commit -m
-    co = checkout
-    com = commit -v
-    comm = commit -m
-    cp = cherry-pick
-    default-branch = "!basename $(git symbolic-ref refs/remotes/origin/HEAD) #"
-    df = diff --color-words='\\w+'
-    dff = diff --color-words='.'
-    dfff = diff --word-diff-regex='.'
-    dif = diff
-    email = "!git config user.email ${EMAIL:?}"
-    files-in = diff-tree --no-commit-id --name-only -r
-    get = "!~/git/lindhe/scripts/git/git-get.py"
-    get-gone = "!git branch -av | grep '\\[gone]' #"
-    h = help
-    knuff = push
-    l = log --oneline --decorate
-    lb = log --oneline --decorate --graph
-    lob = log --oneline --decorate --graph --branches --color=always
-    log = log --decorate
-    nb = "!git switch -c lindhe/${1:?} #"
-    nwt = "!WTD=~/git/worktree/${1:?}; mkdir -p ${WTD}; git worktree add ${WTD} ${1:?} ; echo ${WTD} #"
-    new = diff --cached
-    nw = diff --cached --color-words='\\w+'
-    nww = diff --cached --color-words='.'
-    nwww = diff --cached --word-diff-regex='.'
-    pl = !git pull && git log ORIG_HEAD..origin/$(git branch --show-current)
-    psuh = push
-    reb = rebase
-    rem = remote -v
-    remove-gone = "!git branch -av | grep -E '^[^\\+].*\\[gone]' | awk '{ print $1 }' | xargs git branch -D #"
-    review = "!git diff $(git merge-base master HEAD) ${@} #"
-    root = rev-parse --show-toplevel
-    s = status
-    shw = show --color-words='\\w+'
-    shww = show --color-words='.'
-    shwww = show --word-diff-regex='.'
-    sorry = commit --amend --no-edit
-    st = status
-    sw = "!git switch ${@:?Missing branch name} && git diff --stat $(basename $(git symbolic-ref refs/remotes/origin/HEAD))... #"
-    track = "!git branch --set-upstream-to=${1:-origin}/$(git branch --show-current) $(git branch --show-current) #"
-    unstage = restore --staged
-    whatchanged = log ORIG_HEAD..HEAD
-    wt = worktree
+	a = add -p
+	al = "!git config alias.${1:?} #"
+	ado = "log -q --pretty='format:%B'"
+	b = branch
+	bi = bisect
+	bra = branch -vv
+	branch-age = "!git for-each-ref --sort=-committerdate refs/heads --format=\"%(refname:short)|%(committerdate:relative)\" | column -ts \"|\""
+	bras = for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)|%(committerdate:relative)'
+	c = commit -v
+	ca = commit -av
+	cap = commit -vp
+	change = commit --amend -v
+	cl = clone
+	cm = commit -m
+	co = checkout
+	com = commit -v
+	comm = commit -m
+	cp = cherry-pick
+	default-branch = "!basename $(git symbolic-ref refs/remotes/origin/HEAD) #"
+	df = diff --color-words='\\w+'
+	dff = diff --color-words='.'
+	dfff = diff --word-diff-regex='.'
+	dif = diff
+	email = "!git config user.email ${EMAIL:?}"
+	files-in = diff-tree --no-commit-id --name-only -r
+	get = "!~/git/lindhe/scripts/git/git-get.py"
+	get-gone = "!git branch -av | grep '\\[gone]' #"
+	h = help
+	knuff = push
+	l = log --oneline --decorate
+	lb = log --oneline --decorate --graph
+	lob = log --oneline --decorate --graph --branches --color=always
+	log = log --decorate
+	nb = "!git switch -c lindhe/${1:?} #"
+	nwt = "!WTD=~/git/worktree/${1:?}; mkdir -p ${WTD}; git worktree add ${WTD} ${1:?} ; echo ${WTD} #"
+	new = diff --cached
+	nw = diff --cached --color-words='\\w+'
+	nww = diff --cached --color-words='.'
+	nwww = diff --cached --word-diff-regex='.'
+	pl = !git pull && git log ORIG_HEAD..origin/$(git branch --show-current)
+	psuh = push
+	reb = rebase
+	rem = remote -v
+	remove-gone = "!git branch -av | grep -E '^[^\\+].*\\[gone]' | awk '{ print $1 }' | xargs git branch -D #"
+	review = "!git diff $(git merge-base master HEAD) ${@} #"
+	root = rev-parse --show-toplevel
+	s = status
+	shw = show --color-words='\\w+'
+	shww = show --color-words='.'
+	shwww = show --word-diff-regex='.'
+	sorry = commit --amend --no-edit
+	st = status
+	sw = "!git switch ${@:?Missing branch name} && git diff --stat $(basename $(git symbolic-ref refs/remotes/origin/HEAD))... #"
+	track = "!git branch --set-upstream-to=${1:-origin}/$(git branch --show-current) $(git branch --show-current) #"
+	unstage = restore --staged
+	whatchanged = log ORIG_HEAD..HEAD
+	wt = worktree
 [branch]
-    autosetuprebase = always
+	autosetuprebase = always
 [pull]
-    rebase = true
+	rebase = true
 [core]
-    attributesfile = ~/.gitattributes_global
-    excludesfile = ~/.gitignore_global
-    editor = vim
-    quotepath = off
+	attributesfile = ~/.gitattributes_global
+	excludesfile = ~/.gitignore_global
+	editor = vim
+	quotepath = off
 [push]
-    default = current
+	default = current
 [color]
-    status = always
+	status = always
 [filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
 [fetch]
-    prune = true
+	prune = true
 [diff "sopsdiffer"]
-    textconv = sops -d
+	textconv = sops -d
 [rerere]
-    enabled = true
+	enabled = true
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [include]
-    path = ~/.config/git/linux.gitconfig
+	path = ~/.config/git/linux.gitconfig
 [include]
-    path = ~/.config/git/personal.gitconfig
+	path = ~/.config/git/personal.gitconfig
 [include]
-    path = ~/.config/git/wsl.gitconfig
+	path = ~/.config/git/wsl.gitconfig
