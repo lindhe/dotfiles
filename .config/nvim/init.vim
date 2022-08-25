@@ -94,7 +94,7 @@ let g:yaml_revealer_separator = "."
 """"""""""""""""""""""""""""""     Settings     """"""""""""""""""""""""""""""{{{
 
 set undofile
-set list
+set list listchars=eol:$,tab:>\ ,trail:-,extends:↩,precedes:…,nbsp:+
 set smarttab
 set expandtab
 set tabstop=4
