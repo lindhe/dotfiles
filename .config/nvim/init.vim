@@ -148,6 +148,8 @@ nnoremap <leader>t :call MakeCenterTitle('')<CR>
 " https://vi.stackexchange.com/a/6966/2082
 tnoremap <Esc> <C-\><C-n>
 
+nnoremap <silent> <c-w>0 <c-w><c-=>
+
 " <F6> to remove trailing whitespace
 nnoremap <silent> <F6> :%s/\s\+$//<CR>''
 
