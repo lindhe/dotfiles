@@ -11,9 +11,18 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
-require('nvim-lsp-installer').setup{
-    automatic_installation = true
-}
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    "bashls",
+    "marksman",
+    "terraformls",
+    "tsserver",
+    "vimls",
+    "yamlls",
+  },
+  automatic_installation = true,
+})
 
 require('lspconfig')['bashls'].setup {
     on_attach = on_attach,

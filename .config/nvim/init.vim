@@ -31,14 +31,17 @@ Plug 'Einenlum/yaml-revealer'         " Reveals the YAML hierarchy
 " Good ones, but dispensible
 Plug 'apzelos/blamer.nvim'            " Git blame for Vim
 Plug 'jpalardy/vim-slime', { 'branch': 'main' } " A vim plugin to give you some slime.
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'neovim/nvim-lspconfig'
 Plug 'Mofiqul/vscode.nvim'            " VS Code colorscheme
 
 " Not sure about these yet
 Plug 'mattn/emmet-vim'                " Emmet abbreviations
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
+
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 
 " Language specific
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
