@@ -163,6 +163,9 @@ nnoremap <silent> <F6> :%s/\s\+$//<CR>''
 nnoremap <F7> :call CycleSpell()<CR>
 inoremap <F7> <Esc>:call CycleSpell()<CR>a
 
+" <F8> to toggle line wrap
+nnoremap <F8> :set wrap!<CR>
+
 " <F9> Turn off LSP
 nnoremap <F9> :LspStop<CR>
 inoremap <F9> <Esc>:LspStop<CR>a
