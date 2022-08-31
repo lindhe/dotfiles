@@ -9,10 +9,10 @@ metadata:
 spec:
   containers:
   - name: hack
-    image: alpine
+    image: docker.io/ubuntu
     command:
       - sleep
       - "3600"
-    imagePullPolicy: IfNotPresent
+    imagePullPolicy: Always
   restartPolicy: Never
 
