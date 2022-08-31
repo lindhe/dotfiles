@@ -132,8 +132,8 @@ endif
 let mapleader = ','
 noremap <space> :
 cnoremap qq q!
-nnoremap <silent> gq :qall<CR>
-nnoremap <silent> GQ :qall!<CR>
+nnoremap <silent> hq :qall<CR>
+nnoremap <silent> HQ :qall!<CR>
 
 " Macros
 nnoremap <leader><leader> @q
