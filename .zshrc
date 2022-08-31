@@ -219,6 +219,14 @@ mcd() {
     cd ${1}
 }
 
+password() {
+  if command -v openssl &> /dev/null; then
+    openssl rand -base64 "${1:-32}" | paste -sd '' -
+  else
+    tr -dc A-Za-z0-9 </dev/urandom | head -c "${1:-32}" ; echo ''
+  fi
+}
+
 # }}}
 
 ###############################     Aliases     ###############################
