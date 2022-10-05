@@ -51,6 +51,8 @@ sudo snap install \
 ```
 
 - [ ] <https://github.com/zfsonlinux/zfs-auto-snapshot>
+- [ ] <https://www.informaticar.net/supermicro-motherboard-loud-fans/>
+- [ ] <https://askubuntu.com/a/1110474/80226>
 
 ## Post-install checklist
 
