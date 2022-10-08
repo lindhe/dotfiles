@@ -46,7 +46,8 @@ sudo apt install \
     zfsutils-linux \
     mailutils msmtp-mta s-nail \
     nfs-kernel-server \
-    smartmontools
+    smartmontools \
+    restic
 sudo snap install \
     nextcloud
 ```
