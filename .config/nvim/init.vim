@@ -116,6 +116,7 @@ set linebreak
 set signcolumn=yes
 set splitbelow
 set splitright
+set mouse=
 
 " Cred: https://www.reddit.com/r/neovim/comments/fyj7mp/comment/fn0ut6o/
 let s:winclip = '/mnt/c/Windows/System32/clip.exe'
