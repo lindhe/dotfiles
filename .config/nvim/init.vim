@@ -19,34 +19,38 @@ call plug#begin(plugin_path)
 
 " I cannot imagine Vim without these
 Plug 'junegunn/vim-easy-align'        " Align on a character: `gaip&`
-Plug 'mbbill/undotree'                " Here to save the day
 Plug 'tpope/vim-commentary'           " Toggle comments
 Plug 'tpope/vim-endwise'              " Autocomplete if ... endif
 Plug 'tpope/vim-repeat'               " Make . repeat (some) plugin actions
 Plug 'tpope/vim-sensible'             " Fix the stupid things left from Vi
 Plug 'tpope/vim-speeddating'          " <c-a> and <c-x> correct with iso dates
 Plug 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
-Plug 'Einenlum/yaml-revealer'         " Reveals the YAML hierarchy
 
-" Good ones, but dispensible
-Plug 'apzelos/blamer.nvim'            " Git blame for Vim
-Plug 'jpalardy/vim-slime', { 'branch': 'main' } " A vim plugin to give you some slime.
-Plug 'Mofiqul/vscode.nvim', {'commit': 'c5125820a0915ef50f03fae10423c43dc49c66b1'}            " VS Code colorscheme
+if !exists('g:vscode')
+  " I cannot imagine Vim without these
+  Plug 'mbbill/undotree'                " Here to save the day
+  Plug 'Einenlum/yaml-revealer'         " Reveals the YAML hierarchy
 
-" Not sure about these yet
-Plug 'mattn/emmet-vim'                " Emmet abbreviations
-Plug 'scrooloose/nerdtree'
-Plug 'airblade/vim-gitgutter'
+  " Good ones, but dispensible
+  Plug 'apzelos/blamer.nvim'          " Git blame for Vim
+  Plug 'jpalardy/vim-slime', { 'branch': 'main' } " A vim plugin to give you some slime.
+  Plug 'Mofiqul/vscode.nvim', {'commit': 'c5125820a0915ef50f03fae10423c43dc49c66b1'}
 
-" LSP
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
+  " Not sure about these yet
+  Plug 'mattn/emmet-vim'              " Emmet abbreviations
+  Plug 'scrooloose/nerdtree'
+  Plug 'airblade/vim-gitgutter'
 
-" Language specific
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'hashivim/vim-terraform'
-Plug 'fatih/vim-go'
+  " LSP
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/mason.nvim'
+  Plug 'williamboman/mason-lspconfig.nvim'
+
+  " Language specific
+  Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+  Plug 'hashivim/vim-terraform'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+endif
 
 call plug#end()
 unlet plugin_path
@@ -86,8 +90,10 @@ let g:slime_paste_file = "/tmp/slime_paste"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "0"}
 let g:slime_dont_ask_default = 1
 
-" vscode
-colorscheme vscode
+if !exists('g:vscode')
+  " Not VSCode extension
+  colorscheme vscode
+endif
 
 " YAML Revealer
 let g:yaml_revealer_separator = "."

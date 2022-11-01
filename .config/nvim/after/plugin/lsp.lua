@@ -1,3 +1,5 @@
+if not vim.g.vscode then
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -39,3 +41,5 @@ require('lspconfig')['vimls'].setup {
 require('lspconfig')['yamlls'].setup {
     on_attach = on_attach,
 }
+
+end
