@@ -241,6 +241,7 @@ alias zshrc="nvim ~/.zshrc"
 # Propagate aliases and environment to sudo
 alias sudo="sudo -E "
 alias sudoedit="sudoedit "
+alias watch="watch "
 
 # General
 alias .....="cd ../../../.."
