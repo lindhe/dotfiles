@@ -241,7 +241,6 @@ alias zshrc="nvim ~/.zshrc"
 # Propagate aliases and environment to sudo
 alias sudo="sudo -E "
 alias sudoedit="sudoedit "
-alias watch="watch "
 
 # General
 alias .....="cd ../../../.."
@@ -269,7 +268,7 @@ alias svim="sudoedit"
 alias tat="tmux attach -t"
 alias tls="tmux list-sessions"
 alias tree="tree -C"
-alias watch="watch --color"
+alias watch="watch --color "
 alias yao="yaourt"
 
 # Docking
@@ -302,7 +301,6 @@ alias sudovim="sudoedit "
 alias tat="tmux attach -t"
 alias tls="tmux list-sessions"
 alias tree="tree -C"
-alias watch="watch --color"
 
 # Dev
 alias d="docker"
