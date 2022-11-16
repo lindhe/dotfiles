@@ -50,6 +50,7 @@ if !exists('g:vscode')
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
   Plug 'hashivim/vim-terraform'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'rust-lang/rust.vim'
 endif
 
 call plug#end()
@@ -83,6 +84,9 @@ map ga <Plug>(EasyAlign)
 let g:terraform_align=1
 let g:terraform_fold_sections=1
 " let g:terraform_fmt_on_save=1
+
+" Rust
+let g:rustfmt_autosave = 1
 
 " slime
 let g:slime_target = "tmux"
