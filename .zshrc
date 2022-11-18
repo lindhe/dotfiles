@@ -1,6 +1,7 @@
 # vim: foldmethod=marker
 ## Überimportant:
 # Fixing <C-s> issue (see http://unix.stackexchange.com/a/72092/33928)
+# tags: ctrl+x
 stty -ixon
 
 ###########################     Profiling Start     ###########################
@@ -73,6 +74,11 @@ if command -v helm &> /dev/null; then
 else
     echo "* helm is missing" >> ${TODOFILE}
 fi
+if $(command -v k3d &> /dev/null); then
+    source <(k3d completion zsh)
+else
+    echo "* k3d is missing" >> ${TODOFILE}
+fi
 
 # Bash completion
 autoload -U +X bashcompinit && bashcompinit
@@ -83,6 +89,14 @@ else
     echo "* ${AZCLI_COMPLETION:?} is missing" >> ${TODOFILE}
 fi
 complete -o nospace -C /usr/bin/terraform terraform
+
+for f in ~/.config/zsh/autocomplete/*; do
+  if [[ -f ${f} ]]; then
+    source ${f}
+  else
+    echo "Unable to source '${f}'" 1>&2
+  fi
+done
 
 # }}}
 
