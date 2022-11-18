@@ -60,7 +60,6 @@ set $right odiaeresis
 
 # start a terminal
 bindsym $mod+Return exec gnome-terminal
-bindsym F9 exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
