@@ -163,6 +163,9 @@ tnoremap <Esc> <C-\><C-n>
 
 nnoremap <silent> <c-w>0 <c-w><c-=>
 
+" Omnicompletion
+inoremap <c-Space> <c-x><c-o>
+
 " <F3> Toggle list
 nnoremap <F3> :set list!<CR>
 inoremap <F3> <Esc>:set list!<CR>a
