@@ -29,7 +29,7 @@ sudo apt install \
     neovim tree zsh \
     build-essential \
     git git-lfs \
-    tmux jq unzip
+    tmux jq unzip shellcheck
 ```
 
 #### GUI extras
