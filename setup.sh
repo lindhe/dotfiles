@@ -16,9 +16,9 @@ done;
 echo "Do you want a minimal setup? [Y/n]"
 read -rn 1 yn
 if [[ "${yn}" == [Nn]* ]]; then
-    readonly FULL_SETUP=n
-else
     readonly FULL_SETUP=y
+else
+    readonly FULL_SETUP=n
 fi
 echo -e "\n"
 
