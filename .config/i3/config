@@ -67,7 +67,7 @@ bindsym $alt+F4 kill
 
 # start dmenu (a program launcher)
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -i -lines 5 -eh 3 -width 60 -padding 80 -opacity '90' -bw 0 -bc '$bg-color' -bg '$bg-color' -fg '$text-color' -hlbg '$bg-color' -hlfg '#9575cd' -font 'mono  18'"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="rofi -dmenu -i -eh 3 -l 5 -opacity '90' -font 'mono  18'"
 
 # Open PDF reader
 bindsym $mod+z exec zathura
