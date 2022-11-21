@@ -36,7 +36,7 @@ sudo apt install \
 
 ```shell
 sudo apt install \
-    dunst i3 j4-dmenu-desktop playerctl rofi
+    dunst i3 j4-dmenu-desktop playerctl rofi gnome-screenshot
 ```
 
 #### Server extras
