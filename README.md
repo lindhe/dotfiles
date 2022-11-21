@@ -32,11 +32,12 @@ sudo apt install \
     tmux jq unzip shellcheck
 ```
 
-#### GUI extras
+#### Laptop extras
 
 ```shell
 sudo apt install \
-    dunst i3 j4-dmenu-desktop playerctl rofi gnome-screenshot
+    dunst i3 j4-dmenu-desktop playerctl rofi gnome-screenshot \
+    scdaemon
 ```
 
 #### Server extras
