@@ -37,7 +37,7 @@ sudo apt install \
 ```shell
 sudo apt install \
     dunst i3 j4-dmenu-desktop playerctl rofi gnome-screenshot \
-    scdaemon
+    scdaemon pavucontrol
 ```
 
 #### Server extras
