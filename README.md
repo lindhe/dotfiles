@@ -44,7 +44,7 @@ sudo apt install \
 
 ```shell
 sudo apt install \
-    zfsutils-linux \
+    zfsutils-linux zfs-auto-snapshot \
     mailutils msmtp-mta s-nail \
     nfs-kernel-server \
     smartmontools \
