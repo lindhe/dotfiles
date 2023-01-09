@@ -344,6 +344,7 @@ alias kdesc='kubectl describe'
 alias kg='kubectl get'
 alias kget='kubectl get'
 alias ktop='kubectl top'
+alias mk='minikube'
 
 # non-important
 alias cal="cal -m"
