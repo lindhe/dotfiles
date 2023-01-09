@@ -40,7 +40,7 @@
 	nw = diff --cached --color-words='\\w+'
 	nww = diff --cached --color-words='.'
 	nwww = diff --cached --word-diff-regex='.'
-	pl = !git pull && git log ORIG_HEAD..origin/$(git branch --show-current)
+	pl = !git pull && git log -- ORIG_HEAD..origin/$(git branch --show-current)
 	psuh = push
 	reb = rebase
 	rem = remote -v
@@ -56,7 +56,7 @@
 	sw = "!git switch ${@:?Missing branch name} && git diff --stat $(basename $(git symbolic-ref refs/remotes/origin/HEAD))... #"
 	track = "!git branch --set-upstream-to=${1:-origin}/$(git branch --show-current) $(git branch --show-current) #"
 	unstage = restore --staged
-	whatchanged = log ORIG_HEAD..HEAD
+	whatchanged = log -- ORIG_HEAD..HEAD
 	whats = "!git config alias.${1:?} #"
 	wt = worktree
 [branch]
