@@ -2,6 +2,8 @@
 setlocal spell
 setlocal textwidth=0
 setlocal wrap
+setlocal shiftwidth=4
+setlocal tabstop=4
 
 " Looks
 setlocal nocursorline
