@@ -245,117 +245,12 @@ password() {
 
 ###############################     Aliases     ###############################
 # {{{
-# edit rc files
-alias nvimrc="nvim ~/.config/nvim/init.vim"
-alias lvimrc="nvim ~/.config/nvim/after/plugin/lsp.lua"
-alias vimrc="vim ~/.vimrc"
-alias zathurarc="nvim ~/.config/zathura/zathurarc"
-alias zshrc="nvim ~/.zshrc"
-
-# Propagate aliases and environment to sudo
-alias sudo="sudo -E "
-alias sudoedit="sudoedit "
-
-# General
-alias .....="cd ../../../.."
-alias ....="cd ../../.."
-alias ...="cd ../.."
-alias ..="cd .."
-alias bcl="bluetoothctl"
-alias df="df -H"
-alias du="du -h"
-alias dusch="du -sch .[^.]* * | sort -h"
-alias gitdiff="git diff --no-index --"
-alias l="ls -FHhlv --color=always --group-directories-first"
-alias ll="ls -aFhlv --color=always"
-alias ls="ls -Hhv --color=always"
-alias lsl="ls -Ahl --color=always"
-alias mkdir="mkdir -p"
-alias open="xdg-open"
-alias pac="pacman"
-alias pik="pikaur"
-alias qq="exit"
-alias rml="rm *.aux; rm *.out; rm *.toc; rm *.log; rm *.lof; rm *.lot; rm *.tdo; rm *.dvi; rm *.bbl; rm *.blg; rm *bcf; rm *.run.xml; rm *-blx.bib; rm *.apc"
-alias se="sudoedit"
-alias so="source"
-alias svim="sudoedit"
-alias tat="tmux attach -t"
-alias tls="tmux list-sessions"
-alias tree="tree -C"
-alias vimp="vim -p"
-alias watch="watch --color "
-alias yao="yaourt"
-
-# Docking
-alias keyboard="xset r rate 330 75; setxkbmap se-A5; setxkbmap -option caps:swapescape"
-alias monitors="~/scripts/monman.py -a && echo 'Monitors on'"
-alias unmonitors="xrandr --output eDP-1 --auto --primary --output HDMI-1 --off --output DP-1 --off --output DP-2 --off; echo 'off'"
-
-
-# Git
-alias g="git"
-alias ga="git add -p"
-alias gam="git commit -am"
-alias gap="git add -p"
-alias gc="git commit"
-alias gcm="git commit -m"
-alias gg="git grep -i"
-alias gi="git"
-alias gif="git diff"
-alias gil="git l"
-alias gill="git lob"
-alias gip="git pl"
-alias gis="git status"
-alias gs="git status"
-
-alias pac="pacman"
-alias qq="exit"
-alias rmb="rm *.bbl; rm *.blg; rm *.bcf; rm *.run.xml; rm *-blx.bib"
-alias rmt="rm *.aux; rm *.out; rm *.toc; rm *.log; rm *.tdo; rm *.fdb_latexmk; rm *dvi; rm *.fls"
-alias sudovim="sudoedit "
-alias tat="tmux attach -t"
-alias tls="tmux list-sessions"
-alias tree="tree -C"
-
-# Dev
-alias a="ansible"
-alias c="cargo"
-alias d="docker"
-alias dc="docker-compose"
-alias h="helm"
-alias hf="helmfile"
-alias hs="helm secrets"
-alias ipy="ipython3"
-alias mk="microk8s.kubectl"
-alias mp="multipass"
-alias p="podman"
-alias pm="podman"
-alias pp="pipenv"
-alias t="terraform"
-alias wkga="watch kubectl get all"
-alias bbb="(base64 -d ; echo)"
-alias tf="terraform"
-
-# Kubernetes
-alias k="kubectl"
-alias kaf='kubectl apply -f'
-alias kc="kubectl config"
-alias kcc='kubectl create --dry-run=client -o yaml'
-alias kcd='kubectl create --dry-run=client -o yaml'
-alias kdesc='kubectl describe'
-alias kg='kubectl get'
-alias kget='kubectl get'
-alias ktop='kubectl top'
-alias mk='minikube'
-
-# non-important
-alias cal="cal -m"
-alias gnu="gnuplot"
-alias jqless="jq -C '' | less -Ri"
-alias starwars="telnet towel.blinkenlights.nl"
-alias vimcognito="vim -i NONE -u NONE -U NONE --cmd 'set noswapfile' --cmd 'set nobackup'"
-alias yqless="yq -C eval | less -Ri"
-
+ZSH_ALIASES=~/.zsh_aliases
+if [[ -f ${ZSH_ALIASES} ]]; then
+    source ${ZSH_ALIASES}
+else
+    echo "* ${ZSH_ALIASES} is missing" >> ${TODOFILE}
+fi
 # }}}
 
 ############################     Profiling End     ############################
