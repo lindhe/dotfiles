@@ -282,6 +282,7 @@ alias svim="sudoedit"
 alias tat="tmux attach -t"
 alias tls="tmux list-sessions"
 alias tree="tree -C"
+alias vimp="vim -p"
 alias watch="watch --color "
 alias yao="yaourt"
 
@@ -317,6 +318,7 @@ alias tls="tmux list-sessions"
 alias tree="tree -C"
 
 # Dev
+alias a="ansible"
 alias c="cargo"
 alias d="docker"
 alias dc="docker-compose"
