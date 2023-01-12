@@ -1,3 +1,5 @@
+# vim: foldmethod=marker
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -8,13 +10,14 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="bira"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# ZSH_THEME_RANDOM_CANDIDATES=($(<~/.zsh_favlist))
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -76,6 +79,13 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+############################     TODO-file init     ############################
+# {{{
+TODOFILE=~/TODO.zsh.md
+# Clear the TODO-file
+rm --force ${TODOFILE}
+# }}}
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -95,7 +105,82 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Set NO_UNSET option
+set -u
+
+###############################     Aliases     ###############################
+# {{{
+ZSH_ALIASES=~/.zsh_aliases
+if [[ -f ${ZSH_ALIASES} ]]; then
+    source ${ZSH_ALIASES}
+else
+    echo "* ${ZSH_ALIASES} is missing" >> ${TODOFILE}
+fi
+# }}}
+
+##############################     Completion     ##############################
+# {{{
+
+# Native ZSH completion
+if command -v kubectl &> /dev/null; then
+    source <(kubectl completion zsh)
+else
+    echo "* kubectl is missing" >> ${TODOFILE}
+fi
+if command -v helm &> /dev/null; then
+    source <(helm completion zsh)
+else
+    echo "* helm is missing" >> ${TODOFILE}
+fi
+if $(command -v k3d &> /dev/null); then
+    source <(k3d completion zsh)
+else
+    echo "* k3d is missing" >> ${TODOFILE}
+fi
+
+# Bash completion
+autoload -U +X bashcompinit && bashcompinit
+AZCLI_COMPLETION="/etc/bash_completion.d/azure-cli"
+if [[ -f ${AZCLI_COMPLETION} ]]; then
+    source ${AZCLI_COMPLETION}
+else
+    echo "* ${AZCLI_COMPLETION:?} is missing" >> ${TODOFILE}
+fi
+complete -o nospace -C /usr/bin/terraform terraform
+
+for f in ~/.config/zsh/autocomplete/*; do
+  if [[ -f ${f} ]]; then
+    source ${f}
+  else
+    echo "Unable to source '${f}'" 1>&2
+  fi
+done
+
+# }}}
+
+##############################     Functions     ##############################
+# {{{
+ZSH_FUNCTIONS=~/.zsh_functions
+if [[ -f ${ZSH_FUNCTIONS} ]]; then
+    source ${ZSH_FUNCTIONS}
+else
+    echo "* ${ZSH_FUNCTIONS} is missing" >> ${TODOFILE}
+fi
+# }}}
+
+##########################     Prompt and colors     ##########################
+# {{{
+source ${ZDOTDIR:-~}/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# }}}
+
+#################################     WSL2     #################################
+# {{{
+ZSH_WSL=~/.zsh_wsl
+if [[ -f ${ZSH_WSL} ]]; then
+    source ${ZSH_WSL}
+else
+    echo "* ${ZSH_WSL} is missing" >> ${TODOFILE}
+fi
+# }}}
