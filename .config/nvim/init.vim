@@ -106,7 +106,11 @@ let g:yaml_revealer_separator = "."
 
 """"""""""""""""""""""""""""""     Settings     """"""""""""""""""""""""""""""{{{
 
-set undofile
+if has('persistent_undo')
+  set undodir=~/.config/nvim/undo/
+  set undofile
+endif
+
 set list listchars=eol:$,tab:>\ ,trail:-,extends:↩,precedes:…,nbsp:+
 set smarttab
 set expandtab
