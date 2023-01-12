@@ -153,94 +153,12 @@ fi
 
 ##############################     Functions     ##############################
 # {{{
-
-# Search on both snap and apt
-apps() {
-    snap search $1
-    apt search $1
-}
-
-# base64 -d
-bd() {
-    echo "$1" | base64 -d ; echo
-}
-
-checksum() {
-    echo "$1 $2" > /tmp/hash.txt &&\
-        printf 'md5:\n'; md5sum -c /tmp/hash.txt;\
-        printf '\n';\
-        printf 'sha256:\n'; sha256sum -c /tmp/hash.txt
-}
-
-# Copy the contents of a file to the clipboard and put its name in primary
-copy() {
-    # If WSL
-    if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
-        cat ${1:?} | /mnt/c/Windows/System32/clip.exe
-    else
-        cat ${1:?} | xclip -selection clipboard
-        echo -n ${1:?} | xclip -selection primary
-    fi
-}
-
-# Copy path to current working directory
-cwd() {
-    # If WSL
-    if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
-        pwd | /mnt/c/Windows/System32/clip.exe
-    else
-        pwd | xclip -selection clipboard
-        pwd | xclip -selection primary
-    fi
-}
-
-datestamp() {
-    date +'%F'
-}
-
-# setup kubectl environment
-kinit() {
-    if $(command -v helm &> /dev/null); then
-        source <(helm completion zsh)
-    fi
-    if $(command -v kubectl &> /dev/null); then
-        source <(kubectl completion zsh)
-    fi
-    if $(command -v minikube &> /dev/null); then
-        source <(minikube completion zsh)
-    fi
-}
-
-m2p() {
-    pandoc $1 -s -f gfm -o $1.pdf &&\
-    rename md.pdf pdf ./$1.pdf
-}
-
-stderr() {
-    python -c "import sys; print('$1', file=sys.stderr)"
-}
-
-timestamp() {
-    date +'%F_%T'
-}
-
-title() {
-    echo -ne "\033]0;${1}\007"
-}
-
-mcd() {
-    mkdir -p ${1:?Missing argument to mcd.}
-    cd ${1}
-}
-
-password() {
-  if command -v openssl &> /dev/null; then
-    openssl rand -base64 "${1:-32}" | paste -sd '' -
-  else
-    tr -dc A-Za-z0-9 </dev/urandom | head -c "${1:-32}" ; echo ''
-  fi
-}
-
+ZSH_FUNCTIONS=~/.zsh_functions
+if [[ -f ${ZSH_FUNCTIONS} ]]; then
+    source ${ZSH_FUNCTIONS}
+else
+    echo "* ${ZSH_FUNCTIONS} is missing" >> ${TODOFILE}
+fi
 # }}}
 
 ###############################     Aliases     ###############################

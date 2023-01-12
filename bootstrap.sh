@@ -14,6 +14,8 @@ ln -fs ~/git/lindhe/dotfiles/.gitignore_global .
 ln -fs ~/git/lindhe/dotfiles/.tmux.conf .
 ln -fs ~/git/lindhe/dotfiles/.xprofile .
 ln -fs ~/git/lindhe/dotfiles/.zshrc .
+ln -fs ~/git/lindhe/dotfiles/.zsh_aliases .
+ln -fs ~/git/lindhe/dotfiles/.zsh_functions .
 ln -fs ~/git/lindhe/dotfiles/res .
 
 mkdir -p ~/.config
