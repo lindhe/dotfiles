@@ -334,6 +334,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id nextcloud
 exec --no-startup-id unclutter
 exec --no-startup-id redshift
+exec --no-startup-id keepassxc
 
 # exec --no-startup-id compton --backend glx --vsync opengl
 # }}}
