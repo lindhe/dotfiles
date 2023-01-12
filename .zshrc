@@ -1,156 +1,101 @@
-# vim: foldmethod=marker
-## Überimportant:
-# Fixing <C-s> issue (see http://unix.stackexchange.com/a/72092/33928)
-# tags: ctrl+x
-stty -ixon
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-###########################     Profiling Start     ###########################
-# Enable this (and zprof at bottom) for profiling.
-# https://stevenvanbael.com/profiling-zsh-startup
-# zmodload zsh/zprof
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-############################     TODO-file init     ############################
-# {{{
-TODOFILE=~/TODO.zsh.md
-# Clear the TODO-file
-rm --force ${TODOFILE}
-# }}}
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
-###############################     History     ###############################
-# {{{
-HISTFILE=${ZDOTDIR:-~}/.zsh_history
-HISTSIZE=SAVEHIST=99999
-setopt APPEND_HISTORY
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_FCNTL_LOCK
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-setopt HIST_NO_STORE
-setopt HIST_SAVE_NO_DUPS
-setopt HIST_VERIFY
-setopt INC_APPEND_HISTORY
-# }}}
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-#################################     Misc     #################################
-# {{{
-# why would you type 'cd dir' if you could just type 'dir'?
-setopt AUTO_CD
-# Allow bash-like comments inline
-setopt interactivecomments
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# Edit commmands
-# https://unix.stackexchange.com/questions/6620/how-to-edit-command-line-in-full-screen-editor-in-zsh
-autoload -z edit-command-line
-zle -N edit-command-line
-bindkey "^X^E" edit-command-line
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-# Set NO_UNSET option
-set -u
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
-# }}}
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
 
-##############################     Completion     ##############################
-# {{{
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}'
-zstyle ':completion::complete:*' use-cache 1
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
-zstyle ':completion:*' special-dirs true
-zstyle ':completion:*' menu select
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
-autoload -U compinit
-compinit
-zstyle ':completion:*:*:vim:*' file-patterns '*.tex:*.bib:source-files' '*:all-files'
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-# Native ZSH completion
-if command -v kubectl &> /dev/null; then
-    source <(kubectl completion zsh)
-else
-    echo "* kubectl is missing" >> ${TODOFILE}
-fi
-if command -v helm &> /dev/null; then
-    source <(helm completion zsh)
-else
-    echo "* helm is missing" >> ${TODOFILE}
-fi
-if $(command -v k3d &> /dev/null); then
-    source <(k3d completion zsh)
-else
-    echo "* k3d is missing" >> ${TODOFILE}
-fi
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# Bash completion
-autoload -U +X bashcompinit && bashcompinit
-AZCLI_COMPLETION="/etc/bash_completion.d/azure-cli"
-if [[ -f ${AZCLI_COMPLETION} ]]; then
-    source ${AZCLI_COMPLETION}
-else
-    echo "* ${AZCLI_COMPLETION:?} is missing" >> ${TODOFILE}
-fi
-complete -o nospace -C /usr/bin/terraform terraform
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
-for f in ~/.config/zsh/autocomplete/*; do
-  if [[ -f ${f} ]]; then
-    source ${f}
-  else
-    echo "Unable to source '${f}'" 1>&2
-  fi
-done
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
 
-# }}}
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-##########################     Prompt and colors     ##########################
-# {{{
-# Enable colors
-autoload -U colors
-colors
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
 
-# Cooler prompt
-autoload -U promptinit
-promptinit
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Configure prompt
-PROMPT="%{$fg_bold[white]%}%n%{$fg[magenta]%}@%{$fg_no_bold[cyan]%}%m %{$fg_no_bold[yellow]%}%~ %{$reset_color%}$ %"
-source ${ZDOTDIR:-~}/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
 
-# }}}
+source $ZSH/oh-my-zsh.sh
 
-################################     Fixes     ################################
-# {{{
-# Keybindings
-bindkey "^[[3~" delete-char
-# }}}
+# User configuration
 
-#################################     WSL2     #################################
-# {{{
-ZSH_WSL=~/.zsh_wsl
-if [[ -f ${ZSH_WSL} ]]; then
-    source ${ZSH_WSL}
-else
-    echo "* ${ZSH_WSL} is missing" >> ${TODOFILE}
-fi
-# }}}
+# export MANPATH="/usr/local/man:$MANPATH"
 
-##############################     Functions     ##############################
-# {{{
-ZSH_FUNCTIONS=~/.zsh_functions
-if [[ -f ${ZSH_FUNCTIONS} ]]; then
-    source ${ZSH_FUNCTIONS}
-else
-    echo "* ${ZSH_FUNCTIONS} is missing" >> ${TODOFILE}
-fi
-# }}}
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-###############################     Aliases     ###############################
-# {{{
-ZSH_ALIASES=~/.zsh_aliases
-if [[ -f ${ZSH_ALIASES} ]]; then
-    source ${ZSH_ALIASES}
-else
-    echo "* ${ZSH_ALIASES} is missing" >> ${TODOFILE}
-fi
-# }}}
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-############################     Profiling End     ############################
-# zprof
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
