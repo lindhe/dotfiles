@@ -4,6 +4,7 @@
 .vim/plugged/
 !.vim/bundle/Vundle.vim
 .vim/undo/
+.config/nvim/undo/
 
 .netrwhist
 *.pdf
