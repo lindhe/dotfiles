@@ -109,6 +109,14 @@ rm --force ${TODOFILE}
 # Set NO_UNSET option
 set -u
 
+##########################     Fix OMZ behaviour     ##########################
+# {{{
+
+# https://superuser.com/a/1447349/110087
+unset LESS;
+
+# }}}
+
 ###############################     Aliases     ###############################
 # {{{
 ZSH_ALIASES=~/.zsh_aliases
