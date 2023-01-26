@@ -1,0 +1,15 @@
+export KUBECONFIG="/home/andreas/.kube/config:${KUBECONFIG}"
+
+#####################     Source all k8s config files     #####################
+export KUBECONFIG_DIRS=(
+  $KUBECONFIG_DIRS
+  /home/andreas/.k3d
+)
+for dir in ${KUBECONFIG_DIRS}; do
+  if [[ -d ${dir} ]]; then
+    for config in ${dir}/*.yaml; do
+      export KUBECONFIG="${KUBECONFIG}:${config}"
+    done
+  fi
+done
+

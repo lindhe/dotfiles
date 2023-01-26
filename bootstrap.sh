@@ -17,6 +17,7 @@ ln -fs ~/git/lindhe/dotfiles/.zshrc .
 ln -fs ~/git/lindhe/dotfiles/.zsh_aliases .
 ln -fs ~/git/lindhe/dotfiles/.zsh_functions .
 ln -fs ~/git/lindhe/dotfiles/.zsh_wsl .
+ln -fs ~/git/lindhe/dotfiles/.zsh_k8s .
 ln -fs ~/git/lindhe/dotfiles/res .
 
 mkdir -p ~/.config
