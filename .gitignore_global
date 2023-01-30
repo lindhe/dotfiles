@@ -34,3 +34,6 @@ _minted-*/
 !**/figures/*.pdf
 __pycache__/
 *.zip
+
+# Dev containers
+.devcontainer
