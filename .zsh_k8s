@@ -7,7 +7,7 @@ export KUBECONFIG_DIRS=(
 )
 for dir in ${KUBECONFIG_DIRS}; do
   if [[ -d ${dir} ]]; then
-    for config in ${dir}/*.yaml; do
+    for config in $(find "${dir}" -type f -name "*.yaml"); do
       export KUBECONFIG="${KUBECONFIG}:${config}"
     done
   fi
