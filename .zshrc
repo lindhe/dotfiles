@@ -115,6 +115,9 @@ set -u
 # https://superuser.com/a/1447349/110087
 unset LESS;
 
+# https://github.com/ohmyzsh/ohmyzsh/issues/2537#issuecomment-35693367
+setopt no_share_history
+
 # }}}
 
 ###############################     Aliases     ###############################
