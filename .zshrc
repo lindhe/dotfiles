@@ -118,6 +118,9 @@ unset LESS;
 # https://github.com/ohmyzsh/ohmyzsh/issues/2537#issuecomment-35693367
 setopt no_share_history
 
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#hist_stamps
+export HIST_STAMPS="yyyy-mm-dd"
+
 # }}}
 
 ###############################     Aliases     ###############################
