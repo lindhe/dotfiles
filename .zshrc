@@ -121,6 +121,9 @@ setopt no_share_history
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#hist_stamps
 export HIST_STAMPS="yyyy-mm-dd"
 
+# https://github.com/zsh-users/zsh-autosuggestions/issues/141#issuecomment-210615799
+zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+
 # }}}
 
 ###############################     Aliases     ###############################
