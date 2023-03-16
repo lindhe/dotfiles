@@ -90,3 +90,5 @@
 	path = ~/.config/git/personal.gitconfig
 [include]
 	path = ~/.config/git/wsl.gitconfig
+[init]
+	defaultBranch = master
