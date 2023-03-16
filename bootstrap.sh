@@ -23,6 +23,7 @@ ln -fs ~/git/lindhe/dotfiles/res .
 mkdir -p ~/.config
 cd ~/.config/
 
+ln -fs ~/git/lindhe/dotfiles/.config/git/ .
 ln -fs ~/git/lindhe/dotfiles/.config/nvim/ .
 ln -fs ~/git/lindhe/dotfiles/.config/zsh/ .
 
