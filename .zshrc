@@ -126,6 +126,14 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
 # }}}
 
+#########################     Plugin configuration     #########################
+# {{{
+
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+bindkey '§' autosuggest-accept
+
+# }}}
+
 ###############################     Aliases     ###############################
 # {{{
 ZSH_ALIASES=~/.zsh_aliases
