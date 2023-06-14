@@ -129,7 +129,7 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 #########################     Plugin configuration     #########################
 # {{{
 
-export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_STRATEGY=(completion)
 bindkey '§' autosuggest-accept
 
 # }}}
