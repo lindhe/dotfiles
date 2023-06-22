@@ -85,8 +85,6 @@
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [include]
-	path = ~/.config/git/linux.gitconfig
-[include]
 	path = ~/.config/git/wsl.gitconfig
 [init]
 	defaultBranch = master
