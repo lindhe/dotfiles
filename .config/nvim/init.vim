@@ -29,7 +29,6 @@ Plug 'tpope/vim-surround'             " Affect your surroundings. Example: ds'
 if !exists('g:vscode')
   " I cannot imagine Vim without these
   Plug 'mbbill/undotree'                " Here to save the day
-  Plug 'Einenlum/yaml-revealer'         " Reveals the YAML hierarchy
 
   " Good ones, but dispensible
   Plug 'apzelos/blamer.nvim'          " Git blame for Vim
@@ -98,9 +97,6 @@ if !exists('g:vscode')
   " Not VSCode extension
   colorscheme vscode
 endif
-
-" YAML Revealer
-let g:yaml_revealer_separator = "."
 
 "}}}
 
