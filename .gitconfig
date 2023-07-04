@@ -19,7 +19,7 @@
 	com = commit -v
 	comm = commit -m
 	cp = cherry-pick
-	default-branch = "!basename $(git symbolic-ref refs/remotes/origin/HEAD) #"
+	default-branch = "!git branch -l main master | grep -o '\\<main\\>' || echo master #"
 	df = diff --color-words='\\w+'
 	dff = diff --color-words='.'
 	dfff = diff --word-diff-regex='.'
