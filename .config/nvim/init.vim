@@ -47,6 +47,7 @@ if !exists('g:vscode')
 
   " Language specific
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+  Plug 'hashivim/vim-terraform'
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'rust-lang/rust.vim'
 endif
@@ -77,6 +78,11 @@ let g:pymode_options = 0
 
 " vim-easy-align
 map ga <Plug>(EasyAlign)
+
+" Terraform
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+" let g:terraform_fmt_on_save=1
 
 " Rust
 let g:rustfmt_autosave = 1
