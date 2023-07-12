@@ -42,6 +42,11 @@ datestamp() {
     date +'%F'
 }
 
+unalias gl # Because OMZ has gl defined as an alias already
+gl() {
+  git l origin/$(git branch -l main master | grep -o '\<main\>' || echo master )..
+}
+
 # setup kubectl environment
 kinit() {
     if $(command -v helm &> /dev/null); then
