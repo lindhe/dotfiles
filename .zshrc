@@ -155,23 +155,6 @@ fi
 ##############################     Completion     ##############################
 # {{{
 
-# Native ZSH completion
-if command -v kubectl &> /dev/null; then
-    source <(kubectl completion zsh)
-else
-    echo "* kubectl is missing" >> ${TODOFILE}
-fi
-if command -v helm &> /dev/null; then
-    source <(helm completion zsh)
-else
-    echo "* helm is missing" >> ${TODOFILE}
-fi
-if $(command -v k3d &> /dev/null); then
-    source <(k3d completion zsh)
-else
-    echo "* k3d is missing" >> ${TODOFILE}
-fi
-
 # Bash completion
 autoload -U +X bashcompinit && bashcompinit
 AZCLI_COMPLETION="/etc/bash_completion.d/azure-cli"
