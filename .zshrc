@@ -129,6 +129,14 @@ zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 #########################     Plugin configuration     #########################
 # {{{
 
+ZSH_PLUGINS_DIR=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins
+
+# Install zsh-autosuggestions if it's not present
+PLUGIN_ZAS_DIR="${ZSH_PLUGINS_DIR:?}/zsh-autosuggestions"
+if [[ ! -a ${PLUGIN_ZAS_DIR} ]]; then
+  git clone -c 'advice.detachedHead=false' -b 'v0.7.0' https://github.com/zsh-users/zsh-autosuggestions.git ${PLUGIN_ZAS_DIR:?}
+fi
+
 export ZSH_AUTOSUGGEST_STRATEGY=(completion)
 bindkey '§' autosuggest-accept
 
