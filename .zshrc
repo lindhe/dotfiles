@@ -194,12 +194,6 @@ else
 fi
 # }}}
 
-##########################     Prompt and colors     ##########################
-# {{{
-source ${ZDOTDIR:-~}/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# }}}
-
 #################################     WSL2     #################################
 # {{{
 ZSH_WSL=~/.zsh_wsl
