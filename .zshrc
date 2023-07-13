@@ -194,13 +194,17 @@ fi
 
 complete -o nospace -C /usr/bin/terraform terraform
 
-for f in ~/.config/zsh/autocomplete/*; do
-  if [[ -f ${f} ]]; then
-    source ${f}
-  else
-    echo "Unable to source '${f}'" 1>&2
-  fi
-done
+ZSH_CONFIG_DIR="${HOME}/.config/zsh"
+AUTOCOMPLETE_DIR="${ZSH_CONFIG_DIR}/autocomplete"
+if [[ -d "${AUTOCOMPLETE_DIR}" ]]; then
+  for f in ${AUTOCOMPLETE_DIR}/*; do
+    if [[ -f ${f} ]]; then
+      source ${f}
+    else
+      echo "Unable to source '${f}'" 1>&2
+    fi
+  done
+fi
 
 # }}}
 
