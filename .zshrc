@@ -157,12 +157,14 @@ fi
 
 # Bash completion
 autoload -U +X bashcompinit && bashcompinit
+
 AZCLI_COMPLETION="/etc/bash_completion.d/azure-cli"
 if [[ -f ${AZCLI_COMPLETION} ]]; then
     source ${AZCLI_COMPLETION}
 else
     echo "* ${AZCLI_COMPLETION:?} is missing" >> ${TODOFILE}
 fi
+
 complete -o nospace -C /usr/bin/terraform terraform
 
 for f in ~/.config/zsh/autocomplete/*; do
