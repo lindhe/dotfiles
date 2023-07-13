@@ -155,32 +155,32 @@ fi
 ##############################     Completion     ##############################
 # {{{
 
-# Native ZSH completion
-if command -v kubectl &> /dev/null; then
-    source <(kubectl completion zsh)
-else
-    echo "* kubectl is missing" >> ${TODOFILE}
-fi
-if command -v helm &> /dev/null; then
-    source <(helm completion zsh)
-else
-    echo "* helm is missing" >> ${TODOFILE}
-fi
-if $(command -v k3d &> /dev/null); then
-    source <(k3d completion zsh)
-else
-    echo "* k3d is missing" >> ${TODOFILE}
-fi
-if $(command -v minikube &> /dev/null); then
-    source <(minikube completion zsh)
-else
-    echo "* minikube is missing" >> ${TODOFILE}
-fi
-if $(command -v yq &> /dev/null); then
-    source <(yq shell-completion zsh)
-else
-    echo "* yq is missing" >> ${TODOFILE}
-fi
+# x completion zsh
+autocompletions=(
+  helm
+  k3d
+  kubectl
+  minikube
+)
+for cmd in ${autocompletions}; do
+  if command -v "${cmd}" &> /dev/null; then
+    source <("${cmd}" completion zsh)
+  else
+    echo "* ${cmd} is missing" >> ${TODOFILE}
+  fi
+done
+
+# x shell-completion zsh
+autocompletions=(
+  yq
+)
+for cmd in ${autocompletions}; do
+  if command -v "${cmd}" &> /dev/null; then
+    source <("${cmd}" shell-completion zsh)
+  else
+    echo "* ${cmd} is missing" >> ${TODOFILE}
+  fi
+done
 
 # Bash completion
 autoload -U +X bashcompinit && bashcompinit
