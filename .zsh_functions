@@ -42,9 +42,10 @@ datestamp() {
     date +'%F'
 }
 
+# gl cannot be an alias, otherwise default branch will be set upon sourcing instead of dynamically!
 unalias gl # Because OMZ has gl defined as an alias already
 gl() {
-  git l origin/$(git branch -l main master | grep -o '\<main\>' || echo master )..
+  git l origin/$(git branch -l main master | grep -o '\<main\>' || echo master ).. --
 }
 
 # setup kubectl environment
