@@ -75,6 +75,7 @@ alias a="ansible"
 alias c="cargo"
 alias d="docker"
 alias dc="docker-compose"
+alias de='popd && rm -rf ${OLDPWD:?}'
 alias ed='pushd -q $(mktemp -d)'
 alias h="helm"
 alias hf="helmfile"
