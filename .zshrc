@@ -227,3 +227,13 @@ else
     echo "* ${ZSH_WSL} is missing" >> ${TODOFILE}
 fi
 # }}}
+
+#################################     k8s     #################################
+# {{{
+ZSH_K8S=~/.zsh_k8s
+if [[ -f ${ZSH_K8S} ]]; then
+    source ${ZSH_K8S}
+else
+    echo "* ${ZSH_K8S} is missing" >> ${TODOFILE}
+fi
+# }}}
