@@ -66,6 +66,11 @@ m2p() {
     rename md.pdf pdf ./$1.pdf
 }
 
+unalias md # Was aliased by OMZ
+md() {
+  mkdir -p ${1:?} && cd ${1:?}
+}
+
 stderr() {
     python -c "import sys; print('$1', file=sys.stderr)"
 }
