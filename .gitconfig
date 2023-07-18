@@ -31,7 +31,7 @@
 	h = help
 	knuff = push
 	l = log --oneline --decorate
-	lb = "!git lob origin/$(git default-branch)~1.."
+	lb = "!git lob origin/$(git default-branch)~1..."
 	lob = log --oneline --decorate --graph --branches --color=always
 	log = log --decorate
 	nb = "!git switch -c lindhe/${1:?} #"
