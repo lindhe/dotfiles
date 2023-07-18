@@ -35,7 +35,7 @@
 	lob = log --oneline --decorate --graph --branches --color=always
 	log = log --decorate
 	nb = "!git switch -c lindhe/${1:?} #"
-	nwt = "!WTD=~/git/worktree/${1:?}; mkdir -p ${WTD}; git worktree add ${WTD} ${1:?} ; echo ${WTD} #"
+	nwt = "!WTD=~/git/worktree/${1:?}; (git branch -l ${1:?} | grep -q ${1:?}) || echo ERROR: Branch ${1:?} not found 1>&2 && mkdir -p ${WTD} && git worktree add ${WTD} ${1:?} && echo ${WTD} #"
 	new = diff --cached
 	nw = diff --cached --color-words='\\w+'
 	nww = diff --cached --color-words='.'
