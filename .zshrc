@@ -6,6 +6,32 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+############################     TODO-file init     ############################
+# {{{
+TODOFILE=~/TODO.zsh.md
+# Clear the TODO-file
+rm --force ${TODOFILE}
+# }}}
+
+############################     Bootstrap OMZ     ############################
+# {{{
+
+if [ ! -d "${ZSH}" ]; then
+  if command -v curl &> /dev/null; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  else
+    echo "* curl is missing" >> ${TODOFILE}
+    if command -v wget &> /dev/null; then
+      sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+    else
+      echo "* wget is missing" >> ${TODOFILE}
+      exit 1
+    fi
+  fi
+fi
+
+# }}}
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -81,13 +107,6 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-############################     TODO-file init     ############################
-# {{{
-TODOFILE=~/TODO.zsh.md
-# Clear the TODO-file
-rm --force ${TODOFILE}
-# }}}
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
