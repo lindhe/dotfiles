@@ -89,3 +89,19 @@ password() {
     tr -dc A-Za-z0-9 </dev/urandom | head -c "${1:-32}" ; echo ''
   fi
 }
+
+prompt_forever() {
+  while true; do
+    prompt_once && break
+  done
+}
+
+prompt_once() {
+    if read -q "x?Are you sure? (y/N) "; then
+      echo -en "\n"
+      true
+    else
+      echo -en "\n"
+      false
+    fi
+}
