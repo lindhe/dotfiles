@@ -26,6 +26,7 @@
 	dif = diff
 	email = "!git config user.email ${EMAIL:?}"
 	files-in = diff-tree --no-commit-id --name-only -r
+	fix = "!git branch ${1:?} $(git default-branch) && git nwt ${1:?} #"
 	get = "!~/git/lindhe/scripts/git/git-get.py"
 	get-gone = "!git branch -av | grep '\\[gone]' #"
 	h = help
