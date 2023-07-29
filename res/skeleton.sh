@@ -2,19 +2,21 @@
 
 set -euo pipefail
 
-debug() {
+stderr() {
     echo "${@}" 1>&2
 }
 
 fail() {
-    debug "${1}"
+    stderr "${1}"
+    stderr ""
+    stderr "Exiting …"
     exit "${2:-1}"
 }
 
-if [[ $# -ne 2 ]]; then
-    debug ""
-    debug "USAGE:"
-    debug "    ${0} SSID PASSWORD"
-    debug ""
+if [[ $# -ne 1 ]]; then
+    stderr ""
+    stderr "USAGE:"
+    stderr "    ${0} FOO"
+    stderr ""
     exit 0
 fi
