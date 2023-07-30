@@ -20,3 +20,17 @@ if [[ $# -ne 1 ]]; then
     stderr ""
     exit 0
 fi
+
+missing_dependencies=false
+readonly dependencies=(
+  git
+)
+for dep in "${dependencies[@]}"; do
+  if ! command -v "${dep}" &> /dev/null; then
+    stderr "❌ ERROR: Missing dependency ${dep}"
+    missing_dependencies=true
+  fi
+done
+if ${missing_dependencies}; then
+  fail 'Please install the missing dependencies!'
+fi
