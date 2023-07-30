@@ -1,10 +1,13 @@
 # i3blocks-contrib
 
 The `i3blocks/contrib` directory is a subtree of the vivien/i3blocks-contrib
-repo on GitHub. To update it with the latest changes, run the following command
-from the root of this repo:
+repo on GitHub. To update it with the latest changes, run the following command:
 
-```bash
-git subtree merge --squash --prefix .config/i3blocks/contrib https://github.com/vivien/i3blocks-contrib master
+```shell
+# Must be at the repo root
+pushd "$(git rev-parse --show-toplevel)"
+
+git subtree --prefix .config/i3blocks/contrib pull --squash https://github.com/vivien/i3blocks-contrib master
+
+popd
 ```
-
