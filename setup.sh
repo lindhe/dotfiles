@@ -36,7 +36,6 @@ if [[ "${FULL_SETUP}" == y ]]; then
     ln -fs "${DOTFILES}/.config/i3blocks/" .
     ln -fs "${DOTFILES}/.config/monitors/" .
     ln -fs "${DOTFILES}/.config/sway" .
-    ln -fs "${DOTFILES}/.config/zathura/" .
 
     popd
 
