@@ -7,8 +7,10 @@ fail() {
     exit "${2:-1}"
 }
 
+readonly DOTFILES="${HOME}/git/lindhe/dotfiles"
+
 while [[ ${ready:-x} != 'y' ]]; do
-    echo "Have you cloned into ~/git/lindhe/dotfiles/? (y/n)"
+    echo "Have you cloned dotfiles into ${DOTFILES}? (y/n)"
     read -rn 1 ready
     echo -e "\n"
 done;
@@ -28,17 +30,17 @@ if [[ "${FULL_SETUP}" == y ]]; then
 
     pushd ~/.config
 
-    ln -fs ../git/lindhe/dotfiles/.config/compton.conf .
-    ln -fs ../git/lindhe/dotfiles/.config/dunst/ .
-    ln -fs ../git/lindhe/dotfiles/.config/i3 .
-    ln -fs ../git/lindhe/dotfiles/.config/i3blocks/ .
-    ln -fs ../git/lindhe/dotfiles/.config/monitors/ .
-    ln -fs ../git/lindhe/dotfiles/.config/sway .
-    ln -fs ../git/lindhe/dotfiles/.config/zathura/ .
+    ln -fs "${DOTFILES}/.config/compton.conf" .
+    ln -fs "${DOTFILES}/.config/dunst/" .
+    ln -fs "${DOTFILES}/.config/i3" .
+    ln -fs "${DOTFILES}/.config/i3blocks/" .
+    ln -fs "${DOTFILES}/.config/monitors/" .
+    ln -fs "${DOTFILES}/.config/sway" .
+    ln -fs "${DOTFILES}/.config/zathura/" .
 
     popd
 
     echo "Installing custom keyboard layouts"
-    sudo cp ~/git/lindhe/dotfiles/usr/share/X11/xkb/symbols/* -t /usr/share/X11/xkb/symbols
+    sudo cp "${DOTFILES}/usr/share/X11/xkb/symbols"/* -t /usr/share/X11/xkb/symbols
 
 fi
