@@ -1,3 +1,4 @@
+---
 apiVersion: v2
 name: empty
 description: A Helm chart for Kubernetes

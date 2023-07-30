@@ -1,0 +1,9 @@
+---
+
+extends: default
+
+rules:
+  indentation:
+    spaces: consistent
+  line-length:
+    allow-non-breakable-inline-mappings: true

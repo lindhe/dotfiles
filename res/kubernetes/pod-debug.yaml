@@ -1,3 +1,4 @@
+---
 # Pod to help with debugging
 apiVersion: v1
 kind: Pod
@@ -8,11 +9,10 @@ metadata:
     app.kubernetes.io/created-by: "Andreas"
 spec:
   containers:
-  - name: hack
-    image: docker.io/ubuntu
-    command:
-      - sleep
-      - "3600"
-    imagePullPolicy: Always
+    - name: hack
+      image: docker.io/ubuntu
+      command:
+        - sleep
+        - "3600"
+      imagePullPolicy: Always
   restartPolicy: Never
-

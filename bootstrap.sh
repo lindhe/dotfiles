@@ -15,6 +15,7 @@ ln -fs "${DOTFILES}/.gitconfig" .
 ln -fs "${DOTFILES}/.gitignore_global" .
 ln -fs "${DOTFILES}/.tmux.conf" .
 ln -fs "${DOTFILES}/.xprofile" .
+ln -fs "${DOTFILES}/.yamllint_global.yaml" .yamllint.yaml
 ln -fs "${DOTFILES}/.zshrc" .
 ln -fs "${DOTFILES}/.zsh_aliases" .
 ln -fs "${DOTFILES}/.zsh_functions" .
