@@ -365,6 +365,6 @@ assign [class="^Pavucontrol$"] 2
 
 #################################     Dock     #################################
 # {{{
-exec_always ~/git/lindhe/scripts/dock/toggle_dock.sh
+exec_always ~/git/lindhe/scripts/laptop/toggle_dock.sh
 # }}}
 
