@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-#
-#~/.xprofile
 
 # Set languages
 setxkbmap se-A5
