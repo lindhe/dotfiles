@@ -226,8 +226,8 @@ autocmd BufNewFile,BufRead *.vim set foldmethod=marker
 
 
 " Prepopulate script files with shebang
-autocmd BufNewFile  *.sh    0r ~/res/skeleton.sh
-autocmd BufNewFile  *.py    0r ~/res/skeleton.py
+autocmd BufNewFile *.sh  0r ~/res/skeleton.sh
+autocmd BufNewFile *.env 0r ~/res/skeleton.env
 
 " Dockerfile
 autocmd BufNewFile,BufRead Dockerfile*[^md] set filetype=dockerfile
