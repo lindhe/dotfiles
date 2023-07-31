@@ -22,7 +22,7 @@ if [[ $# -ne 1 ]]; then
 fi
 
 missing_dependencies=false
-declare -r dependencies=(
+readonly dependencies=(
   git
 )
 for dep in "${dependencies[@]}"; do
