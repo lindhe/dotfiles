@@ -2,8 +2,14 @@
 
 set -euo pipefail
 
+stderr() {
+    echo "${@}" 1>&2
+}
+
 fail() {
-    echo "FAILURE: ${1}" >&2
+    stderr "${1}"
+    stderr ""
+    stderr "Exiting …"
     exit "${2:-1}"
 }
 
