@@ -1,6 +1,6 @@
 ---
 name: Lint and checks
-run-name: Linting "${{ github. }}" (${GITHUB_SHA::7})
+run-name: Linting ${{ github.sha }}
 on:  # yamllint disable-line rule:truthy
   - push
   - pull_request
