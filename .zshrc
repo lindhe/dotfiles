@@ -158,6 +158,7 @@ fi
 
 export ZSH_AUTOSUGGEST_STRATEGY=(completion)
 bindkey '§' autosuggest-accept
+bindkey '' autosuggest-accept
 
 # }}}
 
