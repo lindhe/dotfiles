@@ -1,5 +1,16 @@
 # vim: foldmethod=marker
 
+stderr() {
+    echo "${@}" 1>&2
+}
+
+fail() {
+    stderr "${1}"
+    stderr ""
+    stderr "Exiting …"
+    exit "${2:-1}"
+}
+
 # Search on both snap and apt
 apps() {
     snap search $1
