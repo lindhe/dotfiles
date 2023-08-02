@@ -241,6 +241,9 @@ autocmd BufNewFile,BufRead *.y[a]ml.gotmpl set filetype=yaml
 " kube-config
 autocmd BufNewFile,BufRead ~/.kube/config set filetype=yaml
 
+" ZSH
+autocmd BufNewFile,BufRead *.zsh-theme set filetype=zsh
+
 "}}}
 
 """"""""""""""""""""""""     Function definitions     """""""""""""""""""""{{{
