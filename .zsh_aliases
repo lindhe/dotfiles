@@ -1,14 +1,9 @@
-# edit rc files
 alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias lvimrc="nvim ~/.config/nvim/after/plugin/lsp.lua"
 alias vimrc="vim ~/.vimrc"
 alias zshrc="nvim ~/.zshrc"
-
-# Propagate aliases and environment to sudo
 alias sudo="sudo -E "
 alias sudoedit="sudoedit "
-
-# General
 alias .....="cd ../../../.."
 alias ....="cd ../../.."
 alias ...="cd ../.."
@@ -37,14 +32,9 @@ alias tree="tree -C"
 alias vimp="vim -p"
 alias watch="watch --color "
 alias yao="yaourt"
-
-# Docking
 alias keyboard="xset r rate 330 75; setxkbmap se-A5; setxkbmap -option caps:swapescape"
 alias monitors="~/scripts/monman.py -a && echo 'Monitors on'"
 alias unmonitors="xrandr --output eDP-1 --auto --primary --output HDMI-1 --off --output DP-1 --off --output DP-2 --off; echo 'off'"
-
-
-# Git
 alias g="git"
 alias ga="git add -p"
 alias gam="git commit -am"
@@ -69,8 +59,6 @@ alias sudovim="sudoedit "
 alias tat="tmux attach -t"
 alias tls="tmux list-sessions"
 alias tree="tree -C"
-
-# Dev
 alias a="ansible"
 alias c="cargo"
 alias d="docker"
@@ -90,8 +78,6 @@ alias t="terraform"
 alias wkga="watch kubectl get all"
 alias bbb="(base64 -d ; echo)"
 alias tf="terraform"
-
-# Kubernetes
 alias k="kubectl"
 alias kaf='kubectl apply -f'
 alias kc="kubectl config"
@@ -102,8 +88,6 @@ alias kg='kubectl get'
 alias kget='kubectl get'
 alias ktop='kubectl top'
 alias mk='minikube'
-
-# non-important
 alias cal="cal -m"
 alias gnu="gnuplot"
 alias jqless="jq -C '' | less -Ri"
