@@ -52,6 +52,7 @@ alias ll="ls -aFhlv --color=always"
 alias ls="ls -Hhv --color=always"
 alias lsl="ls -Ahl --color=always"
 alias lvimrc="nvim ~/.config/nvim/after/plugin/lsp.lua"
+alias mdm="toggle_md_mode"
 alias mk="microk8s.kubectl"
 alias mk='minikube'
 alias mkdir="mkdir -p"

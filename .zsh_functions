@@ -118,3 +118,53 @@ prompt_once() {
       false
     fi
 }
+
+# Toggle a theme that is friendly for copying to ```console in Markdown
+toggle_md_mode() {
+  declare -r PLAIN_PROMPT='$ '
+  if [[ "${PROMPT}" == "${PLAIN_PROMPT}" ]]; then
+    # Source theme like ~/.oh-my-zsh/oh-my-zsh.sh sources theme {{{
+    if [[ -n "$ZSH_THEME" ]]; then
+      if is_theme "$ZSH_CUSTOM" "$ZSH_THEME"; then
+        source "$ZSH_CUSTOM/$ZSH_THEME.zsh-theme"
+      elif is_theme "$ZSH_CUSTOM/themes" "$ZSH_THEME"; then
+        source "$ZSH_CUSTOM/themes/$ZSH_THEME.zsh-theme"
+      elif is_theme "$ZSH/themes" "$ZSH_THEME"; then
+        source "$ZSH/themes/$ZSH_THEME.zsh-theme"
+      else
+        echo "[oh-my-zsh] theme '$ZSH_THEME' not found"
+      fi
+    else
+      fail "ERROR: ZSH_THEME is unset"
+    fi
+    # }}}
+  else
+    precmd() { print "" }  # https://superuser.com/a/395784/110087
+    PROMPT="${PLAIN_PROMPT}"
+    # Reset everything {{{
+    unset return_code
+    unset user_host
+    unset user_symbol
+    unset current_dir
+    unset vcs_branch
+    unset rvm_ruby
+    unset venv_prompt
+    unset ZSH_THEME_RVM_PROMPT_OPTIONS
+    unset RPROMPT
+    unset ZSH_THEME_GIT_PROMPT_PREFIX
+    unset ZSH_THEME_GIT_PROMPT_SUFFIX
+    unset ZSH_THEME_GIT_PROMPT_DIRTY
+    unset ZSH_THEME_GIT_PROMPT_CLEAN
+    unset ZSH_THEME_HG_PROMPT_PREFIX
+    unset ZSH_THEME_HG_PROMPT_SUFFIX
+    unset ZSH_THEME_HG_PROMPT_DIRTY
+    unset ZSH_THEME_HG_PROMPT_CLEAN
+    unset ZSH_THEME_RUBY_PROMPT_PREFIX
+    unset ZSH_THEME_RUBY_PROMPT_SUFFIX
+    unset ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX
+    unset ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX
+    unset ZSH_THEME_VIRTUALENV_PREFIX
+    unset ZSH_THEME_VIRTUALENV_SUFFIX
+    # }}}
+  fi
+}
