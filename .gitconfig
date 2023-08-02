@@ -29,6 +29,7 @@
 	fix = "!git branch ${1:?} $(git default-branch) && git nwt ${1:?} #"
 	get = "!~/git/lindhe/scripts/git/git-get.py"
 	get-gone = "!git branch -av | grep '\\[gone]' #"
+	gh = "!git clone https://github.com/${1}.git #"
 	h = help
 	knuff = push
 	l = "!git ll origin/$(git default-branch)~1..."
