@@ -1,3 +1,5 @@
+# vim: foldmethod=marker
+
 # Search on both snap and apt
 apps() {
     snap search $1

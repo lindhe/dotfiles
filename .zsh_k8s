@@ -1,3 +1,5 @@
+# vim: foldmethod=marker
+
 if command -v kubectl &> /dev/null; then
 
   export KUBECONFIG="/home/andreas/.kube/config:${KUBECONFIG}"
