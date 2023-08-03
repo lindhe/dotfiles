@@ -120,10 +120,12 @@ prompt_once() {
 }
 
 # Toggle a theme that is friendly for copying to ```console in Markdown
+zle -N _toggle_md_mode toggle_md_mode
 toggle_md_mode() {
   declare -r PLAIN_PROMPT='$ '
   if [[ "${PROMPT}" == "${PLAIN_PROMPT}" ]]; then
-    print '```'
+    zle && zle accept-line
+    print '\n```'
     # Source theme like ~/.oh-my-zsh/oh-my-zsh.sh sources theme {{{
     if [[ -n "$ZSH_THEME" ]]; then
       if is_theme "$ZSH_CUSTOM" "$ZSH_THEME"; then
@@ -172,5 +174,6 @@ toggle_md_mode() {
     unset ZSH_THEME_VIRTUALENV_PREFIX
     unset ZSH_THEME_VIRTUALENV_SUFFIX
     # }}}
+    zle && zle accept-line
   fi
 }
