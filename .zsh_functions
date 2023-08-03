@@ -134,8 +134,6 @@ toggle_md_mode() {
       else
         echo "[oh-my-zsh] theme '$ZSH_THEME' not found"
       fi
-    else
-      fail "ERROR: ZSH_THEME is unset"
     fi
     # }}}
   else
