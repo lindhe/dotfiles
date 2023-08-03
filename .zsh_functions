@@ -123,6 +123,7 @@ prompt_once() {
 toggle_md_mode() {
   declare -r PLAIN_PROMPT='$ '
   if [[ "${PROMPT}" == "${PLAIN_PROMPT}" ]]; then
+    print '```'
     # Source theme like ~/.oh-my-zsh/oh-my-zsh.sh sources theme {{{
     if [[ -n "$ZSH_THEME" ]]; then
       if is_theme "$ZSH_CUSTOM" "$ZSH_THEME"; then
@@ -137,7 +138,14 @@ toggle_md_mode() {
     fi
     # }}}
   else
-    precmd() { print "" }  # https://superuser.com/a/395784/110087
+    print_md_console=true
+    precmd() {
+      print ''
+      if [[ "${print_md_console}" == "true" ]]; then
+        print '```console'
+        print_md_console=false
+      fi
+    }
     PROMPT="${PLAIN_PROMPT}"
     # Reset everything {{{
     unset return_code
