@@ -257,3 +257,10 @@ else
     echo "* ${ZSH_K8S} is missing" >> ${TODOFILE}
 fi
 # }}}
+
+###############################     Bindkeys     ###############################
+# {{{
+
+bindkey -s '^[R' 'exec zsh'
+
+# }}}
