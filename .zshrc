@@ -190,6 +190,18 @@ for cmd in ${autocompletions}; do
   fi
 done
 
+# x completion -s zsh
+autocompletions=(
+  gh
+)
+for cmd in ${autocompletions}; do
+  if command -v "${cmd}" &> /dev/null; then
+    source <("${cmd}" completion -s zsh)
+  else
+    echo "* ${cmd} is missing" >> ${TODOFILE}
+  fi
+done
+
 # x shell-completion zsh
 autocompletions=(
   yq
