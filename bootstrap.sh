@@ -2,7 +2,9 @@
 
 set -euo pipefail
 
-readonly DOTFILES="${HOME}/git/lindhe/dotfiles"
+declare -r GIT_DIR="${HOME}/git/lindhe"
+declare -r DOTFILES="${GIT_DIR}/dotfiles"
+declare -r SCRIPTS="${GIT_DIR}/scripts"
 
 pushd ~
 
@@ -30,4 +32,6 @@ ln -fs "${DOTFILES}/.config/git/" .
 ln -fs "${DOTFILES}/.config/nvim/" .
 ln -fs "${DOTFILES}/.config/zsh/" .
 
-popd
+if [[ ! -d "${SCRIPTS}" ]]; then
+  git clone https://github.com/lindhe/scripts.git "${SCRIPTS}"
+fi
