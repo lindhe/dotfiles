@@ -69,7 +69,6 @@
 [core]
 	attributesfile = ~/.gitattributes_global
 	excludesfile = ~/.gitignore_global
-	editor = vim
 	quotepath = off
 [push]
 	default = current
