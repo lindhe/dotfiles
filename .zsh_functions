@@ -29,17 +29,6 @@ checksum() {
         printf 'sha256:\n'; sha256sum -c /tmp/hash.txt
 }
 
-# Copy the contents of a file to the clipboard and put its name in primary
-copy() {
-    # If WSL
-    if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
-        cat ${1:?} | /mnt/c/Windows/System32/clip.exe
-    else
-        cat ${1:?} | xclip -selection clipboard
-        echo -n ${1:?} | xclip -selection primary
-    fi
-}
-
 # Copy path to current working directory
 cwd() {
     # If WSL

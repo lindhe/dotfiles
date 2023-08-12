@@ -1,4 +1,7 @@
 # vim: foldmethod=marker
+
+declare -r SCRIPTS_DIR="${HOME}/git/lindhe/scripts"
+
 alias .....="cd ../../../.."
 alias ....="cd ../../.."
 alias ...="cd ../.."
@@ -8,6 +11,7 @@ alias bbb="(base64 -d ; echo)"
 alias bcl="bluetoothctl"
 alias c="cargo"
 alias cal="cal -m"
+alias copy="${SCRIPTS_DIR}/terminal/copy.sh"
 alias d="docker"
 alias dc="docker-compose"
 alias de='popd && (echo "rm -r ${OLDPWD:?}"; prompt_once) && rm -rf ${OLDPWD:?}'
