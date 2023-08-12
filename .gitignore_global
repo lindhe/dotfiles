@@ -2,6 +2,7 @@
 ################
 .hidden
 .hidden.*
+ignored
 
 # Temporary files #
 ###################
