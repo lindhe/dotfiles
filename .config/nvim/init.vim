@@ -33,7 +33,7 @@ if !exists('g:vscode')
   " Good ones, but dispensible
   Plug 'apzelos/blamer.nvim'          " Git blame for Vim
   Plug 'jpalardy/vim-slime', { 'branch': 'main' } " A vim plugin to give you some slime.
-  Plug 'Mofiqul/vscode.nvim', {'commit': 'c5125820a0915ef50f03fae10423c43dc49c66b1'}
+  Plug 'Mofiqul/vscode.nvim'
 
   " Not sure about these yet
   Plug 'mattn/emmet-vim'              " Emmet abbreviations
