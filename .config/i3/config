@@ -78,11 +78,6 @@ bindsym $mod+c exec gnome-calculator
 # Lockscreen:
 bindsym $mod+Escape exec i3lock -fne -c 000000
 
-# Open Thunderbird
-bindsym $mod+m exec thunderbird
-
-bindsym $mod+y exec firefox -p minimal-ui https://youtube.com
-
 # }}}
 
 ###############################     Movement     ###############################
