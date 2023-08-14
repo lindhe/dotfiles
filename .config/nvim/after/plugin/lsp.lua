@@ -18,6 +18,7 @@ require("mason-lspconfig").setup({
   ensure_installed = {
     "bashls",
     "marksman",
+    "rust_analyzer",
     "terraformls",
     "tsserver",
     "vimls",
