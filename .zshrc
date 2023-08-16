@@ -101,7 +101,6 @@ DISABLE_AUTO_TITLE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -139,26 +138,6 @@ setopt no_share_history
 
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#hist_stamps
 export HIST_STAMPS="yyyy-mm-dd"
-
-# https://github.com/zsh-users/zsh-autosuggestions/issues/141#issuecomment-210615799
-zstyle ':bracketed-paste-magic' active-widgets '.self-*'
-
-# }}}
-
-#########################     Plugin configuration     #########################
-# {{{
-
-ZSH_PLUGINS_DIR=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins
-
-# Install zsh-autosuggestions if it's not present
-PLUGIN_ZAS_DIR="${ZSH_PLUGINS_DIR:?}/zsh-autosuggestions"
-if [[ ! -a ${PLUGIN_ZAS_DIR} ]]; then
-  git clone -c 'advice.detachedHead=false' -b 'v0.7.0' https://github.com/zsh-users/zsh-autosuggestions.git ${PLUGIN_ZAS_DIR:?}
-fi
-
-export ZSH_AUTOSUGGEST_STRATEGY=(completion)
-bindkey '§' autosuggest-accept
-bindkey '' autosuggest-accept
 
 # }}}
 
