@@ -56,7 +56,7 @@
 	shwww = show --word-diff-regex='.'
 	sorry = commit --amend --no-edit
 	st = status
-	sw = "!from=\"$(git branch --show-current)\"; git switch ${@:?Missing branch name} && (echo \"Old branch was ${from:?}\"; git diff --stat $(git default-branch)...) #"
+	sw = "!from=\"$(git branch --show-current)\"; git switch ${@:-$(git default-branch)} && (echo \"Old branch was ${from:?}\"; git diff --stat $(git default-branch)...) #"
 	track = "!git branch --set-upstream-to=${1:-origin}/$(git branch --show-current) $(git branch --show-current) #"
 	unstage = restore --staged
 	whatchanged = log -- ORIG_HEAD..HEAD
