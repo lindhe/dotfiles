@@ -139,6 +139,10 @@ setopt no_share_history
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#hist_stamps
 export HIST_STAMPS="yyyy-mm-dd"
 
+# Remove annoying backward-kill-word
+# https://stackoverflow.com/questions/39428667/how-to-remove-a-keybinding
+bindkey -r '^[^H'
+
 # }}}
 
 ###############################     Aliases     ###############################
