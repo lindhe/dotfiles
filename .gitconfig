@@ -4,8 +4,6 @@
 	a = add -p
 	al = "!git config alias.${1:?} #"
 	ado = "log -q --pretty='format:%B'"
-	b = branch
-	bi = bisect
 	bra = branch -vv
 	branch-age = "!git for-each-ref --sort=-committerdate refs/heads --format=\"%(refname:short)|%(committerdate:relative)\" | column -ts \"|\""
 	bras = for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)|%(committerdate:relative)'
@@ -16,8 +14,6 @@
 	cl = clone
 	cm = commit -m
 	co = checkout
-	com = commit -v
-	comm = commit -m
 	cp = cherry-pick
 	default-branch = "!~/git/lindhe/scripts/git/git-default-branch.sh"
 	df = diff --color-words='\\w+'
@@ -31,7 +27,6 @@
 	get-gone = "!git branch -av | grep '\\[gone]' #"
 	gh = "!git clone https://github.com/${1}.git #"
 	h = help
-	knuff = push
 	l = "!git ll origin/$(git default-branch)~1..."
 	lb = "!git lob origin/$(git default-branch)~1..."
 	ll = log --oneline --decorate
