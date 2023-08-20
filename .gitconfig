@@ -16,10 +16,9 @@
 	co = checkout
 	cp = cherry-pick
 	default-branch = "!~/git/lindhe/scripts/git/git-default-branch.sh"
-	df = diff --color-words='\\w+'
-	dff = diff --color-words='.'
-	dfff = diff --word-diff-regex='.'
-	dif = diff
+	df = diff --ignore-space-change --color-words='\\w+|.'
+	dff = diff --ignore-space-change --color-words='.'
+	dfff = diff --ignore-space-change --word-diff-regex='.'
 	email = "!git config user.email ${EMAIL:?}"
 	files-in = diff-tree --no-commit-id --name-only -r
 	fix = "!git branch ${1:?} $(git default-branch) && git nwt ${1:?} #"
@@ -35,9 +34,9 @@
 	nb = "!git switch -c lindhe/${1:?} #"
 	nwt = "!WTD=~/git/worktree/${1:?}; (git branch -l ${1:?} | grep -q ${1:?}) || echo ERROR: Branch ${1:?} not found 1>&2 && mkdir -p ${WTD} && git worktree add ${WTD} ${1:?} && echo ${WTD} #"
 	new = diff --cached
-	nw = diff --cached --color-words='\\w+'
-	nww = diff --cached --color-words='.'
-	nwww = diff --cached --word-diff-regex='.'
+	nw = diff --cached --ignore-space-change --color-words='\\w+|.'
+	nww = diff --cached --ignore-space-change --color-words='.'
+	nwww = diff --cached --ignore-space-change --word-diff-regex='.'
 	pl = !git pull && git log -- ORIG_HEAD..origin/$(git branch --show-current)
 	psuh = push
 	reb = rebase
@@ -46,9 +45,9 @@
 	review = "!git diff $(git merge-base master HEAD) ${@} #"
 	root = rev-parse --show-toplevel
 	s = status
-	shw = show --color-words='\\w+'
-	shww = show --color-words='.'
-	shwww = show --word-diff-regex='.'
+	shw = show --ignore-space-change --color-words='\\w+'
+	shww = show --ignore-space-change --color-words='.'
+	shwww = show --ignore-space-change --word-diff-regex='.'
 	sorry = commit --amend --no-edit
 	st = status
 	sw = "!from=\"$(git branch --show-current)\"; git switch ${@:-$(git default-branch)} && (echo \"Old branch was ${from:?}\"; git diff --stat $(git default-branch)...) #"
