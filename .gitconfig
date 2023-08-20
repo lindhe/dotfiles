@@ -52,7 +52,8 @@
 	st = status
 	sw = "!from=\"$(git branch --show-current)\"; git switch ${@:-$(git default-branch)} && (echo \"Old branch was ${from:?}\"; git diff --stat $(git default-branch)...) #"
 	track = "!git branch --set-upstream-to=${1:-origin}/$(git branch --show-current) $(git branch --show-current) #"
-	unstage = restore --staged
+	unstage = restore --staged -p
+	wtf = log -- ORIG_HEAD..HEAD
 	whatchanged = log -- ORIG_HEAD..HEAD
 	whats = "!git config alias.${1:?} #"
 	wt = worktree
