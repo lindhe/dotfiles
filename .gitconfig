@@ -19,7 +19,7 @@
 	df = diff --ignore-space-change --color-words='\\w+|.'
 	dff = diff --ignore-space-change --color-words='.'
 	dfff = diff --ignore-space-change --word-diff-regex='.'
-	email = "!git config user.email ${EMAIL:?}"
+	email = "config --local user.email"
 	files-in = diff-tree --no-commit-id --name-only -r
 	fix = "!git branch ${1:?} $(git default-branch) && git nwt ${1:?} #"
 	get = "!~/git/lindhe/scripts/git/git-get.py"
