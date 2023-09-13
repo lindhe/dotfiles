@@ -15,24 +15,6 @@ logs/
 .*.swp
 .mypy_cache/
 
-# LaTeX files #
-###############
-*.aux
-*.log
-*.toc
-*.bbl
-*.blg
-*.dvi
-*.out
-_minted-*/
-*.pyg
-*.tdo
-*-blx.bib
-*.bcf
-*.run.xml
-*.fdb_latexmk
-*.fls
-
 # Binaries #
 ############
 *.out
