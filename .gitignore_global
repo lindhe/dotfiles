@@ -13,15 +13,13 @@ logs/
 ###################
 *~
 .*.swp
-.mypy_cache/
 
 # Binaries #
 ############
 *.out
 *.pdf
-!**/figures/*.pdf
-__pycache__/
 *.zip
 
-# Dev containers
+# Dev containers #
+##################
 .devcontainer
