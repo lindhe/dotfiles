@@ -4,6 +4,11 @@
 .hidden.*
 ignored
 
+# Logs #
+########
+logs/
+*.log
+
 # Temporary files #
 ###################
 *~
