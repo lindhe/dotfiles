@@ -260,3 +260,14 @@ bindkey '^[M' '_toggle_md_mode'
 bindkey -s '^[R' 'exec zsh'
 
 # }}}
+
+#################################     last     #################################
+# {{{
+# This is the last file to be sourced by .zshrc.
+# Should fail silent, so I can use it for unsetting aliases for particular
+# environments and don't have to commit that file.
+ZSH_LAST=~/.zsh_last
+if [[ -f ${ZSH_LAST} ]]; then
+    source ${ZSH_LAST}
+fi
+# }}}
