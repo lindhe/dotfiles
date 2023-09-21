@@ -51,6 +51,7 @@
 	sorry = commit --amend --no-edit
 	st = status
 	sw = "!from=\"$(git branch --show-current)\"; git switch ${@:-$(git default-branch)} && (echo \"Old branch was ${from:?}\"; git diff --stat $(git default-branch)...) #"
+	sync = "!git reset --hard upstream/$(git default-branch) #"
 	track = "!git branch --set-upstream-to=${1:-origin}/$(git branch --show-current) $(git branch --show-current) #"
 	unstage = restore --staged -p
 	wtf = log -- ORIG_HEAD..HEAD
