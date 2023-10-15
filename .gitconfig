@@ -4,6 +4,7 @@
 	a = add -p
 	al = "!git config alias.${1:?} #"
 	ado = "log -q --pretty='format:%B'"
+	bi = bisect
 	bra = branch -vv
 	branch-age = "!git for-each-ref --sort=-committerdate refs/heads --format=\"%(refname:short)|%(committerdate:relative)\" | column -ts \"|\""
 	bras = for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)|%(committerdate:relative)'
