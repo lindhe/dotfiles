@@ -23,4 +23,22 @@ if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
         fi
     fi
 
+    # Configure some path helpers
+    if command -v wslvar &> /dev/null; then
+
+        WHOME="$(wslpath "$(wslvar 'USERPROFILE')")"
+        whome() {
+            echo "${WHOME}"
+        }
+
+        WDOWNLOADS="$(wslpath "$(wslvar 'USERPROFILE')\\Downloads")"
+        wdownloads() {
+            echo "${WDOWNLOADS}"
+        }
+
+    else
+        echo '* wslvar is missing' | tee -a ${TODOFILE}
+        echo 'Unable to set Windows path variables!' 1>&2
+    fi
+
 fi
