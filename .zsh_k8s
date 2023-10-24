@@ -2,7 +2,7 @@
 
 if command -v kubectl &> /dev/null; then
 
-  export KUBECONFIG="${HOME}/.kube/config:${KUBECONFIG}"
+  export KUBECONFIG="${HOME}/.kube/config"
 
   #####################     Source all k8s config files     #####################
   export KUBECONFIG_DIRS=(
