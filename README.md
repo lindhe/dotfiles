@@ -29,7 +29,8 @@ sudo apt install \
     neovim tree zsh \
     build-essential \
     git git-lfs \
-    tmux jq unzip shellcheck colordiff
+    tmux jq unzip shellcheck colordiff \
+    direnv
 ```
 
 ```shell
