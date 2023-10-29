@@ -1,5 +1,6 @@
 # vim: foldmethod=marker
 
+declare -r DOTFILES_DIR="${HOME}/git/lindhe/dotfiles"
 declare -r SCRIPTS_DIR="${HOME}/git/lindhe/scripts"
 
 alias .....="cd ../../../.."
@@ -16,6 +17,7 @@ alias d="docker"
 alias dc="docker-compose"
 alias de='cd ${HOME} && (echo "rm -r ${OLDPWD:?}"; prompt_once) && rm -rf ${OLDPWD:?}'
 alias df="df -H"
+alias dot="cd ${DOTFILES_DIR}"
 alias du="du -h"
 alias dusch="du -sch .[^.]* * | sort -h"
 alias ed='pushd -q $(mktemp -d)'
