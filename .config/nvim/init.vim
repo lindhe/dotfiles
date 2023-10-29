@@ -178,8 +178,9 @@ nnoremap <silent> <F6> :%s/\s\+$//<CR>''
 nnoremap <F7> :call CycleSpell()<CR>
 inoremap <F7> <Esc>:call CycleSpell()<CR>a
 
-" <F8> Toggle clutter
+" <F8> Toggle clutter (wrapping, etc.)
 nnoremap <F8> :call ToggleClutter()<CR>
+nnoremap <M-z> :call ToggleClutter()<CR>
 
 " <F9> Turn off LSP
 nnoremap <F9> :LspStop<CR>
