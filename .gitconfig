@@ -55,6 +55,7 @@
 	sync = "!git fetch upstream && git reset --hard upstream/$(git branch --show-current) #"
 	track = "!git branch --set-upstream-to=${1:-origin}/$(git branch --show-current) $(git branch --show-current) #"
 	unstage = restore --staged -p
+	update = "!git fetch origin $(git default-branch):$(git default-branch)"
 	wtf = log -- ORIG_HEAD..HEAD
 	whatchanged = log -- ORIG_HEAD..HEAD
 	whats = "!git config alias.${1:?} #"
