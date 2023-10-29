@@ -1,6 +1,6 @@
 # vim: foldmethod=marker
 
-if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
+if [[ -n ${WSLENV+x} ]]; then
 
     if command -v wslpath &> /dev/null; then
         # Set PROMPT_COMMAND to let us duplicate with path
