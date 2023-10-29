@@ -43,6 +43,7 @@ alias keyboard="xset r rate 330 75; setxkbmap se-A5; setxkbmap -option caps:swap
 alias l="ls -FHhlv --color=always --group-directories-first"
 alias ll="ls -aFhlv --color=always"
 alias ls="ls -Hhv --color=always"
+alias mdl="markdownlint"
 alias mdm="toggle_md_mode"
 alias mkdir="mkdir -p"
 alias monitors="${SCRIPTS_DIR}/laptop/monman.py -a && echo 'Monitors on'"
