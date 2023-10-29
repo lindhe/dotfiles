@@ -39,6 +39,7 @@ if !exists('g:vscode')
   Plug 'mattn/emmet-vim'              " Emmet abbreviations
   Plug 'scrooloose/nerdtree'
   Plug 'airblade/vim-gitgutter'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
   " LSP
   Plug 'neovim/nvim-lspconfig'
