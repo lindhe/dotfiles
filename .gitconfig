@@ -34,7 +34,7 @@
 	log = log --decorate
 	nb = "!git switch -c lindhe/${1:?} #"
 	nwt = "!WTD=~/git/worktree/${1:?}; (git branch -l ${1:?} | grep -q ${1:?}) || echo ERROR: Branch ${1:?} not found 1>&2 && mkdir -p ${WTD} && git worktree add ${WTD} ${1:?} && echo ${WTD} #"
-	new = diff --cached
+	new = diff --cached --color-moved=dimmed-zebra
 	nw = diff --cached --ignore-space-change --color-words='\\w+|.'
 	nww = diff --cached --ignore-space-change --color-words='.'
 	nwww = diff --cached --ignore-space-change --word-diff-regex='.'
