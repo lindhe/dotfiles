@@ -164,6 +164,7 @@ autocompletions=(
   helm
   k3d
   kubectl
+  kustomize
   minikube
 )
 for cmd in ${autocompletions}; do
