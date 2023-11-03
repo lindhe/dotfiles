@@ -209,7 +209,17 @@ else
     echo "* ${AZCLI_COMPLETION:?} is missing" >> ${TODOFILE}
 fi
 
-complete -o nospace -C /usr/bin/terraform terraform
+# complete -o nospace -C /usr/bin/x x
+autocompletions=(
+  terraform
+)
+for cmd in ${autocompletions}; do
+  if command -v "${cmd}" &> /dev/null; then
+    complete -o nospace -C "/usr/bin/${cmd}" "${cmd}"
+  else
+    echo "* ${cmd} is missing" >> ${TODOFILE}
+  fi
+done
 
 ZSH_CONFIG_DIR="${HOME}/.config/zsh"
 AUTOCOMPLETE_DIR="${ZSH_CONFIG_DIR}/autocomplete"
