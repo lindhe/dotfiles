@@ -7,7 +7,7 @@ stderr() {
 }
 
 fail() {
-    stderr "${1}"
+    stderr "${1:-}"
     stderr ""
     stderr "Exiting …"
     exit "${2:-1}"
