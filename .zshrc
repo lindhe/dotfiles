@@ -161,7 +161,9 @@ fi
 
 # x completion zsh
 autocompletions=(
+  cilium
   helm
+  hubble
   k3d
   kubectl
   kustomize
