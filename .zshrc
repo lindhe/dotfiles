@@ -196,13 +196,7 @@ bindkey -s '^[R' 'exec zsh'
 
 # x completion zsh
 autocompletions=(
-  cilium
-  helm
-  hubble
-  k3d
-  kubectl
-  kustomize
-  minikube
+  ${X_COMPLETION_ZSH:?}
 )
 for cmd in ${autocompletions}; do
   if command -v "${cmd}" &> /dev/null; then

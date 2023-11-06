@@ -24,6 +24,18 @@ if command -v kubectl &> /dev/null; then
     echo "* colordiff is missing" >> ${TODOFILE}
   fi
 
+  #############################     Completions     #############################
+  X_COMPLETION_ZSH=(
+    ${X_COMPLETION_ZSH}
+    cilium
+    helm
+    hubble
+    k3d
+    kubectl
+    kustomize
+    minikube
+  )
+
 else
   echo "* kubectl is missing" >> ${TODOFILE}
 fi
