@@ -153,6 +153,44 @@ else
 fi
 # }}}
 
+##############################     Functions     ##############################
+# {{{
+ZSH_FUNCTIONS=~/.zsh_functions
+if [[ -f ${ZSH_FUNCTIONS} ]]; then
+    source ${ZSH_FUNCTIONS}
+else
+    echo "* ${ZSH_FUNCTIONS} is missing" >> ${TODOFILE}
+fi
+# }}}
+
+#################################     WSL2     #################################
+# {{{
+ZSH_WSL=~/.zsh_wsl
+if [[ -f ${ZSH_WSL} ]]; then
+    source ${ZSH_WSL}
+else
+    echo "* ${ZSH_WSL} is missing" >> ${TODOFILE}
+fi
+# }}}
+
+#################################     k8s     #################################
+# {{{
+ZSH_K8S=~/.zsh_k8s
+if [[ -f ${ZSH_K8S} ]]; then
+    source ${ZSH_K8S}
+else
+    echo "* ${ZSH_K8S} is missing" >> ${TODOFILE}
+fi
+# }}}
+
+###############################     Bindkeys     ###############################
+# {{{
+
+bindkey '^[M' '_toggle_md_mode'
+bindkey -s '^[R' 'exec zsh'
+
+# }}}
+
 ##############################     Completion     ##############################
 # {{{
 
@@ -231,44 +269,6 @@ if [[ -d "${AUTOCOMPLETE_DIR}" ]]; then
     fi
   done
 fi
-
-# }}}
-
-##############################     Functions     ##############################
-# {{{
-ZSH_FUNCTIONS=~/.zsh_functions
-if [[ -f ${ZSH_FUNCTIONS} ]]; then
-    source ${ZSH_FUNCTIONS}
-else
-    echo "* ${ZSH_FUNCTIONS} is missing" >> ${TODOFILE}
-fi
-# }}}
-
-#################################     WSL2     #################################
-# {{{
-ZSH_WSL=~/.zsh_wsl
-if [[ -f ${ZSH_WSL} ]]; then
-    source ${ZSH_WSL}
-else
-    echo "* ${ZSH_WSL} is missing" >> ${TODOFILE}
-fi
-# }}}
-
-#################################     k8s     #################################
-# {{{
-ZSH_K8S=~/.zsh_k8s
-if [[ -f ${ZSH_K8S} ]]; then
-    source ${ZSH_K8S}
-else
-    echo "* ${ZSH_K8S} is missing" >> ${TODOFILE}
-fi
-# }}}
-
-###############################     Bindkeys     ###############################
-# {{{
-
-bindkey '^[M' '_toggle_md_mode'
-bindkey -s '^[R' 'exec zsh'
 
 # }}}
 
