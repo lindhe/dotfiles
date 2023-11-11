@@ -174,7 +174,7 @@ bindkey -s '^[R' 'exec zsh'
 
 # x completion zsh
 autocompletions=(
-  ${X_COMPLETION_ZSH:?}
+  ${X_COMPLETION_ZSH}
 )
 for cmd in ${autocompletions}; do
   if command -v "${cmd}" &> /dev/null; then
