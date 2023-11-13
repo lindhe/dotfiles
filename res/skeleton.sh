@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# {{{
+
 set -euo pipefail
 
 stderr() {
@@ -34,3 +36,5 @@ done
 if ${missing_dependencies}; then
   fail 'Please install the missing dependencies!'
 fi
+
+# }}}
