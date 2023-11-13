@@ -234,11 +234,11 @@ autocmd BufNewFile,BufRead Dockerfile*[^md] set filetype=dockerfile
 " *.gitconfig
 autocmd BufNewFile,BufRead *.gitconfig set filetype=gitconfig
 
-" YAML files
-autocmd BufNewFile,BufRead *.y[a]ml.* set filetype=yaml
-
 " kube-config
 autocmd BufNewFile,BufRead ~/.kube/config set filetype=yaml
+
+" YAML files
+autocmd BufNewFile,BufRead *.y[a]ml.* set filetype=yaml
 
 " ZSH
 autocmd BufNewFile,BufRead *.zsh-theme set filetype=zsh
