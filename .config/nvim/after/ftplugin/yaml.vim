@@ -1,3 +1,4 @@
-set shiftwidth=2
-set tabstop=2
+setlocal foldmethod=indent
+setlocal shiftwidth=2
+setlocal tabstop=2
 setlocal textwidth=0
