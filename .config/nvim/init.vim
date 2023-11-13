@@ -223,9 +223,6 @@ map <silent> <c-left> <c-w><c-l>
 "}}}
 
 """"""""""""""""""""""     Filetype customizations     """"""""""""""""""""{{{
-" *.vim files
-autocmd BufNewFile,BufRead *.vim set foldmethod=marker
-
 " Bash
 autocmd BufNewFile *.env 0r ~/res/skeleton.env
 autocmd BufNewFile *.sh  0r ~/res/skeleton.sh
