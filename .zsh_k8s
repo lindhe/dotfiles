@@ -17,12 +17,9 @@ if command -v kubectl &> /dev/null; then
     fi
   done
 
-  ####################     Set colordiff for kubectl diff     ####################
-  if command -v colordiff &> /dev/null; then
-    export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
-  else
-    echo "* colordiff is missing" >> ${TODOFILE}
-  fi
+  ####################     Settings for kubectl and Helm     ####################
+  export HELM_DIFF_OUTPUT_CONTEXT=2
+  export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
 
   #############################     Completions     #############################
   X_COMPLETION_ZSH=(
