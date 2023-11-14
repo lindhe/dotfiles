@@ -26,12 +26,12 @@ if [[ -n ${WSLENV+x} ]]; then
     # Configure some path helpers
     if command -v wslvar &> /dev/null; then
 
-        WHOME="$(wslpath "$(wslvar 'USERPROFILE')")"
+        WHOME="$(cache 'wslpath "$(wslvar 'USERPROFILE')"')"
         whome() {
             echo "${WHOME}"
         }
 
-        WDOWNLOADS="$(wslpath "$(wslvar 'USERPROFILE')\\Downloads")"
+        WDOWNLOADS="$(cache 'wslpath "$(wslvar 'USERPROFILE')\\Downloads"')"
         wdownloads() {
             echo "${WDOWNLOADS}"
         }
