@@ -119,6 +119,10 @@ export HIST_STAMPS="yyyy-mm-dd"
 # https://stackoverflow.com/questions/39428667/how-to-remove-a-keybinding
 bindkey -r '^[^H'
 
+# Set some custom variables
+AUTOCOMPLETE_DIR="${HOME}/.config/zsh/autocomplete"
+mkdir -p "${AUTOCOMPLETE_DIR}"
+
 # }}}
 
 ###############################     Aliases     ###############################
@@ -178,7 +182,7 @@ autocompletions=(
 )
 for cmd in ${autocompletions}; do
   if command -v "${cmd}" &> /dev/null; then
-    source <("${cmd}" completion zsh)
+    cache "${cmd} completion zsh > ${AUTOCOMPLETE_DIR}/${cmd}.zsh" 240
   else
     echo "* ${cmd} is missing" >> ${TODOFILE}
   fi
@@ -190,7 +194,7 @@ autocompletions=(
 )
 for cmd in ${autocompletions}; do
   if command -v "${cmd}" &> /dev/null; then
-    source <("${cmd}" completion -s zsh)
+    cache "${cmd} completion -s zsh > ${AUTOCOMPLETE_DIR}/${cmd}.zsh" 240
   else
     echo "* ${cmd} is missing" >> ${TODOFILE}
   fi
@@ -202,7 +206,7 @@ autocompletions=(
 )
 for cmd in ${autocompletions}; do
   if command -v "${cmd}" &> /dev/null; then
-    source <("${cmd}" shell-completion zsh)
+    cache "${cmd} shell-completion zsh > ${AUTOCOMPLETE_DIR}/${cmd}.zsh" 240
   else
     echo "* ${cmd} is missing" >> ${TODOFILE}
   fi
@@ -230,8 +234,7 @@ for cmd in ${autocompletions}; do
   fi
 done
 
-ZSH_CONFIG_DIR="${HOME}/.config/zsh"
-AUTOCOMPLETE_DIR="${ZSH_CONFIG_DIR}/autocomplete"
+# Autocompletions from disk
 if [[ -d "${AUTOCOMPLETE_DIR}" ]]; then
   for f in ${AUTOCOMPLETE_DIR}/*; do
     if [[ -f ${f} ]]; then
