@@ -236,13 +236,17 @@ done
 
 # Autocompletions from disk
 if [[ -d "${AUTOCOMPLETE_DIR}" ]]; then
-  for f in ${AUTOCOMPLETE_DIR}/*; do
-    if [[ -f ${f} ]]; then
-      source ${f}
-    else
-      echo "Unable to source '${f}'" 1>&2
-    fi
-  done
+  if [[ ! $(find "${AUTOCOMPLETE_DIR}" -maxdepth 0 -empty) ]]; then
+    for f in ${AUTOCOMPLETE_DIR}/*; do
+      if [[ -f ${f} ]]; then
+        source ${f}
+      else
+        echo "Unable to source '${f}'" 1>&2
+      fi
+    done
+  fi
+else
+  echo "ERROR: ${AUTOCOMPLETE_DIR} does not exist!" 2>&1
 fi
 
 # }}}
