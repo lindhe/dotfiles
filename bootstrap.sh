@@ -30,7 +30,6 @@ cd ~/.config/
 
 ln -fs "${DOTFILES}/.config/git/" .
 ln -fs "${DOTFILES}/.config/nvim/" .
-ln -fs "${DOTFILES}/.config/zsh/" .
 
 if [[ ! -d "${SCRIPTS}" ]]; then
   git clone https://github.com/lindhe/scripts.git "${SCRIPTS}"
