@@ -23,6 +23,7 @@ bd() {
 }
 
 CACHE_DIR="${HOME}/.cache/zshrc"
+mkdir -p "${CACHE_DIR}"
 
 # Wrapper around cache_set and cache_get for a command.
 cache() {
