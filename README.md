@@ -57,6 +57,10 @@ sudo snap install \
     nextcloud
 ```
 
+```shell
+sudo chsh -s /usr/bin/tmux ${USER}`
+```
+
 - [ ] <https://github.com/zfsonlinux/zfs-auto-snapshot>
 - [ ] <https://www.informaticar.net/supermicro-motherboard-loud-fans/>
 - [ ] <https://askubuntu.com/a/1110474/80226>

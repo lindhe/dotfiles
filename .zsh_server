@@ -1,7 +1,0 @@
-# vim: foldmethod=marker
-
-if [[ "$(hostname)" == "server"  ]]; then
-  if [[ -z "${TMUX}" ]]; then
-    exec tmux
-  fi
-fi
