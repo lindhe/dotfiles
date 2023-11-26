@@ -1,11 +1,10 @@
-# Initialize Vundle with `git submodule update --recursive --init`, but let
-# Vundle install all other plugins
-.vim/bundle/*
-.vim/plugged/
-!.vim/bundle/Vundle.vim
+#################################     Vim     #################################
 .vim/undo/
 .config/nvim/undo/
+.vim/swap/*
 
+
+#################################     Misc     #################################
 .netrwhist
 *.pdf
-.vim/swap/*
+
