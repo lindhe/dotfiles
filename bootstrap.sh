@@ -21,6 +21,7 @@ ln -fs "${DOTFILES}/.yamllint_global.yaml" .yamllint.yaml
 ln -fs "${DOTFILES}/.zsh_aliases" .
 ln -fs "${DOTFILES}/.zsh_functions" .
 ln -fs "${DOTFILES}/.zsh_k8s" .
+ln -fs "${DOTFILES}/.zsh_server" .
 ln -fs "${DOTFILES}/.zsh_wsl" .
 ln -fs "${DOTFILES}/.zshrc" .
 ln -fs "${DOTFILES}/res" .
