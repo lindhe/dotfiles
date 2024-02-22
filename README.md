@@ -27,6 +27,7 @@ sudo add-apt-repository ppa:neovim-ppa/stable
 
 ```shell
 sudo apt install \
+    curl \
     neovim tree zsh \
     build-essential \
     curl \
