@@ -28,24 +28,24 @@
 	gh = "!git clone https://github.com/${1}.git #"
 	h = help
 	l = "!git ll origin/$(git default-branch)~1..."
-	lb = "!git lob origin/$(git default-branch)~1..."
 	ll = log --oneline --decorate
 	lob = log --oneline --decorate --graph --branches --color=always
 	log = log --decorate
 	nb = "!git switch -c lindhe/${1:?} #"
 	nuke-branch = "!git worktree remove ${*} && git branch -D ${*} #"
 	nwt = "!WTD=~/git/worktree/${1:?}; (git branch -l ${1:?} | grep -q ${1:?}) || echo ERROR: Branch ${1:?} not found 1>&2 && mkdir -p ${WTD} && git worktree add ${WTD} ${1:?} && echo ${WTD} #"
-	new = diff --cached --color-moved=dimmed-zebra
+	new = diff --cached --color-moved=zebra
 	nw = diff --cached --ignore-space-change --color-words='\\w+|.'
 	nww = diff --cached --ignore-space-change --color-words='.'
 	nwww = diff --cached --ignore-space-change --word-diff-regex='.'
 	pl = !git pull && git log -- ORIG_HEAD..origin/$(git branch --show-current)
+	pushf = push --force-with-lease
 	psuh = push
 	reb = rebase
-	rebb = "!git stash && git rebase "${*}" && git stash pop #"
+	rebb = rebase --autostash
 	rem = remote -v
 	remove-gone = "!git branch -av | grep -E '^[^\\+].*\\[gone]' | awk '{ print $1 }' | xargs git branch -D #"
-	review = "!git diff --color-words='\\w+|.' --color-moved=dimmed-zebra $(git merge-base $(git default-branch) HEAD) ${@} #"
+	review = "!git diff --color-words='\\w+|.' --color-moved=zebra $(git merge-base $(git default-branch) HEAD) ${@} #"
 	root = rev-parse --show-toplevel
 	s = status
 	shw = show --ignore-space-change --color-words='\\w+'
