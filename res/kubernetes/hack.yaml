@@ -13,7 +13,7 @@ metadata:
 spec:
   containers:
     - name: hack
-      image: docker.io/nicolaka/netshoot
+      image: ubuntu
       command:
         - sleep
         - "3600"
