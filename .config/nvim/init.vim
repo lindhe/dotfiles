@@ -231,6 +231,9 @@ autocmd BufNewFile,BufRead .envrc set filetype=bash
 " Dockerfile
 autocmd BufNewFile,BufRead Dockerfile*[^md] set filetype=dockerfile
 
+" Helm
+autocmd BufNewFile,BufRead _*.tpl set filetype=yaml
+
 " *.gitconfig
 autocmd BufNewFile,BufRead *.gitconfig set filetype=gitconfig
 
