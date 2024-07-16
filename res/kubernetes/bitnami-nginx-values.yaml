@@ -1,0 +1,10 @@
+# Use like this:
+# helm install www bitnami/nginx -f ~/res/kubernetes/bitnami-nginx-values.yaml
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  hostname: foobar.example.com
+  tls: true
+service:
+  type: ClusterIP
