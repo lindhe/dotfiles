@@ -21,6 +21,7 @@ git clone https://github.com/lindhe/scripts.git ~/git/lindhe/scripts
 ### Install dependencies
 
 ```shell
+sudo add-apt-repository ppa:git-core/ppa
 sudo add-apt-repository ppa:neovim-ppa/stable
 ```
 
