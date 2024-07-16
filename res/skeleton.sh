@@ -5,7 +5,7 @@
 set -euo pipefail
 
 stderr() {
-    echo "${@}" 1>&2
+    echo -e "${@}" 1>&2
 }
 
 fail() {
