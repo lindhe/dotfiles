@@ -28,6 +28,7 @@ sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt install \
     neovim tree zsh \
     build-essential \
+    curl \
     git git-lfs \
     tmux jq unzip shellcheck colordiff
 ```
