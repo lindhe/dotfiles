@@ -27,9 +27,8 @@
 	get-gone = "!git branch -av | grep '\\[gone]' #"
 	gh = "!git clone https://github.com/${1}.git #"
 	h = help
-	l = "!git ll origin/$(git default-branch)~1..."
-	ll = log --oneline
-	lob = ll --graph --branches --color=always
+	l = log --oneline --show-linear-break='Non-linear history:'
+	lob = log --oneline --graph --branches --color=always
 	nb = "!git switch -c lindhe/${1:?} #"
 	nuke-branch = "!git worktree remove ${*} && git branch -D ${*} #"
 	nwt = "!WTD=~/git/worktree/${1:?}; (git branch -l ${1:?} | grep -q ${1:?}) || echo ERROR: Branch ${1:?} not found 1>&2 && mkdir -p ${WTD} && git worktree add ${WTD} ${1:?} && echo ${WTD} #"
