@@ -251,6 +251,11 @@ fi
 
 # }}}
 
+###############################     VS Code     ###############################
+if [[ "${TERM_PROGRAM}" == "vscode" ]]; then
+  export EDITOR='code --wait'
+fi
+
 #################################     last     #################################
 # {{{
 # This is the last file to be sourced by .zshrc.
