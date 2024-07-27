@@ -31,7 +31,7 @@
 	ll = "!git l $(git mb)~1.."
 	lb = "!git log --oneline --graph --color=always $(git mb)~1.. $(git default-branch) HEAD"
 	lob = log --oneline --graph --branches --color=always
-	mb = "!git merge-base $(git default-branch) HEAD"
+	mb = "!git merge-base origin/$(git default-branch) HEAD"
 	nb = "!git switch -c lindhe/${1:?} #"
 	nuke-branch = "!git worktree remove ${*} && git branch -D ${*} #"
 	nwt = "!WTD=~/git/worktree/${1:?}; (git branch -l ${1:?} | grep -q ${1:?}) || echo ERROR: Branch ${1:?} not found 1>&2 && mkdir -p ${WTD} && git worktree add ${WTD} ${1:?} && echo ${WTD} #"
