@@ -42,9 +42,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 #### Laptop extras
 
 ```shell
+sudo add-apt-repository ppa:phoerious/keepassxc
 sudo apt install \
     dunst i3 j4-dmenu-desktop playerctl rofi gnome-screenshot \
-    scdaemon pavucontrol
+    scdaemon pavucontrol keepassxc
 ```
 
 #### Server extras
