@@ -188,6 +188,10 @@ inoremap <F9> <Esc>:LspStop<CR>a
 nnoremap <F10> :BlamerToggle<CR>
 inoremap <F10> <Esc>:BlamerToggle<CR>a
 
+" YAML helpers
+nnoremap <leader>y :.!~/git/lindhe/scripts/terminal/pathToYaml.sh<CR>
+vnoremap <leader>y :!~/git/lindhe/scripts/terminal/pathToYaml.sh<CR>
+
 "}}}
 
 """""""""""""""""""""""""""""""     Movement     """"""""""""""""""""""""""""""""{{{
