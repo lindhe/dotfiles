@@ -27,7 +27,7 @@
 	get-gone = "!git branch -av | grep '\\[gone]' #"
 	gh = "!git clone https://github.com/${1}.git #"
 	h = help
-	l = log --oneline --show-linear-break='Non-linear history:'
+	l = log --oneline
 	ll = "!git l $(git mb)~1.."
 	lb = "!git log --oneline --graph --color=always $(git mb)~1.. $(git default-branch) HEAD"
 	lob = log --oneline --graph --branches --color=always
