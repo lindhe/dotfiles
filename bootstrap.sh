@@ -28,9 +28,14 @@ ln -fs "${DOTFILES}/.zshrc" .
 ln -fs "${DOTFILES}/res" .
 
 mkdir -p ~/.config
+mkdir -p ~/.config/git
 cd ~/.config/
 
-ln -fs "${DOTFILES}/.config/git/" .
+# If WSL2:
+if [[ -n ${WSLENV+x} ]]; then
+  ln -fs "${DOTFILES}/.config/git/wsl.gitconfig" .
+fi
+
 ln -fs "${DOTFILES}/.config/nvim/" .
 ln -fs "${DOTFILES}/.config/tmux" .
 
