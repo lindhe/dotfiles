@@ -93,6 +93,8 @@
 	useHttpPath = true
 [include]
 	path = ~/.config/git/wsl.gitconfig
+[include]
+	path = ~/.config/git/work.gitconfig
 [init]
 	defaultBranch = master
 [log]
