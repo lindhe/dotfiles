@@ -74,6 +74,21 @@ md() {
   mkdir -p ${1:?} && cd ${1:?}
 }
 
+# Timestamp in microseconds
+now_micro() {
+  date +'%s%6N'
+}
+
+# Timestamp in milliseconds
+now_milli() {
+  date +'%s%3N'
+}
+
+# Timestamp in nanoseconds
+now_nano() {
+  date +'%s%N'
+}
+
 stderr() {
     python -c "import sys; print('$1', file=sys.stderr)"
 }
