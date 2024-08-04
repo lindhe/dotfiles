@@ -72,6 +72,14 @@ sudo chsh -s /usr/bin/tmux ${USER}`
 
 ## Post-install checklist
 
+### asdf
+
+Install all asdf plugins:
+
+```
+asdf install
+```
+
 ### Usability
 
 - [ ] Set shell: `sudo chsh -s /usr/bin/zsh ${USER}`
