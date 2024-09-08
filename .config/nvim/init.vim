@@ -128,54 +128,59 @@ endif
 "}}}
 
 """"""""""""""""""""""""""""""     Mappings     """""""""""""""""""""""""""{{{
-let mapleader = ','
-noremap <space> :
-cnoremap qq q!
-nnoremap <silent> hq :qall<CR>
-nnoremap <silent> HQ :qall!<CR>
 
-" Macros
-nnoremap <leader><leader> @q
-nnoremap <enter> @@
+if !exists('g:vscode')
 
-" Tabs
-nnoremap <C-t> :tabedit<Space>
-nnoremap gf :tabedit <cfile><CR>
+  let mapleader = ','
+  noremap <space> :
+  cnoremap qq q!
+  nnoremap <silent> hq :qall<CR>
+  nnoremap <silent> HQ :qall!<CR>
 
-" Make line outcommented title
-nnoremap <leader>t :call MakeCenterTitle('')<CR>
+  " Macros
+  nnoremap <leader><leader> @q
+  nnoremap <enter> @@
 
-" Make it possible to exit :terminal mode
-" https://vi.stackexchange.com/a/6966/2082
-tnoremap <Esc> <C-\><C-n>
+  " Tabs
+  nnoremap <C-t> :tabedit<Space>
+  nnoremap gf :tabedit <cfile><CR>
 
-nnoremap <silent> <c-w>0 <c-w><c-=>
+  " Make line outcommented title
+  nnoremap <leader>t :call MakeCenterTitle('')<CR>
 
-" Omnicompletion
-inoremap <c-Space> <c-x><c-o>
+  " Make it possible to exit :terminal mode
+  " https://vi.stackexchange.com/a/6966/2082
+  tnoremap <Esc> <C-\><C-n>
 
-" <F3> Toggle list
-nnoremap <F3> :set list!<CR>
-inoremap <F3> <Esc>:set list!<CR>a
+  nnoremap <silent> <c-w>0 <c-w><c-=>
 
-" <F6> to remove trailing whitespace
-nnoremap <silent> <F6> :%s/\s\+$//<CR>''
+  " Omnicompletion
+  inoremap <c-Space> <c-x><c-o>
 
-" <F7> to cycle spell
-nnoremap <F7> :call CycleSpell()<CR>
-inoremap <F7> <Esc>:call CycleSpell()<CR>a
+  " <F3> Toggle list
+  nnoremap <F3> :set list!<CR>
+  inoremap <F3> <Esc>:set list!<CR>a
 
-" <F8> Toggle clutter (wrapping, etc.)
-nnoremap <F8> :call ToggleClutter()<CR>
-nnoremap <M-z> :call ToggleClutter()<CR>
+  " <F6> to remove trailing whitespace
+  nnoremap <silent> <F6> :%s/\s\+$//<CR>''
 
-" <F10> Toggle Blamer
-nnoremap <F10> :BlamerToggle<CR>
-inoremap <F10> <Esc>:BlamerToggle<CR>a
+  " <F7> to cycle spell
+  nnoremap <F7> :call CycleSpell()<CR>
+  inoremap <F7> <Esc>:call CycleSpell()<CR>a
 
-" YAML helpers
-nnoremap <leader>y :.!~/git/lindhe/scripts/terminal/pathToYaml.sh<CR>
-vnoremap <leader>y :!~/git/lindhe/scripts/terminal/pathToYaml.sh<CR>
+  " <F8> Toggle clutter (wrapping, etc.)
+  nnoremap <F8> :call ToggleClutter()<CR>
+  nnoremap <M-z> :call ToggleClutter()<CR>
+
+  " <F10> Toggle Blamer
+  nnoremap <F10> :BlamerToggle<CR>
+  inoremap <F10> <Esc>:BlamerToggle<CR>a
+
+  " YAML helpers
+  nnoremap <leader>y :.!~/git/lindhe/scripts/terminal/pathToYaml.sh<CR>
+  vnoremap <leader>y :!~/git/lindhe/scripts/terminal/pathToYaml.sh<CR>
+
+endif
 
 "}}}
 
