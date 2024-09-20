@@ -25,7 +25,6 @@ bd() {
 CACHE_DIR="${HOME}/.cache/zshrc"
 mkdir -p "${CACHE_DIR}"
 
-# Wrapper around cache_set and cache_get for a command.
 cache() {
   CMD="${1}" # Command to run.
   EXPIRATION_HOURS="${2:-8888}" # How long the cache should persist.
