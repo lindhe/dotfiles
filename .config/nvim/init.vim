@@ -40,6 +40,12 @@ if !exists('g:vscode')
   Plug 'airblade/vim-gitgutter'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+  " Language specific
+  Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+  Plug 'hashivim/vim-terraform'
+  Plug 'hashivim/vim-packer'
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  Plug 'rust-lang/rust.vim'
 endif
 
 call plug#end()
