@@ -31,7 +31,7 @@ if [[ -n ${WSLENV+x} ]]; then
             echo "${WHOME}"
         }
 
-        WDOWNLOADS="$(cache 'wslpath "$(wslvar 'USERPROFILE')\\Downloads"')"
+        WDOWNLOADS="${WHOME}/Downloads"
         wdownloads() {
             echo "${WDOWNLOADS}"
         }
