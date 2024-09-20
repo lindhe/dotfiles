@@ -49,12 +49,6 @@ EOF
 git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager-core.exe"
 ```
 
-## Install programs
-
-```shell
-sudo apt install wslu
-```
-
 ## Install Docker
 
 ```console
@@ -79,4 +73,3 @@ and add the following:
 # Allow members of group sudo to start docker
 %sudo   ALL=(ALL) NOPASSWD: /usr/sbin/service docker start
 ```
-

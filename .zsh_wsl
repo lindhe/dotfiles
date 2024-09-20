@@ -24,9 +24,11 @@ if [[ -n ${WSLENV+x} ]]; then
     fi
 
     # Configure some path helpers
-    if command -v wslvar &> /dev/null; then
+    if command -v powershell.exe &> /dev/null; then
 
-        WHOME="$(cache 'wslpath "$(wslvar 'USERPROFILE')"')"
+        WHOME_WIN="$(powershell.exe '[System.Environment]::GetFolderPath("UserProfile")' | tr -d '\r')"
+        WHOME_WIN_ESCAPED="$(printf '%q' "${WHOME_WIN}")"
+        WHOME="$(wslpath "${WHOME_WIN_ESCAPED}")"
         whome() {
             echo "${WHOME}"
         }
@@ -37,8 +39,8 @@ if [[ -n ${WSLENV+x} ]]; then
         }
 
     else
-        echo '* wslvar is missing' | tee -a ${TODOFILE}
-        echo 'Unable to set Windows path variables!' 1>&2
+        echo '* powershell.exe is missing' | tee -a ${TODOFILE}
+        echo 'Unable to set Windows path helpers!' 1>&2
     fi
 
 fi
