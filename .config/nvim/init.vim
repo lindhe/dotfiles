@@ -129,17 +129,18 @@ endif
 
 """"""""""""""""""""""""""""""     Mappings     """""""""""""""""""""""""""{{{
 
+let mapleader = ','
+noremap <space> :
+
+" Macros
+nnoremap <leader><leader> @q
+nnoremap <enter> @@
+
 if !exists('g:vscode')
 
-  let mapleader = ','
-  noremap <space> :
   cnoremap qq q!
   nnoremap <silent> hq :qall<CR>
   nnoremap <silent> HQ :qall!<CR>
-
-  " Macros
-  nnoremap <leader><leader> @q
-  nnoremap <enter> @@
 
   " Tabs
   nnoremap <C-t> :tabedit<Space>
