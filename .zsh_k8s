@@ -19,6 +19,7 @@ if command -v kubectl &> /dev/null; then
 
   ####################     Settings for kubectl and Helm     ####################
   export HELM_DIFF_OUTPUT_CONTEXT=2
+  export HELM_DIFF_USE_UPGRADE_DRY_RUN=true
   export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
 
   #############################     Completions     #############################
