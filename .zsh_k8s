@@ -1,3 +1,4 @@
+# shellcheck disable=SC2148
 # vim: foldmethod=marker
 
 if command -v kubectl &> /dev/null; then
