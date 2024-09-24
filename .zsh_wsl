@@ -2,12 +2,16 @@
 
 if [[ -n ${WSLENV+x} ]]; then
 
-    if command -v wslpath &> /dev/null; then
-        # Set PROMPT_COMMAND to let us duplicate with path
-        # https://docs.microsoft.com/en-us/windows/terminal/tutorials/new-tab-same-directory
-        PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"'
-        precmd() { eval "$PROMPT_COMMAND" }
+    if ! command -v wslpath &> /dev/null; then
+        echo "wslpath not found! 🛑" 1>&2
     fi
+
+    # Open new tabs in the same directory
+    # https://learn.microsoft.com/en-us/windows/terminal/tutorials/new-tab-same-directory#zsh
+    keep_current_path() {
+      printf "\e]9;9;%s\e\\" "$(wslpath -w "$PWD")"
+    }
+    precmd_functions+=(keep_current_path)
 
     if command -v docker &> /dev/null; then
         # Check if docker service exists
