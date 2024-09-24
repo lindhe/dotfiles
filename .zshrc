@@ -171,7 +171,6 @@ fi
 # {{{
 
 bindkey '^[M' '_toggle_md_mode'
-bindkey -s '^[R' 'exec zsh'
 
 # }}}
 
