@@ -24,7 +24,7 @@ if [[ -n ${WSLENV+x} ]]; then
                 sudo service docker start
             fi
         else
-            echo "* service docker is missing" >> ${TODOFILE}
+            echo "* service docker is missing" >> "${TODOFILE}"
         fi
     fi
 
@@ -44,7 +44,7 @@ if [[ -n ${WSLENV+x} ]]; then
         }
 
     else
-        echo '* powershell.exe is missing' | tee -a ${TODOFILE}
+        echo '* powershell.exe is missing' | tee -a "${TODOFILE}"
         echo 'Unable to set Windows path helpers!' 1>&2
     fi
 
