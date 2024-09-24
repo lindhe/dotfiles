@@ -184,7 +184,7 @@ autocompletions=(
 )
 for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
-    cache "${cmd} completion zsh > ${AUTOCOMPLETE_DIR}/${cmd}.zsh" 240
+    cache "${cmd} completion zsh > ${AUTOCOMPLETE_DIR}/${cmd}.zsh" 24
   else
     echo "* ${cmd} is missing" >> "${TODOFILE}"
   fi
@@ -196,7 +196,7 @@ autocompletions=(
 )
 for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
-    cache "${cmd} completion -s zsh > ${AUTOCOMPLETE_DIR}/${cmd}.zsh" 240
+    cache "${cmd} completion -s zsh > ${AUTOCOMPLETE_DIR}/${cmd}.zsh" 24
   else
     echo "* ${cmd} is missing" >> "${TODOFILE}"
   fi
@@ -208,7 +208,7 @@ autocompletions=(
 )
 for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
-    cache "${cmd} shell-completion zsh > ${AUTOCOMPLETE_DIR}/${cmd}.zsh" 240
+    cache "${cmd} shell-completion zsh > ${AUTOCOMPLETE_DIR}/${cmd}.zsh" 24
   else
     echo "* ${cmd} is missing" >> "${TODOFILE}"
   fi
