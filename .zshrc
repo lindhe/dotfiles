@@ -1,4 +1,4 @@
-# shellcheck disable=SC2148,SC1090
+# shellcheck disable=SC2148,SC1090,SC2034
 # vim: foldmethod=marker
 
 # Path to your oh-my-zsh installation.
