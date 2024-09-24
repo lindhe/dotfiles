@@ -104,7 +104,7 @@ plugins=(
 )
 
 # shellcheck disable=SC1091
-source $ZSH/oh-my-zsh.sh
+source "${ZSH}/oh-my-zsh.sh"
 
 ##########################     Fix OMZ behaviour     ##########################
 # {{{
@@ -152,7 +152,7 @@ fi
 # {{{
 ZSH_WSL=~/.zsh_wsl
 if [[ -f ${ZSH_WSL} ]]; then
-    source ${ZSH_WSL}
+    source "${ZSH_WSL}"
 else
     echo "* ${ZSH_WSL} is missing" >> "${TODOFILE}"
 fi
@@ -180,9 +180,9 @@ bindkey '^[M' '_toggle_md_mode'
 
 # x completion zsh
 autocompletions=(
-  ${X_COMPLETION_ZSH}
+  "${X_COMPLETION_ZSH[@]}"
 )
-for cmd in ${autocompletions}; do
+for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
     cache "${cmd} completion zsh > ${AUTOCOMPLETE_DIR}/${cmd}.zsh" 240
   else
@@ -194,7 +194,7 @@ done
 autocompletions=(
   gh
 )
-for cmd in ${autocompletions}; do
+for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
     cache "${cmd} completion -s zsh > ${AUTOCOMPLETE_DIR}/${cmd}.zsh" 240
   else
@@ -206,7 +206,7 @@ done
 autocompletions=(
   yq
 )
-for cmd in ${autocompletions}; do
+for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
     cache "${cmd} shell-completion zsh > ${AUTOCOMPLETE_DIR}/${cmd}.zsh" 240
   else
@@ -228,7 +228,7 @@ fi
 autocompletions=(
   terraform
 )
-for cmd in ${autocompletions}; do
+for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
     complete -o nospace -C "/usr/bin/${cmd}" "${cmd}"
   else
@@ -239,9 +239,9 @@ done
 # Autocompletions from disk
 if [[ -d "${AUTOCOMPLETE_DIR}" ]]; then
   if [[ ! $(find "${AUTOCOMPLETE_DIR}" -maxdepth 0 -empty) ]]; then
-    for f in ${AUTOCOMPLETE_DIR}/*; do
+    for f in "${AUTOCOMPLETE_DIR}"/*; do
       if [[ -f ${f} ]]; then
-        source ${f}
+        source "${f}"
       else
         echo "Unable to source '${f}'" 1>&2
       fi
