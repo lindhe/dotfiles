@@ -11,7 +11,8 @@ if command -v kubectl &> /dev/null; then
   )
   for dir in ${KUBECONFIG_DIRS}; do
     if [[ -d ${dir} ]]; then
-      for config in $(find "${dir}" -type f -name "*.yaml"); do
+      setopt NULL_GLOB
+      for config in "${dir}"/**/*.yaml; do
         export KUBECONFIG="${KUBECONFIG}:${config}"
       done
     fi
