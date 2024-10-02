@@ -1,0 +1,46 @@
+# Use like this:
+# sed 's/PVC_NAME/realPVCName/' ~/res/kubernetes/ls.yaml | kubectl apply -f -
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    kubernetes.io/description: >
+      A Job to list things.
+  name: ls
+  labels:
+    app.kubernetes.io/name: ls
+    app.kubernetes.io/managed-by: "Andreas"
+spec:
+  ttlSecondsAfterFinished: 3600
+  template:
+    metadata:
+      annotations:
+        kubernetes.io/description: >
+          A pod to list things.
+      name: ls
+      labels:
+        app.kubernetes.io/name: ls
+        app.kubernetes.io/managed-by: "Andreas"
+    spec:
+      containers:
+        - args:
+            - -lt
+            - /mnt
+          command:
+            - /bin/ls
+          image: busybox:stable-uclibc
+          name: ls
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: pvc
+              mountPath: /mnt
+              readOnly: true
+      restartPolicy: Never
+      volumes:
+        - name: pvc
+          persistentVolumeClaim:
+            claimName: PVC_NAME
