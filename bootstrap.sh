@@ -7,7 +7,7 @@ declare -r GIT_DIR="${HOME}/git/lindhe"
 declare -r DOTFILES="${GIT_DIR}/dotfiles"
 declare -r SCRIPTS="${GIT_DIR}/scripts"
 
-pushd ~
+cd ~
 
 echo "Creating ~/.undodir for vim"
 mkdir -p ~/.undodir
@@ -27,15 +27,17 @@ ln -fs "${DOTFILES}/.zsh_wsl" .
 ln -fs "${DOTFILES}/.zshrc" .
 ln -fs "${DOTFILES}/res" .
 
-mkdir -p ~/.config
-mkdir -p ~/.config/git
-cd ~/.config/
 
+mkdir -p ~/.config/git
+
+cd ~/.config/git
+ln -fs "${DOTFILES}/.config/git/github.gitconfig" .
 # If WSL2:
 if [[ -n ${WSLENV+x} ]]; then
   ln -fs "${DOTFILES}/.config/git/wsl.gitconfig" .
 fi
 
+cd ~/.config
 ln -fs "${DOTFILES}/.config/nvim/" .
 ln -fs "${DOTFILES}/.config/tmux" .
 
