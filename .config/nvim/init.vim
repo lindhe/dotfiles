@@ -142,6 +142,10 @@ noremap <space> :
 nnoremap <leader><leader> @q
 nnoremap <enter> @@
 
+" YAML helpers
+nnoremap <leader>y :.!~/git/lindhe/scripts/terminal/pathToYaml.sh<CR>
+vnoremap <leader>y :!~/git/lindhe/scripts/terminal/pathToYaml.sh<CR>
+
 if !exists('g:vscode')
 
   cnoremap qq q!
@@ -182,10 +186,6 @@ if !exists('g:vscode')
   " <F10> Toggle Blamer
   nnoremap <F10> :BlamerToggle<CR>
   inoremap <F10> <Esc>:BlamerToggle<CR>a
-
-  " YAML helpers
-  nnoremap <leader>y :.!~/git/lindhe/scripts/terminal/pathToYaml.sh<CR>
-  vnoremap <leader>y :!~/git/lindhe/scripts/terminal/pathToYaml.sh<CR>
 
 endif
 
