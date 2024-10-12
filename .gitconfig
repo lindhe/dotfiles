@@ -97,9 +97,9 @@
 	path = ~/.config/git/wsl.gitconfig
 [include]
 	path = ~/.config/git/work.gitconfig
-[includeIf "hasconfig:remote.*.url:https://github.com/**"]
-	path = ~/.config/git/github.gitconfig
 [includeIf "hasconfig:remote.*.url:git@github.com:*/*"]
+	path = ~/.config/git/github.gitconfig
+[includeIf "hasconfig:remote.*.url:https://github.com/**"]
 	path = ~/.config/git/github.gitconfig
 [init]
 	defaultBranch = master
