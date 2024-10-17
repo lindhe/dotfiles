@@ -36,7 +36,6 @@ sudo apt install \
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
 ```
 
 #### Laptop extras
@@ -74,14 +73,6 @@ popd
 - [ ] <https://askubuntu.com/a/1110474/80226>
 
 ## Post-install checklist
-
-### asdf
-
-Install all asdf plugins:
-
-```
-asdf install
-```
 
 ### Usability
 
