@@ -16,7 +16,6 @@ echo "Creating symlinks …"
 
 ln -fs "${DOTFILES}/.gitconfig" .
 ln -fs "${DOTFILES}/.gitignore_global" .
-ln -fs "${DOTFILES}/.tmux.conf" .
 ln -fs "${DOTFILES}/.tool-versions" .
 ln -fs "${DOTFILES}/.xprofile" .
 ln -fs "${DOTFILES}/.yamllint_global.yaml" .yamllint.yaml
