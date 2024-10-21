@@ -1,0 +1,16 @@
+# shellcheck disable=SC2148
+# vim: foldmethod=marker
+
+DISALLOWED_TMUX_TERMINALS=(
+    tmux
+    vscode
+)
+
+if [[ ! " ${DISALLOWED_TMUX_TERMINALS[@]} " =~ " ${TERM_PROGRAM} " ]]; then
+    echo "Do you want to run TMUX? [y/N]"
+    read -q SHOULD_RUN_TMUX
+    echo -e "\n"
+    if [[ "${SHOULD_RUN_TMUX}" == y ]]; then
+        tmux
+    fi
+fi

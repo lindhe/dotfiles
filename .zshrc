@@ -168,6 +168,16 @@ else
 fi
 # }}}
 
+#################################    Server    #################################
+# {{{
+ZSH_SERVER=~/.zsh_server
+if [[ -f ${ZSH_SERVER} ]]; then
+    source "${ZSH_SERVER}"
+else
+    echo "* ${ZSH_SERVER} is missing" >> "${TODOFILE}"
+fi
+# }}}
+
 ###############################     Bindkeys     ###############################
 # {{{
 

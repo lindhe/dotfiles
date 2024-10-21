@@ -61,6 +61,14 @@ sudo snap install \
     nextcloud
 ```
 
+```
+export DOTFILES=~/git/lindhe/dotfiles
+
+pushd ~
+ln -fs "${DOTFILES:?}/.zsh_server" .
+popd
+```
+
 - [ ] <https://github.com/zfsonlinux/zfs-auto-snapshot>
 - [ ] <https://www.informaticar.net/supermicro-motherboard-loud-fans/>
 - [ ] <https://askubuntu.com/a/1110474/80226>
