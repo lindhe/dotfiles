@@ -152,6 +152,9 @@ if !exists('g:vscode')
   nnoremap <silent> hq :qall<CR>
   nnoremap <silent> HQ :qall!<CR>
 
+  " Ctrl+s to save
+  nnoremap <C-s> :w<CR>
+
   " Tabs
   nnoremap <C-t> :tabedit<Space>
   nnoremap gf :tabedit <cfile><CR>
