@@ -76,6 +76,7 @@
 	quotepath = off
 [push]
 	default = current
+	autoSetupRemote = true
 [color]
 	status = always
 [filter "lfs"]
