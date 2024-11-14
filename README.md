@@ -21,17 +21,23 @@ git clone https://github.com/lindhe/scripts.git ~/git/lindhe/scripts
 
 ```shell
 sudo add-apt-repository ppa:git-core/ppa
-sudo add-apt-repository ppa:neovim-ppa/stable
 ```
 
 ```shell
 sudo apt install \
     curl \
-    neovim tree zsh \
+    tree zsh \
     build-essential \
     curl \
     git git-lfs \
     tmux jq unzip shellcheck colordiff
+```
+
+```shell
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+export PATH="$PATH:/opt/nvim-linux64/bin"
 ```
 
 ```shell
@@ -87,11 +93,9 @@ popd
 - [ ] Set NeoVim as default editor:
 
     ```shell
-    sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
-    sudo update-alternatives --config vi
-    sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+    sudo update-alternatives --install /usr/bin/vim vim /opt/nvim-linux64/bin/nvim 61
+    sudo update-alternatives --install /usr/bin/editor editor /opt/nvim-linux64/bin/nvim 61
     sudo update-alternatives --config vim
-    sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
     sudo update-alternatives --config editor
     ```
 
