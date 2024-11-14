@@ -25,10 +25,15 @@ spec:
     spec:
       containers:
         - args:
-            - -lt
             - /mnt
+            - -maxdepth
+            - "1"
+            - -type
+            - f
+            - -name
+            - '*.pgdump'
           command:
-            - /bin/ls
+            - /bin/find
           image: busybox:stable-uclibc
           name: ls
           resources:
