@@ -125,6 +125,9 @@ bindkey -r '^[^H'
 AUTOCOMPLETE_DIR="${HOME}/.config/zsh/autocomplete"
 mkdir -p "${AUTOCOMPLETE_DIR}"
 
+# Remove bad aliases
+unalias gp # git push
+
 # }}}
 
 ###############################     Aliases     ###############################
