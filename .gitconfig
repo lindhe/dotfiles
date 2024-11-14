@@ -40,7 +40,7 @@
 	nw = diff --cached --ignore-space-change --color-words='\\w+|.'
 	nww = diff --cached --ignore-space-change --color-words='.'
 	nwww = diff --cached --ignore-space-change --word-diff-regex='.'
-	pl = "!git pull && git log ORIG_HEAD..origin/$(git branch --show-current) #"
+	pl = "!git pull && git log -- ORIG_HEAD..origin/$(git branch --show-current) #"
 	push-ref = "!git push origin ${1:?}:$(git default-branch) #"
 	pushf = push --force-with-lease
 	psuh = push
