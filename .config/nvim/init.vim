@@ -115,6 +115,9 @@ set mouse=
 set nowrap
 set nolist
 
+if exists('g:vscode')
+  set nospell
+endif
 
 " Cred: https://www.reddit.com/r/neovim/comments/fyj7mp/comment/fn0ut6o/
 let s:winclip = '/mnt/c/Windows/System32/clip.exe'
