@@ -11,7 +11,7 @@
 	c = commit -v
 	ca = commit -av
 	cap = commit -vp
-	change = commit --amend -v
+	change = "!git c --fixup reword:${1:-HEAD} #"
 	cl = clone
 	cm = commit -m
 	co = checkout
