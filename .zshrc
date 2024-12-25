@@ -254,21 +254,6 @@ for cmd in "${autocompletions[@]}"; do
   fi
 done
 
-# Autocompletions from disk
-if [[ -d "${USER_COMPLETIONS_DIR}" ]]; then
-  if [[ ! $(find "${USER_COMPLETIONS_DIR}" -maxdepth 0 -empty) ]]; then
-    for f in "${USER_COMPLETIONS_DIR}"/*; do
-      if [[ -f ${f} ]]; then
-        source "${f}"
-      else
-        echo "Unable to source '${f}'" 1>&2
-      fi
-    done
-  fi
-else
-  echo "ERROR: ${USER_COMPLETIONS_DIR} does not exist!" 2>&1
-fi
-
 # }}}
 
 ###############################     VS Code     ###############################
