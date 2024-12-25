@@ -121,10 +121,6 @@ export HIST_STAMPS="yyyy-mm-dd"
 # https://stackoverflow.com/questions/39428667/how-to-remove-a-keybinding
 bindkey -r '^[^H'
 
-# Set some custom variables
-AUTOCOMPLETE_DIR="${HOME}/.config/zsh/autocomplete"
-mkdir -p "${AUTOCOMPLETE_DIR}"
-
 # Remove bad aliases
 unalias gp # git push
 
@@ -195,13 +191,18 @@ bindkey '^[M' '_toggle_md_mode'
 ##############################     Completion     ##############################
 # {{{
 
+# Create completions directory
+USER_COMPLETIONS_DIR="${HOME}/.config/zsh/completion"
+mkdir -p "${USER_COMPLETIONS_DIR:?}"
+export FPATH="${FPATH}:${USER_COMPLETIONS_DIR:?}"
+
 # x completion zsh
 autocompletions=(
   "${X_COMPLETION_ZSH[@]}"
 )
 for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
-    ${cmd} completion zsh > "${AUTOCOMPLETE_DIR}/${cmd}.zsh"
+    ${cmd} completion zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
   else
     echo "* ${cmd} is missing" >> "${TODOFILE}"
   fi
@@ -213,7 +214,7 @@ autocompletions=(
 )
 for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
-    ${cmd} completion -s zsh > "${AUTOCOMPLETE_DIR}/${cmd}.zsh"
+    ${cmd} completion -s zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
   else
     echo "* ${cmd} is missing" >> "${TODOFILE}"
   fi
@@ -225,7 +226,7 @@ autocompletions=(
 )
 for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
-    ${cmd} shell-completion zsh > "${AUTOCOMPLETE_DIR}/${cmd}.zsh"
+    ${cmd} shell-completion zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
   else
     echo "* ${cmd} is missing" >> "${TODOFILE}"
   fi
@@ -252,21 +253,6 @@ for cmd in "${autocompletions[@]}"; do
     echo "* ${cmd} is missing" >> "${TODOFILE}"
   fi
 done
-
-# Autocompletions from disk
-if [[ -d "${AUTOCOMPLETE_DIR}" ]]; then
-  if [[ ! $(find "${AUTOCOMPLETE_DIR}" -maxdepth 0 -empty) ]]; then
-    for f in "${AUTOCOMPLETE_DIR}"/*; do
-      if [[ -f ${f} ]]; then
-        source "${f}"
-      else
-        echo "Unable to source '${f}'" 1>&2
-      fi
-    done
-  fi
-else
-  echo "ERROR: ${AUTOCOMPLETE_DIR} does not exist!" 2>&1
-fi
 
 # }}}
 
