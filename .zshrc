@@ -195,6 +195,10 @@ bindkey '^[M' '_toggle_md_mode'
 ##############################     Completion     ##############################
 # {{{
 
+ZSH_USER_COMPLETIONS="${HOME}/.config/zsh/completion"
+mkdir -p "${ZSH_USER_COMPLETIONS}"
+export FPATH="${FPATH:?}:${ZSH_USER_COMPLETIONS}"
+
 # x completion zsh
 autocompletions=(
   "${X_COMPLETION_ZSH[@]}"
