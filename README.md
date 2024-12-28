@@ -61,7 +61,8 @@ sudo apt install \
     mailutils msmtp-mta s-nail \
     nfs-kernel-server \
     smartmontools \
-    restic
+    restic \
+    ipmitool
 sudo snap install \
     nextcloud
 ```
@@ -72,6 +73,11 @@ export DOTFILES=~/git/lindhe/dotfiles
 pushd ~
 ln -fs "${DOTFILES:?}/.zsh_server" .
 popd
+```
+
+```
+sudo ipmitool sensor thresh FAN2 lower 0 100 200
+sudo ipmitool sensor thresh FAN3 lower 0 100 200
 ```
 
 - [ ] <https://github.com/zfsonlinux/zfs-auto-snapshot>
