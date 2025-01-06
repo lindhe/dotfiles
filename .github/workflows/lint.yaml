@@ -14,7 +14,6 @@ jobs:
         uses: ludeeus/action-shellcheck@2.0.0
         with:
           ignore_paths: >-
-            i3blocks/contrib
             .oh-my-zsh
           ignore_names: >-
             .zsh*

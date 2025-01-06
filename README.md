@@ -2,13 +2,6 @@
 
 These are my dotfiles. Not meant to be shared, but feel free to take a look if you want to.
 
-## Subtrees
-
-I'm trying out `git subtree` to bring in dependencies. I know of no way to list
-them easily, so I'll try to keep a list of them here:
-
-* `.config/i3blocks/contrib` https://github.com/vivien/i3blocks-contrib
-
 ## Usage
 
 ```shell
@@ -49,8 +42,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ```shell
 sudo add-apt-repository ppa:phoerious/keepassxc
 sudo apt install \
-    dunst i3 j4-dmenu-desktop playerctl rofi gnome-screenshot \
-    scdaemon pavucontrol keepassxc
+    gnome-screenshot \
+    scdaemon \
+    keepassxc
 ```
 
 #### Server extras
