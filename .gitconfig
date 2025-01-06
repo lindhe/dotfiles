@@ -43,6 +43,7 @@
 	push-ref = "!git push origin ${1:?}:$(git default-branch) #"
 	pushf = push --force-with-lease
 	psuh = push
+	puhs = push
 	reb = rebase
 	rebb = "!git rebase -i $(git mb) #"
 	rem = remote -v
