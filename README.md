@@ -86,29 +86,7 @@ sudo ipmitool sensor thresh FAN3 lower 0 100 200
 
 ## Post-install checklist
 
-### Usability
-
-- [ ] Set shell: `sudo chsh -s /usr/bin/zsh ${USER}`
-- [ ] Configure locale:
-
-    ```shell
-    sudo locale-gen sv_SE.UTF-8
-    cat ~/dotfiles/locale/sv_SE | sudo tee -a /etc/default/locale
-    ```
-
-- [ ] Set NeoVim as default editor:
-
-    ```shell
-    sudo update-alternatives --install /usr/bin/vim vim /opt/nvim-linux64/bin/nvim 61
-    sudo update-alternatives --install /usr/bin/editor editor /opt/nvim-linux64/bin/nvim 61
-    sudo update-alternatives --config vim
-    sudo update-alternatives --config editor
-    ```
-
 - [ ] Add me to the `docker` group: `usermod -aG docker ${USER}`
-
-### Hardening
-
 - [ ] SSH hardening.
 - [ ] Setup SSH keys: `ssh-keygen -t ed25519 -C "${USER:?}@$(hostname -f)"`
 - [ ] Ubuntu Live Patch: https://ubuntu.com/advantage

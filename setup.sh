@@ -48,4 +48,17 @@ if [[ "${FULL_SETUP}" == y ]]; then
     echo "Installing custom keyboard layouts"
     sudo cp "${DOTFILES}/usr/share/X11/xkb/symbols"/* -t /usr/share/X11/xkb/symbols
 
+    # Set shell
+    sudo chsh -s /usr/bin/zsh ${USER}
+
+    # Configure locale
+    sudo locale-gen sv_SE.UTF-8
+    cat ~/dotfiles/locale/sv_SE | sudo tee -a /etc/default/locale
+
+    # Set NeoVim as default editor
+    sudo update-alternatives --install /usr/bin/vim vim "$(which nvim)" 100
+    sudo update-alternatives --install /usr/bin/editor editor "$(which nvim)" 100
+
+    # Add me to the `docker` group
+    sudo usermod -aG docker "${USER}"
 fi
