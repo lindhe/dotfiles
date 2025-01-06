@@ -21,7 +21,6 @@ sudo apt install \
     curl \
     tree zsh \
     build-essential \
-    curl \
     git git-lfs \
     tmux jq unzip shellcheck colordiff
 ```
