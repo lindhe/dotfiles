@@ -13,7 +13,7 @@ fail() {
     exit "${2:-1}"
 }
 
-readonly DOTFILES="${HOME}/git/lindhe/dotfiles"
+readonly DOTFILES="${HOME}/dotfiles"
 
 while [[ ${ready:-x} != 'y' ]]; do
     echo "Have you cloned dotfiles into ${DOTFILES}? (y/n)"

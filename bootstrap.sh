@@ -2,10 +2,8 @@
 
 set -euo pipefail
 
-declare -r GIT_DIR="${HOME}/git/lindhe"
-
-declare -r DOTFILES="${GIT_DIR}/dotfiles"
-declare -r SCRIPTS="${GIT_DIR}/scripts"
+declare -r DOTFILES="${HOME}/dotfiles"
+declare -r SCRIPTS="${HOME}/git/lindhe/scripts"
 
 cd ~
 

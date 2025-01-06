@@ -1,7 +1,7 @@
 # shellcheck disable=SC2148
 # vim: foldmethod=marker
 
-declare -r DOTFILES_DIR="${HOME}/git/lindhe/dotfiles"
+declare -r DOTFILES_DIR="${HOME}/dotfiles"
 declare -r SCRIPTS_DIR="${HOME}/git/lindhe/scripts"
 
 alias .....="cd ../../../.."

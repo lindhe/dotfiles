@@ -12,9 +12,9 @@ them easily, so I'll try to keep a list of them here:
 ## Usage
 
 ```shell
-git clone https://github.com/lindhe/dotfiles.git ~/git/lindhe/dotfiles
+git clone https://github.com/lindhe/dotfiles.git ~/dotfiles
 git clone https://github.com/lindhe/scripts.git ~/git/lindhe/scripts
-~/git/lindhe/dotfiles/setup.sh
+~/dotfiles/setup.sh
 ```
 
 ### Install dependencies
@@ -68,7 +68,7 @@ sudo snap install \
 ```
 
 ```
-export DOTFILES=~/git/lindhe/dotfiles
+export DOTFILES=~/dotfiles
 
 pushd ~
 ln -fs "${DOTFILES:?}/.zsh_server" .
@@ -93,7 +93,7 @@ sudo ipmitool sensor thresh FAN3 lower 0 100 200
 
     ```shell
     sudo locale-gen sv_SE.UTF-8
-    cat ~/git/lindhe/dotfiles/locale/sv_SE | sudo tee -a /etc/default/locale
+    cat ~/dotfiles/locale/sv_SE | sudo tee -a /etc/default/locale
     ```
 
 - [ ] Set NeoVim as default editor:
