@@ -127,7 +127,15 @@ unalias gp # git push
 
 ###############################     exports     ###############################
 # {{{
-export PATH="$PATH:/opt/nvim-linux64/bin"
+
+path+=/opt/nvim-linux64/bin
+# By exporting PATH via `typeset -TUx PATH path`, there are no duplicates.
+# With this in place, PATH can safely be updated by running `path+=/tmp/foo`
+#
+# Stolen from here:
+# https://stackoverflow.com/questions/11530090/adding-a-new-entry-to-the-path-variable-in-zsh/18077919#comment72796046_18077919
+typeset -TUx PATH path
+
 # }}}
 
 ###############################     Aliases     ###############################
