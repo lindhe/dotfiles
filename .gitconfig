@@ -90,7 +90,7 @@
 [diff "sopsdiffer"]
 	textconv = sops -d
 [rerere]
-	enabled = true
+	enabled = false
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [include]
