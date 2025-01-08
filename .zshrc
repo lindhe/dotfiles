@@ -203,7 +203,6 @@ bindkey '^[M' '_toggle_md_mode'
 # Create completions directory
 USER_COMPLETIONS_DIR="${HOME}/.config/zsh/completions"
 mkdir -p "${USER_COMPLETIONS_DIR:?}"
-export FPATH="${FPATH}:${USER_COMPLETIONS_DIR:?}"
 
 # x completion zsh
 autocompletions=(
@@ -262,6 +261,21 @@ for cmd in "${autocompletions[@]}"; do
     echo "* ${cmd} is missing" >> "${TODOFILE}"
   fi
 done
+
+# Autocompletions from disk
+if [[ -d "${USER_COMPLETIONS_DIR}" ]]; then
+  if [[ ! $(find "${USER_COMPLETIONS_DIR}" -maxdepth 0 -empty) ]]; then
+    for f in "${USER_COMPLETIONS_DIR}"/*; do
+      if [[ -f ${f} ]]; then
+        source "${f}"
+      else
+        echo "Unable to source '${f}'" 1>&2
+      fi
+    done
+  fi
+else
+  echo "ERROR: ${USER_COMPLETIONS_DIR} does not exist!" 2>&1
+fi
 
 # }}}
 
