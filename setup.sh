@@ -53,7 +53,7 @@ if [[ "${FULL_SETUP}" == y ]]; then
 
     # Configure locale
     sudo locale-gen sv_SE.UTF-8
-    sudo tee -a /etc/default/locale < ~/dotfiles/locale/sv_SE
+    ( sudo tee -a /etc/default/locale ) < ~/dotfiles/locale/sv_SE
 
     # Set NeoVim as default editor
     sudo update-alternatives --install /usr/bin/vim vim "$(which nvim)" 100
