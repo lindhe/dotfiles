@@ -199,7 +199,7 @@ bindkey '^[M' '_toggle_md_mode'
 # {{{
 
 # Create completions directory
-USER_COMPLETIONS_DIR="${HOME}/.config/zsh/completion"
+USER_COMPLETIONS_DIR="${HOME}/.config/zsh/completions"
 mkdir -p "${USER_COMPLETIONS_DIR:?}"
 export FPATH="${FPATH}:${USER_COMPLETIONS_DIR:?}"
 
