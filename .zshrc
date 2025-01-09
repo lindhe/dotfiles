@@ -99,6 +99,8 @@ DISABLE_AUTO_TITLE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  helm
+  kubectl
 )
 
 # shellcheck disable=SC1091
