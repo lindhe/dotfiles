@@ -4,8 +4,13 @@ set -euo pipefail
 
 declare -r DOTFILES="${HOME}/dotfiles"
 declare -r SCRIPTS="${HOME}/git/lindhe/scripts"
+declare -r APT_DIR="${HOME}/apt"
 
 cd ~
+
+echo "Creating ${APT_DIR}"
+mkdir -p "${APT_DIR}"
+sudo chown -R "_apt:${USER}" "${APT_DIR}"
 
 echo "Creating ~/.undodir for vim"
 mkdir -p ~/.undodir
