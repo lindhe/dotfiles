@@ -35,5 +35,5 @@ if command -v kubectl &> /dev/null; then
   )
 
 else
-  echo "* kubectl is missing" >> "${TODOFILE}"
+  echo "* kubectl is missing"
 fi

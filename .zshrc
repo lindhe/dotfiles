@@ -4,13 +4,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-############################     TODO-file init     ############################
-# {{{
-TODOFILE=~/TODO.zsh.md
-# Clear the TODO-file
-rm --force "${TODOFILE}"
-# }}}
-
 ############################     Bootstrap OMZ     ############################
 # {{{
 
@@ -18,11 +11,11 @@ if [ ! -d "${ZSH}" ]; then
   if command -v curl &> /dev/null; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   else
-    echo "* curl is missing" >> "${TODOFILE}"
+    echo "* curl is missing"
     if command -v wget &> /dev/null; then
       sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
     else
-      echo "* wget is missing" >> "${TODOFILE}"
+      echo "* wget is missing"
       exit 1
     fi
   fi
@@ -146,7 +139,7 @@ ZSH_ALIASES=~/.zsh_aliases
 if [[ -f ${ZSH_ALIASES} ]]; then
     source ${ZSH_ALIASES}
 else
-    echo "* ${ZSH_ALIASES} is missing" >> "${TODOFILE}"
+    echo "* ${ZSH_ALIASES} is missing"
 fi
 # }}}
 
@@ -156,7 +149,7 @@ ZSH_FUNCTIONS=~/.zsh_functions
 if [[ -f ${ZSH_FUNCTIONS} ]]; then
     source ${ZSH_FUNCTIONS}
 else
-    echo "* ${ZSH_FUNCTIONS} is missing" >> "${TODOFILE}"
+    echo "* ${ZSH_FUNCTIONS} is missing"
 fi
 # }}}
 
@@ -166,7 +159,7 @@ ZSH_WSL=~/.zsh_wsl
 if [[ -f ${ZSH_WSL} ]]; then
     source "${ZSH_WSL}"
 else
-    echo "* ${ZSH_WSL} is missing" >> "${TODOFILE}"
+    echo "* ${ZSH_WSL} is missing"
 fi
 # }}}
 
@@ -176,7 +169,7 @@ ZSH_K8S=~/.zsh_k8s
 if [[ -f ${ZSH_K8S} ]]; then
     source ${ZSH_K8S}
 else
-    echo "* ${ZSH_K8S} is missing" >> "${TODOFILE}"
+    echo "* ${ZSH_K8S} is missing"
 fi
 # }}}
 
@@ -186,7 +179,7 @@ ZSH_SERVER=~/.zsh_server
 if [[ -f ${ZSH_SERVER} ]]; then
     source "${ZSH_SERVER}"
 else
-    echo "* ${ZSH_SERVER} is missing" >> "${TODOFILE}"
+    echo "* ${ZSH_SERVER} is missing"
 fi
 # }}}
 
@@ -212,7 +205,7 @@ for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
     ${cmd} completion zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
   else
-    echo "* ${cmd} is missing" >> "${TODOFILE}"
+    echo "* ${cmd} is missing"
   fi
 done
 
@@ -224,7 +217,7 @@ for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
     ${cmd} completion -s zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
   else
-    echo "* ${cmd} is missing" >> "${TODOFILE}"
+    echo "* ${cmd} is missing"
   fi
 done
 
@@ -236,7 +229,7 @@ for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
     ${cmd} shell-completion zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
   else
-    echo "* ${cmd} is missing" >> "${TODOFILE}"
+    echo "* ${cmd} is missing"
   fi
 done
 
@@ -247,7 +240,7 @@ AZCLI_COMPLETION="/etc/bash_completion.d/azure-cli"
 if [[ -f ${AZCLI_COMPLETION} ]]; then
     source ${AZCLI_COMPLETION}
 else
-    echo "* ${AZCLI_COMPLETION:?} is missing" >> "${TODOFILE}"
+    echo "* ${AZCLI_COMPLETION:?} is missing"
 fi
 
 # complete -o nospace -C /usr/bin/x x
@@ -258,7 +251,7 @@ for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
     complete -o nospace -C "/usr/bin/${cmd}" "${cmd}"
   else
-    echo "* ${cmd} is missing" >> "${TODOFILE}"
+    echo "* ${cmd} is missing"
   fi
 done
 
