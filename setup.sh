@@ -21,6 +21,8 @@ while [[ ${ready:-x} != 'y' ]]; do
     echo -e "\n"
 done;
 
+cd "${DOTFILES}"
+
 echo "Do you want a minimal setup? [Y/n]"
 read -rn 1 yn
 if [[ "${yn}" == [Nn]* ]]; then
