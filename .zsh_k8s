@@ -1,11 +1,10 @@
 # shellcheck disable=SC2148
 # vim: foldmethod=marker
 
-if command -v kubectl &> /dev/null; then
-
-  export KUBECONFIG="${HOME}/.kube/config"
-
-  #####################     Source all k8s config files     #####################
+#####################     Source all k8s config files     #####################
+DOTKUBE_DIR="${HOME}/.kube"
+if [ -d "${DOTKUBE_DIR}" ]; then
+  export KUBECONFIG="${DOTKUBE_DIR}/config"
   export KUBECONFIG_DIRS=(
     "${KUBECONFIG_DIRS[@]}"
     "${HOME}/.k3d"
@@ -18,22 +17,22 @@ if command -v kubectl &> /dev/null; then
       done
     fi
   done
-
-  ####################     Settings for kubectl and Helm     ####################
-  export HELM_DIFF_OUTPUT_CONTEXT=2
-  export HELM_DIFF_USE_UPGRADE_DRY_RUN=true
-  export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
-
-  #############################     Completions     #############################
-  X_COMPLETION_ZSH=(
-    "${X_COMPLETION_ZSH[@]}"
-    cilium
-    hubble
-    k3d
-    kustomize
-    minikube
-  )
-
 else
-  echo "* kubectl is missing"
+  echo "${DOTKUBE_DIR} is missing"
 fi
+
+
+####################     Settings for kubectl and Helm     ####################
+export HELM_DIFF_OUTPUT_CONTEXT=2
+export HELM_DIFF_USE_UPGRADE_DRY_RUN=true
+export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
+
+#############################     Completions     #############################
+X_COMPLETION_ZSH=(
+  "${X_COMPLETION_ZSH[@]}"
+  cilium
+  hubble
+  k3d
+  kustomize
+  minikube
+)
