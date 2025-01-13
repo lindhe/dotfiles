@@ -28,8 +28,7 @@ export HELM_DIFF_USE_UPGRADE_DRY_RUN=true
 export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
 
 #############################     Completions     #############################
-X_COMPLETION_ZSH=(
-  "${X_COMPLETION_ZSH[@]}"
+X_COMPLETION_ZSH+=(
   cilium
   hubble
   k3d
