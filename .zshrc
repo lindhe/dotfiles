@@ -139,7 +139,7 @@ ZSH_ALIASES=~/.zsh_aliases
 if [[ -f ${ZSH_ALIASES} ]]; then
     source ${ZSH_ALIASES}
 else
-    echo "* ${ZSH_ALIASES} is missing"
+    echo "* ${ZSH_ALIASES:?} is missing"
 fi
 # }}}
 
@@ -149,7 +149,7 @@ ZSH_FUNCTIONS=~/.zsh_functions
 if [[ -f ${ZSH_FUNCTIONS} ]]; then
     source ${ZSH_FUNCTIONS}
 else
-    echo "* ${ZSH_FUNCTIONS} is missing"
+    echo "* ${ZSH_FUNCTIONS:?} is missing"
 fi
 # }}}
 
@@ -159,7 +159,7 @@ ZSH_WSL=~/.zsh_wsl
 if [[ -f ${ZSH_WSL} ]]; then
     source "${ZSH_WSL}"
 else
-    echo "* ${ZSH_WSL} is missing"
+    echo "* ${ZSH_WSL:?} is missing"
 fi
 # }}}
 
@@ -169,7 +169,7 @@ ZSH_K8S=~/.zsh_k8s
 if [[ -f ${ZSH_K8S} ]]; then
     source ${ZSH_K8S}
 else
-    echo "* ${ZSH_K8S} is missing"
+    echo "* ${ZSH_K8S:?} is missing"
 fi
 # }}}
 
@@ -179,7 +179,7 @@ ZSH_SERVER=~/.zsh_server
 if [[ -f ${ZSH_SERVER} ]]; then
     source "${ZSH_SERVER}"
 else
-    echo "* ${ZSH_SERVER} is missing"
+    echo "* ${ZSH_SERVER:?} is missing"
 fi
 # }}}
 
@@ -205,7 +205,7 @@ for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
     ${cmd} completion zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
   else
-    echo "* ${cmd} is missing"
+    echo "* ${cmd:?} is missing"
   fi
 done
 
@@ -217,7 +217,7 @@ for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
     ${cmd} completion -s zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
   else
-    echo "* ${cmd} is missing"
+    echo "* ${cmd:?} is missing"
   fi
 done
 
@@ -229,7 +229,7 @@ for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
     ${cmd} shell-completion zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
   else
-    echo "* ${cmd} is missing"
+    echo "* ${cmd:?} is missing"
   fi
 done
 
@@ -251,7 +251,7 @@ for cmd in "${autocompletions[@]}"; do
   if command -v "${cmd}" &> /dev/null; then
     complete -o nospace -C "/usr/bin/${cmd}" "${cmd}"
   else
-    echo "* ${cmd} is missing"
+    echo "* ${cmd:?} is missing"
   fi
 done
 
