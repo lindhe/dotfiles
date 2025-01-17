@@ -63,7 +63,6 @@ m2p() {
     rename md.pdf pdf ./$1.pdf
 }
 
-unalias md # Was aliased by OMZ
 md() {
   mkdir -p ${1:?} && cd ${1:?}
 }
