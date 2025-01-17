@@ -22,6 +22,7 @@ sudo apt install \
     tree zsh \
     build-essential \
     git git-lfs \
+    safe-rm \
     tmux jq unzip shellcheck colordiff
 ```
 

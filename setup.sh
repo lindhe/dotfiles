@@ -34,6 +34,8 @@ echo -e "\n"
 
 ./bootstrap.sh
 
+sudo ln -fs "$(which safe-rm)" /usr/local/bin/rm
+
 if [[ "${FULL_SETUP}" == y ]]; then
 
     pushd ~/.config
@@ -43,6 +45,7 @@ if [[ "${FULL_SETUP}" == y ]]; then
     ln -fs "${DOTFILES}/.config/i3" .
     ln -fs "${DOTFILES}/.config/i3blocks/" .
     ln -fs "${DOTFILES}/.config/monitors/" .
+    ln -fs "${DOTFILES}/.config/safe-rm" .
     ln -fs "${DOTFILES}/.config/sway" .
 
     popd
