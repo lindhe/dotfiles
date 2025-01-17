@@ -73,6 +73,11 @@ sudo ipmitool sensor thresh FAN2 lower 0 100 200
 sudo ipmitool sensor thresh FAN3 lower 0 100 200
 ```
 
+```
+# https://ghostty.org/docs/help/terminfo#ssh
+infocmp -x | ssh YOUR-SERVER -- tic -x -
+```
+
 - [ ] <https://github.com/zfsonlinux/zfs-auto-snapshot>
 - [ ] <https://www.informaticar.net/supermicro-motherboard-loud-fans/>
 - [ ] <https://askubuntu.com/a/1110474/80226>
