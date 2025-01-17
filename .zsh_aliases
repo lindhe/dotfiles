@@ -15,7 +15,6 @@ alias c="cargo"
 alias copy="${SCRIPTS_DIR}/terminal/copy.sh"
 alias d="docker"
 alias dc="docker-compose"
-alias de='cd ${HOME} && (echo "rm -r ${OLDPWD:?}"; prompt_once) && rm -rf ${OLDPWD:?}'
 alias dot="cd ${DOTFILES_DIR}"
 alias dusch="du -sch .[^.]* * | sort -h"
 alias ed='pushd -q $(mktemp -d)'
