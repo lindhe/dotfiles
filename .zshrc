@@ -1,128 +1,39 @@
 # shellcheck disable=SC2148,SC1090,SC2034
 # vim: foldmethod=marker
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-############################     Bootstrap OMZ     ############################
-# {{{
-
-if [ ! -d "${ZSH}" ]; then
-  if command -v curl &> /dev/null; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  else
-    echo "* curl is missing"
-    if command -v wget &> /dev/null; then
-      sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-    else
-      echo "* wget is missing"
-      exit 1
-    fi
-  fi
+################################     zinit     ################################
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+if [ ! -d "$ZINIT_HOME" ]; then
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
+source "${ZINIT_HOME}/zinit.zsh"
 
-# }}}
+###############################     Plugins     ###############################
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="bira"
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-# ZSH_THEME_RANDOM_CANDIDATES=($(<~/.zsh_favlist))
+# zinit snippet OMZL::git.zsh
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::helm
+zinit snippet OMZP::kubectl
+zinit snippet OMZP::kubectx
+zinit snippet OMZP::sudo
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  helm
-  kubectl
-)
-
-# shellcheck disable=SC1091
-source "${ZSH}/oh-my-zsh.sh"
-
-##########################     Fix OMZ behaviour     ##########################
-# {{{
-
-# https://superuser.com/a/1447349/110087
-unset LESS;
-
-# https://github.com/ohmyzsh/ohmyzsh/issues/2537#issuecomment-35693367
-setopt no_share_history
-
-# https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#hist_stamps
-export HIST_STAMPS="yyyy-mm-dd"
-
-# Remove annoying backward-kill-word
-# https://stackoverflow.com/questions/39428667/how-to-remove-a-keybinding
-bindkey -r '^[^H'
-
-# Remove bad aliases
-unalias gp # git push
-
-# }}}
+###############################     History     ###############################
+HISTSIZE=9999
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
 ###############################     exports     ###############################
-# {{{
-
 path+=/opt/nvim-linux64/bin
 # By exporting PATH via `typeset -TUx PATH path`, there are no duplicates.
 # With this in place, PATH can safely be updated by running `path+=/tmp/foo`
@@ -131,7 +42,11 @@ path+=/opt/nvim-linux64/bin
 # https://stackoverflow.com/questions/11530090/adding-a-new-entry-to-the-path-variable-in-zsh/18077919#comment72796046_18077919
 typeset -TUx PATH path
 
-# }}}
+################################     prompt     ################################
+if [ ! command -v oh-my-posh &> /dev/null ]; then
+  curl -s https://ohmyposh.dev/install.sh | bash -s
+fi
+eval "$(oh-my-posh init zsh)"
 
 ###############################     Aliases     ###############################
 # {{{
@@ -268,6 +183,9 @@ else
   echo "ERROR: ${USER_COMPLETIONS_DIR} does not exist!" 2>&1
 fi
 
+autoload -Uz compinit && compinit
+zinit cdreplay -q
+
 # }}}
 
 ###############################     VS Code     ###############################
@@ -285,3 +203,11 @@ if [[ -f ${ZSH_LAST} ]]; then
     source ${ZSH_LAST}
 fi
 # }}}
+
+
+# # Completion styling
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# zstyle ':completion:*' menu no
+# zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+# zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
