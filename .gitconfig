@@ -11,7 +11,7 @@
 	c = commit -v
 	ca = commit -av
 	cap = commit -vp
-	change = "!git c --fixup reword:${1:-HEAD} #"
+	change = c --amend
 	cl = clone
 	cm = commit -m
 	co = checkout
@@ -50,6 +50,7 @@
 	remove-gone = "!git branch -av | grep -E '^[^\\+].*\\[gone]' | awk '{ print $1 }' | xargs git branch -D #"
 	review = "!git diff --color-moved=zebra $(git merge-base $(git default-branch) HEAD)..HEAD"
 	revieww = review --color-words='\\w+|.'
+	reword = "!git c --fixup reword:${1:-HEAD} #"
 	root = rev-parse --show-toplevel
 	s = status
 	shw = show --ignore-space-change --color-words='\\w+'
