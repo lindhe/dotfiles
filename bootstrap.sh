@@ -8,10 +8,6 @@ declare -r APT_DIR="${HOME}/apt"
 
 cd ~
 
-echo "Creating ${APT_DIR}"
-mkdir -p "${APT_DIR}"
-sudo chown -R "_apt:${USER}" "${APT_DIR}"
-
 echo "Creating ~/.undodir for vim"
 mkdir -p ~/.undodir
 
@@ -28,11 +24,11 @@ ln -fs "${DOTFILES}/.zsh_wsl" .
 ln -fs "${DOTFILES}/.zshrc" .
 ln -fs "${DOTFILES}/res" .
 
-
 mkdir -p ~/.config/git
 
 cd ~/.config/git
 ln -fs "${DOTFILES}/.config/git/github.gitconfig" .
+
 # If WSL2:
 if [[ -n ${WSLENV+x} ]]; then
   ln -fs "${DOTFILES}/.config/git/wsl.gitconfig" .
