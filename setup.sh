@@ -40,11 +40,6 @@ if [[ "${FULL_SETUP}" == y ]]; then
 
     pushd ~/.config
 
-    ln -fs "${DOTFILES}/.config/compton.conf" .
-    ln -fs "${DOTFILES}/.config/dunst/" .
-    ln -fs "${DOTFILES}/.config/i3" .
-    ln -fs "${DOTFILES}/.config/i3blocks/" .
-    ln -fs "${DOTFILES}/.config/monitors/" .
     ln -fs "${DOTFILES}/.config/safe-rm" .
     ln -fs "${DOTFILES}/.config/sway" .
 
