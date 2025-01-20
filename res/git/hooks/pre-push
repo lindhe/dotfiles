@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# This hook checks commit messages before pushing.
+
+set -euo pipefail
+
+declare -r REMOTE="${1}"
+
+if git log --oneline "${REMOTE}/$(git branch --show-current)..." | grep -e 'BLOCK' -e 'TODO:'; then
+  echo -en "\nERROR: There's a BLOCK or TODO commit!\n\n"
+  exit 1
+fi
