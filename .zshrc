@@ -94,6 +94,7 @@ plugins=(
   git
   helm
   kubectl
+  sudo
 )
 
 # shellcheck disable=SC1091
