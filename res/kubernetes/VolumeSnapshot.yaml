@@ -1,0 +1,9 @@
+---
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: foo
+spec:
+  volumeSnapshotClassName: trident # Replace with your volume snapshot class name
+  source:
+    persistentVolumeClaimName: my-pvc # Replace with your PVC name
