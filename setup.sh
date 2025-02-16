@@ -62,7 +62,7 @@ if [[ "${FULL_SETUP}" == y ]]; then
     # Add me to the `docker` group
     sudo usermod -aG docker "${USER}"
 
-
+    APT_DIR=~/apt
     echo "Creating ${APT_DIR}"
     mkdir -p "${APT_DIR}"
     sudo chown -R "_apt:${USER}" "${APT_DIR}"
