@@ -46,7 +46,7 @@ typeset -TUx PATH path
 if [ ! command -v oh-my-posh &> /dev/null ]; then
   curl -s https://ohmyposh.dev/install.sh | bash -s
 fi
-eval "$(oh-my-posh init zsh)"
+eval "$(oh-my-posh init zsh --config ~/.config/omp/config.yaml)"
 
 ###############################     Aliases     ###############################
 # {{{
