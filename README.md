@@ -44,7 +44,8 @@ sudo add-apt-repository ppa:phoerious/keepassxc
 sudo apt install \
     gnome-screenshot \
     scdaemon \
-    keepassxc
+    keepassxc \
+    xclip
 ```
 
 #### Server extras
