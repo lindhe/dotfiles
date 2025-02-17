@@ -34,6 +34,8 @@ alias h="helm"
 alias jqless="jq -C '' | less -Ri"
 alias k="kubectl"
 alias kc="kubectl config"
+unalias kl
+alias kl="kubectl logs --ignore-errors"
 alias kd="kubectl --dry-run=client -o yaml"
 alias kcc="kubectl config get-contexts | grep '*'"
 alias keyboard="xset r rate 330 75; setxkbmap se-A5; setxkbmap -option caps:swapescape"
