@@ -44,8 +44,9 @@
 	pushf = push --force-with-lease
 	psuh = push
 	puhs = push
+	pushtag = push origin
 	reb = rebase
-	rebb = "!git rebase -i $(git mb) #"
+	rebb = "!git rebase -iv $(git mb) #"
 	rem = remote -v
 	remove-gone = "!git branch -av | grep -E '^[^\\+].*\\[gone]' | awk '{ print $1 }' | xargs git branch -D #"
 	review = "!git diff --color-moved=zebra $(git merge-base $(git default-branch) HEAD)..HEAD"
