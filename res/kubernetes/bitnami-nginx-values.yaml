@@ -1,6 +1,6 @@
 # yamllint disable rule:line-length
 # Use like this:
-# helm install www bitnami/nginx --version 18.2.3 -f ~/res/kubernetes/bitnami-nginx-values.yaml
+# helm install www oci://registry-1.docker.io/bitnamicharts/nginx --version 18.2.3 -f ~/res/kubernetes/bitnami-nginx-values.yaml
 ---
 ingress:
   enabled: true

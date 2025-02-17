@@ -18,5 +18,22 @@ spec:
         - sleep
         - "3600"
       imagePullPolicy: Always
+      # securityContext:
+      #   allowPrivilegeEscalation: false
+      #   capabilities:
+      #     drop:
+      #       - ALL
+      #   runAsNonRoot: true
+      #   runAsUser: 1000
+      #   runAsGroup: 1000
+      #   seccompProfile:
+      #     type: RuntimeDefault
+      # volumeMounts:
+      #   - name: storage-volume
+      #     mountPath: /mnt
   restartPolicy: Never
   terminationGracePeriodSeconds: 0
+  # volumes:
+  #   - name: storage-volume
+  #     persistentVolumeClaim:
+  #       claimName: example-pvc
