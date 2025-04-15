@@ -51,6 +51,13 @@ ed() {
   echo -ne "\033]0;${TMP_DIR}\007"
 }
 
+# Copy a value from a Kubernetes Secret
+kopy() {
+  declare -r SECRET_NAME="${1:?}"
+  declare -r SECRET_FIELD="${2:?}"
+  kubectl get secret "${SECRET_NAME:?}" -o jsonpath="{ .data.${SECRET_FIELD} }" ${@:3} | base64 -d | copy
+}
+
 m2p() {
     pandoc $1 -s -f gfm -o $1.pdf &&\
     rename md.pdf pdf ./$1.pdf
