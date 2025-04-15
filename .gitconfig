@@ -1,5 +1,6 @@
 [user]
 	name = Andreas Lindhé
+	signingkey = ~/.ssh/id_ed25519
 [alias]
 	a = add -p
 	al = "!git config alias.${1:?} #"
@@ -116,3 +117,7 @@
 	autoSquash = true
 	autoStash = true
 	updateRefs = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
