@@ -45,6 +45,12 @@ datestamp() {
     date +'%F'
 }
 
+ed() {
+  TMP_DIR="$(mktemp -d)"
+  cd ${TMP_DIR}
+  echo -ne "\033]0;${TMP_DIR}\007"
+}
+
 m2p() {
     pandoc $1 -s -f gfm -o $1.pdf &&\
     rename md.pdf pdf ./$1.pdf

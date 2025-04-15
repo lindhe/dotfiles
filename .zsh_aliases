@@ -15,7 +15,6 @@ alias c="cargo"
 alias copy="${SCRIPTS_DIR}/terminal/copy.sh"
 alias dot="cd ${DOTFILES_DIR}"
 alias dusch="du -sch .[^.]* * | sort -h"
-alias ed='pushd -q $(mktemp -d)'
 alias g="git"
 alias ga="git add -p"
 alias gap="git add -p"
