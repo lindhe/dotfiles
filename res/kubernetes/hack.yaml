@@ -18,6 +18,11 @@ spec:
         - sleep
         - "3600"
       imagePullPolicy: Always
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 100m
       # securityContext:
       #   allowPrivilegeEscalation: false
       #   capabilities:
