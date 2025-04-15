@@ -32,6 +32,7 @@ X_COMPLETION_ZSH+=(
   cilium
   hubble
   k3d
+  k9s
   kustomize
   minikube
 )
