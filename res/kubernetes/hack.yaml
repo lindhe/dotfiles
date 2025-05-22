@@ -1,44 +1,54 @@
 ---
-# Pod to help with debugging
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  annotations:
-    kubernetes.io/description: >
-      A pod to debug things.
-  name: hack
   labels:
     app.kubernetes.io/name: hack
     app.kubernetes.io/created-by: "Andreas"
+  name: hack
 spec:
-  containers:
-    - name: hack
-      image: ubuntu
-      command:
-        - sleep
-        - "3600"
-      imagePullPolicy: Always
-      resources:
-        limits:
-          memory: 100Mi
-        requests:
-          cpu: 100m
-      # securityContext:
-      #   allowPrivilegeEscalation: false
-      #   capabilities:
-      #     drop:
-      #       - ALL
-      #   runAsNonRoot: true
-      #   runAsUser: 1000
-      #   runAsGroup: 1000
-      #   seccompProfile:
-      #     type: RuntimeDefault
-      # volumeMounts:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hack
+      app.kubernetes.io/created-by: "Andreas"
+  template:
+    metadata:
+      annotations:
+        kubernetes.io/description: >
+          A pod to debug things.
+      name: hack
+      labels:
+        app.kubernetes.io/name: hack
+        app.kubernetes.io/created-by: "Andreas"
+    spec:
+      containers:
+        - name: hack
+          image: ubuntu
+          command:
+            - sleep
+            - "3600"
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              cpu: 1
+          # securityContext:
+          #   allowPrivilegeEscalation: false
+          #   capabilities:
+          #     drop:
+          #       - ALL
+          #   runAsNonRoot: true
+          #   runAsUser: 1000
+          #   runAsGroup: 1000
+          #   seccompProfile:
+          #     type: RuntimeDefault
+          # volumeMounts:
+          #   - name: storage-volume
+          #     mountPath: /mnt
+      terminationGracePeriodSeconds: 0
+      # volumes:
       #   - name: storage-volume
-      #     mountPath: /mnt
-  restartPolicy: Never
-  terminationGracePeriodSeconds: 0
-  # volumes:
-  #   - name: storage-volume
-  #     persistentVolumeClaim:
-  #       claimName: example-pvc
+      #     persistentVolumeClaim:
+      #       claimName: example-pvc
