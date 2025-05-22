@@ -242,7 +242,7 @@ autocmd BufNewFile,BufRead _*.tpl set filetype=yaml
 autocmd BufNewFile,BufRead *.gitconfig set filetype=gitconfig
 
 " kube-config
-autocmd BufNewFile,BufRead ~/.kube/config set filetype=yaml
+autocmd BufNewFile,BufRead ~/.kube/* set filetype=yaml
 
 " vscode
 autocmd BufNewFile,BufRead *.code-profile set filetype=jsonc
