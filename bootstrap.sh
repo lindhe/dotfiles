@@ -4,7 +4,6 @@ set -euo pipefail
 
 declare -r DOTFILES="${HOME}/dotfiles"
 declare -r SCRIPTS="${HOME}/git/lindhe/scripts"
-declare -r APT_DIR="${HOME}/apt"
 
 cd ~
 
