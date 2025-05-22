@@ -4,6 +4,7 @@ kind: VolumeSnapshot
 metadata:
   name: foo
 spec:
-  volumeSnapshotClassName: trident # Replace with your volume snapshot class name
+  # yamllint disable-line rule:line-length
+  volumeSnapshotClassName: trident  # Replace with your volume snapshot class name
   source:
-    persistentVolumeClaimName: my-pvc # Replace with your PVC name
+    persistentVolumeClaimName: my-pvc  # Replace with your PVC name
