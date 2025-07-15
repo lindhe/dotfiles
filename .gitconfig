@@ -48,7 +48,7 @@
 	puhs = push
 	pushtag = push origin
 	reb = rebase
-	rebb = "!git rebase -iv $(git default-branch) #"
+	rebb = "!git rebase -iv \"${1:-$(git default-branch)}\" #"
 	rem = remote -v
 	remove-gone = "!git branch -av | grep -E '^[^\\+].*\\[gone]' | awk '{ print $1 }' | xargs git branch -D #"
 	review = "!git diff --color-moved=zebra $(git merge-base $(git default-branch) HEAD)..HEAD"
