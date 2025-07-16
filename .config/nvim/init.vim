@@ -40,6 +40,11 @@ if !exists('g:vscode')
   Plug 'airblade/vim-gitgutter'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+  " LSP
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/mason.nvim'
+  Plug 'williamboman/mason-lspconfig.nvim'
+
   " Language specific
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
   Plug 'hashivim/vim-terraform'
@@ -188,6 +193,10 @@ if !exists('g:vscode')
   " <F8> Toggle clutter (wrapping, etc.)
   nnoremap <F8> :call ToggleClutter()<CR>
   nnoremap <M-z> :call ToggleClutter()<CR>
+
+  " <F9> Turn off LSP
+  nnoremap <F9> :LspStop<CR>
+  inoremap <F9> <Esc>:LspStop<CR>a
 
   " <F10> Toggle Blamer
   nnoremap <F10> :BlamerToggle<CR>
