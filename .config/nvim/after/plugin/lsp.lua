@@ -14,18 +14,6 @@ local on_attach = function(client, bufnr)
 end
 
 require("mason").setup()
-require("mason-lspconfig").setup({
-  ensure_installed = {
-    "bashls",
-    "marksman",
-    "rust_analyzer",
-    "terraformls",
-    "tsserver",
-    "vimls",
-    "yamlls",
-  },
-  automatic_installation = true,
-})
 
 require('lspconfig')['bashls'].setup {
     on_attach = on_attach,
@@ -36,11 +24,10 @@ require('lspconfig')['rust_analyzer'].setup {
 require('lspconfig')['terraformls'].setup{
     on_attach = on_attach,
 }
-require('lspconfig')['tsserver'].setup{
+require('lspconfig')['ts_ls'].setup{
     on_attach = on_attach,
 }
 require('lspconfig')['vimls'].setup {
     on_attach = on_attach,
 }
-
 end
