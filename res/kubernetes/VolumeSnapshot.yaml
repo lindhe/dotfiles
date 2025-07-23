@@ -2,9 +2,9 @@
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
-  name: foo
+  name: example
 spec:
   # yamllint disable-line rule:line-length
   volumeSnapshotClassName: trident  # Replace with your volume snapshot class name
   source:
-    persistentVolumeClaimName: my-pvc  # Replace with your PVC name
+    persistentVolumeClaimName: example-pvc  # Replace with your PVC name

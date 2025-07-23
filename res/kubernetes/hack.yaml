@@ -23,6 +23,7 @@ spec:
         app.kubernetes.io/name: hack
         app.kubernetes.io/created-by: "Andreas"
     spec:
+      terminationGracePeriodSeconds: 0
       containers:
         - name: hack
           image: ubuntu
@@ -48,7 +49,6 @@ spec:
           # volumeMounts:
           #   - name: storage-volume
           #     mountPath: /mnt
-      terminationGracePeriodSeconds: 0
       # volumes:
       #   - name: storage-volume
       #     persistentVolumeClaim:
