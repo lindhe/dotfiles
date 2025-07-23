@@ -13,8 +13,6 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
 
-require("mason").setup()
-
 require('lspconfig')['bashls'].setup {
     on_attach = on_attach,
 }

@@ -42,8 +42,6 @@ if !exists('g:vscode')
 
   " LSP
   Plug 'neovim/nvim-lspconfig'
-  Plug 'williamboman/mason.nvim'
-  Plug 'williamboman/mason-lspconfig.nvim'
 
   " Language specific
   Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
