@@ -12,6 +12,8 @@ mkdir -p ~/.undodir
 
 echo "Creating symlinks …"
 
+ln -fs "${DOTFILES}/.bashrc" .
+ln -fs "${DOTFILES}/.bash_aliases" .
 ln -fs "${DOTFILES}/.gitconfig" .
 ln -fs "${DOTFILES}/.gitignore_global" .
 ln -fs "${DOTFILES}/.xprofile" .
