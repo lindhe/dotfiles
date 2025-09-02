@@ -28,9 +28,11 @@
 	get = "!~/git/lindhe/scripts/git/git-get.py"
 	get-gone = "!git branch -av | grep '\\[gone]' #"
 	gh = "!git clone https://github.com/${1}.git #"
+	my = "!git sw ${1#lindhe:} #"
 	h = help
 	l = log --oneline
 	ll = "!git l $(git mb)~1.."
+	lll = "!git log $(git mb)~1.."
 	lb = "!git log --oneline --graph --color=always $(git mb)~1.. $(git default-branch) HEAD"
 	lob = log --oneline --graph --branches --color=always
 	mb = "!git merge-base origin/$(git default-branch) HEAD"
