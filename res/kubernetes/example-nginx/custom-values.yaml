@@ -1,0 +1,17 @@
+# yamllint disable rule:line-length
+# Use like this:
+# helm install www ~/res/kubernetes/example-nginx -f ~/res/kubernetes/example-nginx/custom-values.yaml
+---
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  hosts:
+    - host: &host foobar.example.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+   - secretName: example-nginx-tls
+     hosts:
+       - *host
