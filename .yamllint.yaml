@@ -1,0 +1,6 @@
+---
+
+extends: ./.yamllint_global.yaml
+
+ignore:
+  - res/kubernetes/example-nginx/
