@@ -56,6 +56,9 @@ disabled=false
 format='[\($context/$namespace\) ]($style)'
 style='green bold'
 
+[shell]
+disabled=false
+
 [shlvl]
 disabled=false
 symbol=''

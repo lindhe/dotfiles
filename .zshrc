@@ -275,6 +275,11 @@ if [[ "${TERM_PROGRAM}" == "vscode" ]]; then
   export EDITOR='code --wait'
 fi
 
+################################     Prompt     ################################
+if command -v starship &> /dev/null; then
+  eval "$(starship init zsh)"
+fi
+
 #################################     last     #################################
 # {{{
 # This is the last file to be sourced by .zshrc.
