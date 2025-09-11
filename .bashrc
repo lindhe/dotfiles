@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC1091
 
+###############################     prelude     ###############################
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
+
+###############################     history     ###############################
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -18,6 +22,8 @@ shopt -s histappend
 HISTSIZE=9999
 HISTFILESIZE=9999
 
+################################     window     ################################
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -25,6 +31,8 @@ shopt -s checkwinsize
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 shopt -s globstar
+
+###########################     quality of life     ###########################
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -48,6 +56,8 @@ if command -v dircolors &> /dev/null; then
     # shellcheck disable=SC2015
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
+
+###############################     aliases     ###############################
 
 if [ -f ~/.bash_aliases ]; then
     source "${HOME}/.bash_aliases"
