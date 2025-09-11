@@ -44,6 +44,10 @@ $netns\
 $shell\
 $character"""
 
+[git_commit]
+only_detached=false
+style='8'
+
 [git_status]
 stashed=''
 
