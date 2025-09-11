@@ -7,7 +7,6 @@ $hostname\
 $localip\
 $shlvl\
 $singularity\
-$kubernetes\
 $directory\
 $vcsh\
 $git_branch\
@@ -31,6 +30,7 @@ $memory_usage\
 $direnv\
 $env_var\
 $custom\
+$kubernetes\
 $sudo\
 $cmd_duration\
 $line_break\
@@ -49,9 +49,8 @@ stashed=''
 
 [kubernetes]
 disabled=false
-format='[$symbol $context/$namespace]($style) in '
+format='[\($context/$namespace\) ]($style)'
 style='green bold'
-symbol=''
 
 [shlvl]
 disabled=false
