@@ -38,6 +38,7 @@ fi
 cd ~/.config
 ln -fs "${DOTFILES}/.config/nvim/" .
 ln -fs "${DOTFILES}/.config/tmux" .
+ln -fs "${DOTFILES}/.config/starship.toml" .
 
 if [[ ! -d "${SCRIPTS}" ]]; then
   git clone https://github.com/lindhe/scripts.git "${SCRIPTS}"
