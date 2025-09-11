@@ -22,15 +22,17 @@ shopt -s histappend
 HISTSIZE=9999
 HISTFILESIZE=9999
 
+# Failed history substitution (e.g. `!ls`) gets a second chance:
+shopt -s histreedit
+
+# Verify history substitution before running:
+shopt -s histverify
+
 ################################     window     ################################
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
-
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-shopt -s globstar
 
 ###########################     quality of life     ###########################
 
@@ -74,6 +76,21 @@ if ! shopt -oq posix; then
   fi
 fi
 
+##############################     navigation     ##############################
+
+export CDPATH="${CDPATH:-.}:${HOME}"
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+shopt -s globstar
+
+# Enhance cd
+shopt -s autocd
+
+# Let * expand to hidden files also:
+shopt -s dotglob
+
+# Enable fancy prompt
 if command -v starship &> /dev/null; then
   eval "$(starship init bash)"
 fi
