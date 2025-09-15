@@ -48,6 +48,9 @@ $character"""
 error_symbol = '[\$](bold 8)'
 success_symbol = '[\$](bold 8)'
 
+[[battery.display]]
+threshold = 30
+
 [git_commit]
 only_detached=false
 style='8'
