@@ -78,6 +78,9 @@ shopt -s autocd
 # Let * expand to hidden files also:
 shopt -s dotglob
 
+# Expand dir to explicit path (like ZSH)
+shopt -s direxpand
+
 ################################     Prompt     ################################
 
 # set variable identifying the chroot you work in (used in the prompt below)
