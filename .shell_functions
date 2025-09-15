@@ -1,39 +1,10 @@
-# shellcheck disable=SC2148
-# vim: foldmethod=marker
-
-stderr() {
-    echo "${@}" 1>&2
-}
-
-fail() {
-    stderr "${1}"
-    stderr ""
-    stderr "Exiting …"
-    exit "${2:-1}"
-}
-
-# Search on both snap and apt
-apps() {
-    snap search $1
-    apt search $1
-}
-
-# base64 -d
-bd() {
-    echo "$1" | base64 -d ; echo
-}
-
-checksum() {
-    echo "$1 $2" > /tmp/hash.txt &&\
-        printf 'md5:\n'; md5sum -c /tmp/hash.txt;\
-        printf '\n';\
-        printf 'sha256:\n'; sha256sum -c /tmp/hash.txt
-}
+#!/usr/bin/env bash
+# vim: set foldmethod=marker filetype=bash:
 
 # Copy path to current working directory
 cwd() {
     # If WSL
-    if [[ "$(uname -r)" =~ .*microsoft.* ]]; then
+    if [[ -n ${WSLENV+x} ]]; then
         pwd | /mnt/c/Windows/System32/clip.exe
     else
         pwd | xclip -selection clipboard
@@ -47,7 +18,7 @@ datestamp() {
 
 ed() {
   TMP_DIR="$(mktemp -d)"
-  cd ${TMP_DIR}
+  cd "${TMP_DIR}" || return
   echo -ne "\033]0;${TMP_DIR}\007"
 }
 
@@ -55,17 +26,7 @@ ed() {
 kopy() {
   declare -r SECRET_NAME="${1:?}"
   declare -r SECRET_FIELD="${2:?}"
-  kubectl get secret "${SECRET_NAME:?}" -o jsonpath="{ .data.${SECRET_FIELD} }" ${@:3} | base64 -d | copy
-}
-
-m2p() {
-    pandoc $1 -s -f gfm -o $1.pdf &&\
-    rename md.pdf pdf ./$1.pdf
-}
-
-unalias md # Was aliased by OMZ
-md() {
-  mkdir -p ${1:?} && cd ${1:?}
+  kubectl get secret "${SECRET_NAME:?}" -o jsonpath="{ .data.${SECRET_FIELD} }" "${@:3}" | base64 -d | copy
 }
 
 # Timestamp in microseconds
@@ -83,21 +44,18 @@ now_nano() {
   date +'%s%N'
 }
 
-stderr() {
-    python -c "import sys; print('$1', file=sys.stderr)"
-}
-
 timestamp() {
     date +'%F_%T'
 }
 
+# Set window title
 title() {
     echo -ne "\033]0;${1}\007"
 }
 
 mcd() {
-    mkdir -p ${1:?Missing argument to mcd.}
-    cd ${1}
+    mkdir -p "${1:?Missing argument to mcd.}"
+    cd "${1}" || return
 }
 
 password() {
@@ -108,77 +66,60 @@ password() {
   fi
 }
 
-prompt_forever() {
-  while true; do
-    prompt_once && break
-  done
-}
+#############################     ZSH specific     #############################
 
-prompt_once() {
-    if read -q "x?Are you sure? (y/N) "; then
-      echo -en "\n"
-      true
-    else
-      echo -en "\n"
-      false
-    fi
-}
-
-# Toggle a theme that is friendly for copying to ```console in Markdown
-zle -N _toggle_md_mode toggle_md_mode
-toggle_md_mode() {
-  declare -r PLAIN_PROMPT='$ '
-  if [[ "${PROMPT}" == "${PLAIN_PROMPT}" ]]; then
-    zle && zle accept-line
-    print '\n```'
-    # Source theme like ~/.oh-my-zsh/oh-my-zsh.sh sources theme {{{
-    if [[ -n "$ZSH_THEME" ]]; then
-      if is_theme "$ZSH_CUSTOM" "$ZSH_THEME"; then
-        source "$ZSH_CUSTOM/$ZSH_THEME.zsh-theme"
-      elif is_theme "$ZSH_CUSTOM/themes" "$ZSH_THEME"; then
-        source "$ZSH_CUSTOM/themes/$ZSH_THEME.zsh-theme"
-      elif is_theme "$ZSH/themes" "$ZSH_THEME"; then
-        source "$ZSH/themes/$ZSH_THEME.zsh-theme"
+# shellcheck disable=SC2250
+if [[ "$(readlink /proc/$$/exe | sed "s/.*\///")" == "zsh" ]]; then
+  # Toggle a theme that is friendly for copying to ```console in Markdown
+  zle -N _toggle_md_mode toggle_md_mode
+  toggle_md_mode() {
+    declare -r PLAIN_PROMPT='$ '
+    if [[ "${PROMPT}" == "${PLAIN_PROMPT}" ]]; then
+      zle && zle accept-line
+      print '\n```'
+      # Set fancy prompt:
+      if command -v starship &> /dev/null; then
+        eval "$(starship init zsh)"
       else
-        echo "[oh-my-zsh] theme '$ZSH_THEME' not found"
+        echo "ERROR: starship not found." &> /dev/stderr
       fi
+    else
+      print_md_console=true
+      # shellcheck disable=SC2317
+      precmd() {
+        print ''
+        if [[ "${print_md_console}" == "true" ]]; then
+          print '```console'
+          print_md_console=false
+        fi
+      }
+      PROMPT="${PLAIN_PROMPT}"
+      # Reset everything {{{
+      unset return_code
+      unset user_host
+      unset user_symbol
+      unset current_dir
+      unset vcs_branch
+      unset rvm_ruby
+      unset venv_prompt
+      unset ZSH_THEME_RVM_PROMPT_OPTIONS
+      unset RPROMPT
+      unset ZSH_THEME_GIT_PROMPT_PREFIX
+      unset ZSH_THEME_GIT_PROMPT_SUFFIX
+      unset ZSH_THEME_GIT_PROMPT_DIRTY
+      unset ZSH_THEME_GIT_PROMPT_CLEAN
+      unset ZSH_THEME_HG_PROMPT_PREFIX
+      unset ZSH_THEME_HG_PROMPT_SUFFIX
+      unset ZSH_THEME_HG_PROMPT_DIRTY
+      unset ZSH_THEME_HG_PROMPT_CLEAN
+      unset ZSH_THEME_RUBY_PROMPT_PREFIX
+      unset ZSH_THEME_RUBY_PROMPT_SUFFIX
+      unset ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX
+      unset ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX
+      unset ZSH_THEME_VIRTUALENV_PREFIX
+      unset ZSH_THEME_VIRTUALENV_SUFFIX
+      # }}}
+      zle && zle accept-line
     fi
-    # }}}
-  else
-    print_md_console=true
-    precmd() {
-      print ''
-      if [[ "${print_md_console}" == "true" ]]; then
-        print '```console'
-        print_md_console=false
-      fi
-    }
-    PROMPT="${PLAIN_PROMPT}"
-    # Reset everything {{{
-    unset return_code
-    unset user_host
-    unset user_symbol
-    unset current_dir
-    unset vcs_branch
-    unset rvm_ruby
-    unset venv_prompt
-    unset ZSH_THEME_RVM_PROMPT_OPTIONS
-    unset RPROMPT
-    unset ZSH_THEME_GIT_PROMPT_PREFIX
-    unset ZSH_THEME_GIT_PROMPT_SUFFIX
-    unset ZSH_THEME_GIT_PROMPT_DIRTY
-    unset ZSH_THEME_GIT_PROMPT_CLEAN
-    unset ZSH_THEME_HG_PROMPT_PREFIX
-    unset ZSH_THEME_HG_PROMPT_SUFFIX
-    unset ZSH_THEME_HG_PROMPT_DIRTY
-    unset ZSH_THEME_HG_PROMPT_CLEAN
-    unset ZSH_THEME_RUBY_PROMPT_PREFIX
-    unset ZSH_THEME_RUBY_PROMPT_SUFFIX
-    unset ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX
-    unset ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX
-    unset ZSH_THEME_VIRTUALENV_PREFIX
-    unset ZSH_THEME_VIRTUALENV_SUFFIX
-    # }}}
-    zle && zle accept-line
-  fi
-}
+  }
+fi
