@@ -130,3 +130,14 @@ export KUBECTL_EXTERNAL_DIFF="diff -u --color=always"
 export HELM_DIFF_OUTPUT_CONTEXT=2
 export HELM_DIFF_USE_UPGRADE_DRY_RUN=true
 # }}}
+
+# ##############################     Functions     ##############################
+# {{{
+SHELL_FUNCTIONS_FILE=~/.shell_functions
+if [[ -f ${SHELL_FUNCTIONS_FILE} ]]; then
+    # shellcheck source=./.shell_functions
+    source "${SHELL_FUNCTIONS_FILE}"
+else
+    echo "* ${SHELL_FUNCTIONS_FILE} is missing"
+fi
+# }}}

@@ -20,7 +20,7 @@ ln -fs "${DOTFILES}/.inputrc" .
 ln -fs "${DOTFILES}/.xprofile" .
 ln -fs "${DOTFILES}/.yamllint_global.yaml" .yamllint.yaml
 ln -fs "${DOTFILES}/.zsh_aliases" .
-ln -fs "${DOTFILES}/.zsh_functions" .
+ln -fs "${DOTFILES}/.shell_functions" .
 ln -fs "${DOTFILES}/.zsh_k8s" .
 ln -fs "${DOTFILES}/.zsh_wsl" .
 ln -fs "${DOTFILES}/.zshrc" .

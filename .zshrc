@@ -145,11 +145,12 @@ fi
 
 ##############################     Functions     ##############################
 # {{{
-ZSH_FUNCTIONS=~/.zsh_functions
-if [[ -f ${ZSH_FUNCTIONS} ]]; then
-    source ${ZSH_FUNCTIONS}
+SHELL_FUNCTIONS_FILE=~/.shell_functions
+if [[ -f ${SHELL_FUNCTIONS_FILE} ]]; then
+    # shellcheck source=./.shell_functions
+    source "${SHELL_FUNCTIONS_FILE}"
 else
-    echo "* ${ZSH_FUNCTIONS:?} is missing"
+    echo "* ${SHELL_FUNCTIONS_FILE} is missing"
 fi
 # }}}
 
