@@ -2,6 +2,8 @@
 "$schema"='https://starship.rs/config-schema.json'
 
 format="""
+$shell\
+$kubernetes\
 $username\
 $hostname\
 $localip\
@@ -30,7 +32,6 @@ $memory_usage\
 $direnv\
 $env_var\
 $custom\
-$kubernetes\
 $sudo\
 $cmd_duration\
 $line_break\
@@ -41,7 +42,6 @@ $status\
 $os\
 $container\
 $netns\
-$shell\
 $character"""
 
 [git_commit]
