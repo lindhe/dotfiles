@@ -1,5 +1,10 @@
 set completion-ignore-case on
+set match-hidden-files off
 set show-all-if-ambiguous on
 
 TAB:menu-complete
 "\e[Z":menu-complete-backward
+
+# Navigate history with up/down based on current input:
+"\e[A": history-search-backward
+"\e[B": history-search-forward
