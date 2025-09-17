@@ -57,10 +57,11 @@ style='8'
 
 [git_status]
 stashed=''
+format = '([\[$all_status$ahead_behind\]]($style))'
 
 [kubernetes]
 disabled=false
-format='[\($context/$namespace\) ]($style)'
+format='\[[$context/$namespace]($style)\] '
 style='green bold'
 
 [shell]
@@ -73,3 +74,47 @@ symbol=''
 [status]
 disabled=false
 format='[$symbol $status]($style) '
+
+##########################     Bracketed segments     ##########################
+
+[c]
+format = '\[[$symbol($version(-$name))]($style)\]'
+
+[cmake]
+format = '\[[$symbol($version)]($style)\]'
+
+[docker_context]
+format = '\[[$symbol$context]($style)\]'
+
+[git_branch]
+format = '\[[$symbol$branch]($style)\]'
+
+[helm]
+format = '\[[$symbol($version)]($style)\]'
+
+[memory_usage]
+format = '\[$symbol[$ram( | $swap)]($style)\]'
+
+[opa]
+format = '\[[$symbol($version)]($style)\]'
+
+[os]
+format = '\[[$symbol]($style)\]'
+
+[package]
+format = '\[[$symbol$version]($style)\]'
+
+[rust]
+format = '\[[$symbol($version)]($style)\]'
+
+[sudo]
+format = '\[[as $symbol]($style)\]'
+
+[terraform]
+format = '\[[$symbol$workspace]($style)\]'
+
+[time]
+format = '\[[$time]($style)\]'
+
+[username]
+format = '\[[$user]($style)\]'
