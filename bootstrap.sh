@@ -13,13 +13,12 @@ mkdir -p ~/.undodir
 echo "Creating symlinks …"
 
 ln -fs "${DOTFILES}/.bashrc" .
-ln -fs "${DOTFILES}/.bash_aliases" .
 ln -fs "${DOTFILES}/.gitconfig" .
 ln -fs "${DOTFILES}/.gitignore_global" .
 ln -fs "${DOTFILES}/.inputrc" .
 ln -fs "${DOTFILES}/.xprofile" .
 ln -fs "${DOTFILES}/.yamllint_global.yaml" .yamllint.yaml
-ln -fs "${DOTFILES}/.zsh_aliases" .
+ln -fs "${DOTFILES}/.shell_aliases" .
 ln -fs "${DOTFILES}/.shell_functions" .
 ln -fs "${DOTFILES}/.zsh_k8s" .
 ln -fs "${DOTFILES}/.zsh_wsl" .

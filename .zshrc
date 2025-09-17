@@ -135,11 +135,12 @@ typeset -TUx PATH path
 
 ###############################     Aliases     ###############################
 # {{{
-ZSH_ALIASES=~/.zsh_aliases
-if [[ -f ${ZSH_ALIASES} ]]; then
-    source ${ZSH_ALIASES}
+SHELL_ALIASES_FILE=~/.shell_aliases
+if [[ -f ${SHELL_ALIASES_FILE} ]]; then
+    # shellcheck source=./.shell_aliases
+    source "${SHELL_ALIASES_FILE}"
 else
-    echo "* ${ZSH_ALIASES:?} is missing"
+    echo "* ${SHELL_ALIASES_FILE} is missing"
 fi
 # }}}
 

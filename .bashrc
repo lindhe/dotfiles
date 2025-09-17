@@ -46,10 +46,15 @@ if command -v dircolors &> /dev/null; then
 fi
 
 ###############################     aliases     ###############################
-
-if [ -f ~/.bash_aliases ]; then
-    source "${HOME}/.bash_aliases"
+# {{{
+SHELL_ALIASES_FILE=~/.shell_aliases
+if [[ -f ${SHELL_ALIASES_FILE} ]]; then
+    # shellcheck source=./.shell_aliases
+    source "${SHELL_ALIASES_FILE}"
+else
+    echo "* ${SHELL_ALIASES_FILE} is missing"
 fi
+# }}}
 
 ##############################     Completion     ##############################
 
