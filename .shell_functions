@@ -122,4 +122,5 @@ if [[ "$(readlink /proc/$$/exe | sed "s/.*\///")" == "zsh" ]]; then
       zle && zle accept-line
     fi
   }
+  alias mdm="toggle_md_mode"
 fi
