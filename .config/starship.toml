@@ -51,6 +51,9 @@ success_symbol = '[\$](bold 8)'
 [[battery.display]]
 threshold = 30
 
+[git_branch]
+format = '\[[$branch]($style)\]'
+
 [git_commit]
 only_detached=false
 style='8'
@@ -85,9 +88,6 @@ format = '\[[$symbol($version)]($style)\]'
 
 [docker_context]
 format = '\[[$symbol$context]($style)\]'
-
-[git_branch]
-format = '\[[$symbol$branch]($style)\]'
 
 [helm]
 format = '\[[$symbol($version)]($style)\]'
