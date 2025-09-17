@@ -63,6 +63,9 @@ stashed=''
 format = '([\[$all_status$ahead_behind\]]($style))'
 
 [kubernetes]
+detect_env_vars=[
+  "KUBECONFIG",
+]
 disabled=false
 format='\[[$context/$namespace]($style)\] '
 style='green bold'
