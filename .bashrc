@@ -144,3 +144,14 @@ else
     echo "* ${SHELL_FUNCTIONS_FILE} is missing"
 fi
 # }}}
+
+#################################     WSL2     #################################
+# {{{
+SHELL_WSL_FILE=~/.shell_wsl
+if [[ -f ${SHELL_WSL_FILE} ]]; then
+    # shellcheck source=./.shell_wsl
+    source "${SHELL_WSL_FILE}"
+else
+    echo "* ${SHELL_WSL_FILE} is missing"
+fi
+# }}}

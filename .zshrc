@@ -157,11 +157,12 @@ fi
 
 #################################     WSL2     #################################
 # {{{
-ZSH_WSL=~/.zsh_wsl
-if [[ -f ${ZSH_WSL} ]]; then
-    source "${ZSH_WSL}"
+SHELL_WSL_FILE=~/.shell_wsl
+if [[ -f ${SHELL_WSL_FILE} ]]; then
+    # shellcheck source=./.shell_wsl
+    source "${SHELL_WSL_FILE}"
 else
-    echo "* ${ZSH_WSL:?} is missing"
+    echo "* ${SHELL_WSL_FILE} is missing"
 fi
 # }}}
 
