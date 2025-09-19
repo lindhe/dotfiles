@@ -155,3 +155,13 @@ else
     echo "* ${SHELL_WSL_FILE} is missing"
 fi
 # }}}
+
+##############################     Local env     ##############################
+# File to source for the user's local environemnt.
+# {{{
+SHELL_ENV_FILE=~/.shell_env
+if [[ -f ${SHELL_ENV_FILE} ]]; then
+    # shellcheck source=/dev/null
+    source "${SHELL_ENV_FILE}"
+fi
+# }}}
