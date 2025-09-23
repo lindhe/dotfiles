@@ -51,6 +51,11 @@ success_symbol = '[\$](bold 8)'
 [[battery.display]]
 threshold = 30
 
+[directory]
+format='\[[$path]($style)[$read_only]($read_only_style)\]'
+repo_root_style='bold cyan underline'
+fish_style_pwd_dir_length=2
+
 [git_branch]
 format = '\[[$branch]($style)\]'
 
@@ -95,6 +100,9 @@ format = '\[[$symbol$context]($style)\]'
 
 [helm]
 format = '\[[$symbol($version)]($style)\]'
+
+[hostname]
+format = '\[[$ssh_symbol$hostname]($style)\] '
 
 [memory_usage]
 format = '\[$symbol[$ram( | $swap)]($style)\]'
