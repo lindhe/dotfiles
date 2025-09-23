@@ -35,6 +35,7 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+curl -sS https://starship.rs/install.sh | sh
 ```
 
 #### Laptop extras
