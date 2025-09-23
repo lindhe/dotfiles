@@ -57,7 +57,7 @@ repo_root_style='bold cyan underline'
 fish_style_pwd_dir_length=2
 
 [git_branch]
-format = '\[[$branch]($style)\]'
+format = '\[[$symbol$branch]($style)\]'
 
 [git_commit]
 only_detached=false
@@ -72,7 +72,7 @@ detect_env_vars=[
   "KUBECONFIG",
 ]
 disabled=false
-format='\[[$context/$namespace]($style)\] '
+format='\[[$symbol$context:$namespace]($style)\] '
 style='green bold'
 
 [shell]
