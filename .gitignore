@@ -10,3 +10,7 @@
 .netrwhist
 *.pdf
 
+################################     Shell     ################################
+# env should be ignored since that is intended to be local to the user's env.
+.shellrc/env
+.shellrc/env.sh

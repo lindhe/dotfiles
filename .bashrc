@@ -45,17 +45,6 @@ if command -v dircolors &> /dev/null; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-###############################     aliases     ###############################
-# {{{
-SHELL_ALIASES_FILE=~/.shell_aliases
-if [[ -f ${SHELL_ALIASES_FILE} ]]; then
-    # shellcheck source=./.shell_aliases
-    source "${SHELL_ALIASES_FILE}"
-else
-    echo "* ${SHELL_ALIASES_FILE} is missing"
-fi
-# }}}
-
 ##############################     Completion     ##############################
 
 # enable programmable completion features (you don't need to enable
@@ -134,32 +123,23 @@ export HELM_DIFF_OUTPUT_CONTEXT=2
 export HELM_DIFF_USE_UPGRADE_DRY_RUN=true
 # }}}
 
-# ##############################     Functions     ##############################
+######################     Source all .shellrc files     ######################
 # {{{
-SHELL_FUNCTIONS_FILE=~/.shell_functions
-if [[ -f ${SHELL_FUNCTIONS_FILE} ]]; then
-    # shellcheck source=./.shell_functions
-    source "${SHELL_FUNCTIONS_FILE}"
+SHELLRC_DIR="${HOME}/.shellrc"
+if [[ -d "${SHELLRC_DIR}" ]]; then
+  for shellrc_file in "${SHELLRC_DIR}"/*; do
+    # shellcheck source=/dev/null
+    source "${shellrc_file}"
+  done
 else
-    echo "* ${SHELL_FUNCTIONS_FILE} is missing"
-fi
-# }}}
-
-#################################     WSL2     #################################
-# {{{
-SHELL_WSL_FILE=~/.shell_wsl
-if [[ -f ${SHELL_WSL_FILE} ]]; then
-    # shellcheck source=./.shell_wsl
-    source "${SHELL_WSL_FILE}"
-else
-    echo "* ${SHELL_WSL_FILE} is missing"
+  echo "${SHELLRC_DIR} is missing"
 fi
 # }}}
 
 ##############################     Local env     ##############################
 # File to source for the user's local environemnt.
 # {{{
-SHELL_ENV_FILE=~/.shell_env
+SHELL_ENV_FILE=~/.shellrc/env
 if [[ -f ${SHELL_ENV_FILE} ]]; then
     # shellcheck source=/dev/null
     source "${SHELL_ENV_FILE}"

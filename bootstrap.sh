@@ -18,9 +18,7 @@ ln -fs "${DOTFILES}/.gitignore_global" .
 ln -fs "${DOTFILES}/.inputrc" .
 ln -fs "${DOTFILES}/.xprofile" .
 ln -fs "${DOTFILES}/.yamllint_global.yaml" .yamllint.yaml
-ln -fs "${DOTFILES}/.shell_aliases" .
-ln -fs "${DOTFILES}/.shell_functions" .
-ln -fs "${DOTFILES}/.shell_wsl" .
+ln -fs "${DOTFILES}/.shellrc" .
 ln -fs "${DOTFILES}/.zshrc" .
 ln -fs "${DOTFILES}/res" .
 ln -fs .profile .zprofile

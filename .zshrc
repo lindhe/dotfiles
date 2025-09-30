@@ -133,36 +133,16 @@ typeset -TUx PATH path
 
 # }}}
 
-###############################     Aliases     ###############################
+######################     Source all .shellrc files     ######################
 # {{{
-SHELL_ALIASES_FILE=~/.shell_aliases
-if [[ -f ${SHELL_ALIASES_FILE} ]]; then
-    # shellcheck source=./.shell_aliases
-    source "${SHELL_ALIASES_FILE}"
+SHELLRC_DIR="${HOME}/.shellrc"
+if [[ -d "${SHELLRC_DIR}" ]]; then
+  for shellrc_file in "${SHELLRC_DIR}"/*; do
+    # shellcheck source=/dev/null
+    source "${shellrc_file}"
+  done
 else
-    echo "* ${SHELL_ALIASES_FILE} is missing"
-fi
-# }}}
-
-##############################     Functions     ##############################
-# {{{
-SHELL_FUNCTIONS_FILE=~/.shell_functions
-if [[ -f ${SHELL_FUNCTIONS_FILE} ]]; then
-    # shellcheck source=./.shell_functions
-    source "${SHELL_FUNCTIONS_FILE}"
-else
-    echo "* ${SHELL_FUNCTIONS_FILE} is missing"
-fi
-# }}}
-
-#################################     WSL2     #################################
-# {{{
-SHELL_WSL_FILE=~/.shell_wsl
-if [[ -f ${SHELL_WSL_FILE} ]]; then
-    # shellcheck source=./.shell_wsl
-    source "${SHELL_WSL_FILE}"
-else
-    echo "* ${SHELL_WSL_FILE} is missing"
+  echo "${SHELLRC_DIR} is missing"
 fi
 # }}}
 
@@ -193,14 +173,6 @@ export KUBECTL_EXTERNAL_DIFF="diff -u --color=always"
 # Configure helm-diff
 export HELM_DIFF_OUTPUT_CONTEXT=2
 export HELM_DIFF_USE_UPGRADE_DRY_RUN=true
-# }}}
-
-#################################    Server    #################################
-# {{{
-ZSH_SERVER=~/.shell_server
-if [[ -f ${ZSH_SERVER} ]]; then
-    source "${ZSH_SERVER}"
-fi
 # }}}
 
 ###############################     Bindkeys     ###############################
