@@ -67,7 +67,7 @@ sudo snap install \
 export DOTFILES=~/dotfiles
 
 pushd ~
-ln -fs "${DOTFILES:?}/.zsh_server" .
+ln -fs "${DOTFILES:?}/.shell_server" .
 popd
 ```
 

@@ -178,7 +178,7 @@ fi
 
 #################################    Server    #################################
 # {{{
-ZSH_SERVER=~/.zsh_server
+ZSH_SERVER=~/.shell_server
 if [[ -f ${ZSH_SERVER} ]]; then
     source "${ZSH_SERVER}"
 fi
