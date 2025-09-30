@@ -65,7 +65,7 @@ style='8'
 
 [git_status]
 stashed=''
-format = '([\[$all_status$ahead_behind\]]($style))'
+format = '([\[$all_status$ahead_behind\]]($style)) '
 
 [kubernetes]
 detect_env_vars=[
