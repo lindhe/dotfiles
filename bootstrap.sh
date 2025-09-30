@@ -24,6 +24,7 @@ ln -fs "${DOTFILES}/.shell_wsl" .
 ln -fs "${DOTFILES}/.zsh_k8s" .
 ln -fs "${DOTFILES}/.zshrc" .
 ln -fs "${DOTFILES}/res" .
+ln -fs .profile .zprofile
 
 mkdir -p ~/.config/git
 
