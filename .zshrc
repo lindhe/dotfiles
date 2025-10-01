@@ -116,7 +116,9 @@ export HIST_STAMPS="yyyy-mm-dd"
 bindkey -r '^[^H'
 
 # Remove bad aliases
-unalias gp # git push
+if alias gp &> /dev/null; then
+  unalias gp # git push
+fi
 
 # }}}
 
