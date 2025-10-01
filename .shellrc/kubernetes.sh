@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-Populate KUBECONFIG
+#########################     Populate KUBECONFIG     #########################
 if command -v kubectl &> /dev/null; then
   DOTKUBE_DIR="${HOME}/.kube"
   if [ -d "${DOTKUBE_DIR}" ]; then
@@ -14,9 +14,9 @@ if command -v kubectl &> /dev/null; then
   fi
 fi
 
-# Configure difftool
+##########################     Configure difftool     ##########################
 export KUBECTL_EXTERNAL_DIFF="diff -u --color=always"
 
-# Configure helm-diff
+#########################     Configure helm-diff     #########################
 export HELM_DIFF_OUTPUT_CONTEXT=2
 export HELM_DIFF_USE_UPGRADE_DRY_RUN=true
