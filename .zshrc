@@ -165,10 +165,12 @@ autocompletions=(
   "${X_COMPLETION_ZSH[@]}"
 )
 for cmd in "${autocompletions[@]}"; do
-  if command -v "${cmd}" &> /dev/null; then
-    ${cmd} completion zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
-  else
-    echo "* ${cmd:?} is missing"
+  if [[ -n "${cmd}" ]]; then
+    if command -v "${cmd}" &> /dev/null; then
+      ${cmd} completion zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
+    else
+      echo "* ${cmd:?} is missing"
+    fi
   fi
 done
 
@@ -177,10 +179,12 @@ autocompletions=(
   gh
 )
 for cmd in "${autocompletions[@]}"; do
-  if command -v "${cmd}" &> /dev/null; then
-    ${cmd} completion -s zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
-  else
-    echo "* ${cmd:?} is missing"
+  if [[ -n "${cmd}" ]]; then
+    if command -v "${cmd}" &> /dev/null; then
+      ${cmd} completion -s zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
+    else
+      echo "* ${cmd:?} is missing"
+    fi
   fi
 done
 
@@ -189,10 +193,12 @@ autocompletions=(
   yq
 )
 for cmd in "${autocompletions[@]}"; do
-  if command -v "${cmd}" &> /dev/null; then
-    ${cmd} shell-completion zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
-  else
-    echo "* ${cmd:?} is missing"
+  if [[ -n "${cmd}" ]]; then
+    if command -v "${cmd}" &> /dev/null; then
+      ${cmd} shell-completion zsh > "${USER_COMPLETIONS_DIR}/${cmd}.zsh"
+    else
+      echo "* ${cmd:?} is missing"
+    fi
   fi
 done
 
@@ -211,10 +217,12 @@ autocompletions=(
   terraform
 )
 for cmd in "${autocompletions[@]}"; do
-  if command -v "${cmd}" &> /dev/null; then
-    complete -o nospace -C "/usr/bin/${cmd}" "${cmd}"
-  else
-    echo "* ${cmd:?} is missing"
+  if [[ -n "${cmd}" ]]; then
+    if command -v "${cmd}" &> /dev/null; then
+      complete -o nospace -C "/usr/bin/${cmd}" "${cmd}"
+    else
+      echo "* ${cmd:?} is missing"
+    fi
   fi
 done
 
