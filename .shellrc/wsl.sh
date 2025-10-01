@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # vim: foldmethod=marker
+# shellcheck disable=SC2329
 
 if [[ -n ${WSLENV+x} ]]; then
 

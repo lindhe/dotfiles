@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # vim: set foldmethod=marker filetype=bash:
+# shellcheck disable=SC2329
 
 # Copy path to current working directory
 cwd() {

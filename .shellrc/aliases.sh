@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2139
+# shellcheck disable=SC2139,SC2329
 
 declare -r SCRIPTS_DIR="${HOME}/git/lindhe/scripts"
 

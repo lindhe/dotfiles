@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2329
 
 #########################     Populate KUBECONFIG     #########################
 if command -v kubectl &> /dev/null; then

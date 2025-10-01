@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2329
 
 declare -A DISALLOWED_TMUX_TERMINALS=(
     [tmux]=1
