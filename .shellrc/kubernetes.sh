@@ -6,7 +6,11 @@ if command -v kubectl &> /dev/null; then
   DOTKUBE_DIR="${HOME}/.kube"
   if [ -d "${DOTKUBE_DIR}" ]; then
     export KUBECONFIG="${DOTKUBE_DIR}/config"
-    shopt -s globstar
+    if [[ "$(readlink /proc/$$/exe | sed "s/.*\///")" == "zsh" ]]; then
+      setopt NULL_GLOB
+    else
+      shopt -s globstar
+    fi
     for config in "${DOTKUBE_DIR}"/**/*.yaml; do
       export KUBECONFIG="${KUBECONFIG}:${config}"
     done
