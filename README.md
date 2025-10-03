@@ -38,6 +38,13 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 curl -sS https://starship.rs/install.sh | sh
 ```
 
+Update alternatives:
+
+```shell
+sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 70
+sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 70
+```
+
 #### Laptop extras
 
 ```shell
