@@ -141,6 +141,13 @@ elseif filereadable(s:winclip)
   augroup END
 endif
 
+" Work-around for a bug where colorscheme does not get properly applied in
+" some filetypes (most obviously in gitcommit).
+augroup ColorschemeFix
+  autocmd!
+  autocmd FileType * colorscheme default
+augroup END
+
 "}}}
 
 """"""""""""""""""""""""""""""     Mappings     """""""""""""""""""""""""""{{{
