@@ -13,20 +13,21 @@ if not vim.g.vscode then
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   end
 
-  require('lspconfig')['bashls'].setup {
+  local common = {
     on_attach = on_attach,
   }
-  require('lspconfig')['rust_analyzer'].setup {
-    on_attach = on_attach,
+
+  local servers = {
+    'bashls',
+    'rust_analyzer',
+    'terraformls',
+    'ts_ls',
+    'vimls',
   }
-  require('lspconfig')['terraformls'].setup{
-    on_attach = on_attach,
-  }
-  require('lspconfig')['ts_ls'].setup{
-    on_attach = on_attach,
-  }
-  require('lspconfig')['vimls'].setup {
-    on_attach = on_attach,
-  }
+
+  for _, name in ipairs(servers) do
+    vim.lsp.config(name, common)
+    vim.lsp.enable(name)
+  end
 
 end
