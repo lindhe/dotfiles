@@ -1,57 +1,6 @@
 # shellcheck disable=SC2148,SC1090,SC2034
 # vim: foldmethod=marker
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-############################     Bootstrap OMZ     ############################
-# {{{
-
-if [ ! -d "${ZSH}" ]; then
-  if command -v curl &> /dev/null; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  else
-    echo "* curl is missing"
-    if command -v wget &> /dev/null; then
-      sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-    else
-      echo "* wget is missing"
-      exit 1
-    fi
-  fi
-fi
-
-# }}}
-
-# Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
-
-# shellcheck disable=SC1091
-source "${ZSH}/oh-my-zsh.sh"
-
-##########################     Fix OMZ behaviour     ##########################
-# {{{
-
-# https://superuser.com/a/1447349/110087
-unset LESS;
-
-# https://github.com/ohmyzsh/ohmyzsh/issues/2537#issuecomment-35693367
-setopt no_share_history
-
-# https://github.com/ohmyzsh/ohmyzsh/wiki/Settings#hist_stamps
-export HIST_STAMPS="yyyy-mm-dd"
-
-# Remove annoying backward-kill-word
-# https://stackoverflow.com/questions/39428667/how-to-remove-a-keybinding
-bindkey -r '^[^H'
-
-# Remove bad aliases
-if alias gp &> /dev/null; then
-  unalias gp # git push
-fi
-
-# }}}
-
 ###############################     exports     ###############################
 # {{{
 
@@ -78,8 +27,12 @@ else
 fi
 # }}}
 
-###############################     Bindkeys     ###############################
+###############################     Bindings     ###############################
 # {{{
+
+# Remove annoying backward-kill-word
+# https://stackoverflow.com/questions/39428667/how-to-remove-a-keybinding
+bindkey -r '^[^H'
 
 bindkey '^[M' '_toggle_md_mode'
 
