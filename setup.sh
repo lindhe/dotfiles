@@ -49,7 +49,7 @@ if [[ "${FULL_SETUP}" == y ]]; then
     sudo cp "${DOTFILES}/usr/share/X11/xkb/symbols"/* -t /usr/share/X11/xkb/symbols
 
     # Set shell
-    sudo chsh -s /usr/bin/zsh "${USER}"
+    sudo chsh -s /usr/bin/bash "${USER}"
 
     # Configure locale
     sudo locale-gen sv_SE.UTF-8
