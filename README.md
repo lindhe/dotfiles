@@ -33,6 +33,10 @@ sudo tar -C /opt -xzf nvim-linux64.tar.gz
 export PATH="$PATH:/opt/nvim-linux64/bin"
 ```
 
+```
+curl -fsSL https://tailscale.com/install.sh | sh
+```
+
 Update alternatives:
 
 ```shell
@@ -90,7 +94,5 @@ infocmp -x | ssh YOUR-SERVER -- tic -x -
 ## Post-install checklist
 
 - [ ] Add me to the `docker` group: `usermod -aG docker ${USER}`
-- [ ] SSH hardening.
-- [ ] Setup SSH keys: `ssh-keygen -t ed25519 -C "${USER:?}@$(hostname -f)"`
 - [ ] Ubuntu Live Patch: https://ubuntu.com/advantage
 - [ ] Configure a [Docker Credential Helper](https://github.com/docker/docker-credential-helpers/) in `~/.docker/config.json`.
