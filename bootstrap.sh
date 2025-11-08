@@ -42,4 +42,7 @@ if [[ ! -d "${SCRIPTS}" ]]; then
   git clone https://github.com/lindhe/scripts.git "${SCRIPTS}"
 fi
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+TMUX_TPM_DIR=~/.tmux/plugins/tpm
+if [[ ! -d "${TMUX_TPM_DIR}" ]]; then
+  git clone https://github.com/tmux-plugins/tpm ${TMUX_TPM_DIR}
+fi
