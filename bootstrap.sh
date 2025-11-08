@@ -21,7 +21,6 @@ ln -fs "${DOTFILES}/.yamllint_global.yaml" .yamllint.yaml
 ln -fs "${DOTFILES}/.shellrc" .
 ln -fs "${DOTFILES}/.zshrc" .
 ln -fs "${DOTFILES}/res" .
-ln -fs .profile .zprofile
 
 mkdir -p ~/.config/git
 
