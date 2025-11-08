@@ -14,6 +14,14 @@ typeset -TUx PATH path
 
 # }}}
 
+##############################     Completion     ##############################
+# {{{
+
+# Bash completion
+autoload -U +X bashcompinit && bashcompinit
+
+# }}}
+
 ######################     Source all .shellrc files     ######################
 # {{{
 SHELLRC_DIR="${HOME}/.shellrc"
@@ -35,14 +43,6 @@ fi
 bindkey -r '^[^H'
 
 bindkey '^[M' '_toggle_md_mode'
-
-# }}}
-
-##############################     Completion     ##############################
-# {{{
-
-# Bash completion
-autoload -U +X bashcompinit && bashcompinit
 
 # }}}
 
