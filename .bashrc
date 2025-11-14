@@ -27,6 +27,9 @@ shopt -s histreedit
 
 # Verify history substitution before running:
 shopt -s histverify
+
+# https://askubuntu.com/a/673283
+PROMPT_COMMAND='history -a;history -n'
 # }}}
 
 ################################     window     ################################
