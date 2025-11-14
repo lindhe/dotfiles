@@ -51,11 +51,25 @@ fi
 ###############################     Bindings     ###############################
 # {{{
 
+bindkey -e # Emacs keybind mode. Without this, setting EDITOR to Vim will change the defaults
+
 # Remove annoying backward-kill-word
 # https://stackoverflow.com/questions/39428667/how-to-remove-a-keybinding
 bindkey -r '^[^H'
 
 bindkey '^[M' '_toggle_md_mode'
+
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
+# WORDCHARS='*?_-.[]~=&;!#$%^(){}<>/ '$'\n'
+# autoload -Uz select-word-style
+# select-word-style normal
+# zstyle ':zle:*' word-style unspecified
+
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^X^e' edit-command-line
 
 # }}}
 
