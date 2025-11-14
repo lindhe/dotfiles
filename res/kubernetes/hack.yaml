@@ -36,20 +36,20 @@ spec:
               memory: 1Gi
             requests:
               cpu: 1
-          # securityContext:
-          #   allowPrivilegeEscalation: false
-          #   capabilities:
-          #     drop:
-          #       - ALL
-          #   runAsNonRoot: true
-          #   runAsUser: 1000
-          #   runAsGroup: 1000
-          #   seccompProfile:
-          #     type: RuntimeDefault
-          # volumeMounts:
-          #   - name: storage-volume
-          #     mountPath: /mnt
-      # volumes:
-      #   - name: storage-volume
-      #     persistentVolumeClaim:
-      #       claimName: example-pvc
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            runAsNonRoot: true
+            runAsUser: 1000
+            runAsGroup: 1000
+            seccompProfile:
+              type: RuntimeDefault
+          volumeMounts:
+            - name: storage-volume
+              mountPath: /mnt
+      volumes:
+        - name: storage-volume
+          persistentVolumeClaim:
+            claimName: example-pvc
