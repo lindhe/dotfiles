@@ -92,6 +92,12 @@ zstyle ':completion:*' matcher-list '' '+m:{a-zA-Z}={A-Za-z}' '+r:|[._-]=* r:|=*
 
 # }}}
 
+#################################     Misc     #################################
+# {{{
+# Allow comments in interactive shell sessions:
+setopt interactive_comments
+# }}}
+
 ###############################     VS Code     ###############################
 if [[ "${TERM_PROGRAM}" == "vscode" ]]; then
   export EDITOR='code --wait'
