@@ -33,13 +33,13 @@ if !exists('g:vscode')
   " Good ones, but dispensible
   Plug 'apzelos/blamer.nvim'          " Git blame for Vim
   Plug 'jpalardy/vim-slime', { 'branch': 'main' } " A vim plugin to give you some slime.
+  Plug 'einenlum/yaml-revealer'
 
   " Not sure about these yet
   Plug 'mattn/emmet-vim'              " Emmet abbreviations
   Plug 'scrooloose/nerdtree'
   Plug 'airblade/vim-gitgutter'
   Plug 'nvim-treesitter/nvim-treesitter', {'branch': 'main', 'do': ':TSUpdate'}
-  Plug 'Einenlum/yaml-revealer'
 
   " LSP
   Plug 'neovim/nvim-lspconfig'
@@ -95,6 +95,7 @@ let g:slime_dont_ask_default = 1
 
 " yaml-revealer
 let g:yaml_revealer_display_mode = 'virtual'
+let g:yaml_revealer_separator = '.'
 
 "}}}
 
