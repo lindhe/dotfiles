@@ -9,6 +9,23 @@ case $- in
       *) return;;
 esac
 
+#################################     PATH     #################################
+# {{{
+# set PATH so it includes ~/bin
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes ~/.local/bin
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+# Source Cargo's env
+source "$HOME/.cargo/env"
+
+# }}}
+
 ###############################     history     ###############################
 # {{{
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)

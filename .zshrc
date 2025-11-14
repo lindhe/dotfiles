@@ -4,6 +4,16 @@
 ###############################     exports     ###############################
 # {{{
 
+# set PATH so it includes ~/bin
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes ~/.local/bin
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 path+=/opt/nvim-linux64/bin
 # By exporting PATH via `typeset -TUx PATH path`, there are no duplicates.
 # With this in place, PATH can safely be updated by running `path+=/tmp/foo`
@@ -11,6 +21,9 @@ path+=/opt/nvim-linux64/bin
 # Stolen from here:
 # https://stackoverflow.com/questions/11530090/adding-a-new-entry-to-the-path-variable-in-zsh/18077919#comment72796046_18077919
 typeset -TUx PATH path
+
+# Source Cargo's env
+source "$HOME/.cargo/env"
 
 # }}}
 
