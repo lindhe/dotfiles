@@ -33,7 +33,7 @@
 	ll = "!git l $(git mb)~1.."
 	lll = "!git log $(git mb)~1.."
 	lb = "!git log --oneline --graph --color=always $(git mb)~1.. $(git default-branch) HEAD"
-	lob = log --oneline --graph --branches --color=always
+	lob = log --oneline --graph --branches --color=always --remotes
 	mb = "!git merge-base origin/$(git default-branch) HEAD"
 	nb = "!git switch -c lindhe/${1:?} #"
 	nuke-branch = "!git worktree remove ${*} && git branch -D ${*} #"
