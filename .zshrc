@@ -84,6 +84,14 @@ setopt share_history          # share command history data
 setopt APPEND_HISOTRY
 # }}}
 
+##############################     Completion     ##############################
+# {{{
+
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list '' '+m:{a-zA-Z}={A-Za-z}' '+r:|[._-]=* r:|=*' '+l:|=* r:|=*' # https://stackoverflow.com/a/24237590/893211
+
+# }}}
+
 ###############################     VS Code     ###############################
 if [[ "${TERM_PROGRAM}" == "vscode" ]]; then
   export EDITOR='code --wait'
