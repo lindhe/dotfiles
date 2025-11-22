@@ -22,7 +22,9 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # Source Cargo's env
-source "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ] ; then
+  source "$HOME/.cargo/env"
+fi
 
 # }}}
 
