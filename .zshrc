@@ -6,12 +6,12 @@
 
 # set PATH so it includes ~/bin
 if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+    PATH="${HOME}/bin:${PATH}"
 fi
 
 # set PATH so it includes ~/.local/bin
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+if [ -d "${HOME}/.local/bin" ] ; then
+    PATH="${HOME}/.local/bin:${PATH}"
 fi
 
 path+=/opt/nvim-linux64/bin
@@ -23,8 +23,8 @@ path+=/opt/nvim-linux64/bin
 typeset -TUx PATH path
 
 # Source Cargo's env
-if [ -f "$HOME/.cargo/env" ] ; then
-  source "$HOME/.cargo/env"
+if [ -f "${HOME}/.cargo/env" ] ; then
+  source "${HOME}/.cargo/env"
 fi
 
 # }}}
