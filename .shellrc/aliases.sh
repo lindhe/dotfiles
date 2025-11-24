@@ -51,5 +51,6 @@ alias unmonitors="xrandr --output eDP-1 --auto --primary --output HDMI-1 --off -
 alias vimcognito="vim -i NONE -u NONE -U NONE --cmd 'set noswapfile' --cmd 'set nobackup'"
 alias vimp="vim -p"
 alias watch="watch --color "
+alias xpaste="${SCRIPTS_DIR}/terminal/paste.sh"
 alias yqless="yq -C eval | less -Ri"
 alias zshrc="nvim ~/.zshrc"
