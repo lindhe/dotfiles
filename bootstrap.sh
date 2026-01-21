@@ -33,6 +33,7 @@ if [[ -n ${WSLENV+x} ]]; then
 fi
 
 cd ~/.config
+ln -fs "${DOTFILES}/.config/niri/" .
 ln -fs "${DOTFILES}/.config/nvim/" .
 ln -fs "${DOTFILES}/.config/tmux" .
 ln -fs "${DOTFILES}/.config/starship.toml" .

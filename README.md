@@ -58,6 +58,7 @@ sudo apt install \
     gnome-screenshot \
     scdaemon \
     keepassxc \
+    waybar \
     xclip
 ```
 
