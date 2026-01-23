@@ -58,7 +58,7 @@ sudo apt install \
     gnome-screenshot \
     scdaemon \
     keepassxc \
-    waybar \
+    fuzzel swaylock waybar \
     xclip
 ```
 
