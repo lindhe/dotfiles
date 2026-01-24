@@ -598,4 +598,6 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 
+    // Open logout menu
+    Mod+Delete hotkey-overlay-title="Logout menu" { spawn "wlogout"; }
 }
