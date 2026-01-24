@@ -39,6 +39,7 @@ ln -fs "${DOTFILES}/.config/nvim" .
 ln -fs "${DOTFILES}/.config/starship.toml" .
 ln -fs "${DOTFILES}/.config/swaylock" .
 ln -fs "${DOTFILES}/.config/tmux" .
+ln -fs "${DOTFILES}/.config/waybar" .
 
 if [[ ! -d "${SCRIPTS}" ]]; then
   git clone https://github.com/lindhe/scripts.git "${SCRIPTS}"
