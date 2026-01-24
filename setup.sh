@@ -43,7 +43,6 @@ if [[ "${FULL_SETUP}" == y ]]; then
     pushd ~/.config
 
     ln -fs "${DOTFILES}/.config/safe-rm" .
-    ln -fs "${DOTFILES}/.config/sway" .
 
     popd
 
