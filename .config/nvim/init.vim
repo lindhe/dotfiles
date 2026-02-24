@@ -194,7 +194,7 @@ if !exists('g:vscode')
   inoremap <F3> <Esc>:set list!<CR>a
 
   " <F6> to remove trailing whitespace
-  nnoremap <silent> <F6> :%s/\s\+$//<CR>''
+  nnoremap <silent> <F6> :%s/\s\+$//<CR><C-o>
 
   " <F7> to cycle spell
   nnoremap <F7> :call CycleSpell()<CR>
