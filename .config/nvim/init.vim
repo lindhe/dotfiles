@@ -167,8 +167,6 @@ vnoremap <leader>y :!~/git/lindhe/scripts/terminal/pathToYaml.sh<CR>
 if !exists('g:vscode')
 
   cnoremap qq q!
-  nnoremap <silent> hq :qall<CR>
-  nnoremap <silent> HQ :qall!<CR>
 
   " Ctrl+s to save
   nnoremap <C-s> :silent! %s/\s\+$// \| %s/\n\+\%$// \| w<CR>
