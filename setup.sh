@@ -34,7 +34,9 @@ echo -e "\n"
 
 ./bootstrap.sh
 
-sudo ln -fs "$(which safe-rm)" /usr/local/bin/rm
+if command -v safe-rm &> /dev/null; then
+  sudo ln -fs "$(which safe-rm)" /usr/local/bin/rm
+fi
 
 if [[ "${FULL_SETUP}" == y ]]; then
 
