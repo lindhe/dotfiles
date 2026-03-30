@@ -88,9 +88,6 @@ shopt -s globstar
 # Enhance cd
 shopt -s autocd
 
-# Let * expand to hidden files also:
-shopt -s dotglob
-
 # Expand dir to explicit path (like ZSH)
 shopt -s direxpand
 
