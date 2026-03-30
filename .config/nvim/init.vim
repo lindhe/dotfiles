@@ -187,6 +187,9 @@ if !exists('g:vscode')
   " Omnicompletion
   inoremap <c-Space> <c-x><c-o>
 
+  " Reselect pasted text
+  nnoremap gp `[v`]
+
   " <F3> Toggle list
   nnoremap <F3> :set list!<CR>
   inoremap <F3> <Esc>:set list!<CR>a
