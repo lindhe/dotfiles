@@ -32,8 +32,10 @@
 	l = log --oneline
 	ll = "!git l $(git mb)~1.."
 	lll = "!git log $(git mb)~1.."
+	last = reflog -1 --format='format:%gs'
 	lb = "!git log --oneline --graph --color=always $(git mb)~1.. $(git default-branch) HEAD"
-	lob = log --oneline --graph --branches --color=always --remotes
+	lob = log --color=always --oneline --graph --exclude 'release/*' --branches
+	lobb = lob --remotes
 	mb = "!git merge-base origin/$(git default-branch) HEAD"
 	nb = "!git switch -c lindhe/${1:?} #"
 	nuke-branch = "!git worktree remove ${*} && git branch -D ${*} #"
@@ -62,7 +64,7 @@
 	shwww = show --ignore-space-change --word-diff-regex='.'
 	sorry = commit --amend --no-edit
 	st = status
-	sw = "!from=\"$(git branch --show-current)\"; git switch ${@:-$(git default-branch)} && (echo \"Old branch was ${from:?}\"; git diff --stat $(git default-branch)...) #"
+	sw = "!git switch ${@:-$(git default-branch)} #"
 	sww = "!git stash && git sw ${@} && git stash pop #"
 	sync = "!git fetch upstream && git reset --hard upstream/$(git branch --show-current) #"
 	track = "!git branch --set-upstream-to=${1:-origin}/$(git branch --show-current) $(git branch --show-current) #"
