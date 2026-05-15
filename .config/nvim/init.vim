@@ -229,10 +229,10 @@ autocmd BufReadPost *
             \   exe "normal! g`\"" |
             \ endif
 
-" hjkl --> jklö
-noremap l h
-noremap ö l
-noremap s l
+" " hjkl --> jklö
+" noremap l h
+" noremap ö l
+" noremap s l
 
 " Make vertical movement work with wrapped lines
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
