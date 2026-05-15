@@ -22,7 +22,7 @@ sudo apt install \
     curl \
     tree zsh \
     build-essential \
-    git git-lfs \
+    git git-lfs git-credential-oauth \
     safe-rm \
     tmux jq unzip shellcheck \
     docker.io flatpak
