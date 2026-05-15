@@ -2,17 +2,6 @@
 # vim: set foldmethod=marker filetype=bash:
 # shellcheck disable=SC2329
 
-# Copy path to current working directory
-cwd() {
-    # If WSL
-    if [[ -n ${WSLENV+x} ]]; then
-        pwd | /mnt/c/Windows/System32/clip.exe
-    else
-        pwd | xclip -selection clipboard
-        pwd | xclip -selection primary
-    fi
-}
-
 datestamp() {
     date +'%F'
 }
