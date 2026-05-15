@@ -5,6 +5,7 @@ These are my dotfiles. Not meant to be shared, but feel free to take a look if y
 ## Usage
 
 ```shell
+mkdir -p ~/git/lindhe
 git clone https://github.com/lindhe/dotfiles.git ~/dotfiles
 git clone https://github.com/lindhe/scripts.git ~/git/lindhe/scripts
 ~/dotfiles/setup.sh
