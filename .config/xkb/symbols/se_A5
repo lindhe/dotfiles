@@ -1,0 +1,36 @@
+default partial alphanumeric_keys
+xkb_symbols "basic" {
+    include "se(basic)"
+
+    key <AD01> { [ q,          Q,          braceleft,           NoSymbol ] };
+    key <AD02> { [ w,          W,          braceright,          NoSymbol ] };
+    key <AD03> { [ e,          E,          bracketleft,         NoSymbol ] };
+    key <AD04> { [ r,          R,          bracketright,        NoSymbol ] };
+    key <AD05> { [ t,          T,          dollar,              NoSymbol ] };
+    key <AD06> { [ y,          Y,          quotedbl,            NoSymbol ] };
+    key <AD07> { [ u,          U,          question,            NoSymbol ] };
+    key <AD08> { [ i,          I,          ampersand,           NoSymbol ] };
+    key <AD09> { [ o,          O,          less,                NoSymbol ] };
+    key <AD10> { [ p,          P,          greater,             NoSymbol ] };
+
+    key <AC01> { [ a,          A,          semicolon,           NoSymbol ] };
+    key <AC02> { [ s,          S,          slash,               NoSymbol ] };
+    key <AC03> { [ d,          D,          parenleft,           NoSymbol ] };
+    key <AC04> { [ f,          F,          parenright,          NoSymbol ] };
+    key <AC05> { [ g,          G,          bar,                 NoSymbol ] };
+    key <AC06> { [ h,          H,          numbersign,          NoSymbol ] };
+    key <AC07> { [ j,          J,          asciicircum,         NoSymbol ] };
+    key <AC08> { [ k,          K,          numbersign,          NoSymbol ] };
+    key <AC09> { [ l,          L,          quotedbl,            NoSymbol ] };
+    key <AC10> { [ odiaeresis, Odiaeresis, asciitilde,          NoSymbol ] };
+
+    key <AB01> { [ z,          Z,          colon,               NoSymbol ] };
+    key <AB02> { [ x,          X,          equal,               NoSymbol ] };
+    key <AB03> { [ c,          C,          at,                  NoSymbol ] };
+    key <AB04> { [ v,          V,          exclam,              NoSymbol ] };
+    key <AB05> { [ b,          B,          backslash,           NoSymbol ] };
+    key <AB06> { [ n,          N,          percent,             NoSymbol ] };
+    key <AB07> { [ m,          M,          grave,               NoSymbol ] };
+    key <AB09> { [ period,     colon,      U2026,               NoSymbol ] };
+
+};

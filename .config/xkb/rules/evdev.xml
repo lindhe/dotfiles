@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xkbConfigRegistry SYSTEM "xkb.dtd">
+<xkbConfigRegistry version="1.1">
+  <layoutList>
+    <layout>
+      <configItem>
+        <name>se_A5</name>
+        <shortDescription>se_A5</shortDescription>
+        <description>Swedish A5</description>
+        <languageList>
+          <iso639Id>swe</iso639Id>
+        </languageList>
+      </configItem>
+      <variantList/>
+    </layout>
+  </layoutList>
+</xkbConfigRegistry>

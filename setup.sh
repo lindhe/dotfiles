@@ -48,7 +48,7 @@ if [[ "${FULL_SETUP}" == y ]]; then
     popd
 
     echo "Installing custom keyboard layouts"
-    sudo cp "${DOTFILES}/usr/share/X11/xkb/symbols"/* -t /usr/share/X11/xkb/symbols
+    ln -fs "${DOTFILES}/.config/xkb" .
 
     # Set shell
     sudo chsh -s /usr/bin/bash "${USER}"
