@@ -1,0 +1,12 @@
+# Splits
+keybind = ctrl+super+up=new_split:up
+keybind = ctrl+super+down=new_split:down
+keybind = ctrl+super+left=new_split:left
+keybind = ctrl+super+right=new_split:right
+
+# Resize
+keybind = ctrl+super+shift+up=resize_split:up,50
+keybind = ctrl+super+shift+down=resize_split:down,50
+keybind = ctrl+super+shift+left=resize_split:left,50
+keybind = ctrl+super+shift+right=resize_split:right,50
+keybind = ctrl+super+shift+space=equalize_splits
