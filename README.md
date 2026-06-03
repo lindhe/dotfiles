@@ -59,7 +59,8 @@ sudo apt install \
     scdaemon \
     keepassxc \
     fuzzel swaylock waybar wlogout \
-    xclip
+    xclip \
+    wl-clipboard
 ```
 
 #### Server extras
