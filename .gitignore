@@ -2,6 +2,7 @@
 .vim/undo/
 .config/nvim/undo/
 .vim/swap/*
+.config/nvim/spell/
 
 #################################     Tmux     #################################
 .config/tmux/plugins
