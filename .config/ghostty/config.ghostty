@@ -10,3 +10,6 @@ keybind = ctrl+super+shift+down=resize_split:down,50
 keybind = ctrl+super+shift+left=resize_split:left,50
 keybind = ctrl+super+shift+right=resize_split:right,50
 keybind = ctrl+super+shift+space=equalize_splits
+
+# Fullscreen
+keybind = f11=toggle_fullscreen
