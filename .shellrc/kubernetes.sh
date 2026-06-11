@@ -27,3 +27,25 @@ export KUBECTL_EXTERNAL_DIFF="diff -u --color=always"
 #########################     Configure helm-diff     #########################
 export HELM_DIFF_OUTPUT_CONTEXT=2
 export HELM_DIFF_USE_UPGRADE_DRY_RUN=true
+
+# If kubectl exists, enable completion:
+if command -v kubectl &>/dev/null; then
+  if [[ "${TRUE_SHELL_ENV}" == "zsh" ]]; then
+    source <(kubectl completion zsh)
+  else
+    source <(kubectl completion bash)
+    # Register completion for alias 'k' only if __start_kubectl exists
+    if declare -F __start_kubectl &>/dev/null && alias k &>/dev/null; then
+        complete -o default -F __start_kubectl k
+    fi
+  fi
+fi
+
+# If kustomize exists, enable completion:
+if command -v kubectl &>/dev/null; then
+  if [[ "${TRUE_SHELL_ENV}" == "zsh" ]]; then
+    source <(kustomize completion zsh)
+  else
+    source <(kustomize completion bash)
+  fi
+fi
