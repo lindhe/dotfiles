@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2329
 
+TRUE_SHELL_ENV="$(readlink /proc/$$/exe | sed "s/.*\///")"
+
 #########################     Populate KUBECONFIG     #########################
 if command -v kubectl &> /dev/null; then
   DOTKUBE_DIR="${HOME}/.kube"
   if [ -d "${DOTKUBE_DIR}" ]; then
     export KUBECONFIG="${DOTKUBE_DIR}/config"
-    if [[ "$(readlink /proc/$$/exe | sed "s/.*\///")" == "zsh" ]]; then
+    if [[ "${TRUE_SHELL_ENV}" == "zsh" ]]; then
       setopt NULL_GLOB
     else
       shopt -s globstar
