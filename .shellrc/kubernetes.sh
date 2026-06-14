@@ -42,7 +42,7 @@ if command -v kubectl &>/dev/null; then
 fi
 
 # If kustomize exists, enable completion:
-if command -v kubectl &>/dev/null; then
+if command -v kustomize &>/dev/null; then
   if [[ "${TRUE_SHELL_ENV}" == "zsh" ]]; then
     source <(kustomize completion zsh)
   else
