@@ -49,10 +49,13 @@ mcd() {
 }
 
 password() {
-  if command -v openssl &> /dev/null; then
-    openssl rand -base64 "${1:-32}" | paste -sd '' -
+  LENGTH="${1:-32}"
+  if command -v apg &> /dev/null; then
+    apg -a 1 -m "${LENGTH}" -n 1 -M NCL
+  elif command -v openssl &> /dev/null; then
+    openssl rand -base64 "${LENGTH}" | paste -sd '' -
   else
-    tr -dc A-Za-z0-9 </dev/urandom | head -c "${1:-32}" ; echo ''
+    tr -dc A-Za-z0-9 </dev/urandom | head -c "${LENGTH}" ; echo ''
   fi
 }
 

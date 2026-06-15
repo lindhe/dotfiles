@@ -19,6 +19,7 @@ sudo add-apt-repository ppa:git-core/ppa
 
 ```shell
 sudo apt install \
+    apg \
     curl \
     tree zsh \
     build-essential \
