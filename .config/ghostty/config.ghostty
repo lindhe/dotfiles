@@ -1,3 +1,7 @@
+# Font
+font-family = FiraMono Nerd Font
+font-feature = -calt
+
 # Splits
 keybind = ctrl+super+up=new_split:up
 keybind = ctrl+super+down=new_split:down
