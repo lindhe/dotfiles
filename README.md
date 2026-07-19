@@ -29,9 +29,10 @@ sudo apt install \
     docker.io flatpak
 ```
 
-
+```shell
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install --user flathub org.keepassxc.KeePassXC
+```
 
 ```shell
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
