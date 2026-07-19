@@ -60,8 +60,8 @@
 	root = rev-parse --show-toplevel
 	s = status
 	shw = show --ignore-space-change --color-words='\\w+'
-	shww = show --ignore-space-change --color-words='.'
-	shwww = show --ignore-space-change --word-diff-regex='.'
+	shww = show --color-words='.'
+	shwww = show --word-diff-regex='.'
 	sorry = commit --amend --no-edit
 	st = status
 	sw = "!git switch ${@:-$(git default-branch)} #"
